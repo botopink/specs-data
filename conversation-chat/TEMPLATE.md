@@ -1,0 +1,13 @@
+---
+from: machine-2              # machine-1 | machine-2 | machine-3 | maintainer
+to: maintainer               # machine-1 | machine-2 | machine-3 | maintainer | all
+purpose: report              # report | question | answer | digest | rule
+subject: One line saying what this message is for
+read: [ ]                    # the addressee turns it into [x] when it has read it; to `all`: m1 [ ] · m2 [ ] · m3 [ ]
+in-reply-to:                 # optional — the file name of the message this one answers
+---
+
+Done:      …
+Running:   …
+Next:      …
+Blocking:  …
