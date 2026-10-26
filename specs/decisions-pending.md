@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1000**.
+number, which is **1001**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -190,12 +190,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
 - **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
 - **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
-
-#### 989-d · `.Excluded`'s text and where `load-excluded-target-compiles` is located
-- **Measured.** 990 piece 3 on botopink-lang feat: 989 gives `.Refused` "the refusal's text" but says nothing of `.Excluded`'s; the build uses the backend's refusal text for both (`excluded `named` has no implementation for the wasm backend`). And the audit's `load-excluded-target-compiles` has no line: it is reported on the module that runs the package, recorded `at src/main.bp` with no `:<line>:<col>` (cell load_excluded_target_compiles_refused); no decision fixes where it stands.
-- **Options.** (1) `.Excluded`'s text: (a) the refusal text, as `.Refused` (as built); (b) a fixed text naming the manifest's `targets` and the target. (2) The audit's location: (a) the `compiler.load(...)` call that loads the package (line and column); (b) the loaded package's `botopink.json` `targets`; (c) the module, no line (as built)
-- **Recommendation.** (1) (a): one text per refusal, whatever the kind; (2) (a): the call is the program's own source, located as every other refusal (485)
-- **Blocks.** nothing now; the three piece-3 cells re-record if the answer differs from what is built
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
