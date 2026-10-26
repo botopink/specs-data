@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: ci-split landed on botopink-lang feat 2f2c99e71 — the gate's stages as parallel CI jobs; conformance command in gate.sh's conformance_cmd
-read: mt [ ] · m2 [x] · m3 [ ]
+read: mt [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
