@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 994 L3 landed: botopink-lang feat 0d4e56a29 — Module.`test`() runs a loaded package's tests in-process
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
