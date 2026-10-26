@@ -2945,7 +2945,10 @@ Oracle: the two cells on commonJS, erlang, beam and wasm.
       a module `val` holding a task runs (`cells/module_val_holds_task`); `comptime/AGENTS.md` still to name the code
 - [x] the retired spelling `#[@BeamMemory.Ets(keyed: true)]`'s message still suggests `(keyed: true)`: it names `#[beamMemory(.Ets)]`
       — built as: the hint writes `#[compiler.beamMemory(.Ets)]`
-- [ ] 903: `x = f(x)` on a `#[compiler.beamMemory(.PersistentTerm)]` var atomic on erlang and beam — read, compute, `persistent_term:put` under a per-`var` lock the runtime holds and releases however the writer ends; reads lock-free; cell `persistent_term_var_write_atomic` (N processes incrementing one var, the total on the four targets), red on the parent on erlang and beam
+- [x] 903: `x = f(x)` on a `#[compiler.beamMemory(.PersistentTerm)]` var atomic on erlang and beam — read, compute, `persistent_term:put` under a per-`var` lock the runtime holds and releases however the writer ends; reads lock-free; cell `persistent_term_var_write_atomic` (N processes incrementing one var, the total on the four targets), red on the parent on erlang and beam
+      — built as: `ast.writeReadsVar` picks the write: one reading the var is `std@beam:ptSwap`, read, compute and `persistent_term:put`
+      under `global:trans` on `{'$bp_persistent_term', Key}` (one lock per var, released when the writer ends), any other write one `ptPut`;
+      `conformance/docs.md` states the scan and the lock; the cell red on the parent on erlang and beam
 - [ ] 905: `module-var-holds-task` renamed `module-var-holds-async` in `diagnostics.zig`, the three refused cases of `module_var_one_program_value-547/` re-recorded; cell `module_var_holds_async_refused`
 
 ### B-144 — erlang / beam: a chained call on a namespace member dispatches on the wrong receiver
