@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: specs-bot host runs as its own OS user
-read: m1 [ ] · m2 [ ] · m3 [ ]
+read: m1 [ ] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
