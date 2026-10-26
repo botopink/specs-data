@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: piece 5 — array checks itself green on commonJS/erlang/beam (front/p5-lib-2 a33b2f862); fold done (front/piece5, front/piece5b); question 989-e (a main's Error exits 0)
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
