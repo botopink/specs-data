@@ -2182,8 +2182,14 @@ calls still write an `f64` bound to `T` the JS engine's way on commonJS (`2` for
       — built as: `__bp_s` holds `$K` / `$V` / `$T`; std's `Dict` / `Set` / `Queue` statics take the trailing `__bp_ty_*`; a generic
       method reads `this.__bp_s`; `Dict.display` walks its pairs with the 956 loop; the cell green on commonJS, erlang and beam, red on
       wasm until its 164 row lands
-- [ ] a method's own type parameter (`Dict.mapValues<W>`, `fold<A>`) answers a value whose `$W` shape is empty, so a `mapValues` to `f64`
-      prints `2` on commonJS — question 900-a
+- [x] a method's own type parameter (`Dict.mapValues<W>`, `fold<A>`) answers a value whose `$W` shape is empty, so a `mapValues` to `f64`
+      prints `2` on commonJS — decision 985: the method's own type arguments' shapes passed after the arguments at the call, carried
+      into the value it answers; cell `generic_method_own_parameter_takes_shape`
+      — built as: the checker records the type arguments bound at each such call (`noteMethodTypeArgs`); a record's instance method with
+      type parameters of its own takes one trailing `__bp_ty_<W>` per parameter, filled at the call (across modules from the method's
+      signature); `mapValues`' `Dict` carries `$V` from `W`; the cell green on commonJS, erlang and beam, red on wasm (it refuses to
+      narrow the `f64` to an `i32` slot — a 164 row)
+- [ ] an enum's method with type parameters of its own takes their shapes as a record's does (985); a cell
 - [x] a tuple held in a type-parameter slot is printed as a tuple (`Box(value: #(1, 2))`, `id(#(3, "x"))` answers
       `#(3, "x")`; today `[1, 2]`, `[3, "x"]`) — found by 164 s2's tuple subtype; a cell on every target
       — built as: commonJS prints a tuple in a type-parameter slot and a tuple-typed record field as `#(…)`; cell
