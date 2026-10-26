@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: checker row for 144-checker: a lambda's parameter in a generic method is not tied to the type parameter
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
