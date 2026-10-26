@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 98 — packaging tail: the rule checked across the seven repositories
 

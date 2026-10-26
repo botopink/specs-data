@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 22 — The app router: page `Request`, handlers, regeneration, the dynamic mark, spans, actions
 

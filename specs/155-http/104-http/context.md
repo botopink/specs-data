@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 104 — http: a shared `http`, the codecs of HTTP semantics
 

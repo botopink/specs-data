@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 priority: |-
   medium — no page needs it to render; every app with two islands that must agree
   (a cart badge and a cart drawer) needs it to be correct, and rakun's request locals are its atoms (295) ·

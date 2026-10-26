@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 priority: |-
   maximum — the one front that edits `repository/botopink-lang` (decision 433). Its first
   group, comptime on wasm (decision 434), was **the first thing the milestone did**, before any other

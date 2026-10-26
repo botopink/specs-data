@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Track 09 — cardume: shared state as atoms (decision 296)
 

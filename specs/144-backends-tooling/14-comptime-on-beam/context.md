@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 14 — comptime-on-beam: the comptime pipeline's evidence and its cost per evaluation
 

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 142 — data formats: `json`, `yaml` and `markdown`, one repository each (decision 396)
 

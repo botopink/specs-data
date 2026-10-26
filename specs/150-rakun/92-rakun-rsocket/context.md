@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 92 — RSocket: transports, TLS, channel, `#[messageMapping]`, dropped connections
 

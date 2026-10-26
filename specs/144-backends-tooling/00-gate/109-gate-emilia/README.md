@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   medium — every emilia cell is green (17 commonJS, 17 erlang, at the open and at the
   landing); the repository's own gate is what carried tolerances.

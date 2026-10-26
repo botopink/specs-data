@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 01 — checker: every program `botopink check` accepts runs the same on four targets
 

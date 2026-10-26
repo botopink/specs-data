@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # The `docs.md` text for `#[beamMemory]` — supplied by front 17, placed by front 07 (step 6)
 

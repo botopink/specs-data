@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 repos: |-
   in `repository/botopink-lang/`: `modules/**` (compiler-core, compiler-cli, bpmp,
   language-server, lib-test-runner, test-shard), `tests/language/**`, `scripts/**` (runners,

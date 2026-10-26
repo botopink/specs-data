@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 139 — `bigint`: an integer of any size, a primitive on the four targets
 

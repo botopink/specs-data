@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 93 — SOAP web services: the WSDL generator, the client's bundle, the served hash
 

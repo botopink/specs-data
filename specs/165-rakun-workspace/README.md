@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 priority: |-
   high (decision 433's tier of the libraries) — opens now (the maintainer, 2026-10-14), ahead of every open
   step of 148, 149, 150, 153, 154 and 162, which pause until s1 lands; the threads open in those repositories land

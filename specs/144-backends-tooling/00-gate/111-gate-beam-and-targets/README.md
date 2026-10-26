@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   critical — the two beam expected-failure lines, a target no gate stage ran, and a
   `modules/` cell whose manifest `targets` the runner ignored.

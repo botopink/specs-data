@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 02 — erlang: the erlang target answers what decision 8 says, on every shape
 

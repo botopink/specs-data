@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 88 — rakun CLI: `run` against a live app, `build`'s failure, `beans`, `routes`, `ws generate`
 

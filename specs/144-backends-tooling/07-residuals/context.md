@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 07 — residuals: the snapshot review, the documents and comments, the ecosystem's tail
 

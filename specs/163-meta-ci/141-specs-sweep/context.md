@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 141 — specs sweep: the retired spellings out of the current specs
 

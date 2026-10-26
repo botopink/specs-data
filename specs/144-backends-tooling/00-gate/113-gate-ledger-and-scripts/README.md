@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   critical — it is what turns "84 passed, 36 failed, 13 restricted" into a line whose
   only red number is `failed`, and it is the keystone of stage 8: until the two ledger files are gone

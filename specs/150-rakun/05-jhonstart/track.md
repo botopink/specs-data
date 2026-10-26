@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 repo: |-
   `repository/rakun/modules/rakun-bpp` · **Reference:** Next.js docs, the React half · tree on disk:
   [`modules.md`](modules.md).

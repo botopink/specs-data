@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-1
 priority: |-
   low — every library compiles, runs and passes its cells; what is left is one manifest,
   one arm form the maintainer has not ruled on, and the pointers' sweep.

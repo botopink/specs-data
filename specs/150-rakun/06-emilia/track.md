@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 repo: |-
   `repository/rakun/modules/rakun-stylesheet` · **Reference:** Tailwind CSS v4 docs (4.3.2 compiled output) · tree on
   disk: [`modules.md`](modules.md).

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 116 — bpp file format: a `.bpp` file is another spelling of a `.bp` module
 

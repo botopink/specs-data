@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 priority: "medium (the maintainer, 2026-10-18) — the ledger becomes code: every decision in force has one real program that shows it, checked by the gate once the gate is solid."
 repository: the meta repository for the script and the CI check (a full worktree, s1–s2); then one `--repo <repo>` / `--lang` worktree per repository under `repository/` that has a `conformance/` (s3, s5); s4's compiler boxes a `--lang` worktree.
 model: "sonnet for the script and the check (s1, s4 compiler boxes), haiku for the scaffold commits, **opus for every cell's docs, code and accepted answer** (`AGENTS.md` § Which model: text and expected answers have no oracle), opus for the Conformance step."

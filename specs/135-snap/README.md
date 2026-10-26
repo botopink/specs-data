@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 priority: |-
   medium (decision 433) — opens after the library tier, or in a free thread when nothing it needs
   is open.

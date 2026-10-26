@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Track 10 — specs: the milestone's text follows its decisions
 

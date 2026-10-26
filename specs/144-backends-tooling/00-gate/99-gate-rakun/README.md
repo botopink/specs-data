@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   critical — 25 of the gate's 36 red `test-libs` cells are rakun's erlang cells, the
   repository's own pre-commit fails before it runs a single test, and every `04-rakun` front waits

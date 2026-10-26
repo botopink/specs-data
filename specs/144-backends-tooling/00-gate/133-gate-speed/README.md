@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   high — decisions 229 and 265: the cold gate (the run that decides a landing) within 7m30s for
   1.0.11 (5 minutes on 16 idle cores deferred to the next milestone), and a warm run under 1 minute, with test consistency untouched.

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   critical — 11 of the gate's 36 red `test-libs` cells were onze's at the open, on both
   targets, and every `07-onze` front waits on this one.

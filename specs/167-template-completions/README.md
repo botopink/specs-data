@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 priority: |-
   later (the maintainer, 2026-10-20: "uma frente com essa ideia para ser feita depois") — opened in no queue; it
   starts when the maintainer moves it into one.

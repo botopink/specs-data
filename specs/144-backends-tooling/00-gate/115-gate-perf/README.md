@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   high — the maintainer asked for it explicitly: a gate that takes ~50 minutes is a gate
   people run less often. It optimises the *green* gate; it fixes no red and buys no time by narrowing

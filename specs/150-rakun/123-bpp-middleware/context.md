@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 123 — bpp middleware: `locals`, `sequence`, and a response read after `next`
 

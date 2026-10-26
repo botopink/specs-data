@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-1
 ---
 # The `docs.md` text for `@BeamMemory` — supplied by front 17, placed by front 08
 

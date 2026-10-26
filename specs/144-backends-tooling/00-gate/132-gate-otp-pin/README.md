@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   high — decision 228: the gate on this machine ran OTP 29 while CI pins 28, so an
   emitted module OTP 28 refuses was green here and red only on GitHub.

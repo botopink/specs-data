@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 repo: '`repository/rakun` · **Workspace:** `botopink.json` → `"workspaces": ["modules/*", "starters/*", "examples/*"]`, `"targets": ["erlang"]`'
 ---
 # rakun — the members

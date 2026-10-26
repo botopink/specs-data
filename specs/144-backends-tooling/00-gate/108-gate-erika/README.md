@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   medium — every erika cell was green; what was wrong was one restriction that
   restricted nothing and a CI matrix with two rows that measured nothing.

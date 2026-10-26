@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   critical — stage 9's one red cell, and the only class of defect in the compiler that
   prints a wrong value at exit 0.

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 repos: |-
   `repository/rakun/modules/rakun-bpp` · `repository/rakun/modules/rakun-ssr` · `repository/rakun` · `repository/rakun/modules/rakun-stylesheet` ·
   `repository/botopink-lang` (116 only) · **Reference:** Astro docs (`/home/ericfillipe/develop/astro/astro-docs/`, 25 pages).

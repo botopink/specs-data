@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   high — jhonstart's cells were green, but three of its manifests carried a
   restriction the ledger tolerated (two at `0` failed, one at `1`), and its trees carried the PK-5

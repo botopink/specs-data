@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   high — stage 3 is green only because 226 red files sit in trees it does not walk,
   and 11 `.zig` files are a red the gate meets the day a front stages one.

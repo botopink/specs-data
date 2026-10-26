@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-1
 priority: low — no program is wrong; comments, documents and one text to place.
 depends-on: |-
   each item lands after the front that owns its file (C-23): `01-checker` (its step

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 priority: critical — every later front lands on this baseline.
 depends-on: nothing. "`00-gate` green" = rules below hold + landing is a green `scripts/gate.sh --cold`.
 ---

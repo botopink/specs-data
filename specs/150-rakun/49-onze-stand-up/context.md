@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 49 — onze stand-up tail: the request, the dispatcher, the digest and the public root reach the app
 

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 143 — dbcontext: botopink's JPA over erika — entities, the context, repositories (decision 398)
 

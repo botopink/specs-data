@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 67 — jhonstart forms: the DOM-side boxes and the wire-name literals
 

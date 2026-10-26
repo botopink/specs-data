@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 144 — machine 2: backends, runtimes, std, tooling and the gate (lanes B and C, the cache group)
 

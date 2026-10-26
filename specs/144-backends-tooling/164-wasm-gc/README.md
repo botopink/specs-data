@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 priority: |-
   maximum — where new development is centred (the maintainer, 2026-10-14); beside 144, the second front that
   edits `repository/botopink-lang` (amends 433). Opens after 144's B-00 group (done but its last box, which holds

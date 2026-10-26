@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 119 — bpp styling: `css`, `styled`, `jhonstart-styled`, the style section
 

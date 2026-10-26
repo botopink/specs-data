@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 74 — rakun TLS and SSL bundles: client verification and reload, asserted
 

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 depends-on: "`02-std-and-packaging/97-std-dedupe` (steps 0–5 on feat — this track's std side)."
 ---
 # Track 03 — bundled libraries: what the frameworks copy from each other

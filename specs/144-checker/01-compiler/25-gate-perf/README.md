@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-1
 priority: |-
   low — C-33 landed (the pool, the shards, the stages side by side, the `.beam` cache);
   what is left is one measured row outside the runners' ownership and one script for the meta

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-2
 ---
 # Front 17 — beam-memory: `keyed: true` row per key, and `@BeamMemory` refused off the BEAM
 

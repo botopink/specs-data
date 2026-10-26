@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 repo: |-
   `repository/rakun` · **Target:** erlang only (decision 113) · **Members:**
   [`modules.md`](modules.md) (the 16 members front 128 leaves, the 25 on disk until it lands) ·

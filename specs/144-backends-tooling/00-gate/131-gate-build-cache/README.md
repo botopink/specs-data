@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-2
 priority: |-
   high — decisions 225 and 232: a cache is wiped by deleting `.botopinkbuild/`, and the package under
   test is never served from one.

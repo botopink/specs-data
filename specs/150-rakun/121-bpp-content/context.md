@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 121 — bpp content: Markdown, frontmatter and collections
 

@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.11-beta
-owner: machine-1
 priority: |-
   low — nothing ships wrong because of it, but the open rows of the 1.0.1-beta snapshot
   review sit between the suite and "every snapshot proves what its test claims", and a row that

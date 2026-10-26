@@ -1,6 +1,5 @@
 ---
 milestone: 1.0.12-beta
-owner: machine-1
 ---
 # Front 51 — onze image, font and image response tail (carries 52 · 70)
 
