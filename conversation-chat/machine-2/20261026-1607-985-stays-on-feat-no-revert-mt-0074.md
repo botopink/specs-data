@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: 985 stays on feat — no revert
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261026-1605-my-error-985-landed-on-feat-m2-0048.md
 ---
 
