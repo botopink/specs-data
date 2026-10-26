@@ -156,6 +156,11 @@ Writing a type-parameter field is lowered but no cell reaches it.
 
 **Impacted tests:** every wasm snapshot and `run/` cell; `test-libs` wasm column; `test-web`. **Consumer commits:** none.
 
+- [ ] wasm refuses a call of a generic type's method whose body needs its type parameters bound (900 (3)): `d.display()` and `print(d)` of a
+      `Dict<string, f64>` built in std, read in another module — "the wasm backend cannot call the generic `Dict.display` here: nothing at
+      this call binds the type parameters its body needs bound (a type parameter's slot is not monomorphised)"; cell
+      `generic_type_value_carries_shapes` (900) red on wasm alone until this lands
+
 ### s2b — `defer` on wasm: every exit 539 (3) names (decision 539; found reviewing its build, 2026-10-14)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s2 (the same codegen)
