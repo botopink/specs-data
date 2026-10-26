@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **959**.
+number, which is **960**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -186,15 +186,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162-all-outside-use · `all(cs)` and `memo(f)` used other than as a `use` operand
-- **Measured.** 354's `context-hook-without-use` is raised for `provide`, `context` and `inject` only. `all(cs)` or `memo(f)` outside a
-  `use` type-checks as a `Component` value whose body panics when run. 827 (1)'s "as provide, context and inject are" describes the
-  lowering, not the refusal.
-- **Options.** (a) Refused at check as those three are: 354's code extends to every hook lowered where it is `use`d (`memo`, `all`).
-  (b) A value whose body panics when run (built). (c) std implements the bodies, so the value runs.
-- **Recommendation.** (a): the checker knows it statically, as it does for the three; refuse > accept.
-- **Blocks.** Nothing; built as (b).
 
 #### b162-key-outside-body · `#[key(k)] x` written outside every function
 - **Measured.** Outside every body the lowering writes the key with call number 0. 820 (3) says a value made outside every body
