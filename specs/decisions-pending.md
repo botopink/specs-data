@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **960**.
+number, which is **961**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -186,16 +186,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162-key-outside-body · `#[key(k)] x` written outside every function
-- **Measured.** Outside every body the lowering writes the key with call number 0. 820 (3) says a value made outside every body
-  carries no stamp, and 818 (3) makes a key's identity "the call and the key's value". With call 0, two module-level calls with one key
-  (`val xs = [#[key(1)] Item(1), #[key(1)] Card(1)]`) collide and fail `key-duplicate` under one runner; inside a body they are two places.
-- **Options.** (a) Call 0 plus the key (built). (b) Refused at check, `key-outside-body`: a key is a stamp (818 (3)), and 820 (3)
-  gives none there; the list is keyed where it is run (`use all(views.map({ v -> #[key(v.id)] v }))`). (c) The module's
-  initialisation numbered as a plain function's body (821 (2)), amending 820 (3) and 891 (1).
-- **Recommendation.** (b): the smallest change, and it keeps 820 (3) whole.
-- **Blocks.** Nothing; built as (a).
 
 #### b162-lowering-aliases · The lowering's `bp…__` aliases and std's `pub` context helpers can be spelled by a program
 - **Measured.** `reserved_names.zig` reserves `__bp_` and `Bp__` only. The component lowering imports std's `context.stamp`,
