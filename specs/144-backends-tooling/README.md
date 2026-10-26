@@ -3528,3 +3528,31 @@ being the one that stands.
   directory grows cases (761). botopink-lang's 166 s3 is this mapping, not 509 new drafts; rows 1–143 get their `Cell` slug or
   `process` tag first (166 s2, the coordinator).
 
+### B-167 — wasm: tuple and lambda defects found by 994 L6 in `query`
+
+994 L6 ran every library on four targets, each by its path. `query` declares no `"targets"`; it is green on erlang, beam and commonJS and red on wasm, and every one of the reds below is a backend defect, not a missing host binding. Each box closes with its cell red before and green after, on four targets.
+
+- [ ] A tuple read out of an array a `map` built answers garbage on wasm. The program below prints `256`; erlang prints `a`.
+  ```bp
+  val pares = ["a", "b"].map({ s -> #(s, 1) });
+  val #(n, p) = pares[0];
+  print(n);
+  ```
+- [ ] A lambda whose block body binds a local and then answers a tuple of it traps on wasm with `wasm trap: cast failure`; erlang prints `a:1`.
+  ```bp
+  val pares = [P(nome: "a", preco: 1)].map({ q ->
+      val nome = q.nome;
+      #(nome, 1)
+  });
+  print(pares.map({ x -> val #(n, p) = x; n + ":" + p.toString() }).join(","));
+  ```
+  The same shape refuses at build as `` `nome` is not bound here `` (`query/modules/query/src/query.bp`, the test "query multi-field select over a var listas").
+- [ ] Through `query`'s macro on wasm:
+  - a destructuring lambda over the macro's rows refuses with `` `name` / `region` is not bound here `` (`query/examples/query-linq/src/main.bp` `bigCityLabels`, `query/modules/query-test/src/root.bp` "group by yields one row per key");
+  - a `${…}` hole in the template fails the compile with a bare `UnexpectedToken` and no location;
+  - `<>`, `and` and `or` in a `where` answer the wrong rows (query.bp's tests "not-equal operator <> maps to !=" and "where with or unions predicates").
+  These may be the two boxes above, seen through the expansion; each closes when `query`'s own test passes on wasm.
+- [ ] A generic `of` over `f64[]` refuses: "the wasm backend has one body for generic `of`, where `xs`'s type parameter is a word: a float or an `i64` in it has no lowering" (query.bp "query sum/average/min/max").
+
+Until these close, `query` is red on wasm in 993's library run; it gets no `"targets"` line, since an exclusion stands only on a host binding (993 (4)).
+
