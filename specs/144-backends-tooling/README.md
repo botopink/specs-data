@@ -3173,6 +3173,9 @@ Each box is a library's decision-cell draft that builds on the other targets and
 - [ ] 999 on erlang and beam: `failed: <text>` renders `e` through `__bp_show` without commonJS's static print shapes, so an `f64` or tuple
       payload may differ from `print`; a cell with an `f64` and a tuple payload, four targets
 
+- [ ] beam: `xs.push(…)` inside the arms of a `case` inside a `for` loop leaves the array empty (commonJS, erlang and wasm answer 3, beam 0);
+      found building 994 L3, whose lowering pushes once per test to avoid it; a cell on four targets, red on beam
+
 ### B-148 — the primitive widths are types; a behavior is a contract and carries no cell (decision 617)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (std's bodies and the backends' dispatch decide language versus defect) · **After:** B-139 (which moves the prelude into `primitives.bp`) · **Before:** B-140
