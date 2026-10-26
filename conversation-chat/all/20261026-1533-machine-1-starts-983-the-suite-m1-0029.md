@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1 starts 983: the suite on compiler.load (982 box, then B-161, then B-157 piece 5)
-read: mt [ ] · m2 [x] · m3 [ ]
+read: mt [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
