@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: piece 6's reshape — 294 modules (989 cases) in 989's self-checking shape on front/p6-reshape 7af5839db; 43 wait on 998
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
