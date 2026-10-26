@@ -706,8 +706,10 @@ onze's (now `rakun-ssr`'s) `@/` alias is gone: an application writes `import {li
 
 
 (dev) **The dev loop.** `rakun-ssr dev` is `build` then `start` over a file watcher (std's `fs` mtimes; the child spawned with `forwardSignals`): the node restarts on every change and serves the bytes `start` serves; hot-loading is not a form of the loop on any target — the server exists on erlang alone, a reload is a restart on commonJS and wasm by construction, and on the BEAM a swap leaves state `start` never has (766, 67). `botopink build` materialises the dependencies' cached `.beam` into the output and `compileBeam` compiles only the app's own `.erl` (767, 509 (4)). Island state is lost on every edit.
-Steps: 218, 323, 506, 507, 724, 766, 767, 893, 928, 942, 955
-Binds: 07-onze (staging `rewriteImports`, docs, examples) · `03-bundled-libs/102` step 3 · `07-onze/49` · `1-botopink-lang/144` B-27 · `2-libraries/162` · 79
+
+955 is read as 965 restates it: 68-a's client manifest carries no public-env prefix — the environment values a client bundle may see are the `#[publicEnv]` `val`s alone (928).
+Steps: 218, 323, 506, 507, 724, 766, 767, 893, 928, 942, 955, 965
+Binds: 07-onze (staging `rewriteImports`, docs, examples) · `03-bundled-libs/102` step 3 · `07-onze/49` · `1-botopink-lang/144` B-27 · `2-libraries/162` · 79 · `machine-1/150` s59, s60, s61, s62, s72 · `machine-1/165` s5
 
 ## std — the standard library's surface
 
