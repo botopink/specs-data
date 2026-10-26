@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **961**.
+number, which is **962**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -186,17 +186,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162-lowering-aliases · The lowering's `bp…__` aliases and std's `pub` context helpers can be spelled by a program
-- **Measured.** `reserved_names.zig` reserves `__bp_` and `Bp__` only. The component lowering imports std's `context.stamp`,
-  `stampPlain`, `stampKeyed`, `memoIn`, `allIn`, `countNew`, `countEnd` (and the older `enter`, `provideIn`, `find`) as `bpStamp__`, …
-  after the check, and `context.bp` declares them `pub fn`. So `import {context.stamp} from "std"; stamp(Item(p), scope, 7)` type-checks
-  and forges a call number, against 817 (1) ("nothing outside std decides identity") and 814 (2) ("under a name no source can spell").
-- **Options.** (a) As built. (b) The aliases renamed `__bp_stamp` …, so 805 (6) / 830 (3) cover them with no new rule, and a program's
-  reference to the helpers' std names refused as `context-hook-without-use` refuses the hooks. (c) The helpers made module-private,
-  reached by the lowering through 830's call mark, as 814 (2) describes for methods.
-- **Recommendation.** (c): a private helper that only the marked lowering reaches is 830's mechanism already, and the names stay std's.
-- **Blocks.** Nothing.
 
 #### 907-a · The code a body returns when the function is applied as an annotation
 - **Measured.** 907 (2) says "the return answers nothing or `T` alike" for one function used both as `#[f]` and as `f(e)`. At `f(e)` a
