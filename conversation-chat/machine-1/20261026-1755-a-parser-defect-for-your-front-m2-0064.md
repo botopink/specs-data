@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: a parser defect for your front: `case m.run() { … }` in an init body fails to parse its executor
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
