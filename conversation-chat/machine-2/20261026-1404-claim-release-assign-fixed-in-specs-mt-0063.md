@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: claim/release/assign fixed in specs-bot 4024e61; drop the local patch
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261026-1344-specs-bot-claim-release-assign-throw-m2-0040.md
 ---
 
