@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **992**.
+number, which is **993**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -198,12 +198,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 989-b · 989 (6)'s wasm path cannot compile: a module reaching `io.fs.writeText` is refused on wasm at build
-- **Measured.** `conformance/lib`'s `candidate.deliver(target, path, text)` writes `snapshot/main.snap.new` through `io.fs` on commonJS, erlang and beam, and prints `candidate snapshot/main.snap.new` plus the file on wasm, branching on `io.os.target()` at run time (989 (7)). On wasm the module is refused at build: `std-unsupported-on-target` for `io.fs.writeText` (906: a call reaching an unsupported std function is refused at the call, wherever it sits), so no self-checking module builds on wasm. The target cannot be read at comptime (798 (4), 989 (7)), so the call cannot be left out by a build-time branch.
-- **Options.** (a) `.new` is printed under `candidate snapshot/main.snap.new` on every target, and the gate's stage 9 writes the file from that output on the machine that runs it; no module calls `io.fs`. (b) std's `io.fs.writeText` gains a wasm binding that answers `Error` at run time (an exception to 906 for this one function), so the run-time branch compiles. (c) `conformance/lib` puts the write in a module of its own that only the fs targets build — a per-target module choice the language does not have today. (d) wait for front 164's wasm filesystem.
-- **Recommendation.** (a): one code path on four targets, no exception to 906, no new language feature, nothing waiting on 164. The program still never accepts (67): the gate writes `main.snap.new`, never `main.snap`.
-- **Blocks.** 990 piece 6 on wasm (every converted module); piece 5's `array` module does not land on feat until this is answered and pieces 2 and 3 land.
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
