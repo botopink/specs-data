@@ -3351,8 +3351,9 @@ open points are answered by decision 805 (a binary `.bpr` per package, `Module.t
       resolved copy only, no codegen snapshot changed
       — left: an `Asset` printed
       `Asset(Link(path: "…"))` and folded bytes `bytes.fromHex("…")` (885; `fromHex` / `toHex` on `bytes` on four targets, a std-wasm leaf;
-      cell `resolved_prints_asset_and_bytes`) — after B-139 lands 607's `Asset(link: Link)`; 836: `<f>__type`, `__<Enum>__<Section>`,
-      `__embed_<p>` moved into the reserved space, the snapshots re-recorded; cells `resolved_prints_the_builder`, `hand_written_twin_name_is_free`
+      cell `resolved_prints_asset_and_bytes`) — after B-139 lands 607's `Asset(link: Link)`; cell `resolved_prints_the_builder`
+      — 836 built: `__bp_<f>__type`, `Bp__<Enum>__<Section>`, `__bp_embed_<p>` (a section's name read in one place,
+      `ast.sectionTypePath`; the twin's in `value_or_type.twinName`), twelve snapshots re-recorded; cell `hand_written_twin_name_is_free`
 - [x] `botopink build --emit-runtime <dir>` (`<dir>/<pkg>.bpr` per package: the resolved tree in binary, uncompressed, a dependency's file
       reused, the compiler's version recorded and another refused) and `build` / `run` over a `.bpr`, `--target` required, no comptime, no build
       phase printed (805 (1)–(3)); `--emit-resolved <dir>` with each piece's origin as a comment, never read back; the directory required, created
