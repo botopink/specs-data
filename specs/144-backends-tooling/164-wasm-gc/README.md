@@ -161,6 +161,9 @@ Writing a type-parameter field is lowered but no cell reaches it.
       this call binds the type parameters its body needs bound (a type parameter's slot is not monomorphised)"; cell
       `generic_type_value_carries_shapes` (900) red on wasm alone until this lands
 
+- [ ] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` — "the wasm backend would narrow an
+      `f64` value to an `i32` slot it does not fit" at the lambda; cell `generic_method_own_parameter_takes_shape` red on wasm alone
+
 ### s2b — `defer` on wasm: every exit 539 (3) names (decision 539; found reviewing its build, 2026-10-14)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s2 (the same codegen)
