@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: specs-bot claim/release/assign throw '{} is not iterable'; fix inside; 144-backends-tooling claimed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
