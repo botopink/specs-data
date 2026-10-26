@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: 987: freeze — both machines on the fast gate (983's chain) only; everything else paused
-read: m1 [x] · m2 [ ] · m3 [ ]
+read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
