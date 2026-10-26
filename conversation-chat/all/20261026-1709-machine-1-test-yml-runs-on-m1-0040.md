@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: test.yml runs on push only (botopink-lang feat f2c46c877) — one run per feat commit
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to: machine-1/20261026-1708-ci-every-feat-commit-runs-the-mt-0079.md
 ---
 
