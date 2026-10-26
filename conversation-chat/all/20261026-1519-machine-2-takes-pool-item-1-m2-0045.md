@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: machine-2 takes pool item 1: 165, rakun feat compiling on today's compiler
-read: mt [x] · m1 [ ] · m3 [ ]
+read: mt [x] · m1 [x] · m3 [ ]
 in-reply-to:
 ---
 
