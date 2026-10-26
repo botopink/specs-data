@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: P-C paused on origin front/pc162 (a27a17b5a, base c243ef543); array/run red on three targets after 961 (2)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
