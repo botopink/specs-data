@@ -3191,10 +3191,13 @@ Oracle: the whole suite on four targets; `test-libs`; the cold gate.
       — built as: the checker records the dispatch of a block method on a non-identifier primitive receiver (0248014da; commonJS and
       erlang were wrong too); beam's `default fn` with a primitive `self` reads the rewrite unless prelude-origin (0fc8b9d87); wasm types a
       block method's declared result and `self` as the primitive (494eb811e); cell `contract_block_method_on_primitive`
-- [ ] an extension block's method on an `i32` receiver (`n.shout()`) refused `unknown-primitive-method`, and its erlang output refused by
+- [x] an extension block's method on an `i32` receiver (`n.shout()`) refused `unknown-primitive-method`, and its erlang output refused by
       the OTP compiler; a cell
-- [ ] wasm: inside an extension block's method over `array<T>`, `self.join(…)` and `self.length.toString()` refused, and `self.toString()`
+      — built as: the contract's `default fn`s adopted into a block over a numeric width (`adoptForImportedTargets`); erlang writes two
+      blocks of one module defining the same method name as `<Block>_<method>` (a module's functions are flat); cell `contract_block_method_on_int`
+- [x] wasm: inside an extension block's method over `array<T>`, `self.join(…)` and `self.length.toString()` refused, and `self.toString()`
       on a primitive `self` not resolved (commonJS, erlang and beam answer); a cell
+      — built as: wasm types `self` in a block method over a primitive or `array<T>`; cell `contract_block_method_on_array_wasm`
 - [ ] `std_io_process_spawn` answers in another order under load (once in a full run, green on a rerun): the cell or the binding made
       order-stable
 - [x] a record's extension block in another module than the record's does not give the record the contract's `default fn`s (only the
