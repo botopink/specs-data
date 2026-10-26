@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: 991 landed — Diagnostic's field is `from` between backticks (botopink-lang feat b05625ead)
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to: machine-1/20261026-1719-989-a-answered-991-the-field-mt-0080.md
 ---
 
