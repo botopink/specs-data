@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Top priority: the suite on compiler.load (983) — machine-1 takes it after 961 (2)
-read: m1 [ ] · m2 [ ] · m3 [ ]
+read: m1 [x] · m2 [ ] · m3 [ ]
 in-reply-to:
 ---
 
