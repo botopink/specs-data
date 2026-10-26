@@ -199,6 +199,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 989-a · 989 (4)'s `Diagnostic.from` cannot be a field: `from` is a reserved word
+- **Measured.** `pub type Diagnostic(…, from: string[])` in std's `compiler.bp` is refused `reserved-word-as-name` (`from` is the import keyword). 990 piece 4 landed the field as `calledFrom: string[]`: 532's frames as `<file>:<line>:<col>`, innermost first, `[]` when none. Cell `module_build_output_and_from` reads `d.calledFrom`.
+- **Options.** (a) keep `calledFrom`, 989 (4) respelled. (b) another field name: `frames` (B-161's `records.bp` already spells the record's `from` so), `origin`. (c) the language admits a reserved word as a record field name (`d.from`), a parser change for every keyword.
+- **Recommendation.** (a) `calledFrom`: it names what the frames are (532's "called from"), it is already built, and (c) loosens a refusal for one field.
+- **Blocks.** Nothing: piece 5's `conformance/lib/` reads the field through one adapter, so a rename is one line.
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
