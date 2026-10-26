@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **998**.
+number, which is **999**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -190,12 +190,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
 - **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
 - **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
-
-#### 989-c · Where does 989 (9)'s `runCase` await an async `run()`?
-- **Measured.** After 990 piece 2 on botopink-lang feat, `run()` answers `Async<Result<string, RunFailure>>` when the loaded case's `main` is async. An init body cannot `await`; and 808 (2)'s expansion of `runCase` inside an async `main` (989 (9)'s shape) refuses today both `compiler.load` with a non-literal path and an `await` in the executor's definition-site check. The cell `module_run_answers_output`'s async case therefore awaits inside an `async { }` block in the init body, and its `main` waits `async.delay(10, 0)` so the task settles first on commonJS — a workaround, not a shape 989 names.
-- **Options.** (a) an executor expanded inside an async body (808 (2)) may `await`, and `compiler.load` there takes a path known at build (the expansion's argument), so runCase awaits run() in the suite's async `main`; (b) the init body may `await` (init becomes async when it does), the module's init list awaited before `main`; (c) run() never answers `Async`: an async loaded `main` is driven to completion inside run() (a blocking wait per target)
-- **Recommendation.** (a): 989 (9) already places runCase in the suite's `main`; (b) changes every program's init order and (c) needs a blocking wait commonJS does not have
-- **Blocks.** 990 piece 5 / 6's runCase over an async case (machine-1's adapter `ranOf`); the cell module_run_answers_output's async case shape
 
 #### 989-d · `.Excluded`'s text and where `load-excluded-target-compiles` is located
 - **Measured.** 990 piece 3 on botopink-lang feat: 989 gives `.Refused` "the refusal's text" but says nothing of `.Excluded`'s; the build uses the backend's refusal text for both (`excluded `named` has no implementation for the wasm backend`). And the audit's `load-excluded-target-compiles` has no line: it is reported on the module that runs the package, recorded `at src/main.bp` with no `:<line>:<col>` (cell load_excluded_target_compiles_refused); no decision fixes where it stands.

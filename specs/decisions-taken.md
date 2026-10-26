@@ -218,8 +218,10 @@ Binds: 130 steps 5–6 · 01-checker · `01-checker` step 24 · 125 step 7 · `n
 
 Not the rule any more: `@TypeInfo.all(with: …)`, `compiler.find`, a catalogue filled at an entry point (253, 235, 254, 256's mechanism, 343's catalogue read, 353, 356's `@TypeInfo.all` entry — all overtaken by 665 / 576 (7)); an expanded `boot` and `d.value` (562's example withdrawn, 581); a `comptime` default querying the catalogue (551, 664).
 
-Steps: 234, 235, 253, 254, 256, 318, 321, 575, 576, 580, 581, 611, 613, 614, 615, 625, 642, 660, 662, 664, 665, 676, 677, 680, 716, 724
-Binds: 130 step 5 (rakun) · 130 · 134 · 130 step 5 · rakun 04, 08, 12, 13, 15, 19, 79, 91, 93 · rakun 04 step 6 · `1-botopink-lang/144` B-137 · `2-libraries/165` s10 · `1-botopink-lang/144` B-136, B-137 · `2-libraries/165` s5, s10 · `machine-1/165` s10 · `machine-2/144` B-137 · `machine-1/165` s5 · `machine-1/144` B-137 · `machine-1/165` s5, s10 · `machine-2/144` B-137, B-139 · `machine-1/144` B-19
+An executor may be `{ async -> … }`, admitted only where 808 (2) writes it into an `async` body; `compiler.init` stays one `void` function, a valued executor refused; `Module.mainAsync()` read at build lets one `runCase` serve every case (998).
+
+Steps: 234, 235, 253, 254, 256, 318, 321, 575, 576, 580, 581, 611, 613, 614, 615, 625, 642, 660, 662, 664, 665, 676, 677, 680, 716, 724, 998
+Binds: 130 step 5 (rakun) · 130 · 134 · 130 step 5 · rakun 04, 08, 12, 13, 15, 19, 79, 91, 93 · rakun 04 step 6 · `1-botopink-lang/144` B-137 · `2-libraries/165` s10 · `1-botopink-lang/144` B-136, B-137 · `2-libraries/165` s5, s10 · `machine-1/165` s10 · `machine-2/144` B-137 · `machine-1/165` s5 · `machine-1/144` B-137 · `machine-1/165` s5, s10 · `machine-2/144` B-137, B-139 · `machine-1/144` B-19 · `machine-2/144` · `machine-1/144` · `conformance/`
 
 ## decorator-outputs-and-meta — members, associated types and typed meta
 
