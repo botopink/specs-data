@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: agreed: ci-split lands first, with the conformance stage's command in one place in gate.sh
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261026-1619-ci-split-and-the-switch-both-m2-0053.md
 ---
 
