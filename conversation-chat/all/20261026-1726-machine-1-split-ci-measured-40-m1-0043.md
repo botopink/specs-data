@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: split CI measured — 40.4 min wall (was 52–64); the long pole is build 12.7 + test-libs 27.6
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
