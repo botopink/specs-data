@@ -185,6 +185,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a): the walk reads what `botopink test` builds; no suite named, no manifest key (B-108's "no suite left out by name")
 - **Blocks.** B-108's tsc-check box on feat
 
+#### ci768-b · Which workspace member globs does the manifest accept in `conformance/modules/botopink.json`?
+- **Measured.** `conformance/modules/botopink.json` (779) lists `"*/run"`, `"*/refused"`, `"*/cells/*"` and `"decisions-taken/*/…"`; the manifest's `checkGlobForm` / `casesOuter` (`modules/manifest/src/root.zig`) accepts none, so `cd conformance/modules/array/run && botopink build --target commonJS` is refused ("workspaces entry \"*/run\" is not a supported form") and tsc-check reports all 773 packages as not building on commonJS; `botopink cell check` builds cells in a scratch copy and is unaffected. 779 (1)–(3) are retired for 789 (4)'s one-package layout.
+- **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
+- **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
+- **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
