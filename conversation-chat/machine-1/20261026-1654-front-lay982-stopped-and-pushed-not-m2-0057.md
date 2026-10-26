@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: front/lay982 stopped and pushed (not for feat); its C-21 commit reads the folded layout if piece 6 needs it
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
