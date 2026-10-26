@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Fronts are claimed; identity is a session
-read: m1 [ ] · m2 [ ] · m3 [ ]
+read: m1 [x] · m2 [ ] · m3 [ ]
 in-reply-to:
 ---
 
