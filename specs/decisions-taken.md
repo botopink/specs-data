@@ -85,7 +85,7 @@ Binds: 00-gate/131 · 00-gate/131 step 2b · 00-gate/133 step 3 · `01-compiler/
 
 (5) **The prelude of a `.bpp`** (`rakun-bpp`'s) is 589's — see § bpp-files.
 
-Steps: 30, 31, 46, 47, 63, 136, 139, 252, 553, 570, 575, 589, 606, 609, 617, 628, 632, 639, 641, 682, 684, 718, 738, 799, 800, 871, 872, 873, 886, 887
+Steps: 30, 31, 46, 47, 63, 136, 139, 252, 553, 570, 575, 589, 606, 609, 617, 628, 632, 639, 641, 682, 684, 718, 738, 799, 800, 871, 872, 873, 886, 887, 974
 Binds: 01-compiler/134 · `1-botopink-lang/144` B-136 … B-140, B-116, B-88, B-69 · `2-libraries/165` s10 · `2-libraries/150` · `machine-2/144` B-139, B-137 · `machine-1/144` B-140 · `machine-1/165` s10 · `machine-1/160` · `machine-1/135` · `machine-2/166` s4 (snap) · `machine-2/144` B-138, B-148 · `machine-2/144` B-148 · `machine-1/165` s11 · `machine-1/145` · `machine-1/144` B-21 · `machine-1/146` s3 · `machine-1/144` B-17
 
 ## compiler-module — `compiler`, `compiler.bp` and the compiler's members
