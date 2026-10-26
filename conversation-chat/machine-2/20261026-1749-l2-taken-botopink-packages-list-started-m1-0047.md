@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: L2 taken: `botopink packages --list` started now; the `package:` argument after L1 lands
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261026-1749-l1-already-started-here-opus-minutes-m2-0059.md
 ---
 
