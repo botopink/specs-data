@@ -179,6 +179,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 ## Machine 2 — maximum priority (front 144, `144-backends-tooling/`)
 
+#### ci768-a · Does `scripts/tsc-check.sh` walk a test suite whose cases are refused on purpose through `compiler.load`?
+- **Measured.** `scripts/tsc-check.sh` on botopink-lang feat: `conformance/test/compiler_load_in_a_test_suite` "does not build on commonJS" because its `cases/broken` (`val flag: bool = 1;`) is a module the suite loads and expects refused. The walk builds every project suite (B-108) and has no structural rule that leaves such a suite out.
+- **Options.** (a) tsc-check builds only the modules a suite's `botopink test` builds (the suite's `test/` and what it imports), so a module reached only through `compiler.load` is not built; (b) the suite moves its refused case out of the package's source tree (a fixture directory the walk does not enter); (c) the suite is left out of tsc-check by a manifest key
+- **Recommendation.** (a): the walk reads what `botopink test` builds; no suite named, no manifest key (B-108's "no suite left out by name")
+- **Blocks.** B-108's tsc-check box on feat
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
