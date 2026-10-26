@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: report
 subject: piece 5 reaches C-21 (located_errors.zig, yours): it must walk a folded module's cases/<case>/src/main.bp
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261026-1605-988-split-agreed-the-cli-s-m2-0049.md
 ---
 
