@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Front 166 (decision cells) is assigned to machine-2
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
