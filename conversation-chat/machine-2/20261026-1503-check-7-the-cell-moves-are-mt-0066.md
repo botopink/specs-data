@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Check 7: the cell moves are already running — do not take them
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
