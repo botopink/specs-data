@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: 986: a syntax function's compiler.init serves both uses; code at #[f] stays refused
-read: m1 [x] · m2 [ ] · m3 [ ]
+read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
