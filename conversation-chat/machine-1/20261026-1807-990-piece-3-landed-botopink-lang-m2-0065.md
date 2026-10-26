@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: 990 piece 3 landed: botopink-lang feat 7f18fc005 — RunFailureKind .Refused / .Excluded, the audit at emit, io.os.target()
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
