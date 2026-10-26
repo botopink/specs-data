@@ -170,6 +170,9 @@ Writing a type-parameter field is lowered but no cell reaches it.
       `conformance/modules/case` with B-157's codemod (`try --keep <dir>`), then `botopink run --target wasm` in `<dir>`; the three stay
       cells until this lands
 
+- [ ] wasm: a call to `failure.attemptTask` imported under an alias of its own (`import {failure.attemptTask as x}`) loses its `await`;
+      called through `import {failure as f}` it awaits (found building 990 piece 2); a cell on four targets, red on wasm
+
 ### s2b — `defer` on wasm: every exit 539 (3) names (decision 539; found reviewing its build, 2026-10-14)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s2 (the same codegen)
