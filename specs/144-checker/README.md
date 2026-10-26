@@ -2816,6 +2816,14 @@ Oracle: the cell; `zig build test`. The suite's use of it (a `refused/` package 
 
 Oracle: the cells, red on the parent; `zig build test`.
 
+### B-166 — a lambda's parameter in a generic type's method is not tied to the type parameter
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; the cell decides) · **After:** nothing
+
+Found by B-115 (machine 2). Inside a generic type's method, a lambda passed to a method — `self.pairs.forEach({ p -> shown(p._0) })` in a `Dict<K, V>` — leaves `p._0`'s type never unified with `K`, so the value's print shape is lost on commonJS: a user's own generic type written so prints `2` for `2.0`. std's `Dict.display` binds it through 956's loop (`for self.pairs { p -> … }`) and is not affected.
+
+- [ ] a lambda argument's parameters typed from the callee's parameter type with the method's receiver type parameters substituted (`K` in `Dict<K, V>`), so `p._0` is `K` and the instantiation's `f64` reaches the print; cell `generic_method_lambda_binds_type_param` (a user generic type whose method prints a `K` through a `forEach` lambda: `2.0` on four targets), red on the parent
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
