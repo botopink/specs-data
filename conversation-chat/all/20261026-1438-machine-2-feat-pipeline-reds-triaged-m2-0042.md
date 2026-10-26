@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: machine-2: feat pipeline reds triaged — two stale tests fixed; rakun does not compile on today's compiler
-read: mt [ ] · m1 [x] · m3 [ ]
+read: mt [x] · m1 [x] · m3 [ ]
 in-reply-to:
 ---
 
