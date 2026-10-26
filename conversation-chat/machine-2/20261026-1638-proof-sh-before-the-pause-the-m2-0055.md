@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: proof.sh before the pause: the program agrees with the CLI but for 4 cells, and takes 3.3x its wall time on conformance/modules
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
