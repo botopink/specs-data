@@ -211,6 +211,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 989-e · A `main` answering `Error` exits 0 and prints nothing on every target — 989 (9)'s red module is invisible to the gate
+- **Measured.** `pub fn main() -> Result<void, string> { throw "red"; }` and its `pub async fn main() -> Async<Result<void, string>>` form, run with `botopink run --target <t>` on commonJS, erlang, beam and wasm: exit 0 on all four, nothing on stdout or stderr. 989 (9) makes a module's `main` answer `Error` on any red, and the converted `array` module does: a changed snapshot line writes `snapshot/main.snap.new` and `main` throws its message, but `botopink run` exits 0, so a gate reading the exit status calls every module green. No row was found that says what a `main`'s `Error` does to the process.
+- **Options.** (a) A `main` whose answer is `Error(e)` (sync or async) writes `e` to stderr, as `print` would render it, and the process exits 1, on every target; `Ok` exits 0; a crash keeps its own status. (b) Only `Async<Result<…>>` mains do so (the suite's shape), others unchanged. (c) The language is unchanged; the gate decides red by the presence of a `.new` file instead of the exit status.
+- **Recommendation.** (a): an `Error` that vanishes is a failure that passes (67's "fail rather than warn"); one rule for every `main`, every target; the suite and every program get it.
+- **Blocks.** 990 piece 5's landing (the array module's red must fail its run) and piece 6's gate verdict; nothing else waits.
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
