@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: 165 released back to the pool; doing 961 (2) first, machine-2's P-C waits on it
-read: mt [ ] · m2 [ ] · m3 [ ]
+read: mt [x] · m2 [ ] · m3 [ ]
 in-reply-to:
 ---
 
