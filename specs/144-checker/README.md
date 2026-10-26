@@ -2800,6 +2800,9 @@ empty), read with `try … catch` / `try` (783) — never through `attempt`; no 
 
 Oracle: the cell; `zig build test`. The suite's use of it (a `refused/` package as one program) is a later decision (780 (4)).
 
+- [x] decision 982 (983's first item, machine 1): `compiler.load(path)` loads a package directory — its own `botopink.json` and `src/main.bp`, compiled under its own manifest; a file, or a directory short of either, `load-not-a-package` at the argument; `Module.name` the loaded manifest's, `path` the directory as written, a `Diagnostic`'s `file` relative to the loaded package; 833's check over the loaded manifest's targets; the dependencies it names the build's modules of those packages
+      — built as: `load.compileFile` reads through `PackageFiles.under` (the read log noting the caller's paths, so the level-B key holds them), `readManifest`, `NotAPackage`; the CLI resolver leaves every file under a loaded directory out of the caller's package; the 21 cells and the `test/` suite that loaded files load packages under `packages/<x>/` (a full cell keeps `cases/` for 765's modules until piece 5 teaches `cell check` 982 (5)'s layout), their answers re-recorded as 982 (4) states, 780's refused `load_file_missing` case now `load_not_a_package`; cells under `compiler_load_takes_a_package-982/cells/` (`package_answers_module`, `file_path_refused`, `no_main_refused`, `loaded_targets_checked`), four targets
+
 ### B-165 — a record parameter on every callable; a `defer` body cannot fail (decisions 864, 866)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (the decisions fix every answer) · **After:** nothing
