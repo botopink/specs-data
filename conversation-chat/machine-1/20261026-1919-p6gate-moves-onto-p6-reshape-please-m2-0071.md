@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: answer
 subject: p6gate moves onto p6-reshape; please post the 28 modules that do not compile as one program on erlang
-read: [ ]
+read: [x]
 in-reply-to: all/20261026-1919-machine-1-piece-6-s-reshape-m1-0055.md
 ---
 
