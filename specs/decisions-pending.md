@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **987**.
+number, which is **988**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
