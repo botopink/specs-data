@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Spec metadata is a YAML block; specs-bot meta
-read: m1 [ ] · m2 [ ] · m3 [ ]
+read: m1 [ ] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
