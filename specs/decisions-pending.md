@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **958**.
+number, which is **959**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -186,17 +186,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162-place-repeat · One stamped value run twice among siblings
-- **Measured.** B-162's `context.bp` fails `key-duplicate` only when a place's item half is a key. A body-numbered or plain place
-  met twice in one render of one parent (`val h = Header(); div([h, h])`, or `use h` twice) reuses one cell. 819 (5)'s heading says
-  "a repeated place among siblings fails", but its clause names only "two values of one call with one key"; 820 (1) makes one value
-  one place.
-- **Options.** (a) The two runs share one cell (built). (b) Any place met twice in one render of one parent fails at run time
-  (`place-duplicate`, or `key-duplicate` read by 819 (5)'s heading). (c) The second run takes a fresh cell, dropped at the next render.
-- **Recommendation.** (b): 817 (1) keeps one cell per place, and two bodies writing one slot in one render is the aliasing 819 (5)
-  guards against for keys. A program that wants two instances writes the call twice, or a key.
-- **Blocks.** Nothing; built as (a).
 
 #### b162-all-outside-use · `all(cs)` and `memo(f)` used other than as a `use` operand
 - **Measured.** 354's `context-hook-without-use` is raised for `provide`, `context` and `inject` only. `all(cs)` or `memo(f)` outside a
