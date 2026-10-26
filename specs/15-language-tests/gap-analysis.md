@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Gap analysis — what `tests/language/**` does not pin
 
 Ranked by risk. Risk here is *how much working behaviour could break without this suite noticing*,

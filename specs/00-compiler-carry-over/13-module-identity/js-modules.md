@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # The JS half — commonJS and typescript
 
 Secondary by the maintainer's own framing ("js é mais simples e mais flexível"). This file says what

@@ -1,9 +1,11 @@
+---
+milestone: 1.0.1-beta
+version: 1.0.1-beta
+status: |-
+  partially delivered — the comptime folder; the checker work carried into
+  `specs/06-checker/README.md`
+---
 # Spec 02 — Type System
-
-**Milestone:** 1.0.1-beta
-**Version:** 1.0.1-beta
-**Status:** partially delivered — the comptime folder; the checker work carried into
-`specs/06-checker/README.md`
 
 ---
 

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 114 — gate-docs-and-ci: no `skip` fence, no soft CI row, every workflow green and pinned
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s3 → B-29 · s7 → B-29 · s8 box 1 → B-29; [163-meta-ci](../../163-meta-ci/README.md): s9 → 163 s1. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

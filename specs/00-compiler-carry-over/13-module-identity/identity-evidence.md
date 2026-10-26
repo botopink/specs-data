@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Evidence — runtime type identity on erlang
 
 Every claim in [`README.md`](README.md) that is not a `file:line` was run here. OTP **29**,

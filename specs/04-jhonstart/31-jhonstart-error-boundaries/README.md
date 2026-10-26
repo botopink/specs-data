@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: C jhonstart
+priority: high — without a boundary one throwing component takes the whole response with it
+target: erlang (server); the module compiles and its tests run on both rows
+boundary: the server catches render errors and emits a fallback plus a digest; the browser catches runtime and transition errors and shows the same fallback. The `ErrorInfo` shape and the digest are defined here and read by front 29's `hydrate()` and by front 17's logger.
+wave: "5"
+depends-on: 28 · 03 (content hash) · 94 (`htmlTag`/`body` builders for `global-error.bp`) · 17 (logging, read-only) · 24 (action envelope, read-only) · `01-std/04-routing-lib` Step 7 (`navigation.signalReason`, `isSignalReason`, `signalPrefixes` — the `nav:` reasons of `contracts.md § 5b`, decision 116) · 63 (the server half of the same signals, read-only — never an import)
+owns: "`repository/jhonstart/modules/jhonstart/src/error_boundary.bp`, its host halves `signal_runtime.mjs` / `sidecars/jhonstart_signal.erl`, `modules/jhonstart/test/error_boundary_test.bp`"
+reference: "`NEXTJS-DOCS.md § 14. Tratamento de Erros` · `§ 3. Estrutura do Projeto` · https://nextjs.org/docs/app/getting-started/error-handling · https://nextjs.org/docs/app/api-reference/file-conventions/error · https://nextjs.org/docs/app/api-reference/file-conventions/not-found · [decision 117](../../decisions-taken-steps.md)"
+---
 # Front 31 — Jhonstart Error Boundaries
-
-**Milestone:** 1.0.10-beta
-**Track:** C jhonstart
-**Priority:** high — without a boundary one throwing component takes the whole response with it
-**Target:** erlang (server); the module compiles and its tests run on both rows
-**Boundary:** the server catches render errors and emits a fallback plus a digest; the browser catches runtime and transition errors and shows the same fallback. The `ErrorInfo` shape and the digest are defined here and read by front 29's `hydrate()` and by front 17's logger.
-**Wave:** 5
-**Depends on:** 28 · 03 (content hash) · 94 (`htmlTag`/`body` builders for `global-error.bp`) · 17 (logging, read-only) · 24 (action envelope, read-only) · `01-std/04-routing-lib` Step 7 (`navigation.signalReason`, `isSignalReason`, `signalPrefixes` — the `nav:` reasons of `contracts.md § 5b`, decision 116) · 63 (the server half of the same signals, read-only — never an import)
-**Owns:** `repository/jhonstart/modules/jhonstart/src/error_boundary.bp`, its host halves `signal_runtime.mjs` / `sidecars/jhonstart_signal.erl`, `modules/jhonstart/test/error_boundary_test.bp`
-**Reference:** `NEXTJS-DOCS.md § 14. Tratamento de Erros` · `§ 3. Estrutura do Projeto` · https://nextjs.org/docs/app/getting-started/error-handling · https://nextjs.org/docs/app/api-reference/file-conventions/error · https://nextjs.org/docs/app/api-reference/file-conventions/not-found · [decision 117](../../decisions-taken-steps.md)
 
 ---
 

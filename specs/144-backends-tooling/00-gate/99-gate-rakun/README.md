@@ -1,24 +1,30 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  critical — 25 of the gate's 36 red `test-libs` cells are rakun's erlang cells, the
+  repository's own pre-commit fails before it runs a single test, and every `04-rakun` front waits
+  on this one.
+depends-on: |-
+  none to start (gate-g's recommendation is the starting assumption; the front stops
+  if the maintainer answers rc3-a otherwise). `113` lands after it.
+owns: |-
+  `repository/rakun/**` for the duration of the front — in particular the files named in
+  the steps: the 42 `(if …)` sites, `modules/rakun-actuator/test/health_test.bp:67,71,89`,
+  `modules/rakun-app/test/ssr_test.bp:309,313,318`, `starters/rakun-starter-test/botopink.json:21-23`,
+  `modules/rakun-metrics/src/export.bp` (the `CacheLife` workaround), `modules/rakun-websocket/test/limits_test.bp`,
+  `modules/rakun-session/test/store_test.bp`, `modules/rakun-websocket/test/broadcast_test.bp`,
+  `modules/rakun-app/src/{static_gen,route_slots,metadata_routes,actions}.bp` (the comment lines the
+  hook's greps match), `examples/rakun-ssr/**`, `.github/workflows/test.yml`, `.gitignore`,
+  `scripts/git-hooks/**`, and a reformat-only commit over `modules/rakun/**` and
+  `modules/rakun-app/**` (PK-5).
+does-not-touch: |-
+  `repository/botopink-lang/**` (a compiler defect met here is a row for
+  `../../01-compiler/` and the cell stays red until it lands — reported, not worked around by deleting
+  the test; R3 below has a library-side workaround that is not a deletion); `scripts/restricted-targets.txt`
+  (113's; it is deleted, not edited); any other repository.
+---
 # Front 99 — gate-rakun: every rakun cell green on the target rakun declares, and the repository's own gate runs
-
-**Milestone:** 1.0.11-beta
-**Priority:** critical — 25 of the gate's 36 red `test-libs` cells are rakun's erlang cells, the
-repository's own pre-commit fails before it runs a single test, and every `04-rakun` front waits
-on this one.
-**Depends on:** none to start (gate-g's recommendation is the starting assumption; the front stops
-if the maintainer answers rc3-a otherwise). `113` lands after it.
-**Owns:** `repository/rakun/**` for the duration of the front — in particular the files named in
-the steps: the 42 `(if …)` sites, `modules/rakun-actuator/test/health_test.bp:67,71,89`,
-`modules/rakun-app/test/ssr_test.bp:309,313,318`, `starters/rakun-starter-test/botopink.json:21-23`,
-`modules/rakun-metrics/src/export.bp` (the `CacheLife` workaround), `modules/rakun-websocket/test/limits_test.bp`,
-`modules/rakun-session/test/store_test.bp`, `modules/rakun-websocket/test/broadcast_test.bp`,
-`modules/rakun-app/src/{static_gen,route_slots,metadata_routes,actions}.bp` (the comment lines the
-hook's greps match), `examples/rakun-ssr/**`, `.github/workflows/test.yml`, `.gitignore`,
-`scripts/git-hooks/**`, and a reformat-only commit over `modules/rakun/**` and
-`modules/rakun-app/**` (PK-5).
-**Does not touch:** `repository/botopink-lang/**` (a compiler defect met here is a row for
-`../../01-compiler/` and the cell stays red until it lands — reported, not worked around by deleting
-the test; R3 below has a library-side workaround that is not a deletion); `scripts/restricted-targets.txt`
-(113's; it is deleted, not edited); any other repository.
 
 The front may run as **three worktrees on disjoint member sets** (report L's chunks A, B, C —
 `front/gate-rakun-a`, `-b`, `-c`, one front number, merged in that order) because the members do

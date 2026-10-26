@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 33 (`paletteVar` for the gradient stops), 54 (`Theme`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (front-39 fences: the non-colour sub-sections
+  of `Bg`, after `Bg.Color` and the legacy leaves, and the top-level `Gradient`) · `src/emilia.bp`
+  (front-39 block: the new `bgTokenToCss` arms, `gradientTokenToCss`, `gradientToTokenToCss`,
+  `linearGradient`, the stop dispatchers; the `Gradient` arm of `tokenToSheet`)
+does-not-own: "`Bg.Color` and the legacy `Bg` leaves (front 33)"
+user-docs: "`repository/emilia/docs.md` § *Bg — the rest of the background*, § *Gradient*"
+reference: "`TAILWIND_CSS_DOCS.md § 10` (10.1–10.8) · https://tailwindcss.com/docs/background-attachment"
+---
 # Front 39 — emilia backgrounds
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 33 (`paletteVar` for the gradient stops), 54 (`Theme`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (front-39 fences: the non-colour sub-sections
-of `Bg`, after `Bg.Color` and the legacy leaves, and the top-level `Gradient`) · `src/emilia.bp`
-(front-39 block: the new `bgTokenToCss` arms, `gradientTokenToCss`, `gradientToTokenToCss`,
-`linearGradient`, the stop dispatchers; the `Gradient` arm of `tokenToSheet`)
-**Does not own:** `Bg.Color` and the legacy `Bg` leaves (front 33)
-**User docs:** `repository/emilia/docs.md` § *Bg — the rest of the background*, § *Gradient*
-**Reference:** `TAILWIND_CSS_DOCS.md § 10` (10.1–10.8) · https://tailwindcss.com/docs/background-attachment
 
 **Open:** none.
 

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 50 — onze CLI tail: `onze dev`, `prerender/`, the signal, one defaults table, the bundler tail
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-onze.md): s2 → 150 s60 · s3 → 150 s60 · s4 → 150 s60 · s5 → 150 s60 · s6 → 150 s60 · s7 → 150 s60 · s9 → 150 s60 · s10 → 150 s60. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

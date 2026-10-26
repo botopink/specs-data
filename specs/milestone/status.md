@@ -1,7 +1,10 @@
+---
+milestone: 1.0.12-beta
+date: |-
+  2026-10-11 (reorganized by repository, decision 433; the conformance order, decisions 457–480) · **Base** (each repository's `feat`): botopink-lang `11bde540` (135 s0: the snap library — 391, 402, 407) · rakun `d609f8c` · jhonstart `50514f1` · emilia `9c3e24a`
+  · onze `783af40` · erika `8f88482` · vscode-extension `f041865`
+---
 # Status — 1.0.12-beta
-
-**Date:** 2026-10-11 (reorganized by repository, decision 433; the conformance order, decisions 457–480) · **Base** (each repository's `feat`): botopink-lang `11bde540` (135 s0: the snap library — 391, 402, 407) · rakun `d609f8c` · jhonstart `50514f1` · emilia `9c3e24a`
-· onze `783af40` · erika `8f88482` · vscode-extension `f041865`
 
 **Fronts with open work:** 20, in three tiers (decision 433) — the old tracks' 72 fronts keep their numbers
 and `## Done`; their open steps live in the fronts below. **144 B-00 (434) is done but for its last box, the seventh step of the

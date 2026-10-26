@@ -1,9 +1,10 @@
+---
+milestone: 1.0.1-beta
+version: 1.0.1-beta
+status: delivered
+carried-forward: "[`../1.0.4-beta/overview.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.4-beta/overview.md) (1.0.2-beta was folded into 1.0.4-beta)"
+---
 # Spec 03 — Codegen Hardening
-
-**Milestone:** 1.0.1-beta
-**Version:** 1.0.1-beta
-**Status:** delivered
-**Carried forward:** [`../1.0.4-beta/overview.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.4-beta/overview.md) (1.0.2-beta was folded into 1.0.4-beta)
 
 ---
 

@@ -1,13 +1,14 @@
+---
+milestone: 1.0.10-beta
+track: C jhonstart
+priority: medium — a page with no `<title>` and no `og:image` is a page that cannot be shared or found; nothing else breaks without it
+target: erlang (server); the module is pure and its tests run on both rows
+wave: "5"
+depends-on: 28 · 01 (escaping) · 26 (`pairValue`, the package's one pair-list decoder) · 66 (metadata file routes, read-only)
+owns: "`repository/jhonstart/modules/jhonstart/src/metadata.bp`, `modules/jhonstart/test/metadata_test.bp`"
+reference: "`NEXTJS-DOCS.md § 18. Metadata e OG Images` · https://nextjs.org/docs/app/getting-started/metadata-and-og-images · https://nextjs.org/docs/app/api-reference/functions/generate-metadata"
+---
 # Front 32 — Jhonstart Metadata
-
-**Milestone:** 1.0.10-beta
-**Track:** C jhonstart
-**Priority:** medium — a page with no `<title>` and no `og:image` is a page that cannot be shared or found; nothing else breaks without it
-**Target:** erlang (server); the module is pure and its tests run on both rows
-**Wave:** 5
-**Depends on:** 28 · 01 (escaping) · 26 (`pairValue`, the package's one pair-list decoder) · 66 (metadata file routes, read-only)
-**Owns:** `repository/jhonstart/modules/jhonstart/src/metadata.bp`, `modules/jhonstart/test/metadata_test.bp`
-**Reference:** `NEXTJS-DOCS.md § 18. Metadata e OG Images` · https://nextjs.org/docs/app/getting-started/metadata-and-og-images · https://nextjs.org/docs/app/api-reference/functions/generate-metadata
 
 ---
 

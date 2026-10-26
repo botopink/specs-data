@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** medium · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 33 (`paletteVar` for the colour payloads), 54 (`spacing(n)`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 46 — interactivity` block:
+  `Interact`, and the top-level `InteractAccent`, `InteractCaret`, `InteractScrollbarColor`) ·
+  `src/emilia.bp` (front-46 block: `interactTokenToCss` and its sub-dispatchers taking `th: Theme`; the
+  wrappers `accent(value)`, `caret(value)`, `scrollbarColor(thumb, track)`; four `tokenToSheet` arms
+  after front 45's)
+user-docs: "`repository/emilia/docs.md` § *Interact*"
+reference: "`TAILWIND_CSS_DOCS.md § 17` (spacing base `§ 21.2`) · https://tailwindcss.com/docs/cursor"
+---
 # Front 46 — emilia interactivity
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** medium · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 33 (`paletteVar` for the colour payloads), 54 (`spacing(n)`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 46 — interactivity` block:
-`Interact`, and the top-level `InteractAccent`, `InteractCaret`, `InteractScrollbarColor`) ·
-`src/emilia.bp` (front-46 block: `interactTokenToCss` and its sub-dispatchers taking `th: Theme`; the
-wrappers `accent(value)`, `caret(value)`, `scrollbarColor(thumb, track)`; four `tokenToSheet` arms
-after front 45's)
-**User docs:** `repository/emilia/docs.md` § *Interact*
-**Reference:** `TAILWIND_CSS_DOCS.md § 17` (spacing base `§ 21.2`) · https://tailwindcss.com/docs/cursor
 
 **Open:** none.
 

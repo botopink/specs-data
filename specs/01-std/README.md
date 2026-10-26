@@ -1,13 +1,14 @@
+---
+milestone: 1.0.10-beta
+track: A — std
+priority: critical/blocking — every library test in the ecosystem is written against `@src()`, `testing.asserts` and `testing.snapshots`; no `<lib>-test` submodule, no `__snapshots__/` directory and no green front exists without them
+target: both — `asserts` compiles on all four backends; `snapshots` runs on the two targets `botopink test` runs (commonJS, erlang); `@src()` lowers on all four
+depends-on: none
+owns: compiler — the `@src()` builtin (`comptime.zig` `decl_reflection_src`, `comptime/infer.zig`, `comptime/env.zig` `srcPath`/`currentFnName`, `comptime/diagnostics.zig`, `comptime/error.zig`, `module.zig` `srcPath`, `compiler-cli/src/cli/` the `srcPath` plumb) and its `src_*.snap.md` fixtures · std — `libs/std/src/testing/{asserts,snapshots,mocks,mod}.bp`, `libs/std/src/root.bp` (the registry of `modules.md`), `libs/std/AGENTS.md` · meta — `.gitmodules` (the `repository/onze` entry is re-pointed, not removed), `repository/onze` · specs — this directory
+does-not-touch: the codegen backends — `@src()` is rewritten into a record constructor before lowering; `repository/{rakun,jhonstart,emilia}` sources — their `-test` submodules consume this contract
+reference: Zig `@src()` → `std.builtin.SourceLocation` · the compiler's snapshot harness — `codegen/tests/helpers.zig` (`slugify`, `slugFromSrc`), `utils/snap.zig` (`.new` on mismatch) · decision 67 — the most restrictive behaviour, no configuration that bypasses it · decisions 106 and 107 — the std tree and the import grammar · decisions 115–117 — the bundled libraries
+---
 # Front 01 — std
-
-**Milestone:** 1.0.10-beta
-**Track:** A — std
-**Priority:** critical/blocking — every library test in the ecosystem is written against `@src()`, `testing.asserts` and `testing.snapshots`; no `<lib>-test` submodule, no `__snapshots__/` directory and no green front exists without them
-**Target:** both — `asserts` compiles on all four backends; `snapshots` runs on the two targets `botopink test` runs (commonJS, erlang); `@src()` lowers on all four
-**Depends on:** none
-**Owns:** compiler — the `@src()` builtin (`comptime.zig` `decl_reflection_src`, `comptime/infer.zig`, `comptime/env.zig` `srcPath`/`currentFnName`, `comptime/diagnostics.zig`, `comptime/error.zig`, `module.zig` `srcPath`, `compiler-cli/src/cli/` the `srcPath` plumb) and its `src_*.snap.md` fixtures · std — `libs/std/src/testing/{asserts,snapshots,mocks,mod}.bp`, `libs/std/src/root.bp` (the registry of `modules.md`), `libs/std/AGENTS.md` · meta — `.gitmodules` (the `repository/onze` entry is re-pointed, not removed), `repository/onze` · specs — this directory
-**Does not touch:** the codegen backends — `@src()` is rewritten into a record constructor before lowering; `repository/{rakun,jhonstart,emilia}` sources — their `-test` submodules consume this contract
-**Reference:** Zig `@src()` → `std.builtin.SourceLocation` · the compiler's snapshot harness — `codegen/tests/helpers.zig` (`slugify`, `slugFromSrc`), `utils/snap.zig` (`.new` on mismatch) · decision 67 — the most restrictive behaviour, no configuration that bypasses it · decisions 106 and 107 — the std tree and the import grammar · decisions 115–117 — the bundled libraries
 
 ---
 

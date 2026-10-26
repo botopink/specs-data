@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: B — rakun · **Repo:** `repository/rakun` · **Contract:** [`../01-std/snapshots.md`](../01-std/snapshots.md) · [`../01-std/src-builtin.md`](../01-std/src-builtin.md) · [`../01-std/asserts-api.md`](../01-std/asserts-api.md) · **Cut:** [`modules.md`](modules.md)
+---
 # rakun — snapshot-test map of the modules
-
-**Track:** B — rakun · **Repo:** `repository/rakun` · **Contract:** [`../01-std/snapshots.md`](../01-std/snapshots.md) · [`../01-std/src-builtin.md`](../01-std/src-builtin.md) · [`../01-std/asserts-api.md`](../01-std/asserts-api.md) · **Cut:** [`modules.md`](modules.md)
 
 This is the preventive test plan of every `repository/rakun/modules/**` submodule: for each front, the
 tests that pin its acceptance criteria as snapshots, and the exact `.snap` file each one writes. A

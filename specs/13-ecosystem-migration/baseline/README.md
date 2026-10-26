@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 13 — pre-migration baseline
 
 The observable output of every library example and test run, captured **before** the surface

@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 11 — dead keywords, the residual
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17 — jhonstart `bf868ca`, vscode-extension `eb870ac`, pushed to both `feat`s
 with the meta bump. The compiler side had landed in `botopink-lang` `ecac19d`; the jhonstart and

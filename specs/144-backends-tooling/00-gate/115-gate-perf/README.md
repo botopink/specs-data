@@ -1,23 +1,29 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  high — the maintainer asked for it explicitly: a gate that takes ~50 minutes is a gate
+  people run less often. It optimises the *green* gate; it fixes no red and buys no time by narrowing
+  a stage (decision 67 — coverage is never traded for speed; beam in `--target all` and the
+  libraries' new cells are inside the budget, not outside it).
+depends-on: |-
+  every other `00-gate` front — `111` (its `run.sh` is this front's starting point:
+  four targets, no expected-failures reader), `113` (its `test-libs.sh` and `lib-test-runner`: the
+  manifest rule and the audit), `110`, `112`, `114`, and the five library fronts (a red cell's time
+  is not the gate's time).
+owns: |-
+  `scripts/gate.sh` (the per-stage timing report) · `scripts/test-libs.sh` ·
+  `tests/language/run.sh` · `modules/compiler-cli/src/cli/libs.zig` (the dependency-closure compile
+  cache) and the `.botopinkbuild/` / `${XDG_CACHE_HOME}/botopink/` cache layout it introduces ·
+  `modules/lib-test-runner/**` (cell scheduling, the erlang node pool) · the meta repository's
+  `scripts/` (new: `scripts/worktree-add.sh`) and the meta `AGENTS.md` § Worktrees · `scripts/AGENTS.md`
+  § gate.sh · this README's measurement tables.
+does-not-touch: |-
+  any stage's *content* (what a stage runs, which cells, which targets — a
+  stage that runs fewer cells after this front is a defect of this front); `compiler-core`'s pipeline
+  (a compile made faster inside `compiler-core` is `../../01-compiler/`'s); the emitters; snapshots.
+---
 # Front 115 — gate-perf: the green gate under a wall-clock budget, with nothing skipped or narrowed
-
-**Milestone:** 1.0.11-beta
-**Priority:** high — the maintainer asked for it explicitly: a gate that takes ~50 minutes is a gate
-people run less often. It optimises the *green* gate; it fixes no red and buys no time by narrowing
-a stage (decision 67 — coverage is never traded for speed; beam in `--target all` and the
-libraries' new cells are inside the budget, not outside it).
-**Depends on:** every other `00-gate` front — `111` (its `run.sh` is this front's starting point:
-four targets, no expected-failures reader), `113` (its `test-libs.sh` and `lib-test-runner`: the
-manifest rule and the audit), `110`, `112`, `114`, and the five library fronts (a red cell's time
-is not the gate's time).
-**Owns:** `scripts/gate.sh` (the per-stage timing report) · `scripts/test-libs.sh` ·
-`tests/language/run.sh` · `modules/compiler-cli/src/cli/libs.zig` (the dependency-closure compile
-cache) and the `.botopinkbuild/` / `${XDG_CACHE_HOME}/botopink/` cache layout it introduces ·
-`modules/lib-test-runner/**` (cell scheduling, the erlang node pool) · the meta repository's
-`scripts/` (new: `scripts/worktree-add.sh`) and the meta `AGENTS.md` § Worktrees · `scripts/AGENTS.md`
-§ gate.sh · this README's measurement tables.
-**Does not touch:** any stage's *content* (what a stage runs, which cells, which targets — a
-stage that runs fewer cells after this front is a defect of this front); `compiler-core`'s pipeline
-(a compile made faster inside `compiler-core` is `../../01-compiler/`'s); the emitters; snapshots.
 
 ---
 

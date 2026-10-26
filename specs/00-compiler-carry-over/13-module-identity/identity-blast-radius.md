@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Blast radius — measured
 
 Everything below was counted, from

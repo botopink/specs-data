@@ -1,16 +1,18 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: high — the library tier (decision 433); runs after the 144 steps it names.
+repository: "`routing` — worktree `--repo routing` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)"
+model: sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
+owns: "`repository/routing/src/{segment.bp, conventions.bp, match.bp}` and their tests"
+depends-on: 102 done · 144 B-20 (330 codemod, a consumer commit)
+does-not-touch: |-
+  `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
+  front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
+  commit (decision 188), producer first.
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+---
 # Front 157 — routing: Astro's routing in `segment.bp` / `conventions.bp` (117, routing's half)
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** high — the library tier (decision 433); runs after the 144 steps it names.
-**Repository:** `routing` — worktree `--repo routing` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)
-**Model:** sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
-**Owns:** `repository/routing/src/{segment.bp, conventions.bp, match.bp}` and their tests
-**Depends on:** 102 done · 144 B-20 (330 codemod, a consumer commit)
-**Does not touch:** `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
-front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
-commit (decision 188), producer first.
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
 
 117's other halves (rakun-app's `static_gen.bp`, onze's `paginate.bp` and `scan.bp`) are 150 s63's; this front
 lands first (producer).

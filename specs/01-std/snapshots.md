@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # `std/testing/snapshots` — the snapshot engine
 
 Step 3 of the front. `libs/std/src/testing/snapshots.bp`; `import {testing.snapshots} from "std";`

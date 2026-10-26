@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Comptime snapshot review — generics / effects / decorators / narrowing / builtins
 
 Repo: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang` (HEAD `96ff203`, re-checked 2026-09-15). All paths below are relative to `modules/compiler-core/` unless noted.

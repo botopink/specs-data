@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 106 — log: a shared `log`, one error digest, one way to the logger
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [156-log](../README.md): s2 → 156 s1 · s3 → 156 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (`spacing(n)`, `spacingHalf(n)`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 37 — flexbox, grid and gap`
+  block: `Flex`, `Grid`, top-level `Gap`) · `src/emilia.bp` (front-37 block: `flexTokenToCss`,
+  `gridTokenToCss`, `gapTokenToCss`, `gridRepeat`, `gridFr` and the sub-dispatchers, all taking
+  `th: Theme`; the `Grid`/`Gap` arms of `tokenToSheet` after `Flex`)
+does-not-own: "`display:flex`/`display:grid` (front 36's display values); `Pad`/`Margin`/`Size` (front 35)"
+user-docs: "`repository/emilia/docs.md` § *Flex*, § *Grid*, § *Gap*"
+reference: "`TAILWIND_CSS_DOCS.md § 6` (6.1–6.24) · https://tailwindcss.com/docs/flex-basis"
+---
 # Front 37 — emilia flexbox, grid and gap
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (`spacing(n)`, `spacingHalf(n)`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 37 — flexbox, grid and gap`
-block: `Flex`, `Grid`, top-level `Gap`) · `src/emilia.bp` (front-37 block: `flexTokenToCss`,
-`gridTokenToCss`, `gapTokenToCss`, `gridRepeat`, `gridFr` and the sub-dispatchers, all taking
-`th: Theme`; the `Grid`/`Gap` arms of `tokenToSheet` after `Flex`)
-**Does not own:** `display:flex`/`display:grid` (front 36's display values); `Pad`/`Margin`/`Size` (front 35)
-**User docs:** `repository/emilia/docs.md` § *Flex*, § *Grid*, § *Gap*
-**Reference:** `TAILWIND_CSS_DOCS.md § 6` (6.1–6.24) · https://tailwindcss.com/docs/flex-basis
 
 **Open:** none.
 

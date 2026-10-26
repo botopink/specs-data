@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: high — front 08 delivers a SQL template and a `#[repository]` marker, so every application writes its own row-to-record mapping by hand; that hand-written mapping is the work Spring Data exists to remove, and it is the work people get wrong
+target: erlang (server)
+wave: "4"
+depends-on: 08 · 14 — front 77 consumes this front's entity metadata for `ddl-auto`
+owns: "`modules/rakun-data/src/orm/**` · `modules/rakun-data/test/orm/**`"
+does-not-touch: "`modules/rakun-data/src/datasource.bp` and `src/sql/**` — front 08's, consumed read-only · `modules/rakun-data/src/migration/**` — front 77's · `modules/rakun-data/src/nosql/**` — front 09's · `src/decorators.bp` and the other three frozen files"
+reference: "`05-data.md § JPA e Spring Data JPA` (Entity, Repository, Configuracao JPA), `§ Spring Data JDBC`, `§ Spring Data Envers`, `§ jOOQ` · <https://docs.spring.io/spring-boot/reference/data/sql.html#data.sql.jpa-and-spring-data>"
+---
 # Front 78 — rakun Entities and Derived Queries
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — front 08 delivers a SQL template and a `#[repository]` marker, so every application writes its own row-to-record mapping by hand; that hand-written mapping is the work Spring Data exists to remove, and it is the work people get wrong
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 08 · 14 — front 77 consumes this front's entity metadata for `ddl-auto`
-**Owns:** `modules/rakun-data/src/orm/**` · `modules/rakun-data/test/orm/**`
-**Does not touch:** `modules/rakun-data/src/datasource.bp` and `src/sql/**` — front 08's, consumed read-only · `modules/rakun-data/src/migration/**` — front 77's · `modules/rakun-data/src/nosql/**` — front 09's · `src/decorators.bp` and the other three frozen files
-**Reference:** `05-data.md § JPA e Spring Data JPA` (Entity, Repository, Configuracao JPA), `§ Spring Data JDBC`, `§ Spring Data Envers`, `§ jOOQ` · <https://docs.spring.io/spring-boot/reference/data/sql.html#data.sql.jpa-and-spring-data>
 
 ---
 

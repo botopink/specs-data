@@ -1,6 +1,7 @@
+---
+milestone: 1.0.5-beta
+---
 # Front 06 — comptime-dedup
-
-**Milestone:** 1.0.5-beta
 
 **Status: delivered** 2026-09-18 — `botopink-lang` `9b483a2` (merge of `fix/dedup`: `579ab0d`,
 `b21373a`, `2ee2e24`), gate `--cold` green, worktree and branch removed. What it measured, in the end:

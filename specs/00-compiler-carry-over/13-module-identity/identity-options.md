@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Options for the identity, and for its spelling
 
 Two questions.

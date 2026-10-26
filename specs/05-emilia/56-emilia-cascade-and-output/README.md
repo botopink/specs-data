@@ -1,13 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 1 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (the `Theme` that `Options` carries; `themeCss`/`keyframeCss`)
+code: |-
+  `repository/emilia/modules/emilia/src/output.bp` (pure: model, codec, renderer — no
+  externals); in `src/emilia.bp` the host cells (`register`, `drainRules`, `lookupRule`, `hashHex`), the
+  public entry points, `fullTheme`/`fullOptions`, and the shared `tokenToSheet` dispatcher shell
+user-docs: "`repository/emilia/docs.md` § *The runtime*, § *The cascade and the output*"
+reference: "`TAILWIND_CSS_DOCS.md § 3.1`, `§ 3.2`, `§ 3.5`, `§ 3.7`, `§ 20.1` · https://tailwindcss.com/docs/styling-with-utility-classes"
+---
 # Front 56 — emilia cascade and output
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 1 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (the `Theme` that `Options` carries; `themeCss`/`keyframeCss`)
-**Code:** `repository/emilia/modules/emilia/src/output.bp` (pure: model, codec, renderer — no
-externals); in `src/emilia.bp` the host cells (`register`, `drainRules`, `lookupRule`, `hashHex`), the
-public entry points, `fullTheme`/`fullOptions`, and the shared `tokenToSheet` dispatcher shell
-**User docs:** `repository/emilia/docs.md` § *The runtime*, § *The cascade and the output*
-**Reference:** `TAILWIND_CSS_DOCS.md § 3.1`, `§ 3.2`, `§ 3.5`, `§ 3.7`, `§ 20.1` · https://tailwindcss.com/docs/styling-with-utility-classes
 
 **Open:** one box — the class name still comes from emilia's own `hashHex`, not std's content hash (Step 7).
 

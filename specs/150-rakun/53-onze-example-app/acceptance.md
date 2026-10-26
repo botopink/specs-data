@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 53 — the acceptance script: what the blog is and what each file proves
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-onze.md): s3 → 150 s67 · s4 → 150 s67 · s5 → 150 s67 · s6 → 150 s67 · s7 → 150 s67 · definition of done → 150 s67. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

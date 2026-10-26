@@ -1,35 +1,41 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  medium — without it an `onze` site is invisible to crawlers and uninstallable as a PWA.
+  `sitemap`, `robots`, `manifest` and the icon family are **routes** in Next's model — a file that
+  produces a response at a fixed URL — so they belong to the router, not to the metadata renderer, which
+  is why folding them into front 32 would be wrong
+target: erlang (server)
+wave: "6"
+depends-on: |-
+  22 (registering synthetic routes into the table), 32 (the metadata model whose `<link>`
+  and `<meta>` tags it builds from this front's data — soft, a citation), 62 (the request frame a dynamic sitemap reads from), 03 (the
+  content hash that fingerprints an image URL), `01-std/01-std-lib-enablement` (the manifest JSON), 01 (`path.walk`, `path.glob`, `escape.attribute`,
+  `encoding.percentEncode`). Optional: 60 (prerendering these routes), 70 (dynamic OG image bodies) —
+  neither blocks this front, and both are named where they attach
+owns: |-
+  `repository/rakun/modules/rakun-app/src/metadata_routes.bp`,
+  `repository/rakun/modules/rakun-app/src/sidecars/rakun_metadata_routes.erl`,
+  `repository/rakun/modules/rakun-app/test/metadata_routes_test.bp`, and one `pub mod` line in
+  `repository/rakun/modules/rakun-app/src/root.bp`
+does-not-touch: |-
+  `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
+  `src/runtime.mjs` — frozen; `src/file_router.bp` (front 22) is read-only, and this front registers
+  through its public API rather than editing its table format; `repository/jhonstart/src/metadata.bp` is
+  jhonstart front 32's, and this front names no jhonstart type and writes no HTML — it answers records
+  (`IconRef`, `ImageMeta`) and jhonstart front 32 builds the `<link>` and `<meta>` markup from them
+  (decisions 113, 116); a dynamic image's body is an opaque renderer onze registers (decision 114)
+reference: |-
+  `NEXTJS-DOCS.md § 18. Metadata e OG Images` (Metadata Files · OG Images dinâmicas),
+  `§ 3. Estrutura do Projeto` (Exemplo de estrutura — `opengraph-image.tsx`) ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image>
+---
 # Front 66 — Rakun Metadata File Routes
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** medium — without it an `onze` site is invisible to crawlers and uninstallable as a PWA.
-`sitemap`, `robots`, `manifest` and the icon family are **routes** in Next's model — a file that
-produces a response at a fixed URL — so they belong to the router, not to the metadata renderer, which
-is why folding them into front 32 would be wrong
-**Target:** erlang (server)
-**Wave:** 6
-**Depends on:** 22 (registering synthetic routes into the table), 32 (the metadata model whose `<link>`
-and `<meta>` tags it builds from this front's data — soft, a citation), 62 (the request frame a dynamic sitemap reads from), 03 (the
-content hash that fingerprints an image URL), `01-std/01-std-lib-enablement` (the manifest JSON), 01 (`path.walk`, `path.glob`, `escape.attribute`,
-`encoding.percentEncode`). Optional: 60 (prerendering these routes), 70 (dynamic OG image bodies) —
-neither blocks this front, and both are named where they attach
-**Owns:** `repository/rakun/modules/rakun-app/src/metadata_routes.bp`,
-`repository/rakun/modules/rakun-app/src/sidecars/rakun_metadata_routes.erl`,
-`repository/rakun/modules/rakun-app/test/metadata_routes_test.bp`, and one `pub mod` line in
-`repository/rakun/modules/rakun-app/src/root.bp`
-**Does not touch:** `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
-`src/runtime.mjs` — frozen; `src/file_router.bp` (front 22) is read-only, and this front registers
-through its public API rather than editing its table format; `repository/jhonstart/src/metadata.bp` is
-jhonstart front 32's, and this front names no jhonstart type and writes no HTML — it answers records
-(`IconRef`, `ImageMeta`) and jhonstart front 32 builds the `<link>` and `<meta>` markup from them
-(decisions 113, 116); a dynamic image's body is an opaque renderer onze registers (decision 114)
-**Reference:** `NEXTJS-DOCS.md § 18. Metadata e OG Images` (Metadata Files · OG Images dinâmicas),
-`§ 3. Estrutura do Projeto` (Exemplo de estrutura — `opengraph-image.tsx`) ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/metadata/sitemap> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/metadata/robots> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/metadata/manifest> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/metadata/app-icons> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image>
 
 ---
 

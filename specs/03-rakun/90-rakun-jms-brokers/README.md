@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: low — the JMS *API* is JVM-only, but ActiveMQ Classic and Artemis are common enough in enterprise estates that a rakun service may have to join one that already exists
+target: erlang (server)
+wave: "6"
+depends-on: 15 (the listener registry this becomes a third arm of, and the publish seam), 86 (retry, dead-letter and acknowledgement modes), 74 (TLS bundles for `amqps`/`stomp+ssl`), 05 (connection configuration), 11 (health indicator)
+owns: "`modules/rakun-messaging/src/jms/**`, `modules/rakun-messaging/test/jms/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone. Inside `modules/rakun-messaging/`, `src/reliability/**` is front 86's, `src/pulsar/**` is front 91's, and everything else is front 15's; all three are read-only here."
+reference: "`06-messaging.md § JMS` (ActiveMQ Classic, ActiveMQ Artemis, JNDI ConnectionFactory, Enviando Mensagens JMS, Recebendo Mensagens JMS) · https://docs.spring.io/spring-boot/reference/messaging/jms.html"
+---
 # Front 90 — Rakun JMS Brokers
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** low — the JMS *API* is JVM-only, but ActiveMQ Classic and Artemis are common enough in enterprise estates that a rakun service may have to join one that already exists
-**Target:** erlang (server)
-**Wave:** 6
-**Depends on:** 15 (the listener registry this becomes a third arm of, and the publish seam), 86 (retry, dead-letter and acknowledgement modes), 74 (TLS bundles for `amqps`/`stomp+ssl`), 05 (connection configuration), 11 (health indicator)
-**Owns:** `modules/rakun-messaging/src/jms/**`, `modules/rakun-messaging/test/jms/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone. Inside `modules/rakun-messaging/`, `src/reliability/**` is front 86's, `src/pulsar/**` is front 91's, and everything else is front 15's; all three are read-only here.
-**Reference:** `06-messaging.md § JMS` (ActiveMQ Classic, ActiveMQ Artemis, JNDI ConnectionFactory, Enviando Mensagens JMS, Recebendo Mensagens JMS) · https://docs.spring.io/spring-boot/reference/messaging/jms.html
 
 ---
 

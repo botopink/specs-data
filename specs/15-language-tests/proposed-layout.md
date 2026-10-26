@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Proposed layout — the suite after the gap analysis
 
 > **Executed by front 17** (`botopink-lang` `2f44b30`, `f699517`, `89f3761`) except the `crash/`

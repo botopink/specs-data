@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # 150 rakun — the open steps of the former front 162 (onze: stand-up, CLI, image, release, Astro's routing, content, data, CLI — and the example app, last)
 
 Front 162 was refiled under 150 rakun by 165 s8: its open steps are 150 s59 … s71, in the workspace

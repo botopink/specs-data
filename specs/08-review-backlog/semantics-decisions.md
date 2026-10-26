@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Cross-backend semantics — the four decisions (decided)
 
 > **Status: decided 2026-09-16 — this file is now the reference, not an open question.** Every

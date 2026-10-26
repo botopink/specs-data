@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # `@src()` — the source-location builtin
 
 Step 1 of the front. Paths are under `repository/botopink-lang/modules/compiler-core/src/` unless

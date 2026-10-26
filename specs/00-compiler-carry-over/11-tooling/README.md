@@ -1,16 +1,20 @@
+---
+milestone: 1.0.10-beta
+state: |-
+  closed — every step and the gate landed (C-19). Open work in the tooling area is the
+  process rows under `status.md` § Pending.
+owns: |-
+  `modules/language-server/**` **except** `src/tests/**`
+  ([`07-review-backlog`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/07-review-backlog/README.md); this front's tests there sit under the
+  `front 11 carve-out` banner `tests/AGENTS.md` names) · `repository/vscode-extension/**` · the LSP
+  snapshot directory `modules/language-server/snapshots/lsp/`
+does-not-touch: |-
+  `modules/compiler-core/src/**` · `modules/compiler-cli/**`
+  ([`10-cli-residuals`](../../10-cli-residuals/README.md)) · `docs.md`, `README.md`
+  ([`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/08-hygiene/README.md)) · the libraries
+  ([`09-ecosystem-residuals`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/09-ecosystem-residuals/README.md))
+---
 # Front 11 — tooling
-
-**Milestone:** 1.0.10-beta
-**State:** closed — every step and the gate landed (C-19). Open work in the tooling area is the
-process rows under `status.md` § Pending.
-**Owns:** `modules/language-server/**` **except** `src/tests/**`
-([`07-review-backlog`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/07-review-backlog/README.md); this front's tests there sit under the
-`front 11 carve-out` banner `tests/AGENTS.md` names) · `repository/vscode-extension/**` · the LSP
-snapshot directory `modules/language-server/snapshots/lsp/`
-**Does not touch:** `modules/compiler-core/src/**` · `modules/compiler-cli/**`
-([`10-cli-residuals`](../../10-cli-residuals/README.md)) · `docs.md`, `README.md`
-([`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/08-hygiene/README.md)) · the libraries
-([`09-ecosystem-residuals`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/09-ecosystem-residuals/README.md))
 
 Paths are relative to `repository/botopink-lang/` or, where a row says `vscode-extension`, to
 `repository/vscode-extension/`.

@@ -1,18 +1,21 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** medium · **Level:** 3 (after 44 inside the level) · **Target:** comptime (commonJS and erlang)
+depends-on: 44 (the `Transition.Transform` token exists; examples pair the two), 54 (`spacing(n)`, `themeVar`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 45 — transforms` block:
+  `Transform`, and the top-level `TransformRotateRaw`, `TransformTranslateRaw`) · `src/emilia.bp`
+  (front-45 block: `transformTokenToCss` and its sub-dispatchers — `transformRotateToCss`,
+  `transformRotateNegToCss`, … — all taking `th: Theme`; `transformEntries`, `rawRotate`,
+  `rawTranslate`; `transformSheet` and the `@property` registrations `twProperty` /
+  `translateProperties` / `chainProperties`; three `tokenToSheet` arms after front 44's) ·
+  `src/output.bp` (`propertiesFallback`, the `properties` layer in `renderDocument`)
+user-docs: "`repository/emilia/docs.md` § *Transform*"
+reference: |-
+  `TAILWIND_CSS_DOCS.md § 16` · https://tailwindcss.com/docs/rotate · upstream Tailwind v4
+  (4.3.2, compiled output) where the reference file disagrees with it
+---
 # Front 45 — emilia transforms
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** medium · **Level:** 3 (after 44 inside the level) · **Target:** comptime (commonJS and erlang)
-**Depends on:** 44 (the `Transition.Transform` token exists; examples pair the two), 54 (`spacing(n)`, `themeVar`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 45 — transforms` block:
-`Transform`, and the top-level `TransformRotateRaw`, `TransformTranslateRaw`) · `src/emilia.bp`
-(front-45 block: `transformTokenToCss` and its sub-dispatchers — `transformRotateToCss`,
-`transformRotateNegToCss`, … — all taking `th: Theme`; `transformEntries`, `rawRotate`,
-`rawTranslate`; `transformSheet` and the `@property` registrations `twProperty` /
-`translateProperties` / `chainProperties`; three `tokenToSheet` arms after front 44's) ·
-`src/output.bp` (`propertiesFallback`, the `properties` layer in `renderDocument`)
-**User docs:** `repository/emilia/docs.md` § *Transform*
-**Reference:** `TAILWIND_CSS_DOCS.md § 16` · https://tailwindcss.com/docs/rotate · upstream Tailwind v4
-(4.3.2, compiled output) where the reference file disagrees with it
 
 **Open:** none.
 

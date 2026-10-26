@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: comptime errors, exhaustiveness, effects
 
 Repo: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang` (all paths below are relative to `modules/compiler-core/`).

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 01 — checker: every program `botopink check` accepts runs the same on four targets
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-1.md): s42 box 3 → B-01 · s27 → B-02 · s42 box 1 → B-03 · s42 box 2 → B-05 · rows box 2 → B-10 · s30 → B-11 · s32 → B-12 · s33 → B-12 · s34 → B-14 · s24 → B-16 · s28 → B-16 · s23 → B-17 · s36 → B-17 · s29 → B-18 · s39 → B-18 · s40 → B-18 · s31 → B-20 · s37 → B-21 · s38 → B-21 · open → B-22 · s6 → B-22 · s13 → B-22 · s18 → B-23 · s19 → B-23 · rows boxes 1, 3, 4 → B-23 · s22 → B-27. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

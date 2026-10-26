@@ -1,8 +1,10 @@
+---
+milestone: 1.0.0-beta
+prioridade: 🔴 CRÍTICO
+branch: "`fix/step-1-decorator-eval` (meta + `repository/botopink-lang`)"
+pendências: movidas para [`1.0.1-beta`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.1-beta/overview.md)
+---
 # Step 1 — Comptime eval no erl (decorators + templates)
-
-**Prioridade:** 🔴 CRÍTICO
-**Branch:** `fix/step-1-decorator-eval` (meta + `repository/botopink-lang`)
-**Pendências:** movidas para [`1.0.1-beta`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.1-beta/overview.md)
 
 ---
 

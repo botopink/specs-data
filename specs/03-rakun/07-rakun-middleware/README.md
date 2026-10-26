@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 07 — The Filter Chain: Middleware, CORS, Problem Details
-
-**Milestone:** 1.0.10-beta
 
 > **As built (Steps 1, 2, 3, 3b and 4).** Where the code differs from the text below, the code holds:
 >

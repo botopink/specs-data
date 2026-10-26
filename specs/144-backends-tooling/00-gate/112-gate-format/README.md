@@ -1,25 +1,31 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  high — stage 3 is green only because 226 red files sit in trees it does not walk,
+  and 11 `.zig` files are a red the gate meets the day a front stages one.
+depends-on: |-
+  none — lands first in group A (a reformat commit is the cheapest thing for every
+  other front to rebase over). `110` rebases its `asserts.bp` edit; `111` writes its new cells
+  formatted.
+owns: |-
+  `scripts/format-check.sh` (`TREES`, the header) · `modules/compiler-cli/src/cli/format_cmd.zig`
+  (the structural exemption, gate-c) · the 11 `zig fmt` files (a `zig fmt` commit, no other change) ·
+  **reformat-only commits** over `libs/std/src/**` (19 files, with the 26 snapshots that quote them),
+  `examples/**`, `modules/compiler-cli/tests/**/*.bp`, `modules/manifest/tests/**/*.bp`,
+  `tests/language/{test,run,modules}/**/*.bp` (with the four `.expect` lines of the one cell whose
+  pinned location the reformat moves) · stage 1 of `scripts/gate.sh` (`zig fmt --check modules`) ·
+  `scripts/AGENTS.md` § format-check.sh · **two printer rows** of `../../01-compiler/16-formatter`,
+  assigned here because they block this front's trees: the record-update spread and the tail `catch`
+  (`modules/compiler-core/src/format.zig`, with `ast.zig`'s `tryCatch.tryKeyword` /
+  `spread_arg_label` and the parser's `try` arm).
+does-not-touch: |-
+  any source change in the trees it reformats (a reformat commit is
+  `botopink format` output and nothing else — a hand edit in it is a red flag for the reviewer); the
+  formatter's rules (`../../01-compiler/16-formatter`'s: decision 132's `;` refusal lands *after* this
+  front, on the migrated trees); `wat.zig` (110), `run.sh` (111).
+---
 # Front 112 — gate-format: every `.bp` tree canonical and in `TREES`, every `.zig` file formatted, the one unformattable fixture exempt by structure
-
-**Milestone:** 1.0.11-beta
-**Priority:** high — stage 3 is green only because 226 red files sit in trees it does not walk,
-and 11 `.zig` files are a red the gate meets the day a front stages one.
-**Depends on:** none — lands first in group A (a reformat commit is the cheapest thing for every
-other front to rebase over). `110` rebases its `asserts.bp` edit; `111` writes its new cells
-formatted.
-**Owns:** `scripts/format-check.sh` (`TREES`, the header) · `modules/compiler-cli/src/cli/format_cmd.zig`
-(the structural exemption, gate-c) · the 11 `zig fmt` files (a `zig fmt` commit, no other change) ·
-**reformat-only commits** over `libs/std/src/**` (19 files, with the 26 snapshots that quote them),
-`examples/**`, `modules/compiler-cli/tests/**/*.bp`, `modules/manifest/tests/**/*.bp`,
-`tests/language/{test,run,modules}/**/*.bp` (with the four `.expect` lines of the one cell whose
-pinned location the reformat moves) · stage 1 of `scripts/gate.sh` (`zig fmt --check modules`) ·
-`scripts/AGENTS.md` § format-check.sh · **two printer rows** of `../../01-compiler/16-formatter`,
-assigned here because they block this front's trees: the record-update spread and the tail `catch`
-(`modules/compiler-core/src/format.zig`, with `ast.zig`'s `tryCatch.tryKeyword` /
-`spread_arg_label` and the parser's `try` arm).
-**Does not touch:** any source change in the trees it reformats (a reformat commit is
-`botopink format` output and nothing else — a hand edit in it is a red flag for the reviewer); the
-formatter's rules (`../../01-compiler/16-formatter`'s: decision 132's `;` refusal lands *after* this
-front, on the migrated trees); `wat.zig` (110), `run.sh` (111).
 
 ---
 

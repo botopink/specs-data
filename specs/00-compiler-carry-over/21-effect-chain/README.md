@@ -1,10 +1,12 @@
+---
+milestone: 1.0.10-beta
+track: compiler (carry-over item **C-29**)
+state: |-
+  closed. Its outcomes hold in the return-type surface of
+  [`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md) (decisions 118–128), which owns the effect
+  chain, `EffectKind`, `effect_chain.zig` and the effect legality. Nothing is open.
+---
 # Front 21 — the effect chain: one grant of `use`, one step enum, and the owner marker
-
-**Milestone:** 1.0.10-beta
-**Track:** compiler (carry-over item **C-29**)
-**State:** closed. Its outcomes hold in the return-type surface of
-[`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md) (decisions 118–128), which owns the effect
-chain, `EffectKind`, `effect_chain.zig` and the effect legality. Nothing is open.
 
 Decisions [102](../../decisions-taken-steps.md),
 103, [104](../../decisions-taken-steps.md) and

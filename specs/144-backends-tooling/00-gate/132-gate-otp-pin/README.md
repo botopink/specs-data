@@ -1,18 +1,24 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  high — decision 228: the gate on this machine ran OTP 29 while CI pins 28, so an
+  emitted module OTP 28 refuses was green here and red only on GitHub.
+depends-on: |-
+  nothing; lands after the gate is green on `feat` (it adds a refusal every erlang and
+  beam stage passes through).
+owns: |-
+  `modules/manifest/src/root.zig` (the `"otp"` field), the compiler's supported-OTP constant
+  and its check in `modules/compiler-cli/src/cli/{build,run,test_cmd}.zig` (wherever `erl` / `erlc`
+  is first spawned for a target), `botopink --version`, `scripts/gate.sh` (the check before stage 2),
+  `.github/workflows/test.yml` of botopink-lang and of the five libraries (the OTP they install is
+  read from the compiler, not written twice), `modules/compiler-cli/tests/cli_contract.sh` (the
+  refusal cases), `docs.md` § the manifest, and the `AGENTS.md` of each directory touched.
+does-not-touch: |-
+  the emitters (a construct OTP 28 refuses is a codegen defect, fixed where it is
+  emitted); the comptime node's own OTP use beyond the same check.
+---
 # Front 132 — gate-otp-pin: the OTP the compiler emits for, checked on every erlang and beam run
-
-**Milestone:** 1.0.11-beta
-**Priority:** high — decision 228: the gate on this machine ran OTP 29 while CI pins 28, so an
-emitted module OTP 28 refuses was green here and red only on GitHub.
-**Depends on:** nothing; lands after the gate is green on `feat` (it adds a refusal every erlang and
-beam stage passes through).
-**Owns:** `modules/manifest/src/root.zig` (the `"otp"` field), the compiler's supported-OTP constant
-and its check in `modules/compiler-cli/src/cli/{build,run,test_cmd}.zig` (wherever `erl` / `erlc`
-is first spawned for a target), `botopink --version`, `scripts/gate.sh` (the check before stage 2),
-`.github/workflows/test.yml` of botopink-lang and of the five libraries (the OTP they install is
-read from the compiler, not written twice), `modules/compiler-cli/tests/cli_contract.sh` (the
-refusal cases), `docs.md` § the manifest, and the `AGENTS.md` of each directory touched.
-**Does not touch:** the emitters (a construct OTP 28 refuses is a codegen defect, fixed where it is
-emitted); the comptime node's own OTP use beyond the same check.
 
 ---
 

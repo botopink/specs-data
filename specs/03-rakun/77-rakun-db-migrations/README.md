@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: high — front 08 can talk to a database and nothing can change its schema; every deploy would be a manual `psql` session, and the `flyway`/`liquibase` rows in the actuator's endpoint list have nothing behind them
+target: erlang (server)
+wave: "4"
+depends-on: 03 · 08 · 72 — and front 11 serves the endpoint it registers
+owns: "`modules/rakun-data/src/migration/**` · `modules/rakun-data/test/migration/**`"
+does-not-touch: "`modules/rakun-data/src/datasource.bp` and `src/sql/**` — front 08's, consumed read-only · `modules/rakun-data/src/orm/**` — front 78's, consumed read-only for the schema generator · `modules/rakun-data/src/nosql/**` — front 09's"
+reference: "`09-actuator.md § Endpoints (flyway, liquibase)` · `05-data.md § Configuracao JPA` (`ddl-auto`, the mechanism this front replaces) · `11-topicos-avancados.md § Auto-configuration Classes` · <https://docs.spring.io/spring-boot/reference/howto/data-initialization.html#howto.data-initialization.migration-tool>"
+---
 # Front 77 — rakun Database Migrations
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — front 08 can talk to a database and nothing can change its schema; every deploy would be a manual `psql` session, and the `flyway`/`liquibase` rows in the actuator's endpoint list have nothing behind them
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 03 · 08 · 72 — and front 11 serves the endpoint it registers
-**Owns:** `modules/rakun-data/src/migration/**` · `modules/rakun-data/test/migration/**`
-**Does not touch:** `modules/rakun-data/src/datasource.bp` and `src/sql/**` — front 08's, consumed read-only · `modules/rakun-data/src/orm/**` — front 78's, consumed read-only for the schema generator · `modules/rakun-data/src/nosql/**` — front 09's
-**Reference:** `09-actuator.md § Endpoints (flyway, liquibase)` · `05-data.md § Configuracao JPA` (`ddl-auto`, the mechanism this front replaces) · `11-topicos-avancados.md § Auto-configuration Classes` · <https://docs.spring.io/spring-boot/reference/howto/data-initialization.html#howto.data-initialization.migration-tool>
 
 ---
 

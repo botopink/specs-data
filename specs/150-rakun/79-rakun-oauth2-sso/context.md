@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 79 — OAuth2 and SSO: the authentication-manager seam, two amendments, the SAML ACS
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s1 → 150 s6 · s2 → 150 s6 · s3 → 150 s6 · s4 → 150 s6. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

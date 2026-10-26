@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 118 — bpp components: the template language
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-jhonstart.md): open → 150 s39 · gate → 150 s39. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

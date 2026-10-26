@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 07 — comptime-dedup
-
-**Milestone:** 1.0.4-beta
 
 **Not started. It moves whole to 1.0.5-beta `06-comptime-dedup`.** Nothing of it landed in
 1.0.4-beta; what this directory keeps is the **measurement** — the file counts, the hash survey and

@@ -1,11 +1,12 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** critical · **Level:** 0 · **Target:** comptime (commonJS and erlang)
+depends-on: none
+code: "`repository/emilia/modules/emilia/src/theme.bp`, `src/spacing.bp` (inline `test {}` blocks)"
+user-docs: "`repository/emilia/docs.md` § *The theme*"
+reference: "`TAILWIND_CSS_DOCS.md § 3.5`, `§ 3.9`, `§ 20.2 @theme`, `§ 20.8 --spacing()`, `§ 20.9 theme()`, `§ 21.1–§ 21.7` · https://tailwindcss.com/docs/theme"
+---
 # Front 54 — emilia theme
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** critical · **Level:** 0 · **Target:** comptime (commonJS and erlang)
-**Depends on:** none
-**Code:** `repository/emilia/modules/emilia/src/theme.bp`, `src/spacing.bp` (inline `test {}` blocks)
-**User docs:** `repository/emilia/docs.md` § *The theme*
-**Reference:** `TAILWIND_CSS_DOCS.md § 3.5`, `§ 3.9`, `§ 20.2 @theme`, `§ 20.8 --spacing()`, `§ 20.9 theme()`, `§ 21.1–§ 21.7` · https://tailwindcss.com/docs/theme
 
 ---
 

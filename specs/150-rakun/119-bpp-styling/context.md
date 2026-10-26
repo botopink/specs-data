@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 119 — bpp styling: `css`, `styled`, `jhonstart-styled`, the style section
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-styled.md): s1 → 150 s32 · s4 boxes 2, 4 → 150 s33 · gate → 150 s33; [150-rakun](../steps-jhonstart.md): s2 → 150 s40 · s3 → 150 s40 · s4 boxes 1, 3, 5 → 150 s40 · s5 → 150 s40. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

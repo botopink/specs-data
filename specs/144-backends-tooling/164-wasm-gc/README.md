@@ -1,22 +1,28 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+priority: |-
+  maximum — where new development is centred (the maintainer, 2026-10-14); beside 144, the second front that
+  edits `repository/botopink-lang` (amends 433). Opens after 144's B-00 group (done but its last box, which holds
+  nothing back, 479).
+repository: |-
+  botopink-lang — worktree `--lang`. **Machine:** 2 — the backends-and-tooling machine runs this front,
+  in a `--lang` worktree of its own, ahead of every other open step of 144 it holds. **Model:** opus (every step designs or
+  changes a runtime).
+gate: |-
+  standard (fronts.md § Gate) + every wasm `run/` cell's `.out` and every comptime snapshot's `COMPTIME REPLY` unchanged
+  at each step — the engine and the memory are never a source of text (434 (5)); a step that rewrites the comptime's
+  lowering re-records its `COMPTIME WAT` once per piece and reads the diff (decision 558).
+owns: |-
+  `modules/compiler-core/src/comptime/runtime/**`, `modules/compiler-core/src/codegen/wat/**`,
+  `modules/{std-wasm,beam-to-wasm}/**`, `modules/compiler-web/**`, `build.zig`'s wasm and engine steps,
+  `.github/workflows/release.yml`'s engine fetch; the wasm column of every cell. 144 keeps the rest of the repository;
+  a 144 step that reaches the wasm target, the comptime runtime or std-wasm waits on this front's s2, never edits them.
+depends-on: |-
+  nothing open. **Decisions:** 543 (wasmtime-a), 544 (wasmgc-a); amends 434, 440, 448, 449,
+  450, 452, 522; 518 (`needs`) and 392 (the scheduler) unchanged.
+---
 # Front 164 — wasm-gc: the comptime runtime on wasmtime, the wasm target on WasmGC, std-wasm in botopink and `.wat`
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-2
-**Priority:** maximum — where new development is centred (the maintainer, 2026-10-14); beside 144, the second front that
-edits `repository/botopink-lang` (amends 433). Opens after 144's B-00 group (done but its last box, which holds
-nothing back, 479).
-**Repository:** botopink-lang — worktree `--lang`. **Machine:** 2 — the backends-and-tooling machine runs this front,
-in a `--lang` worktree of its own, ahead of every other open step of 144 it holds. **Model:** opus (every step designs or
-changes a runtime).
-**Gate:** standard (fronts.md § Gate) + every wasm `run/` cell's `.out` and every comptime snapshot's `COMPTIME REPLY` unchanged
-at each step — the engine and the memory are never a source of text (434 (5)); a step that rewrites the comptime's
-lowering re-records its `COMPTIME WAT` once per piece and reads the diff (decision 558).
-**Owns:** `modules/compiler-core/src/comptime/runtime/**`, `modules/compiler-core/src/codegen/wat/**`,
-`modules/{std-wasm,beam-to-wasm}/**`, `modules/compiler-web/**`, `build.zig`'s wasm and engine steps,
-`.github/workflows/release.yml`'s engine fetch; the wasm column of every cell. 144 keeps the rest of the repository;
-a 144 step that reaches the wasm target, the comptime runtime or std-wasm waits on this front's s2, never edits them.
-**Depends on:** nothing open. **Decisions:** 543 (wasmtime-a), 544 (wasmgc-a); amends 434, 440, 448, 449,
-450, 452, 522; 518 (`needs`) and 392 (the scheduler) unchanged.
 
 Until s2 lands a wasm program allocates as today (a bump heap, exhaustion a trap, 448 (4)) — a known limit of a long
 task, written in the reference. The old model's steps are withdrawn: 144 B-30's open boxes, B-25's steps 9 and 11,

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Deep dive — labeled tuples replace anonymous records
 
 > Carried from `1.0.3-beta/02-surface-cutover/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

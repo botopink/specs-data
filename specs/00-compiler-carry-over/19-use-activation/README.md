@@ -1,17 +1,20 @@
+---
+milestone: 1.0.10-beta
+track: compiler (carry-over item **C-27**)
+state: |-
+  closed. What it built — the `use` statement, the static-prefix guard, tuple and record
+  destructuring from a `use`, the lowering contract — holds under the effect surface of
+  [`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md) (decisions 118–128), which owns the
+  `use` gate from here on. Nothing is open.
+owns-still: |-
+  the `use` rules in `src/parser.zig` (the activation statement, `useAfterBranchGuard`,
+  `useBranchSeen`, `bindingUseLoc`, `freshUseScope`) and the `use` prefix in `src/parser/exprs.zig` ·
+  the `use` binding functions of `src/comptime/infer.zig` (`bindingSourceType`, `inferUseHookExpr`,
+  `validateUseBase`, `bindUseDestructure`) · the `useHook` lowering arm of the four emitters ·
+  `docs.md` § use · the `tests/language` `use` cells. The `use` *gate* (which return grants `use`) is
+  front 24's (`contextInfoFromReturn`, `FnContext.annotated` / `env.inContextFn`).
+---
 # Front 19 — the `use` activation: hooks, components, and the boundary directives
-
-**Milestone:** 1.0.10-beta
-**Track:** compiler (carry-over item **C-27**)
-**State:** closed. What it built — the `use` statement, the static-prefix guard, tuple and record
-destructuring from a `use`, the lowering contract — holds under the effect surface of
-[`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md) (decisions 118–128), which owns the
-`use` gate from here on. Nothing is open.
-**Owns (still):** the `use` rules in `src/parser.zig` (the activation statement, `useAfterBranchGuard`,
-`useBranchSeen`, `bindingUseLoc`, `freshUseScope`) and the `use` prefix in `src/parser/exprs.zig` ·
-the `use` binding functions of `src/comptime/infer.zig` (`bindingSourceType`, `inferUseHookExpr`,
-`validateUseBase`, `bindUseDestructure`) · the `useHook` lowering arm of the four emitters ·
-`docs.md` § use · the `tests/language` `use` cells. The `use` *gate* (which return grants `use`) is
-front 24's (`contextInfoFromReturn`, `FnContext.annotated` / `env.inContextFn`).
 
 Paths are relative to `repository/botopink-lang/modules/compiler-core/`. Decisions:
 [87](../../decisions-taken-steps.md)

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # emilia — no gate at all (7d)
 
 > Carried from `1.0.2-beta/12-library-repos/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

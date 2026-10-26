@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Reference coverage — Tailwind CSS v4 against the emilia fronts
 
 Reference: `/home/ericfillipe/develop/tailwindcss/TAILWIND_CSS_DOCS.md` (Tailwind v4.3, § 3–§ 21 plus the *Referência Rápida*), walked against the 22 emilia fronts 33–48 and 54–59 as they ship.

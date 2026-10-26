@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # onze — the package cut
 
 `repository/onze/modules/**` and `repository/onze/examples/**` for track E. The old `repository/onze`

@@ -1,24 +1,30 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: |-
+  maximum — the one front that edits `repository/botopink-lang` (decision 433). Its first
+  group, comptime on wasm (decision 434), was **the first thing the milestone did**, before any other
+  step of any front; it is done but for B-00c's last box, the seventh step of the conformance order (fronts.md
+  § Execution order).
+repository: |-
+  botopink-lang — worktree `--lang` (a step with consumer commits: a full worktree, the library halves
+  each a commit in its library, rule 10)
+model: |-
+  by step (each group names its own, `AGENTS.md` § Which model a thread runs on); opus for a group that
+  designs or changes semantics
+depends-on: |-
+  nothing open — the fronts in flight when 434 was taken have landed (checker-s41, checker-s29,
+  render-scope-388, bigint-139, comptime-14, import-129, typed-member-395's compiler half).
+owns: |-
+  all of `repository/botopink-lang` — `modules/{compiler-core,compiler-cli,language-server,
+  lib-test-runner,bpmp,manifest,test-shard}/**`, the new `modules/std-wasm/**` and `modules/beam-to-wasm/**`
+  (434), `libs/std/**`, `scripts/**`, `tests/language/**`, `docs.md`, `docs/**`, `.github/workflows/**`,
+  `build.zig` — plus the consumer commits each step names, one per library repository (decision 188), unless
+  that library's front holds the same files (then the step names a handed-over row in that front).
+does-not-touch: a library repository beyond the consumer commits its steps name; the meta repository.
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+---
 # Front 144 — botopink-lang: every open step that changes the compiler, std and the toolchain
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** maximum — the one front that edits `repository/botopink-lang` (decision 433). Its first
-group, comptime on wasm (decision 434), was **the first thing the milestone did**, before any other
-step of any front; it is done but for B-00c's last box, the seventh step of the conformance order (fronts.md
-§ Execution order).
-**Repository:** botopink-lang — worktree `--lang` (a step with consumer commits: a full worktree, the library halves
-each a commit in its library, rule 10)
-**Model:** by step (each group names its own, `AGENTS.md` § Which model a thread runs on); opus for a group that
-designs or changes semantics
-**Depends on:** nothing open — the fronts in flight when 434 was taken have landed (checker-s41, checker-s29,
-render-scope-388, bigint-139, comptime-14, import-129, typed-member-395's compiler half).
-**Owns:** all of `repository/botopink-lang` — `modules/{compiler-core,compiler-cli,language-server,
-lib-test-runner,bpmp,manifest,test-shard}/**`, the new `modules/std-wasm/**` and `modules/beam-to-wasm/**`
-(434), `libs/std/**`, `scripts/**`, `tests/language/**`, `docs.md`, `docs/**`, `.github/workflows/**`,
-`build.zig` — plus the consumer commits each step names, one per library repository (decision 188), unless
-that library's front holds the same files (then the step names a handed-over row in that front).
-**Does not touch:** a library repository beyond the consumer commits its steps name; the meta repository.
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
 
 Every open box of the steps (now in the two machines' folders, § Machines) was moved verbatim from the old track fronts; the tag after each `####` heading names
 where it was; each old front's goal, mechanism and topic files sit in a subdirectory named after it, in the

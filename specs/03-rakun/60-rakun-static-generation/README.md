@@ -1,34 +1,41 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  critical — without it `onze` can only ever serve dynamically: every page re-renders per
+  request, a `generateStaticParams` in an app's source is silently ignored, a blog with 10 000 posts hits
+  the database 10 000 times an hour, and the exit gate's claim that the example app "builds, serves, and
+  renders its routes" is true only in the SSR sense
+target: |-
+  erlang. The prerender, the store and the decision run on BEAM (`rakun-app`); the
+  route-kind codec the browser reads is pure botopink in the bundled library `routing` (`libs/routing`,
+  erlang and commonJS, decision 115), written by `01-std/04-routing-lib` to this front's Step 6 and
+  imported here. The two halves are named below and neither is optional
+wave: "6"
+depends-on: |-
+  22 (the route table), 23 (the renderer), 62 (the definition of dynamic), 12 (the store
+  the prerendered entries live in), 03 (content hash), 02 (unstarted tasks, for the build fan-out),
+  01 (`path.walk`, `path.glob`, `fs`, `clock`)
+owns: |-
+  `repository/rakun/modules/rakun-app/src/static_gen.bp`, `repository/rakun/modules/rakun-app/src/segment_config.bp`,
+  `repository/rakun/modules/rakun-app/src/sidecars/rakun_static_gen.erl`,
+  `repository/rakun/modules/rakun-app/test/static_gen_test.bp`, `repository/rakun/modules/rakun-app/test/segment_config_test.bp`, two
+  `pub mod` lines in `repository/rakun/modules/rakun-app/src/root.bp`, and `routeKinds()` (Step 6's server half); the
+  codec file `libs/routing/src/route_kinds.bp` is `01-std/04-routing-lib`'s, written to Step 6's
+  format
+does-not-touch: |-
+  `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
+  `src/runtime.mjs` — frozen for the milestone; `src/file_router.bp` (front 22), `src/ssr.bp` (front 23)
+  and `modules/rakun-cache/**` (front 12) are read-only here
+reference: |-
+  `NEXTJS-DOCS.md § 6. Rotas Dinâmicas` (generateStaticParams · Search Params),
+  `§ 11. Cache` (Modelo anterior — route segment config), `§ 12. Revalidação` (Time-based),
+  `§ 19. Route Handlers` (Caching), `§ 24. Deploy` (Static Export), `§ 28. Configuração` (`output`) ·
+  <https://nextjs.org/docs/app/api-reference/functions/generate-static-params> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config> ·
+  <https://nextjs.org/docs/app/guides/static-exports>
+---
 # Front 60 — Rakun Static Generation
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** critical — without it `onze` can only ever serve dynamically: every page re-renders per
-request, a `generateStaticParams` in an app's source is silently ignored, a blog with 10 000 posts hits
-the database 10 000 times an hour, and the exit gate's claim that the example app "builds, serves, and
-renders its routes" is true only in the SSR sense
-**Target:** erlang. The prerender, the store and the decision run on BEAM (`rakun-app`); the
-route-kind codec the browser reads is pure botopink in the bundled library `routing` (`libs/routing`,
-erlang and commonJS, decision 115), written by `01-std/04-routing-lib` to this front's Step 6 and
-imported here. The two halves are named below and neither is optional
-**Wave:** 6
-**Depends on:** 22 (the route table), 23 (the renderer), 62 (the definition of dynamic), 12 (the store
-the prerendered entries live in), 03 (content hash), 02 (unstarted tasks, for the build fan-out),
-01 (`path.walk`, `path.glob`, `fs`, `clock`)
-**Owns:** `repository/rakun/modules/rakun-app/src/static_gen.bp`, `repository/rakun/modules/rakun-app/src/segment_config.bp`,
-`repository/rakun/modules/rakun-app/src/sidecars/rakun_static_gen.erl`,
-`repository/rakun/modules/rakun-app/test/static_gen_test.bp`, `repository/rakun/modules/rakun-app/test/segment_config_test.bp`, two
-`pub mod` lines in `repository/rakun/modules/rakun-app/src/root.bp`, and `routeKinds()` (Step 6's server half); the
-codec file `libs/routing/src/route_kinds.bp` is `01-std/04-routing-lib`'s, written to Step 6's
-format
-**Does not touch:** `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
-`src/runtime.mjs` — frozen for the milestone; `src/file_router.bp` (front 22), `src/ssr.bp` (front 23)
-and `modules/rakun-cache/**` (front 12) are read-only here
-**Reference:** `NEXTJS-DOCS.md § 6. Rotas Dinâmicas` (generateStaticParams · Search Params),
-`§ 11. Cache` (Modelo anterior — route segment config), `§ 12. Revalidação` (Time-based),
-`§ 19. Route Handlers` (Caching), `§ 24. Deploy` (Static Export), `§ 28. Configuração` (`output`) ·
-<https://nextjs.org/docs/app/api-reference/functions/generate-static-params> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/route-segment-config> ·
-<https://nextjs.org/docs/app/guides/static-exports>
 
 ---
 

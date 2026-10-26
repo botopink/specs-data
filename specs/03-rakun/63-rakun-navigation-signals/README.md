@@ -1,34 +1,40 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  high — server code nested inside a route handler or a server action cannot say "not
+  found" or "go elsewhere" today, and front 24's own showcase (`revalidatePath` then `redirect`) does
+  not compile
+target: erlang (server)
+wave: "6"
+depends-on: |-
+  22 (the route table, to validate a redirect target), 62 (the request frame the
+  outcome is recorded on) — fronts 24 and 25, whose action dispatcher and handler wrapper capture, depend
+  on this front, `01-std/04-routing-lib` Step 7 (the
+  vocabulary this front imports — `NavKind`, `NavOutcome`, the four `nav:` reasons and the `n` wire
+  form, decision 116)
+owns: |-
+  `repository/rakun/modules/rakun-app/src/navigation.bp`,
+  `repository/rakun/modules/rakun-app/src/sidecars/rakun_navigation.erl`,
+  `repository/rakun/modules/rakun-app/test/navigation_test.bp`, and one `pub mod` line in `repository/rakun/modules/rakun-app/src/root.bp`
+does-not-touch: |-
+  `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
+  `src/runtime.mjs` — frozen for the milestone; `src/file_router.bp` (front 22) and `src/ssr.bp`
+  (front 23) are read-only here; the signal vocabulary and both codecs are the bundled library
+  `routing`'s (`libs/routing/src/navigation.bp`, `01-std/04-routing-lib` Step 7), imported here and by
+  jhonstart fronts 26, 30 and 31
+reference: |-
+  [decision 116](../../decisions-taken-steps.md)
+  rule 1 (the vocabulary is `routing`'s; the throw, the capture and the checks stay here) ·
+  [decision 117](../../decisions-taken-steps.md) rules 1 and 4 (a page's signals are jhonstart's; rakun's serve server actions and
+  route handlers) ·
+  `NEXTJS-DOCS.md § 14. Tratamento de Erros` (Not Found), `§ 23. Autenticação` (Layout com
+  autenticação), `§ 26. Referência de Funções` (Navegação), `§ 10. Mutação de Dados` ·
+  <https://nextjs.org/docs/app/api-reference/functions/not-found> ·
+  <https://nextjs.org/docs/app/api-reference/functions/redirect> ·
+  <https://nextjs.org/docs/app/api-reference/functions/permanentRedirect>
+---
 # Front 63 — Rakun Navigation Signals
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — server code nested inside a route handler or a server action cannot say "not
-found" or "go elsewhere" today, and front 24's own showcase (`revalidatePath` then `redirect`) does
-not compile
-**Target:** erlang (server)
-**Wave:** 6
-**Depends on:** 22 (the route table, to validate a redirect target), 62 (the request frame the
-outcome is recorded on) — fronts 24 and 25, whose action dispatcher and handler wrapper capture, depend
-on this front, `01-std/04-routing-lib` Step 7 (the
-vocabulary this front imports — `NavKind`, `NavOutcome`, the four `nav:` reasons and the `n` wire
-form, decision 116)
-**Owns:** `repository/rakun/modules/rakun-app/src/navigation.bp`,
-`repository/rakun/modules/rakun-app/src/sidecars/rakun_navigation.erl`,
-`repository/rakun/modules/rakun-app/test/navigation_test.bp`, and one `pub mod` line in `repository/rakun/modules/rakun-app/src/root.bp`
-**Does not touch:** `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
-`src/runtime.mjs` — frozen for the milestone; `src/file_router.bp` (front 22) and `src/ssr.bp`
-(front 23) are read-only here; the signal vocabulary and both codecs are the bundled library
-`routing`'s (`libs/routing/src/navigation.bp`, `01-std/04-routing-lib` Step 7), imported here and by
-jhonstart fronts 26, 30 and 31
-**Reference:** [decision 116](../../decisions-taken-steps.md)
-rule 1 (the vocabulary is `routing`'s; the throw, the capture and the checks stay here) ·
-[decision 117](../../decisions-taken-steps.md) rules 1 and 4 (a page's signals are jhonstart's; rakun's serve server actions and
-route handlers) ·
-`NEXTJS-DOCS.md § 14. Tratamento de Erros` (Not Found), `§ 23. Autenticação` (Layout com
-autenticação), `§ 26. Referência de Funções` (Navegação), `§ 10. Mutação de Dados` ·
-<https://nextjs.org/docs/app/api-reference/functions/not-found> ·
-<https://nextjs.org/docs/app/api-reference/functions/redirect> ·
-<https://nextjs.org/docs/app/api-reference/functions/permanentRedirect>
 
 ---
 

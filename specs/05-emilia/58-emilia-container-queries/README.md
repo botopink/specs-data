@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** medium · **Level:** 2 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (the `--container-*` namespace), 56 (`Variant`, hoisted at-rules), 57 (the `cssIdent` reject set for names)
+code: |-
+  `repository/emilia/modules/emilia/src/container.bp` (`ContainerSize`, `containerKey`, the
+  builders, `containerAtRule`, the `…ToSheet` helpers) · `src/tokens.bp` (`// ── front 58 — container
+  queries`: the `Container` section and three top-level variants) · `src/emilia.bp` (four contiguous
+  `tokenToSheet` arms)
+user-docs: "`repository/emilia/docs.md` § *Container queries*"
+reference: "`TAILWIND_CSS_DOCS.md § 3.3` (container-size table), `§ 3.5` · https://tailwindcss.com/docs/responsive-design#container-queries"
+---
 # Front 58 — emilia container queries
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** medium · **Level:** 2 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (the `--container-*` namespace), 56 (`Variant`, hoisted at-rules), 57 (the `cssIdent` reject set for names)
-**Code:** `repository/emilia/modules/emilia/src/container.bp` (`ContainerSize`, `containerKey`, the
-builders, `containerAtRule`, the `…ToSheet` helpers) · `src/tokens.bp` (`// ── front 58 — container
-queries`: the `Container` section and three top-level variants) · `src/emilia.bp` (four contiguous
-`tokenToSheet` arms)
-**User docs:** `repository/emilia/docs.md` § *Container queries*
-**Reference:** `TAILWIND_CSS_DOCS.md § 3.3` (container-size table), `§ 3.5` · https://tailwindcss.com/docs/responsive-design#container-queries
 
 **Open:** none.
 

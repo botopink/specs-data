@@ -1,19 +1,25 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  high — decisions 225 and 232: a cache is wiped by deleting `.botopinkbuild/`, and the package under
+  test is never served from one.
+depends-on: |-
+  `115-gate-perf` (its erlang verdict cache, `.beam` cache and cell schedule are the
+  stores this front moves), and the gate green on `feat` (a red cell's time is not the gate's time).
+owns: |-
+  `modules/compiler-cli/src/cli/libs.zig` (`userCacheDir` — deleted), `compiler-cli/src/cli/build.zig`
+  (`checkErlang`'s `cache_dir`), `compiler-cli/src/cli/test_cmd.zig` (`beamCacheDir`), `compiler-cli/src/cli/clean.zig`
+  (`botopink clean`), `modules/lib-test-runner/src/schedule.zig` (`durations.tsv`), the new closure cache in
+  `compiler-cli` and the entry in `compiler-core` that takes a pre-typed package, `scripts/gate.sh`
+  (`--cold`), `modules/compiler-cli/tests/cli_contract.sh` (the cache sections) and the `AGENTS.md` of
+  each directory touched.
+does-not-touch: |-
+  any stage's content (which cells, which targets); the checker's rules; the
+  emitters; snapshots — a cached build that emits a different byte than an uncached one is this
+  front's defect, never a re-record.
+---
 # Front 131 — gate-build-cache: every build cache inside `.botopinkbuild/`, and the dependency closure typed once
-
-**Milestone:** 1.0.11-beta
-**Priority:** high — decisions 225 and 232: a cache is wiped by deleting `.botopinkbuild/`, and the package under
-test is never served from one.
-**Depends on:** `115-gate-perf` (its erlang verdict cache, `.beam` cache and cell schedule are the
-stores this front moves), and the gate green on `feat` (a red cell's time is not the gate's time).
-**Owns:** `modules/compiler-cli/src/cli/libs.zig` (`userCacheDir` — deleted), `compiler-cli/src/cli/build.zig`
-(`checkErlang`'s `cache_dir`), `compiler-cli/src/cli/test_cmd.zig` (`beamCacheDir`), `compiler-cli/src/cli/clean.zig`
-(`botopink clean`), `modules/lib-test-runner/src/schedule.zig` (`durations.tsv`), the new closure cache in
-`compiler-cli` and the entry in `compiler-core` that takes a pre-typed package, `scripts/gate.sh`
-(`--cold`), `modules/compiler-cli/tests/cli_contract.sh` (the cache sections) and the `AGENTS.md` of
-each directory touched.
-**Does not touch:** any stage's content (which cells, which targets); the checker's rules; the
-emitters; snapshots — a cached build that emits a different byte than an uncached one is this
-front's defect, never a re-record.
 
 ---
 

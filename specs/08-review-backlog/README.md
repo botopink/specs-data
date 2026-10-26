@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 08 — review-backlog
-
-**Milestone:** 1.0.4-beta
 
 **Delivered in part.** The front never opened as a worktree; what it delivered in 1.0.4-beta is the
 **decisions** the rest of the milestone was built on, and they are the reason this directory is the

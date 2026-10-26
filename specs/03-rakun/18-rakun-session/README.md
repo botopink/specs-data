@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: low as a feature, high as a security surface — front 12's private cache scope keys on the session id, so a weak session here weakens the cache too
+target: erlang (server)
+wave: "4"
+depends-on: 01 (`io.random`, `hash` — HMAC and constant-time compare), 05 (config), 06 (context), 07 (the filter chain the session filter joins), 08 (`datasource`, for the SQL arm), 11 (endpoint host + health registry), 62 (per-request context)
+owns: "`modules/rakun-session/src/**`, `modules/rakun-session/test/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone"
+reference: "`04-web.md § Spring Session` · https://docs.spring.io/spring-boot/reference/web/spring-session.html"
+---
 # Front 18 — Rakun Session Management
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** low as a feature, high as a security surface — front 12's private cache scope keys on the session id, so a weak session here weakens the cache too
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 01 (`io.random`, `hash` — HMAC and constant-time compare), 05 (config), 06 (context), 07 (the filter chain the session filter joins), 08 (`datasource`, for the SQL arm), 11 (endpoint host + health registry), 62 (per-request context)
-**Owns:** `modules/rakun-session/src/**`, `modules/rakun-session/test/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone
-**Reference:** `04-web.md § Spring Session` · https://docs.spring.io/spring-boot/reference/web/spring-session.html
 
 ---
 

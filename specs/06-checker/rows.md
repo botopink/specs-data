@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Checker rows — mechanism, deciding site, probe
 
 > Carried from `1.0.2-beta/07-checker/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

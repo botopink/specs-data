@@ -1,22 +1,28 @@
+---
+milestone: 1.0.11-beta
+owner: machine-1
+priority: |-
+  low — nothing ships wrong because of it, but the open rows of the 1.0.1-beta snapshot
+  review sit between the suite and "every snapshot proves what its test claims", and a row that
+  names a compiler defect must reach the front that owns the file. Never opened in 1.0.5 or 1.0.10
+  (C-22, all boxes unticked).
+depends-on: |-
+  `02-erlang`, `03-beam`, `04-js`, `05-wasm` landed (step 4 renames in their snapshot
+  directories; wave A's columns are re-derived against their output) · `01-checker` landed (wave B's
+  shared root causes) · `00-gate` (nothing of this front's files is a gate item).
+owns: |-
+  `modules/compiler-core/src/utils/snap.zig` · `scripts/snap_audit.sh` (and its
+  `scripts/AGENTS.md` section) · `src/codegen/tests/**` (the test sources; a backend front's
+  fixtures are its carve-out while it runs) · `src/comptime/tests/**` except `helpers.zig` ·
+  `src/parser/tests/**` · `modules/language-server/src/tests/**` · the per-report status lines in
+  `specs/06-snapshot-review/` · snapshot **renames** only (`git mv`, byte-identical)
+does-not-touch: |-
+  any lowering (02–05), the checker and parser sources (01), `comptime/snapshot.zig`,
+  `codegen/snapshot.zig` (18), `libs/std/**`, `modules/language-server/src/**` outside `src/tests/`
+  (26). A `wrong-output` row that needs one of these is **registered** in the owning front's README
+  with its snapshot name, not fixed here.
+---
 # Front 07 — review-backlog
-
-**Milestone:** 1.0.11-beta
-**Priority:** low — nothing ships wrong because of it, but the open rows of the 1.0.1-beta snapshot
-review sit between the suite and "every snapshot proves what its test claims", and a row that
-names a compiler defect must reach the front that owns the file. Never opened in 1.0.5 or 1.0.10
-(C-22, all boxes unticked).
-**Depends on:** `02-erlang`, `03-beam`, `04-js`, `05-wasm` landed (step 4 renames in their snapshot
-directories; wave A's columns are re-derived against their output) · `01-checker` landed (wave B's
-shared root causes) · `00-gate` (nothing of this front's files is a gate item).
-**Owns:** `modules/compiler-core/src/utils/snap.zig` · `scripts/snap_audit.sh` (and its
-`scripts/AGENTS.md` section) · `src/codegen/tests/**` (the test sources; a backend front's
-fixtures are its carve-out while it runs) · `src/comptime/tests/**` except `helpers.zig` ·
-`src/parser/tests/**` · `modules/language-server/src/tests/**` · the per-report status lines in
-`specs/06-snapshot-review/` · snapshot **renames** only (`git mv`, byte-identical)
-**Does not touch:** any lowering (02–05), the checker and parser sources (01), `comptime/snapshot.zig`,
-`codegen/snapshot.zig` (18), `libs/std/**`, `modules/language-server/src/**` outside `src/tests/`
-(26). A `wrong-output` row that needs one of these is **registered** in the owning front's README
-with its snapshot name, not fixed here.
 
 Paths are relative to `repository/botopink-lang/modules/compiler-core/`, except those starting with
 `scripts/` or `modules/`, which are relative to `repository/botopink-lang/`. Report citations

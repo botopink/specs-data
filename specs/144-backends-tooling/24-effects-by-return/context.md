@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 24 — effects by return type: the guide as one program, four confirmations, one measurement
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s1 → B-27 · s2 → B-27 · s3 → B-27. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

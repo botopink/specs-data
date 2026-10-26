@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Track C — jhonstart · snapshot-test map (examples)
 
 The same map as [`test-snap.md`](test-snap.md) for `repository/jhonstart/examples/**` — the five projects `modules.md § 8` creates, all landed. Contract, helpers and style rules are `test-snap.md § 0`; nothing is restated here. Each project has `botopink.json` (dependencies as listed, `"src": "src/"`), a `src/main.bp` declaring its module tree, `test/`, and `test/__snapshots__/` beside its tests; a test imports a module by its path under `src/` (`from "sidebar"`, `from "app/layout"`), and a value already rendered to a string is snapshotted with std's `testing.snapshots.assertText`. The paths under each case are relative to `repository/jhonstart/examples/<project>/test/`.

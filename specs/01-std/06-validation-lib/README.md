@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 06 (std track) — the bundled `validation` library
-
-**Milestone:** 1.0.10-beta
 
 The directory number is this front's index inside `01-std`, beside `04-routing-lib` and
 `05-actions-lib`; it is not a milestone front number — rakun's front 06 is

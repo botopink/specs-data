@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: C jhonstart
+priority: high — without a boundary every component is a server component and nothing is interactive; without a *checked* boundary, a secret read on the server reaches the browser and nobody notices
+target: js (client) — `client.bp` is pure and its tests run on both rows
+wave: "5"
+depends-on: 28 · 30 (payload envelope and the render, read-only) · 68 (soft — build-time enforcement; 29 lands without it) · 94 (element builders used by the examples)
+owns: "`modules/jhonstart/src/client.bp` — including `islandAttr`, the island marker pair, which front 30's render calls directly and front 68's generated entry imports (decision 113: one definition, in the package that writes the marker) — with `island_runtime.mjs` / `sidecars/jhonstart_island.erl`, and `modules/jhonstart/test/client_test.bp`"
+does-not-touch: "`element.bp`, `hooks.bp`, `jhonstart-html/src/html.bp` (frozen), `router.bp` (26), `jhonstart-link` (27), `server.bp` (28)"
+reference: "`NEXTJS-DOCS.md § 7. Server e Client Components` · `§ 27. Diretivas` · https://nextjs.org/docs/app/api-reference/directives/use-client · https://nextjs.org/docs/app/guides/server-and-client-boundary"
+---
 # Front 29 — Jhonstart Client Directive
-
-**Milestone:** 1.0.10-beta
-**Track:** C jhonstart
-**Priority:** high — without a boundary every component is a server component and nothing is interactive; without a *checked* boundary, a secret read on the server reaches the browser and nobody notices
-**Target:** js (client) — `client.bp` is pure and its tests run on both rows
-**Wave:** 5
-**Depends on:** 28 · 30 (payload envelope and the render, read-only) · 68 (soft — build-time enforcement; 29 lands without it) · 94 (element builders used by the examples)
-**Owns:** `modules/jhonstart/src/client.bp` — including `islandAttr`, the island marker pair, which front 30's render calls directly and front 68's generated entry imports (decision 113: one definition, in the package that writes the marker) — with `island_runtime.mjs` / `sidecars/jhonstart_island.erl`, and `modules/jhonstart/test/client_test.bp`
-**Does not touch:** `element.bp`, `hooks.bp`, `jhonstart-html/src/html.bp` (frozen), `router.bp` (26), `jhonstart-link` (27), `server.bp` (28)
-**Reference:** `NEXTJS-DOCS.md § 7. Server e Client Components` · `§ 27. Diretivas` · https://nextjs.org/docs/app/api-reference/directives/use-client · https://nextjs.org/docs/app/guides/server-and-client-boundary
 
 ---
 

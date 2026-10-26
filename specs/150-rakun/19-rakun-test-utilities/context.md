@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 19 — rakun test utilities: the Redis double, context control, the broker double, `bootAndExit`
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s1 → 150 s10 · s2 → 150 s21 · s3 → 150 s21 · s4 → 150 s21 · s5 → 150 s21 · s7 → 150 s21. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

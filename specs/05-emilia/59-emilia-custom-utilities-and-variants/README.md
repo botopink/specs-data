@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** medium-high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 34 (`Variant`-built modifiers), 56 (`Variant`, `Sheet`, the `components` layer), 57 (`arbValue`, `arbSel`, the `cssIdent` reject set)
+code: |-
+  `repository/emilia/modules/emilia/src/compose.bp` (`scrollbarHidden`, `compose`, `hocus`,
+  `selector`, `themeMidnight`; no `declare fn`, no `#[@`, no `comptime`, no `@emit`) · `src/emilia.bp`
+  (`// ── front 59 · the named-class escape`: `named`, beside the read-only `lookupRule` cell — here because
+  a sibling module cannot import `emilia.bp` and a host cell does not cross modules). No `Token` variant,
+  no `tokenToSheet` arm.
+user-docs: "`repository/emilia/docs.md` § *Your own utilities and variants*"
+reference: "`TAILWIND_CSS_DOCS.md § 3.1`, `§ 3.7`, `§ 3.9`, `§ 20.3 @custom-variant`, `§ 20.4 @utility`, `§ 20.5 @apply`, `§ 20.7 @variant` · https://tailwindcss.com/docs/functions-and-directives"
+---
 # Front 59 — emilia custom utilities and variants
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** medium-high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 34 (`Variant`-built modifiers), 56 (`Variant`, `Sheet`, the `components` layer), 57 (`arbValue`, `arbSel`, the `cssIdent` reject set)
-**Code:** `repository/emilia/modules/emilia/src/compose.bp` (`scrollbarHidden`, `compose`, `hocus`,
-`selector`, `themeMidnight`; no `declare fn`, no `#[@`, no `comptime`, no `@emit`) · `src/emilia.bp`
-(`// ── front 59 · the named-class escape`: `named`, beside the read-only `lookupRule` cell — here because
-a sibling module cannot import `emilia.bp` and a host cell does not cross modules). No `Token` variant,
-no `tokenToSheet` arm.
-**User docs:** `repository/emilia/docs.md` § *Your own utilities and variants*
-**Reference:** `TAILWIND_CSS_DOCS.md § 3.1`, `§ 3.7`, `§ 3.9`, `§ 20.3 @custom-variant`, `§ 20.4 @utility`, `§ 20.5 @apply`, `§ 20.7 @variant` · https://tailwindcss.com/docs/functions-and-directives
 
 **Open:** none.
 

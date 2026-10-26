@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review — codegen `values.zig` (32) · `dispatch.zig` (11) · `externals.zig` (9)
 
 Repo: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang` (first pass at HEAD `beb19e9`; re-checked at HEAD `96ff203`).

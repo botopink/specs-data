@@ -1,21 +1,25 @@
+---
+milestone: 1.0.10-beta
+state: |-
+  closed. Every form the language decided against is refused by name, located, with a
+  message that says what to write instead, and has its `reject/` cell. Decision 132's refusal of the
+  `;` after a braced block is not this front's: its parser half is parked here as
+  [`decision-29-parser-half.patch`](decision-29-parser-half.patch) (`isBlockShapedStmt` +
+  `blockStatementSemicolon`, to be narrowed to `isBracedBlockStmt`) and lands with
+  [`16-formatter`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/16-formatter/README.md) once every library and `tests/language` is migrated.
+owns: |-
+  `modules/compiler-core/src/parser/types.zig` · `src/lexer.zig` and `src/lexer/token.zig` ·
+  `src/print.zig`'s `errorMessages` table and the `ParseErrorType` enum in `src/parser.zig` · four named
+  sites in `src/parser/exprs.zig` — `parsePostfixChain`, `parsePrimary`'s grouped-expression arm and
+  the block loops of the `if` then-branch and the lambda body · its cases in `src/parser/tests/**`
+does-not-touch: |-
+  `src/comptime/**` and the rest of `src/parser/{decls,exprs,patterns}.zig`
+  ([`01-checker`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/01-checker/README.md)) · `src/parser/decls.zig`'s member sites and `src/format.zig`
+  ([`16-formatter`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/16-formatter/README.md)) · the loop keywords ([`22-loops`](../22-loops/README.md))
+  · `tests/language/**` ([`12-language-tests`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/12-language-tests/README.md)) · `docs.md`
+  ([`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/08-hygiene/README.md)) · `src/codegen/**`
+---
 # Front 15 — language surface
-
-**Milestone:** 1.0.10-beta
-**State:** closed. Every form the language decided against is refused by name, located, with a
-message that says what to write instead, and has its `reject/` cell. Decision 132's refusal of the
-`;` after a braced block is not this front's: its parser half is parked here as
-[`decision-29-parser-half.patch`](decision-29-parser-half.patch) (`isBlockShapedStmt` +
-`blockStatementSemicolon`, to be narrowed to `isBracedBlockStmt`) and lands with
-[`16-formatter`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/16-formatter/README.md) once every library and `tests/language` is migrated.
-**Owns:** `modules/compiler-core/src/parser/types.zig` · `src/lexer.zig` and `src/lexer/token.zig` ·
-`src/print.zig`'s `errorMessages` table and the `ParseErrorType` enum in `src/parser.zig` · four named
-sites in `src/parser/exprs.zig` — `parsePostfixChain`, `parsePrimary`'s grouped-expression arm and
-the block loops of the `if` then-branch and the lambda body · its cases in `src/parser/tests/**`
-**Does not touch:** `src/comptime/**` and the rest of `src/parser/{decls,exprs,patterns}.zig`
-([`01-checker`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/01-checker/README.md)) · `src/parser/decls.zig`'s member sites and `src/format.zig`
-([`16-formatter`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/16-formatter/README.md)) · the loop keywords ([`22-loops`](../22-loops/README.md))
-· `tests/language/**` ([`12-language-tests`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/12-language-tests/README.md)) · `docs.md`
-([`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/08-hygiene/README.md)) · `src/codegen/**`
 
 Paths are relative to `repository/botopink-lang/`.
 

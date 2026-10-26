@@ -1,3 +1,6 @@
+---
+milestone: 1.0.12-beta
+---
 # Cross-front contracts — 1.0.12-beta
 
 Formats the fronts must agree on. Each contract: one owner, several consumers, a test asserting a

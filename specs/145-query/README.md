@@ -1,16 +1,18 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: high — the library tier (decision 433); runs after the 144 steps it names.
+repository: "`query` (`botopink/query`, erika renamed; packages `query`, `query-test`) — worktree `--repo query` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)"
+model: sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
+owns: "`repository/query/**`"
+depends-on: "144 B-18 (311 / 397: 01-checker s29 and s41, landing) · B-28 (s3)"
+does-not-touch: |-
+  `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
+  front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
+  commit (decision 188), producer first.
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+---
 # Front 145 — query (erika renamed): the database target, `query-test`, the `;` migration
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** high — the library tier (decision 433); runs after the 144 steps it names.
-**Repository:** `query` (`botopink/query`, erika renamed; packages `query`, `query-test`) — worktree `--repo query` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)
-**Model:** sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
-**Owns:** `repository/query/**`
-**Depends on:** 144 B-18 (311 / 397: 01-checker s29 and s41, landing) · B-28 (s3)
-**Does not touch:** `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
-front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
-commit (decision 188), producer first.
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
 
 ## Alias table
 

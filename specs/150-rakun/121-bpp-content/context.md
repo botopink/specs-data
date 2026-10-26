@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 121 — bpp content: Markdown, frontmatter and collections
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-onze.md): s3 → 150 s64 · s4 → 150 s64 · s5 → 150 s64 · s6 → 150 s64 · s7 → 150 s64 · s8 → 150 s64 · s9 → 150 s64 · s10 → 150 s64 · gate → 150 s64. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

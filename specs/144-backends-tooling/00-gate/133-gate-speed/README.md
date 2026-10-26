@@ -1,18 +1,24 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  high — decisions 229 and 265: the cold gate (the run that decides a landing) within 7m30s for
+  1.0.11 (5 minutes on 16 idle cores deferred to the next milestone), and a warm run under 1 minute, with test consistency untouched.
+depends-on: |-
+  `115-gate-perf` (the stage times, plan counts and budget it built), `131-gate-build-cache`
+  (every cache under `.botopinkbuild/cache/`; this front's cell-result store lives beside it and follows
+  the same rules), the gate green on `feat`.
+owns: |-
+  `scripts/gate.sh` (`budget_cold`, `budget_warm`, the warm/cold contract), `tests/language/run.sh`,
+  `scripts/test-libs.sh`, `modules/lib-test-runner/**` (the cell-result store and the per-cell cost),
+  `scripts/check-docs.sh` (its per-fence cost), `modules/compiler-cli/src/cli/{test_cmd,run}.zig` (what a
+  cell spawns), this README's measurement tables, and the `AGENTS.md` of each directory touched.
+does-not-touch: |-
+  what any stage runs (cells, targets, fences, audits); the checker's rules; the
+  emitters' output; snapshots. A stage that runs fewer cells, or answers a cell from anything but an
+  identical input, is this front's defect.
+---
 # Front 133 — gate-speed: 5 minutes cold, 1 minute warm, nothing skipped but by equal content
-
-**Milestone:** 1.0.11-beta
-**Priority:** high — decisions 229 and 265: the cold gate (the run that decides a landing) within 7m30s for
-1.0.11 (5 minutes on 16 idle cores deferred to the next milestone), and a warm run under 1 minute, with test consistency untouched.
-**Depends on:** `115-gate-perf` (the stage times, plan counts and budget it built), `131-gate-build-cache`
-(every cache under `.botopinkbuild/cache/`; this front's cell-result store lives beside it and follows
-the same rules), the gate green on `feat`.
-**Owns:** `scripts/gate.sh` (`budget_cold`, `budget_warm`, the warm/cold contract), `tests/language/run.sh`,
-`scripts/test-libs.sh`, `modules/lib-test-runner/**` (the cell-result store and the per-cell cost),
-`scripts/check-docs.sh` (its per-fence cost), `modules/compiler-cli/src/cli/{test_cmd,run}.zig` (what a
-cell spawns), this README's measurement tables, and the `AGENTS.md` of each directory touched.
-**Does not touch:** what any stage runs (cells, targets, fences, audits); the checker's rules; the
-emitters' output; snapshots. A stage that runs fewer cells, or answers a cell from anything but an
-identical input, is this front's defect.
 
 ---
 

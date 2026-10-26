@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Migration cost
 
 Measured / . Re-measure before quoting;

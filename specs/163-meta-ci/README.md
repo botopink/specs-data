@@ -1,15 +1,18 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+priority: |-
+  medium (decision 433) — opens after the library tier, or in a free thread when nothing it needs
+  is open.
+repository: the meta repository — a full worktree; s7 and s8 change every library repository too (one commit per repository, decision 188), s6 a new `botopink/tour`, s9 measures botopink-lang and the libraries
+model: by step — sonnet for the CI and gate steps whose README fixes the design, opus where a choice is left (s6), haiku for the sweep (`AGENTS.md` § Which model a thread runs on); the Conformance step opus
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+owns: |-
+  the meta `.github/workflows/**`, `scripts/{worktree-add.sh,language-gap-markers.sh}`, `AGENTS.md`
+  § Layout and § CI, the submodule pointers' sweep, `specs/**`'s drift rule.
+depends-on: nothing; s2 after every library front merges.
+---
 # Front 163 — meta-ci: the meta repository's CI, the pointers, the specs' upkeep
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-2
-**Priority:** medium (decision 433) — opens after the library tier, or in a free thread when nothing it needs
-is open.
-**Repository:** the meta repository — a full worktree; s7 and s8 change every library repository too (one commit per repository, decision 188), s6 a new `botopink/tour`, s9 measures botopink-lang and the libraries
-**Model:** by step — sonnet for the CI and gate steps whose README fixes the design, opus where a choice is left (s6), haiku for the sweep (`AGENTS.md` § Which model a thread runs on); the Conformance step opus
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
-**Owns:** the meta `.github/workflows/**`, `scripts/{worktree-add.sh,language-gap-markers.sh}`, `AGENTS.md`
-§ Layout and § CI, the submodule pointers' sweep, `specs/**`'s drift rule.
-**Depends on:** nothing; s2 after every library front merges.
 
 Also here, with no box of its own: `own-a` (the runners `scripts/{gate.sh,test-libs.sh,lib/pool.sh}`,
 `tests/language/run.sh`, `modules/test-shard/**`, `modules/lib-test-runner/**` have no owner — 144 owns them as

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # 150 rakun — the open steps of the former front 153 (dbcontext: botopink's JPA over erika (398))
 
 Front 153 was refiled under 150 rakun by 165 s8: its open steps are 150 s48 … s51, in the workspace

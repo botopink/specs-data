@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: C jhonstart
+priority: critical — the one owner of the HTML tag constructors every other track-C front builds with
+target: both — the surface is rendered on the server by front 30 and hydrated in the browser by front 68, so every constructor must produce the identical `Element` on both targets
+wave: "0"
+depends-on: none — only the public `Element` record (`element.bp`)
+owns: "`repository/jhonstart/modules/jhonstart/src/elements.bp` (plus its inline `test` blocks), `repository/jhonstart/modules/jhonstart-html/test/elements_test.bp`"
+does-not-touch: "`element.bp`, `hooks.bp`, `html.bp` (frozen), and every other front's module"
+reference: "`NEXTJS-DOCS.md § 4. App Router — Fundamentos` · Root Layout (obrigatório) · `NEXTJS-DOCS.md § 10. Mutação de Dados` · <https://html.spec.whatwg.org/multipage/indices.html#elements-3> · <https://html.spec.whatwg.org/multipage/syntax.html#void-elements> · <https://nextjs.org/docs/app/api-reference/file-conventions/layout>"
+---
 # Front 94 — Jhonstart Element Surface
-
-**Milestone:** 1.0.10-beta
-**Track:** C jhonstart
-**Priority:** critical — the one owner of the HTML tag constructors every other track-C front builds with
-**Target:** both — the surface is rendered on the server by front 30 and hydrated in the browser by front 68, so every constructor must produce the identical `Element` on both targets
-**Wave:** 0
-**Depends on:** none — only the public `Element` record (`element.bp`)
-**Owns:** `repository/jhonstart/modules/jhonstart/src/elements.bp` (plus its inline `test` blocks), `repository/jhonstart/modules/jhonstart-html/test/elements_test.bp`
-**Does not touch:** `element.bp`, `hooks.bp`, `html.bp` (frozen), and every other front's module
-**Reference:** `NEXTJS-DOCS.md § 4. App Router — Fundamentos` · Root Layout (obrigatório) · `NEXTJS-DOCS.md § 10. Mutação de Dados` · <https://html.spec.whatwg.org/multipage/indices.html#elements-3> · <https://html.spec.whatwg.org/multipage/syntax.html#void-elements> · <https://nextjs.org/docs/app/api-reference/file-conventions/layout>
 
 ---
 

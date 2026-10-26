@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 05 (std track) — the bundled `actions` library
-
-**Milestone:** 1.0.10-beta
 
 The directory number is this front's index inside `01-std`, beside `04-routing-lib`; it is not a
 milestone front number — rakun's front 05 is `03-rakun/05-rakun-config-profiles`. Everywhere else it

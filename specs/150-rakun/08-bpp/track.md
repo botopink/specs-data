@@ -1,9 +1,14 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+repos: |-
+  `repository/rakun/modules/rakun-bpp` · `repository/rakun/modules/rakun-ssr` · `repository/rakun` · `repository/rakun/modules/rakun-stylesheet` ·
+  `repository/botopink-lang` (116 only) · **Reference:** Astro docs (`/home/ericfillipe/develop/astro/astro-docs/`, 25 pages).
+depends-on: |-
+  `00-gate`; `03-bundled-libs/125-validation-zod` steps 0–2 and 12 (the `#[validated]`
+  type collections and actions take — `Schema<T>` is private, 306); the 04/05/07 fronts in § Order. **Map:** [`surface.md`](surface.md) (161 rows).
+---
 # Track 08 — bpp: Astro's feature set on the stack
-
-**Repos:** `repository/rakun/modules/rakun-bpp` · `repository/rakun/modules/rakun-ssr` · `repository/rakun` · `repository/rakun/modules/rakun-stylesheet` ·
-`repository/botopink-lang` (116 only) · **Reference:** Astro docs (`/home/ericfillipe/develop/astro/astro-docs/`, 25 pages).
-**Depends on:** `00-gate`; `03-bundled-libs/125-validation-zod` steps 0–2 and 12 (the `#[validated]`
-type collections and actions take — `Schema<T>` is private, 306); the 04/05/07 fronts in § Order. **Map:** [`surface.md`](surface.md) (161 rows).
 
 ## Goal
 

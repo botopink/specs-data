@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 141 — inventory: where each retired spelling is written
 
 Measured 2026-10-10 on the meta `feat` (re-measured by step 0 on `54c8a60f`), by

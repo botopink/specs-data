@@ -1,20 +1,26 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  critical — the two beam expected-failure lines, a target no gate stage ran, and a
+  `modules/` cell whose manifest `targets` the runner ignored.
+depends-on: |-
+  `110` (its wasm line; the link fix) · `112` (the `tests/language` reformat). `110`'s
+  last step waits on `ck-host`, and so does this front's step 4. `115` starts from this front's
+  `run.sh`.
+owns: |-
+  `modules/compiler-cli/src/cli/{build,run,test_cmd,libs}.zig` (the beam path of sidecar
+  shipping) · `modules/compiler-core/src/codegen/beam_asm.zig`, `codegen/beam/**` ·
+  `tests/language/run.sh` · `tests/language/expected-failures.txt` · the 18
+  `tests/language/run/*.targets` · every `tests/language/modules/*/botopink.json` `targets` ·
+  `tests/language/AGENTS.md` · the beam snapshots the emitter change re-records
+  (`modules/compiler-core/snapshots/codegen/{beam,wat}/beam/**`).
+does-not-touch: |-
+  `wat.zig` (110's); `erlang.zig`, `commonJS.zig` (read, not edited — two rows
+  handed to them below); `scripts/format-check.sh` (112's); `scripts/test-libs.sh`,
+  `lib-test-runner/**` (113's); `scripts/gate.sh`, `build.zig` (115's — § Left for other owners).
+---
 # Front 111 — gate-beam-and-targets: the beam build ships its sidecars, beam joins `--target all`, every narrowing is honoured and audited, `expected-failures.txt` is deleted
-
-**Milestone:** 1.0.11-beta
-**Priority:** critical — the two beam expected-failure lines, a target no gate stage ran, and a
-`modules/` cell whose manifest `targets` the runner ignored.
-**Depends on:** `110` (its wasm line; the link fix) · `112` (the `tests/language` reformat). `110`'s
-last step waits on `ck-host`, and so does this front's step 4. `115` starts from this front's
-`run.sh`.
-**Owns:** `modules/compiler-cli/src/cli/{build,run,test_cmd,libs}.zig` (the beam path of sidecar
-shipping) · `modules/compiler-core/src/codegen/beam_asm.zig`, `codegen/beam/**` ·
-`tests/language/run.sh` · `tests/language/expected-failures.txt` · the 18
-`tests/language/run/*.targets` · every `tests/language/modules/*/botopink.json` `targets` ·
-`tests/language/AGENTS.md` · the beam snapshots the emitter change re-records
-(`modules/compiler-core/snapshots/codegen/{beam,wat}/beam/**`).
-**Does not touch:** `wat.zig` (110's); `erlang.zig`, `commonJS.zig` (read, not edited — two rows
-handed to them below); `scripts/format-check.sh` (112's); `scripts/test-libs.sh`,
-`lib-test-runner/**` (113's); `scripts/gate.sh`, `build.zig` (115's — § Left for other owners).
 
 ---
 

@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: high — actuator defaults to exposing only `health` for a reason; an endpoint set reachable without authentication on the public listener is a production incident, not a feature gap. And without readiness, a rolling deploy drops requests every time
+target: erlang (server)
+wave: "5"
+depends-on: 10 · 11 · 74 — and it sequences against front 07's shutdown drain
+owns: "`modules/rakun-actuator/src/exposure.bp`, `src/access.bp`, `src/management_listener.bp`, `src/probes.bp`, `src/sanitize.bp`, `src/availability.bp` · `modules/rakun-actuator/test/exposure_test.bp`, `test/access_test.bp`, `test/probes_test.bp`, `test/sanitize_test.bp`"
+does-not-touch: the rest of `modules/rakun-actuator/src/**` — front 11 owns the endpoint infrastructure, the health and info registries and every endpoint body. This front owns who may reach them, on which listener, and what the response is allowed to contain
+reference: "`09-actuator.md § Controlando Acesso`, `§ Expondo Endpoints`, `§ Path e Porta`, `§ SSL Diferente para Management`, `§ Sanitizacao`, `§ CORS`, `§ Seguranca`, `§ Health Groups`, `§ Kubernetes Probes` · `03-recursos-principais.md § Disponibilidade da Aplicacao` · <https://docs.spring.io/spring-boot/reference/actuator/endpoints.html> · <https://docs.spring.io/spring-boot/reference/deployment/cloud.html#deployment.cloud.kubernetes>"
+---
 # Front 76 — rakun Actuator Access Control and Kubernetes Probes
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — actuator defaults to exposing only `health` for a reason; an endpoint set reachable without authentication on the public listener is a production incident, not a feature gap. And without readiness, a rolling deploy drops requests every time
-**Target:** erlang (server)
-**Wave:** 5
-**Depends on:** 10 · 11 · 74 — and it sequences against front 07's shutdown drain
-**Owns:** `modules/rakun-actuator/src/exposure.bp`, `src/access.bp`, `src/management_listener.bp`, `src/probes.bp`, `src/sanitize.bp`, `src/availability.bp` · `modules/rakun-actuator/test/exposure_test.bp`, `test/access_test.bp`, `test/probes_test.bp`, `test/sanitize_test.bp`
-**Does not touch:** the rest of `modules/rakun-actuator/src/**` — front 11 owns the endpoint infrastructure, the health and info registries and every endpoint body. This front owns who may reach them, on which listener, and what the response is allowed to contain
-**Reference:** `09-actuator.md § Controlando Acesso`, `§ Expondo Endpoints`, `§ Path e Porta`, `§ SSL Diferente para Management`, `§ Sanitizacao`, `§ CORS`, `§ Seguranca`, `§ Health Groups`, `§ Kubernetes Probes` · `03-recursos-principais.md § Disponibilidade da Aplicacao` · <https://docs.spring.io/spring-boot/reference/actuator/endpoints.html> · <https://docs.spring.io/spring-boot/reference/deployment/cloud.html#deployment.cloud.kubernetes>
 
 ---
 

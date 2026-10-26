@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 02 — erlang: the erlang target answers what decision 8 says, on every shape
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s14 → B-13 · rows box 1 → B-22; [150-rakun](../../150-rakun/README.md): rows box 2 → 150 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

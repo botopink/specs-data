@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Group B — build files that lie (5.4, 5.16, 5.17)
 
 > Carried from `1.0.2-beta/11-hygiene/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

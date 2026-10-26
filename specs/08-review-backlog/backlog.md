@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Review backlog — open rows per report
 
 > Carried from `1.0.2-beta/09-review-tooling/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

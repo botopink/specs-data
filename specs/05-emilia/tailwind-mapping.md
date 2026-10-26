@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Tailwind CSS → emilia mapping
 
 > Every Tailwind CSS v4.3 utility family and the emilia token that emits it, in the spelling the

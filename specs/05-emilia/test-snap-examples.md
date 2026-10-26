@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: D — emilia · **Contract:** as in [`test-snap.md`](test-snap.md) — `@src()`, `snapshots.path(loc)`, `<path>.new` on mismatch, no update flag, one `.snap` shared by `commonJS` and `erlang`.
+---
 # test-snap-examples — the snapshot-test map of `repository/emilia/examples/**`
-
-**Track:** D — emilia · **Contract:** as in [`test-snap.md`](test-snap.md) — `@src()`, `snapshots.path(loc)`, `<path>.new` on mismatch, no update flag, one `.snap` shared by `commonJS` and `erlang`.
 
 Nine example packages ([`modules.md`](modules.md) § examples). Each is
 `examples/<name>/{botopink.json, src/main.bp, test/main_test.bp, test/__snapshots__/}` and builds under

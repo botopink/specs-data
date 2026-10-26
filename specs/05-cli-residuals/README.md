@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 05 — cli-residuals
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17 (`botopink-lang` merge `440a1d3`); step 6 (f) closed by decision 5.5a (no
 meta gate, the dangling link deleted). What it closed: a driver that ran the program it compiled,

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 16 — formatter: the ecosystem stops writing the `;` after a braced block, and the parser refuses it
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s10 → B-02 · s11 → B-21 · s1 → B-28 · s2 → B-28 · s3 → B-28 · s4 → B-28 · s5 → B-28 · s6 → B-28 · s7 → B-28 · s9 → B-28. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

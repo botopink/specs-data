@@ -1,7 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: B — rakun · **Repo:** `repository/rakun` · **Reference:** Spring Boot 4 (`/home/ericfillipe/develop/spring-boot-4/docs/`, 13 files) + the server half of Next.js (`/home/ericfillipe/develop/nextjs/NEXTJS-DOCS.md`) · **Cut:** [`modules.md`](modules.md) · **Maps:** [`test-snap.md`](test-snap.md) · [`test-snap-examples.md`](test-snap-examples.md) · **Gaps:** [`unification.md`](unification.md) · **Target:** erlang, except the boundary fronts named below
+---
 # Track B — rakun
-
-**Milestone:** 1.0.10-beta
-**Track:** B — rakun · **Repo:** `repository/rakun` · **Reference:** Spring Boot 4 (`/home/ericfillipe/develop/spring-boot-4/docs/`, 13 files) + the server half of Next.js (`/home/ericfillipe/develop/nextjs/NEXTJS-DOCS.md`) · **Cut:** [`modules.md`](modules.md) · **Maps:** [`test-snap.md`](test-snap.md) · [`test-snap-examples.md`](test-snap-examples.md) · **Gaps:** [`unification.md`](unification.md) · **Target:** erlang, except the boundary fronts named below
 
 | Document | Holds |
 |---|---|

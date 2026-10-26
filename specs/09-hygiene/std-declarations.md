@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Group C — `libs/std` declarations and one stale filename (5.1, 5.2, 5.3, 5.14)
 
 > Carried from `1.0.2-beta/11-hygiene/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

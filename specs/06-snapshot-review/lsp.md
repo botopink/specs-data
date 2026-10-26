@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # LSP snapshot review — `modules/language-server/snapshots/lsp/` (102 files)
 
 Repo root: `repository/botopink-lang`. All paths below are relative to `modules/language-server/`.

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Group D — instructions and vocabulary that do not work (5.8, 5.13)
 
 > Carried from `1.0.2-beta/11-hygiene/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 04 (std track) — the bundled `routing` library
-
-**Milestone:** 1.0.10-beta
 
 The directory number is this front's index inside `01-std`, beside `01`/`02`/`03`; it is not a
 milestone front number — rakun's front 04 is `03-rakun/04-rakun-erlang-runtime`. Everywhere else it

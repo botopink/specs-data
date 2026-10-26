@@ -1,13 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** low · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 35 (the spacing scale), 54 (`spacing(n)`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 43 — tables` block: `Table`,
+  and the top-level `TableSpacingRaw`) · `src/emilia.bp` (front-43 block: `tableTokenToCss` and its
+  sub-dispatchers taking `th: Theme`, `rawTableSpacing`; two `tokenToSheet` arms between fronts 42 and 44)
+user-docs: "`repository/emilia/docs.md` § *Table*"
+reference: "`TAILWIND_CSS_DOCS.md § 14` (spacing base `§ 21.2`) · https://tailwindcss.com/docs/border-collapse"
+---
 # Front 43 — emilia tables
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** low · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 35 (the spacing scale), 54 (`spacing(n)`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 43 — tables` block: `Table`,
-and the top-level `TableSpacingRaw`) · `src/emilia.bp` (front-43 block: `tableTokenToCss` and its
-sub-dispatchers taking `th: Theme`, `rawTableSpacing`; two `tokenToSheet` arms between fronts 42 and 44)
-**User docs:** `repository/emilia/docs.md` § *Table*
-**Reference:** `TAILWIND_CSS_DOCS.md § 14` (spacing base `§ 21.2`) · https://tailwindcss.com/docs/border-collapse
 
 **Open:** none.
 

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 26 — cli-tooling: a program built by the CLI serves on the BEAM, and every driver speaks
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s9 → B-27 · rows → B-27. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

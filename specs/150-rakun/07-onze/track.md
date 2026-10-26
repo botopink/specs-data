@@ -1,7 +1,11 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+repo: |-
+  `repository/rakun/modules/rakun-ssr` · **Reference:** Next.js docs, framework half · tree on disk:
+  [`modules.md`](modules.md) · uncovered Next.js rows: [`reference-holes.md`](reference-holes.md).
+---
 # Track 07 — onze
-
-**Repo:** `repository/rakun/modules/rakun-ssr` · **Reference:** Next.js docs, framework half · tree on disk:
-[`modules.md`](modules.md) · uncovered Next.js rows: [`reference-holes.md`](reference-holes.md).
 
 onze wires (decision 113): the one package importing jhonstart, rakun and the `jhonstart-emilia`
 bridge together (`jhonstart-styled` once `08-bpp/119` deletes that member, decision 338); where the libraries meet in an example (decision 114). Its eight members and the

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # JS-4 — a botopink pattern as a binding target: the contract
 
 From 1.0.10's `04-js/pattern-binding.md`. commonJS, wasm, beam halves on feat (`03-beam` step 1);

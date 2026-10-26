@@ -1,7 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: C — jhonstart · **Repo:** `repository/jhonstart` · **Reference:** Next.js docs (`/home/ericfillipe/develop/nextjs/NEXTJS-DOCS.md`), the React half — the HTML render, App Router hooks, `<Link>`, Server/Client Components, streaming, error boundaries, metadata, forms, `'use client'` — plus the `html """…"""` DSL and the element surface that half renders through.
+---
 # Track C — jhonstart
-
-**Milestone:** 1.0.10-beta
-**Track:** C — jhonstart · **Repo:** `repository/jhonstart` · **Reference:** Next.js docs (`/home/ericfillipe/develop/nextjs/NEXTJS-DOCS.md`), the React half — the HTML render, App Router hooks, `<Link>`, Server/Client Components, streaming, error boundaries, metadata, forms, `'use client'` — plus the `html """…"""` DSL and the element surface that half renders through.
 
 **jhonstart writes the HTML** (decision 113): the render, its escaping, the document, the payload, islands, streaming, links, hydration, the client router (with `clientApp`, the client-only entry), the navigation signals end to end and the UI file conventions (`#[page]`, `#[layout]`, `#[template]` — each a `fn … -> @Component<ElementBase, Element>` — `PageContext`, `LayoutProps`; decisions 114 and 117) are this track's, and emilia's CSS enters through the render-plugin point and the `jhonstart-emilia` bridge member. jhonstart and rakun never import each other; onze is the only package that names both.
 

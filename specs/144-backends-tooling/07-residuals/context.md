@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 07 — residuals: the snapshot review, the documents and comments, the ecosystem's tail
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s1 → B-29 · s2 → B-29 · s4 → B-29 · s8 → B-29 · s9 → B-29; [145-query](../../145-query/README.md): s10 → 145 s3; [163-meta-ci](../../163-meta-ci/README.md): s11 → 163 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

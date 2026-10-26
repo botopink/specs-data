@@ -1,6 +1,7 @@
+---
+milestone: 1.0.12-beta
+---
 # Specs — 1.0.12-beta
-
-**Milestone:** 1.0.12-beta
 
 1.0.12-beta is 1.0.11-beta consolidated: the same goals and the same open work, rewritten to current state and
 remaining work only. The history — measurements, status narratives, the text of done steps, the carry maps, the

@@ -1,21 +1,27 @@
+---
+milestone: 1.0.11-beta
+owner: machine-1
+priority: |-
+  low — every library compiles, runs and passes its cells; what is left is one manifest,
+  one arm form the maintainer has not ruled on, and the pointers' sweep.
+depends-on: |-
+  `00-gate` (RT-1 — `erika-linq`'s ledger line is deleted by the gate; this front drops
+  the manifest's `"targets"` in the same landing) · `16-formatter` steps 3–4 (the siblings' C-13
+  migration and C-12 reformat — the library tracks run them in their trees; this front runs them in
+  erika, the one library with no track this milestone) · the maintainer's word on C-14's `->` arms ·
+  every library track's merge into its own `feat` (the pointers last).
+owns: |-
+  `repository/erika/**` (with `02-std-and-packaging/98-packaging-tail`, which owns
+  `erika/modules/erika-test/**`, `examples/erika-linq/README.md` and `erika/AGENTS.md` — this front
+  owns the sources and the manifests) · the meta submodule pointers **only**. The other four library
+  trees are their tracks' (`04-rakun`, `05-jhonstart`, `06-emilia`, `07-onze`); a row below that names
+  one of them is that track's.
+does-not-touch: |-
+  `repository/botopink-lang/**` (the ledger is `00-gate`'s; `c13-migrate.py` is
+  16's — run, not edited) · `repository/vscode-extension/**`.
+does-not-touch-until-00-gate-lands: "`repository/erika/examples/erika-linq/botopink.json` (RT-1)."
+---
 # Front 09 — ecosystem residuals
-
-**Milestone:** 1.0.11-beta
-**Priority:** low — every library compiles, runs and passes its cells; what is left is one manifest,
-one arm form the maintainer has not ruled on, and the pointers' sweep.
-**Depends on:** `00-gate` (RT-1 — `erika-linq`'s ledger line is deleted by the gate; this front drops
-the manifest's `"targets"` in the same landing) · `16-formatter` steps 3–4 (the siblings' C-13
-migration and C-12 reformat — the library tracks run them in their trees; this front runs them in
-erika, the one library with no track this milestone) · the maintainer's word on C-14's `->` arms ·
-every library track's merge into its own `feat` (the pointers last).
-**Owns:** `repository/erika/**` (with `02-std-and-packaging/98-packaging-tail`, which owns
-`erika/modules/erika-test/**`, `examples/erika-linq/README.md` and `erika/AGENTS.md` — this front
-owns the sources and the manifests) · the meta submodule pointers **only**. The other four library
-trees are their tracks' (`04-rakun`, `05-jhonstart`, `06-emilia`, `07-onze`); a row below that names
-one of them is that track's.
-**Does not touch:** `repository/botopink-lang/**` (the ledger is `00-gate`'s; `c13-migrate.py` is
-16's — run, not edited) · `repository/vscode-extension/**`.
-**Does not touch until 00-gate lands:** `repository/erika/examples/erika-linq/botopink.json` (RT-1).
 
 ## Carried from 1.0.10
 

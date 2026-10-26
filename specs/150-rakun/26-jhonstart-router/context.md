@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 26 — jhonstart core tail: the core member's open items (carries 1.0.10's 28 · 29 · 30 · 31)
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-jhonstart.md): s0 → 150 s36 · s1 → 150 s36 · s2 → 150 s36 · s3 → 150 s36 · s4 → 150 s36 · s5 → 150 s36 · s6 → 150 s36 · s8 → 150 s36 · s9 → 150 s36 · s10 → 150 s36 · s11 → 150 s36 · s12 → 150 s36 · s13 → 150 s36. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

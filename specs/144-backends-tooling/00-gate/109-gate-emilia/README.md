@@ -1,15 +1,21 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  medium — every emilia cell is green (17 commonJS, 17 erlang, at the open and at the
+  landing); the repository's own gate is what carried tolerances.
+depends-on: |-
+  none. `101` (jhonstart) for the examples gate's dependency only at verification
+  time — emilia's CI checks out jhonstart for it (`.github/workflows/test.yml`, the
+  `Checkout jhonstart` step).
+owns: |-
+  `repository/emilia/**` for the duration of the front — `.gitignore`, `scripts/git-hooks/**`,
+  `scripts/known-broken-examples.txt` (deleted), `.github/workflows/test.yml`, `AGENTS.md`.
+does-not-touch: |-
+  `repository/botopink-lang/**`; `src/**`, `modules/**`, `examples/**` of emilia
+  (`../../06-emilia/` owns them — nothing there is red).
+---
 # Front 109 — gate-emilia: the snapshot guard, the skip list gone, the hook that refuses
-
-**Milestone:** 1.0.11-beta
-**Priority:** medium — every emilia cell is green (17 commonJS, 17 erlang, at the open and at the
-landing); the repository's own gate is what carried tolerances.
-**Depends on:** none. `101` (jhonstart) for the examples gate's dependency only at verification
-time — emilia's CI checks out jhonstart for it (`.github/workflows/test.yml`, the
-`Checkout jhonstart` step).
-**Owns:** `repository/emilia/**` for the duration of the front — `.gitignore`, `scripts/git-hooks/**`,
-`scripts/known-broken-examples.txt` (deleted), `.github/workflows/test.yml`, `AGENTS.md`.
-**Does not touch:** `repository/botopink-lang/**`; `src/**`, `modules/**`, `examples/**` of emilia
-(`../../06-emilia/` owns them — nothing there is red).
 
 ---
 

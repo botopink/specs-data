@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 92 — RSocket: transports, TLS, channel, `#[messageMapping]`, dropped connections
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s2 → 150 s19 · s3 → 150 s19. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

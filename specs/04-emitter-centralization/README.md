@@ -1,9 +1,10 @@
+---
+milestone: 1.0.1-beta
+version: 1.0.1-beta
+status: delivered
+carried-forward: "[`../1.0.4-beta/01-backend-residuals/README.md`](../01-backend-residuals/README.md)"
+---
 # Spec 04 — Emitter Centralization
-
-**Milestone:** 1.0.1-beta
-**Version:** 1.0.1-beta
-**Status:** delivered
-**Carried forward:** [`../1.0.4-beta/01-backend-residuals/README.md`](../01-backend-residuals/README.md)
 
 ---
 

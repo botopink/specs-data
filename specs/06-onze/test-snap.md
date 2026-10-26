@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # onze — snapshot-test map of the modules
 
 The preventive map: for each front, the `.bp` tests its module ships and the exact `.snap` file each

@@ -1,8 +1,12 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+repos: |-
+  `repository/botopink-lang/libs/std` (+ the bundled libraries' consumer edits 97 names) ·
+  every `repository/<lib>/botopink.json` and `modules/<lib>-test/` skeleton · the manifest carve-out
+  (`modules/manifest/**`, decision 75).
+---
 # Track 02 — std and packaging
-
-**Repos:** `repository/botopink-lang/libs/std` (+ the bundled libraries' consumer edits 97 names) ·
-every `repository/<lib>/botopink.json` and `modules/<lib>-test/` skeleton · the manifest carve-out
-(`modules/manifest/**`, decision 75).
 
 Owes:
 

@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 14 — Tooling and docs
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-18, with two conditions it could not reach from its own files (named below).
 Carried from 1.0.3-beta front 04. Landed in four waves: `botopink-lang` `26d4fdc` (hover and `renderType` in

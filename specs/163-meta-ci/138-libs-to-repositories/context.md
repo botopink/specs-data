@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 138 — the shared libraries leave the compiler: one repository each
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [136-cardume](../../136-cardume/README.md): s1 → 136 s9 · s2 box 2 → 136 s9 · s5 boxes 1, 2, 3 → 136 s9. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 12 — Surface cutover (`type`, `behavior`, labeled tuples, separators)
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17 — `botopink-lang` merge `ed575b5` on `feat`, steps 1–4 (`431f9bf` …
 `6a43124`), cold gate green with 7 library cells known-red, owner 13. **This was the milestone's

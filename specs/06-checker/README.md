@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 06 — checker
-
-**Milestone:** 1.0.4-beta
 
 **Delivered in part** — the front ran from 2026-09-17 to 2026-09-18 on `botopink-lang` `feat` and
 landed five groups plus decision 8's grammar. It is the one front of 1.0.4-beta that did not close:

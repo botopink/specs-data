@@ -1,8 +1,9 @@
+---
+milestone: 1.0.0-beta
+prioridade: CRÍTICO — bloqueia as demais specs
+objetivo: "`zig build test` (em `repository/botopink-lang`) sem falhas nem leaks."
+---
 # Spec 01 — Test Green
-
-**Milestone:** 1.0.0-beta
-**Prioridade:** CRÍTICO — bloqueia as demais specs
-**Objetivo:** `zig build test` (em `repository/botopink-lang`) sem falhas nem leaks.
 
 ---
 

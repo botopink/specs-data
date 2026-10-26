@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: "D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime — the class name is read by both halves: the server render (erlang, jhonstart front 30) writes it, the client bundle (js, onze front 68) recomputes it"
+depends-on: jhonstart [26](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/04-jhonstart/26-jhonstart-router/README.md) (router gate) · 33–47 for the tokens it carries (the slot is token-agnostic) · 56 (`emiliaWith`)
+code: |-
+  `repository/emilia/modules/emilia/src/attributes.bp` (`mergeClass`, `nonAsciiIn`, and the
+  contract docblock) · `src/emilia.bp` (`// ── front 48 · the class slot` block: `className`, `styled`,
+  `styledWith`, `cls`, `clsWith`, `assertAsciiBody` — here because a sibling module cannot import
+  `emilia.bp`) · `repository/jhonstart/modules/jhonstart/src/html_attrs.bp` (`classAttr`, `withAttrs`,
+  `attrValue` — jhonstart code, emilia-unaware)
+reference: "`TAILWIND_CSS_DOCS.md § 3` · https://tailwindcss.com/docs/styling-with-utility-classes · [contract 4](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/contracts.md)"
+---
 # Front 48 — emilia attributes: the class slot
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime — the class name is read by both halves: the server render (erlang, jhonstart front 30) writes it, the client bundle (js, onze front 68) recomputes it
-**Depends on:** jhonstart [26](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/04-jhonstart/26-jhonstart-router/README.md) (router gate) · 33–47 for the tokens it carries (the slot is token-agnostic) · 56 (`emiliaWith`)
-**Code:** `repository/emilia/modules/emilia/src/attributes.bp` (`mergeClass`, `nonAsciiIn`, and the
-contract docblock) · `src/emilia.bp` (`// ── front 48 · the class slot` block: `className`, `styled`,
-`styledWith`, `cls`, `clsWith`, `assertAsciiBody` — here because a sibling module cannot import
-`emilia.bp`) · `repository/jhonstart/modules/jhonstart/src/html_attrs.bp` (`classAttr`, `withAttrs`,
-`attrValue` — jhonstart code, emilia-unaware)
-**Reference:** `TAILWIND_CSS_DOCS.md § 3` · https://tailwindcss.com/docs/styling-with-utility-classes · [contract 4](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/contracts.md)
 
 **Open:** three boxes, all at the jhonstart/onze seam — the one-way-dependency assertion (twice) and
 the shared literal in the bridge test and onze 68.

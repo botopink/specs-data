@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: D — emilia · **Cut:** [`modules.md`](modules.md) · **Coverage:** [`reference-coverage.md`](reference-coverage.md)
+---
 # emilia — cross-front seams and open work
-
-**Track:** D — emilia · **Cut:** [`modules.md`](modules.md) · **Coverage:** [`reference-coverage.md`](reference-coverage.md)
 
 The Tailwind rows no front covers are in [`reference-coverage.md`](reference-coverage.md)
 § *Missing and partial rows, consolidated*. Every seam two fronts share has one owner and one

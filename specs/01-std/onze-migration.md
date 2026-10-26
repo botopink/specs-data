@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # The old `onze` — discontinuation, migration, and the `onze13 → onze` takeover
 
 Steps 4 and 5 of the front. `repository/onze` holds the retired Mockito-style mocking library

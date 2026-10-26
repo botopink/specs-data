@@ -1,9 +1,14 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+repo: |-
+  `repository/rakun` · **Target:** erlang only (decision 113) · **Members:**
+  [`modules.md`](modules.md) (the 16 members front 128 leaves, the 25 on disk until it lands) ·
+closed-record: |-
+  [`03-rakun`](../../03-rakun/) (frozen) · **History**
+  (1.0.10 → 1.0.11 carry map included): [`1.0.11-beta/04-rakun`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.11-beta/04-rakun)
+---
 # Track 04 — rakun
-
-**Repo:** `repository/rakun` · **Target:** erlang only (decision 113) · **Members:**
-[`modules.md`](modules.md) (the 16 members front 128 leaves, the 25 on disk until it lands) ·
-**Closed record:** [`03-rakun`](../../03-rakun/) (frozen) · **History**
-(1.0.10 → 1.0.11 carry map included): [`1.0.11-beta/04-rakun`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.11-beta/04-rakun)
 
 ## Goal
 

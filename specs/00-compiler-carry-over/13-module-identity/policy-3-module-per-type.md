@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Policy 3 — one BEAM module per `type` and per `behavior`
 
 **Decided by the maintainer.** Not an option, not "slice when it collides": **every**

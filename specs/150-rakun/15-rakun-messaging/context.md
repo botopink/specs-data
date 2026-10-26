@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 15 — Messaging: registry reset, acknowledgement, JMS, streams, transactions, scheduling
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s1 → 150 s5 · s2 → 150 s5 · s3 → 150 s5 · s4 → 150 s5 · s5 → 150 s5 · s6 → 150 s5 · s7 → 150 s5 · s8 → 150 s5. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

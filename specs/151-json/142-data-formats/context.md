@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 142 — data formats: `json`, `yaml` and `markdown`, one repository each (decision 396)
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../144-botopink-lang/README.md): s1 boxes 1, 2 → B-27; [151-json](../README.md): s1 box 3 → 151 s1; [152-yaml](../../152-yaml/README.md): s2 → 152 s1; [158-markdown](../../158-markdown/README.md): s3 → 158 s1. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

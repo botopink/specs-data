@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 104 — http: a shared `http`, the codecs of HTTP semantics
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [155-http](../README.md): s6 → 155 s1 · s5 → 155 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

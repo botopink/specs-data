@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Machine 2 — the work queue (the maintainer, 2026-10-17, night)
 
 What machine 2 (backends, runtimes, std, tooling, the gate; front 164 wasm-gc) executes without a maintainer

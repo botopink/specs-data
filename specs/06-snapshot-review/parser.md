@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Parser snapshot review — `modules/compiler-core/snapshots/parser/`
 
 Repo: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang` (paths below relative to `modules/compiler-core/` unless noted).

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 12 (and 13): blast radius re-measured
 
 Measured 2026-09-17 at `botopink-lang` `4eadb70`. Since then: **R3 is decided** — the text of a

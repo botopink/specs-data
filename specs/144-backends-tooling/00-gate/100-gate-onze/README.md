@@ -1,17 +1,23 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  critical — 11 of the gate's 36 red `test-libs` cells were onze's at the open, on both
+  targets, and every `07-onze` front waits on this one.
+depends-on: |-
+  none to start (gate-g's recommendation was the starting assumption).
+  `onze-server·erlang` and `onze-cli`'s fixture-build tests compile rakun's `rakun-data`,
+  `rakun-scheduling` and `rakun-app` — they are green only on a tree that has `99`'s migration.
+  `113` lands after it.
+owns: |-
+  `repository/onze/**` — the `(if …)` sites, `modules/onze-cli/**`, `modules/onze-og/**`,
+  `.github/workflows/test.yml`, `.gitignore`, `scripts/git-hooks/**`.
+does-not-touch: |-
+  `repository/botopink-lang/**`; `scripts/restricted-targets.txt` (113's — the
+  three onze lines PK-1 asked for were never written: gate-a deletes the file); `repository/rakun/**`
+  (99's); `repository/jhonstart/**`.
+---
 # Front 100 — gate-onze: every onze cell green on the targets its members declare
-
-**Milestone:** 1.0.11-beta
-**Priority:** critical — 11 of the gate's 36 red `test-libs` cells were onze's at the open, on both
-targets, and every `07-onze` front waits on this one.
-**Depends on:** none to start (gate-g's recommendation was the starting assumption).
-`onze-server·erlang` and `onze-cli`'s fixture-build tests compile rakun's `rakun-data`,
-`rakun-scheduling` and `rakun-app` — they are green only on a tree that has `99`'s migration.
-`113` lands after it.
-**Owns:** `repository/onze/**` — the `(if …)` sites, `modules/onze-cli/**`, `modules/onze-og/**`,
-`.github/workflows/test.yml`, `.gitignore`, `scripts/git-hooks/**`.
-**Does not touch:** `repository/botopink-lang/**`; `scripts/restricted-targets.txt` (113's — the
-three onze lines PK-1 asked for were never written: gate-a deletes the file); `repository/rakun/**`
-(99's); `repository/jhonstart/**`.
 
 ---
 

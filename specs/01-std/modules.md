@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # std — the package cut
 
 The tree of `libs/std`, what it exposes to the `<lib>-test` submodules, and who owns which file.

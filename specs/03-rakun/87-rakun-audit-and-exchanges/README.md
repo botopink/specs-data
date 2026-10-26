@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: medium — a security decision nobody recorded cannot be reviewed, and an HTTP exchange log is the cheapest production-debugging tool there is; both are missing and neither is anyone else's work
+target: erlang (server)
+wave: "6"
+depends-on: 11 (endpoint infrastructure hosts the two endpoints), 10 (publishes the authentication and authorization events), 07 (the filter chain the recorder sits in), 76 (default-deny exposure and access control over both endpoints), 08 (the durable repository arm), 01/std `io.clock` (timestamps)
+owns: "`modules/rakun-actuator/src/audit/**`, `modules/rakun-actuator/src/exchanges/**`, `modules/rakun-actuator/test/audit/**`, `modules/rakun-actuator/test/exchanges/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone. Inside `modules/rakun-actuator/`, everything outside `src/audit/**` and `src/exchanges/**` belongs to front 11 or front 76 and is read-only here."
+reference: "`09-actuator.md § Auditing` · `§ HTTP Exchanges` · `§ Endpoints` (`auditevents`, `httpexchanges`) · https://docs.spring.io/spring-boot/reference/actuator/auditing.html · https://docs.spring.io/spring-boot/reference/actuator/tracing.html"
+---
 # Front 87 — Rakun Audit and HTTP Exchanges
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** medium — a security decision nobody recorded cannot be reviewed, and an HTTP exchange log is the cheapest production-debugging tool there is; both are missing and neither is anyone else's work
-**Target:** erlang (server)
-**Wave:** 6
-**Depends on:** 11 (endpoint infrastructure hosts the two endpoints), 10 (publishes the authentication and authorization events), 07 (the filter chain the recorder sits in), 76 (default-deny exposure and access control over both endpoints), 08 (the durable repository arm), 01/std `io.clock` (timestamps)
-**Owns:** `modules/rakun-actuator/src/audit/**`, `modules/rakun-actuator/src/exchanges/**`, `modules/rakun-actuator/test/audit/**`, `modules/rakun-actuator/test/exchanges/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone. Inside `modules/rakun-actuator/`, everything outside `src/audit/**` and `src/exchanges/**` belongs to front 11 or front 76 and is read-only here.
-**Reference:** `09-actuator.md § Auditing` · `§ HTTP Exchanges` · `§ Endpoints` (`auditevents`, `httpexchanges`) · https://docs.spring.io/spring-boot/reference/actuator/auditing.html · https://docs.spring.io/spring-boot/reference/actuator/tracing.html
 
 ---
 

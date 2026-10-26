@@ -1,9 +1,11 @@
+---
+milestone: 1.0.10-beta
+track: |-
+  E — onze · **Repo:** `repository/onze` (name taken over from the retired mocking lib —
+  [`../01-std/onze-migration.md`](../01-std/onze-migration.md)) · **Reference:** Next.js docs, framework
+  half — `NEXTJS-DOCS.md` §§ 2 · 3 · 7 · 15 · 16 · 17 · 18 · 24 · 28 · 29
+---
 # Track E — onze
-
-**Milestone:** 1.0.10-beta
-**Track:** E — onze · **Repo:** `repository/onze` (name taken over from the retired mocking lib —
-[`../01-std/onze-migration.md`](../01-std/onze-migration.md)) · **Reference:** Next.js docs, framework
-half — `NEXTJS-DOCS.md` §§ 2 · 3 · 7 · 15 · 16 · 17 · 18 · 24 · 28 · 29
 
 The full-stack orchestrator and bundler: `onze dev / build / start`, the CLI, the client bundle, the
 styling pipeline, image and font optimisation, release packaging, and the app that proves it. Files

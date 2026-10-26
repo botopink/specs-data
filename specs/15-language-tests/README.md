@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 15 — language tests (`case`, tuples, `loop`)
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17 (`botopink-lang` `7dbe1ea`, on the tests of `de04962` … `efc7ad6`): the
 harness, the layout, `expected-failures.txt` and **34 files — 31 cells plus three smoke files** —

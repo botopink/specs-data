@@ -1,24 +1,30 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  critical — it is what turns "84 passed, 36 failed, 13 restricted" into a line whose
+  only red number is `failed`, and it is the keystone of stage 8: until the two ledger files are gone
+  the stage is red for everyone.
+depends-on: |-
+  `99`, `100`, `101`, `108`, `109` (the five library tips this front measures
+  against). `115` starts from this front's `test-libs.sh` and `lib-test-runner`.
+owns: |-
+  `scripts/restricted-targets.txt` (deleted) · `scripts/known-red-libs.txt` (deleted) ·
+  `scripts/test-libs.sh` · `modules/lib-test-runner/**` · `scripts/AGENTS.md` (§ test-libs.sh) ·
+  `modules/lib-test-runner/AGENTS.md` · `modules/compiler-cli/src/cli/test_cmd.zig` (the
+  `BOTOPINK_BIN` export only — `TEST_BIN_ENV` and four lines of `testTmpEnv`) ·
+  `modules/compiler-cli/tests/test_tooling.sh` (the `[libs]` audit rows and the `[env]` rows) ·
+  `.github/workflows/test.yml` (the `libs` job's header comment and the `zig fmt --check modules`
+  step) · the meta repository's `scripts/language-gap-markers.sh` and the `## Marker index` of
+  `../../language-gaps.md` · verification (read-only) of
+  `repository/{rakun,jhonstart,emilia,onze,erika}/.gitignore` and `scripts/git-hooks/**`.
+does-not-touch: |-
+  any library repository's files (the five fronts own them; this front *checks*
+  them and reports); `scripts/gate.sh` beyond the four comment lines of its stage-8 description
+  (`gate.sh:31-35`; the script is 115's); `tests/language/**` and the beam path of `test_cmd.zig`
+  (111's); `scripts/format-check.sh` (112's).
+---
 # Front 113 — gate-ledger-and-scripts: the manifest is the single source of truth; the two ledgers are deleted; a restriction is audited, not counted
-
-**Milestone:** 1.0.11-beta
-**Priority:** critical — it is what turns "84 passed, 36 failed, 13 restricted" into a line whose
-only red number is `failed`, and it is the keystone of stage 8: until the two ledger files are gone
-the stage is red for everyone.
-**Depends on:** `99`, `100`, `101`, `108`, `109` (the five library tips this front measures
-against). `115` starts from this front's `test-libs.sh` and `lib-test-runner`.
-**Owns:** `scripts/restricted-targets.txt` (deleted) · `scripts/known-red-libs.txt` (deleted) ·
-`scripts/test-libs.sh` · `modules/lib-test-runner/**` · `scripts/AGENTS.md` (§ test-libs.sh) ·
-`modules/lib-test-runner/AGENTS.md` · `modules/compiler-cli/src/cli/test_cmd.zig` (the
-`BOTOPINK_BIN` export only — `TEST_BIN_ENV` and four lines of `testTmpEnv`) ·
-`modules/compiler-cli/tests/test_tooling.sh` (the `[libs]` audit rows and the `[env]` rows) ·
-`.github/workflows/test.yml` (the `libs` job's header comment and the `zig fmt --check modules`
-step) · the meta repository's `scripts/language-gap-markers.sh` and the `## Marker index` of
-`../../language-gaps.md` · verification (read-only) of
-`repository/{rakun,jhonstart,emilia,onze,erika}/.gitignore` and `scripts/git-hooks/**`.
-**Does not touch:** any library repository's files (the five fronts own them; this front *checks*
-them and reports); `scripts/gate.sh` beyond the four comment lines of its stage-8 description
-(`gate.sh:31-35`; the script is 115's); `tests/language/**` and the beam path of `test_cmd.zig`
-(111's); `scripts/format-check.sh` (112's).
 
 ---
 

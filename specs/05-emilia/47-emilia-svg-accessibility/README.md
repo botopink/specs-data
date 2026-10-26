@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** low · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 33 (`paletteVar` for the fill/stroke payloads), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 47 — svg and accessibility`
+  block: `Svg`, `A11y`, and the top-level `SvgFill`, `SvgStroke`, `SvgStrokeWidthRaw`) ·
+  `src/emilia.bp` (front-47 block: `svgTokenToCss`, `a11yTokenToCss` and sub-dispatchers taking
+  `th: Theme`; the wrappers `fillColor`, `strokeColor`, `rawStrokeWidth`; five `tokenToSheet` arms — the
+  last section arms, before front 34's modifiers)
+user-docs: "`repository/emilia/docs.md` § *Svg and A11y*"
+reference: "`TAILWIND_CSS_DOCS.md § 18`, `§ 19` · https://tailwindcss.com/docs/fill · https://tailwindcss.com/docs/screen-readers"
+---
 # Front 47 — emilia SVG and accessibility
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** low · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 33 (`paletteVar` for the fill/stroke payloads), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 47 — svg and accessibility`
-block: `Svg`, `A11y`, and the top-level `SvgFill`, `SvgStroke`, `SvgStrokeWidthRaw`) ·
-`src/emilia.bp` (front-47 block: `svgTokenToCss`, `a11yTokenToCss` and sub-dispatchers taking
-`th: Theme`; the wrappers `fillColor`, `strokeColor`, `rawStrokeWidth`; five `tokenToSheet` arms — the
-last section arms, before front 34's modifiers)
-**User docs:** `repository/emilia/docs.md` § *Svg and A11y*
-**Reference:** `TAILWIND_CSS_DOCS.md § 18`, `§ 19` · https://tailwindcss.com/docs/fill · https://tailwindcss.com/docs/screen-readers
 
 **Open:** none.
 

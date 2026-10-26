@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Track C — jhonstart · snapshot-test map (modules)
 
 The preventive snapshot map of `repository/jhonstart/modules/**`: the `jhonstart-test` helpers, then per front the `.bp` test cases and the exact `.snap` each produces. Written before the code so that every acceptance criterion in the nine READMEs has a literal it must reproduce. The contract is `../01-std/{src-builtin,snapshots,asserts-api}.md`.

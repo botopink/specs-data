@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 33 (`paletteVar`), 54 (`Theme`, `--radius-*`), 56 (`Sheet` for `Ring` and `Divide`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 40 — borders, outlines, rings
+  and divides` block: `Border`, `Outline`, `Ring`, `Divide`) · `src/emilia.bp` (front-40 block:
+  `borderTokenToCss` and sub-dispatchers, `outlineTokenToCss`, `ringTokenToSheet`, `divideTokenToSheet`;
+  the `Outline`/`Ring`/`Divide` arms of `tokenToSheet`)
+does-not-own: the colour grid (front 33); `Effect.Shadow` (front 41), which `Ring` composes with
+user-docs: "`repository/emilia/docs.md` § *Border*, § *Outline*, § *Ring*, § *Divide*"
+reference: "`TAILWIND_CSS_DOCS.md § 11` (11.1–11.8), `§ 21.5` · https://tailwindcss.com/docs/border-radius"
+---
 # Front 40 — emilia borders, outlines, rings and divides
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 33 (`paletteVar`), 54 (`Theme`, `--radius-*`), 56 (`Sheet` for `Ring` and `Divide`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 40 — borders, outlines, rings
-and divides` block: `Border`, `Outline`, `Ring`, `Divide`) · `src/emilia.bp` (front-40 block:
-`borderTokenToCss` and sub-dispatchers, `outlineTokenToCss`, `ringTokenToSheet`, `divideTokenToSheet`;
-the `Outline`/`Ring`/`Divide` arms of `tokenToSheet`)
-**Does not own:** the colour grid (front 33); `Effect.Shadow` (front 41), which `Ring` composes with
-**User docs:** `repository/emilia/docs.md` § *Border*, § *Outline*, § *Ring*, § *Divide*
-**Reference:** `TAILWIND_CSS_DOCS.md § 11` (11.1–11.8), `§ 21.5` · https://tailwindcss.com/docs/border-radius
 
 **Open:** none.
 

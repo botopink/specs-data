@@ -1,14 +1,15 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+priority: "medium (the maintainer, 2026-10-18) — the ledger becomes code: every decision in force has one real program that shows it, checked by the gate once the gate is solid."
+repository: the meta repository for the script and the CI check (a full worktree, s1–s2); then one `--repo <repo>` / `--lang` worktree per repository under `repository/` that has a `conformance/` (s3, s5); s4's compiler boxes a `--lang` worktree.
+model: "sonnet for the script and the check (s1, s4 compiler boxes), haiku for the scaffold commits, **opus for every cell's docs, code and accepted answer** (`AGENTS.md` § Which model: text and expected answers have no oracle), opus for the Conformance step."
+depends-on: decision 482 (the generated ledgers), 457 / 464 / 475 (the cell shape), 461 / 462 / 463 (the reference beside its cells), 511 / 512 (the name, the workspace); per repository, the builtins group's codemods over it (§ Order).
+owns: "`scripts/decision-cells.py`, meta CI check 7 (`scripts/gate.sh check`, `hook-integrity.yml`, `AGENTS.md` § CI / § Layout); in every repository `conformance/modules/decisions-taken/**` and the one row that names it in the root `conformance/docs.md` and the workspace manifest (`conformance/modules/botopink.json`; rakun's root `conformance/botopink.json`, 548)."
+does-not-touch: any other cell, `libs/std/**`, `modules/**` beyond s4's two boxes, the ledger's rules (the coordinator's; s2 adds a tag, never a word), a library's members.
+gate: standard (fronts.md § Gate); the hook's gate for every commit, check 7 green on the meta.
+---
 # Front 166 — decision cells: one cell per decision, in the repository it binds
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-2
-**Priority:** medium (the maintainer, 2026-10-18) — the ledger becomes code: every decision in force has one real program that shows it, checked by the gate once the gate is solid.
-**Repository:** the meta repository for the script and the CI check (a full worktree, s1–s2); then one `--repo <repo>` / `--lang` worktree per repository under `repository/` that has a `conformance/` (s3, s5); s4's compiler boxes a `--lang` worktree.
-**Model:** sonnet for the script and the check (s1, s4 compiler boxes), haiku for the scaffold commits, **opus for every cell's docs, code and accepted answer** (`AGENTS.md` § Which model: text and expected answers have no oracle), opus for the Conformance step.
-**Depends on:** decision 482 (the generated ledgers), 457 / 464 / 475 (the cell shape), 461 / 462 / 463 (the reference beside its cells), 511 / 512 (the name, the workspace); per repository, the builtins group's codemods over it (§ Order).
-**Owns:** `scripts/decision-cells.py`, meta CI check 7 (`scripts/gate.sh check`, `hook-integrity.yml`, `AGENTS.md` § CI / § Layout); in every repository `conformance/modules/decisions-taken/**` and the one row that names it in the root `conformance/docs.md` and the workspace manifest (`conformance/modules/botopink.json`; rakun's root `conformance/botopink.json`, 548).
-**Does not touch:** any other cell, `libs/std/**`, `modules/**` beyond s4's two boxes, the ledger's rules (the coordinator's; s2 adds a tag, never a word), a library's members.
-**Gate:** standard (fronts.md § Gate); the hook's gate for every commit, check 7 green on the meta.
 
 ---
 

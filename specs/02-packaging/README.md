@@ -1,13 +1,14 @@
+---
+milestone: 1.0.10-beta
+track: cross-cutting (A std · B rakun · C jhonstart · D emilia · E onze) — the packaging half of [`95-ecosystem-package-restructure/`](95-ecosystem-package-restructure/README.md), beside this file; the std/testing/asserts half is [`../01-std/`](../01-std/)
+priority: high — every library front of this milestone writes into a directory this front creates, and every `-test` submodule and example project is invisible to the gate until the discovery change here lands
+target: none of its own — a structural front; each submodule and example declares the target its library is assigned (`overview.md` § Which target runs what)
+depends-on: "`01-std` (the `onze` directory is free, `testing.asserts` and `testing.snapshots` exist)"
+owns: "the rows of `02-packaging` in [`../fronts.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/fronts.md): every `repository/<lib>/botopink.json`, every `modules/<lib>/` and `modules/<lib>-test/` skeleton, every `examples/<project>/botopink.json`, `repository/botopink-lang/scripts/test-libs.sh`, `scripts/known-red-libs.txt`, `docs/botopink-json.md`, and — by the carve-out decision 75 names — `modules/manifest/**` and the `manifest.scanRoots` call sites in `lib-test-runner/src/discovery.zig`, `compiler-cli/src/cli/{config,libs}.zig`, `language-server/src/project_graph.zig`, `bpmp/src/manifest.zig`"
+does-not-touch: "`libs/std/src/**` (01-std) · the source files inside any submodule (their fronts) · `repository/botopink-lang/modules/compiler-core/**` and `compiler-cli/**` (00) · the per-library cut beyond the three mandatory directories — that is each library's `modules.md`"
+reference: "`repository/botopink-lang/docs/botopink-json.md` (the manifest) · `repository/rakun/modules/README.md` · `repository/botopink-lang/modules/compiler-cli/src/cli/{config,libs}.zig` (what a manifest means to the compiler) · `modules/lib-test-runner/src/discovery.zig` (what the gate can see) · `libs/std/AGENTS.md` § Tests · Spring Boot 4 starters (`/home/ericfillipe/develop/spring-boot-4/docs/02-desenvolvendo-com-spring-boot.md` § Starters) · Next.js project structure (`NEXTJS-DOCS.md` § 3) · Tailwind's package cut (`TAILWIND_CSS_DOCS.md` § 2: one core, three integration packages)"
+---
 # Front 02 — packaging: the module and example structure of every library
-
-**Milestone:** 1.0.10-beta
-**Track:** cross-cutting (A std · B rakun · C jhonstart · D emilia · E onze) — the packaging half of [`95-ecosystem-package-restructure/`](95-ecosystem-package-restructure/README.md), beside this file; the std/testing/asserts half is [`../01-std/`](../01-std/)
-**Priority:** high — every library front of this milestone writes into a directory this front creates, and every `-test` submodule and example project is invisible to the gate until the discovery change here lands
-**Target:** none of its own — a structural front; each submodule and example declares the target its library is assigned (`overview.md` § Which target runs what)
-**Depends on:** `01-std` (the `onze` directory is free, `testing.asserts` and `testing.snapshots` exist)
-**Owns:** the rows of `02-packaging` in [`../fronts.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/fronts.md): every `repository/<lib>/botopink.json`, every `modules/<lib>/` and `modules/<lib>-test/` skeleton, every `examples/<project>/botopink.json`, `repository/botopink-lang/scripts/test-libs.sh`, `scripts/known-red-libs.txt`, `docs/botopink-json.md`, and — by the carve-out decision 75 names — `modules/manifest/**` and the `manifest.scanRoots` call sites in `lib-test-runner/src/discovery.zig`, `compiler-cli/src/cli/{config,libs}.zig`, `language-server/src/project_graph.zig`, `bpmp/src/manifest.zig`
-**Does not touch:** `libs/std/src/**` (01-std) · the source files inside any submodule (their fronts) · `repository/botopink-lang/modules/compiler-core/**` and `compiler-cli/**` (00) · the per-library cut beyond the three mandatory directories — that is each library's `modules.md`
-**Reference:** `repository/botopink-lang/docs/botopink-json.md` (the manifest) · `repository/rakun/modules/README.md` · `repository/botopink-lang/modules/compiler-cli/src/cli/{config,libs}.zig` (what a manifest means to the compiler) · `modules/lib-test-runner/src/discovery.zig` (what the gate can see) · `libs/std/AGENTS.md` § Tests · Spring Boot 4 starters (`/home/ericfillipe/develop/spring-boot-4/docs/02-desenvolvendo-com-spring-boot.md` § Starters) · Next.js project structure (`NEXTJS-DOCS.md` § 3) · Tailwind's package cut (`TAILWIND_CSS_DOCS.md` § 2: one core, three integration packages)
 
 ---
 

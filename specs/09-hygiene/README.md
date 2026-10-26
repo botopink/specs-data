@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 09 — hygiene
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** — all six steps landed, in five waves: step 1 (the comptime frame protocol) by
 1.0.2-beta front 11 with its residual documented in `e98a5da`; step 3 by `e98a5da` + `8887865`

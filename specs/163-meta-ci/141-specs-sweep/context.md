@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 141 — specs sweep: the retired spellings out of the current specs
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [163-meta-ci](../README.md): s6 → 163 s3 · gate → 163 s3. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # The comptime AST renderer — what `TYPED AST JSON` can and cannot assert
 
 > Carried from `1.0.2-beta/10-comptime-dedup/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

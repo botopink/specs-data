@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 123 — bpp middleware: `locals`, `sequence`, and a response read after `next`
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s0 → 150 s22 · s1 → 150 s22 · s2 → 150 s22 · s3 → 150 s22 · s4 → 150 s22 · s5 → 150 s22 · s6 → 150 s22 · s7 → 150 s22. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

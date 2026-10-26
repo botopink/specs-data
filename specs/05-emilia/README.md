@@ -1,7 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: D — emilia · **Repo:** `repository/emilia` · **Reference:** Tailwind CSS v4 docs (`/home/ericfillipe/develop/tailwindcss/TAILWIND_CSS_DOCS.md`, v4.3)
+---
 # Track D — emilia
-
-**Milestone:** 1.0.10-beta
-**Track:** D — emilia · **Repo:** `repository/emilia` · **Reference:** Tailwind CSS v4 docs (`/home/ericfillipe/develop/tailwindcss/TAILWIND_CSS_DOCS.md`, v4.3)
 
 Type-safe CSS: a `Token` enum resolved through a theme and emitted through a rule model as a layered
 `<style>` document. Twenty-two fronts, all landed; **five boxes remain open**, all at seams owned

@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: B — rakun · **Repo:** `repository/rakun/examples/` · **Contract:** [`test-snap.md § The contract`](test-snap.md#the-contract) (same helpers, same `.snap` rules, same `.bp` rules) · **Cut:** [`modules.md § Examples`](modules.md#examples-repositoryrakunexamples)
+---
 # rakun — snapshot-test map of the example projects
-
-**Track:** B — rakun · **Repo:** `repository/rakun/examples/` · **Contract:** [`test-snap.md § The contract`](test-snap.md#the-contract) (same helpers, same `.snap` rules, same `.bp` rules) · **Cut:** [`modules.md § Examples`](modules.md#examples-repositoryrakunexamples)
 
 An example project is an application, not a module: its tests boot `main.bp`'s `App` and drive the
 whole thing through the same `rakun-test` helpers the modules use, so a project's snapshots pin

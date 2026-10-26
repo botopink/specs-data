@@ -1,28 +1,35 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  critical — a page that can only be read is half an application; this is the only path by
+  which a browser changes server state, and it is the path an attacker will try first
+target: |-
+  erlang (server). The action body, the id, the checks and the envelope are BEAM code; the
+  form that calls it is HTML jhonstart front 67 writes with the id onze hands it, and the envelope is
+  what crosses back (decision 113)
+wave: "7"
+depends-on: |-
+  23 (the page dispatch the re-render goes through), 22 (route table), 06 (scopes), 62
+  (request context — `cookies()`, `after()`), 12 (`revalidatePath`/`revalidateTag`), 63 (`redirect`),
+  01 (constant-time compare, percent-encoding), 03 (build id), `01-std/06-validation-lib` (constraint
+  mirroring), `01-std/05-actions-lib` (the envelope, the `state` grammar, the JSON-RPC body and the
+  `refresh` value — decision 116); jhonstart 67 writes the form, reached through onze only
+owns: |-
+  `repository/rakun/modules/rakun-app/src/actions.bp`, `repository/rakun/modules/rakun-app/src/sidecars/rakun_actions.erl`,
+  `repository/rakun/modules/rakun-app/test/actions_test.bp`
+does-not-touch: |-
+  `repository/rakun/src/http.bp`, `src/decorators.bp`, `src/bootstrap.bp`
+  (frozen), the files owned by 22 · 23 · 25, and every file outside `repository/rakun/` — this front
+  builds no element and imports nothing from `jhonstart` (decision 113)
+reference: |-
+  [decision 116](../../decisions-taken-steps.md) ·
+  [decision 117](../../decisions-taken-steps.md) rules 4 and 5 (an action's `redirect` is rakun's; `OnzeConfig.actionsBodyLimit`)
+  rule 2 (the action protocol is the bundled library `actions`) · `NEXTJS-DOCS.md § 10. Mutação de Dados`, `§ 27. Diretivas` ·
+  <https://nextjs.org/docs/app/getting-started/updating-data> ·
+  <https://nextjs.org/docs/app/api-reference/directives/use-server>
+---
 # Front 24 — Rakun Server Actions
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** critical — a page that can only be read is half an application; this is the only path by
-which a browser changes server state, and it is the path an attacker will try first
-**Target:** erlang (server). The action body, the id, the checks and the envelope are BEAM code; the
-form that calls it is HTML jhonstart front 67 writes with the id onze hands it, and the envelope is
-what crosses back (decision 113)
-**Wave:** 7
-**Depends on:** 23 (the page dispatch the re-render goes through), 22 (route table), 06 (scopes), 62
-(request context — `cookies()`, `after()`), 12 (`revalidatePath`/`revalidateTag`), 63 (`redirect`),
-01 (constant-time compare, percent-encoding), 03 (build id), `01-std/06-validation-lib` (constraint
-mirroring), `01-std/05-actions-lib` (the envelope, the `state` grammar, the JSON-RPC body and the
-`refresh` value — decision 116); jhonstart 67 writes the form, reached through onze only
-**Owns:** `repository/rakun/modules/rakun-app/src/actions.bp`, `repository/rakun/modules/rakun-app/src/sidecars/rakun_actions.erl`,
-`repository/rakun/modules/rakun-app/test/actions_test.bp`
-**Does not touch:** `repository/rakun/src/http.bp`, `src/decorators.bp`, `src/bootstrap.bp`
-(frozen), the files owned by 22 · 23 · 25, and every file outside `repository/rakun/` — this front
-builds no element and imports nothing from `jhonstart` (decision 113)
-**Reference:** [decision 116](../../decisions-taken-steps.md) ·
-[decision 117](../../decisions-taken-steps.md) rules 4 and 5 (an action's `redirect` is rakun's; `OnzeConfig.actionsBodyLimit`)
-rule 2 (the action protocol is the bundled library `actions`) · `NEXTJS-DOCS.md § 10. Mutação de Dados`, `§ 27. Diretivas` ·
-<https://nextjs.org/docs/app/getting-started/updating-data> ·
-<https://nextjs.org/docs/app/api-reference/directives/use-server>
 
 ---
 

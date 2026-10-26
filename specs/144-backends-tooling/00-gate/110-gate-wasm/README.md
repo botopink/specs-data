@@ -1,20 +1,26 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  critical — stage 9's one red cell, and the only class of defect in the compiler that
+  prints a wrong value at exit 0.
+depends-on: |-
+  none. `111` step 4 (the deletion of `expected-failures.txt`) landed with this
+  front's step 3.
+owns: |-
+  `modules/compiler-core/src/codegen/wat.zig` (the link loop, the refusal path
+  `Emitter.refuse`, the host-binding refusal) · the wasm snapshots
+  `modules/compiler-core/snapshots/codegen/<runtime>/wasm/**` (`<runtime>` is `beam` and `wat`; the
+  runtime-parity audit keeps the pair equal) · `src/codegen/tests/wat.zig` (the backend's fixtures) ·
+  the `<cell>.wasm.expect` files decision 146 flips · new `tests/language/run/*.bp` and `modules/*`
+  cells for wasm only. `libs/std/src/testing/asserts.bp` is NOT restructured here (its header comment
+  alone was corrected): which of its functions wasm may import is the std track's question, § Left.
+does-not-touch: |-
+  `wat_prelude.zig`, `wat_runtime.zig`, `codegen/wat/**` beyond what a hard error
+  needs (`../../01-compiler/05-wasm` owns wasm's lowering rows — `Array.unique`, the primitive-method
+  traps, C-07 twins); `tests/language/run.sh` (111's); `beam_asm.zig`, `erlang.zig`, `commonJS.zig`.
+---
 # Front 110 — gate-wasm: the link loop mangles every colliding declaration, and no lowering degrades silently
-
-**Milestone:** 1.0.11-beta
-**Priority:** critical — stage 9's one red cell, and the only class of defect in the compiler that
-prints a wrong value at exit 0.
-**Depends on:** none. `111` step 4 (the deletion of `expected-failures.txt`) landed with this
-front's step 3.
-**Owns:** `modules/compiler-core/src/codegen/wat.zig` (the link loop, the refusal path
-`Emitter.refuse`, the host-binding refusal) · the wasm snapshots
-`modules/compiler-core/snapshots/codegen/<runtime>/wasm/**` (`<runtime>` is `beam` and `wat`; the
-runtime-parity audit keeps the pair equal) · `src/codegen/tests/wat.zig` (the backend's fixtures) ·
-the `<cell>.wasm.expect` files decision 146 flips · new `tests/language/run/*.bp` and `modules/*`
-cells for wasm only. `libs/std/src/testing/asserts.bp` is NOT restructured here (its header comment
-alone was corrected): which of its functions wasm may import is the std track's question, § Left.
-**Does not touch:** `wat_prelude.zig`, `wat_runtime.zig`, `codegen/wat/**` beyond what a hard error
-needs (`../../01-compiler/05-wasm` owns wasm's lowering rows — `Array.unique`, the primitive-method
-traps, C-07 twins); `tests/language/run.sh` (111's); `beam_asm.zig`, `erlang.zig`, `commonJS.zig`.
 
 ---
 

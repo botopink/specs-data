@@ -1,3 +1,6 @@
+---
+milestone: 1.0.12-beta
+---
 # Fronts — 1.0.12-beta: who may touch what, when
 
 The open work is cut by repository in three tiers (decision 433): front 144 for `repository/botopink-lang`,

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 14 — comptime-on-beam: the comptime pipeline's evidence and its cost per evaluation
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s6 → B-12 · s8 → B-17. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

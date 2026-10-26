@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: medium — password reset, address verification and notification are table stakes for the kind of application this milestone is aimed at, and nothing in it can send an e-mail
+target: erlang (server)
+wave: "6"
+depends-on: 01 (`io.net` for the SMTP socket, `escape.html` for templated bodies, `encoding` for base64 and quoted-printable, `io.clock` for the `Date` header), 05 (configuration), 74 (STARTTLS and implicit TLS through the bundle registry), 11 (registers the `mail` health indicator), 83 (a send that must be tied to a database write goes through the outbox, not through a second one here)
+owns: "`modules/rakun-mail/botopink.json`, `modules/rakun-mail/src/**` · `modules/rakun-mail/test/**`"
+does-not-touch: "`modules/rakun-tx/**` (front 83's outbox — this front enqueues into it, it does not reimplement it), every jhonstart, emilia and onze file — an HTML body arrives as a string (decision 113), and the four frozen files in `repository/rakun/src/`"
+reference: "`07-io.md § Email`, `§ Configuracao`, `§ JNDI Session` · `09-actuator.md § HealthIndicators Auto-configurados (mail)` · <https://docs.spring.io/spring-boot/reference/io/email.html>"
+---
 # Front 85 — rakun Mail
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** medium — password reset, address verification and notification are table stakes for the kind of application this milestone is aimed at, and nothing in it can send an e-mail
-**Target:** erlang (server)
-**Wave:** 6
-**Depends on:** 01 (`io.net` for the SMTP socket, `escape.html` for templated bodies, `encoding` for base64 and quoted-printable, `io.clock` for the `Date` header), 05 (configuration), 74 (STARTTLS and implicit TLS through the bundle registry), 11 (registers the `mail` health indicator), 83 (a send that must be tied to a database write goes through the outbox, not through a second one here)
-**Owns:** `modules/rakun-mail/botopink.json`, `modules/rakun-mail/src/**` · `modules/rakun-mail/test/**`
-**Does not touch:** `modules/rakun-tx/**` (front 83's outbox — this front enqueues into it, it does not reimplement it), every jhonstart, emilia and onze file — an HTML body arrives as a string (decision 113), and the four frozen files in `repository/rakun/src/`
-**Reference:** `07-io.md § Email`, `§ Configuracao`, `§ JNDI Session` · `09-actuator.md § HealthIndicators Auto-configurados (mail)` · <https://docs.spring.io/spring-boot/reference/io/email.html>
 
 ---
 

@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 2 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (arbitrary values sit beside theme lookups), 56 (`Variant`, `nestVariant`, `declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/arbitrary.bp` (validators, builders, the `…ToSheet`
+  helpers; imports `tokens` and `output` only) · `src/tokens.bp` (`// ── front 57 — escape hatches`: six
+  top-level variants, after front 34's block) · `src/emilia.bp` (six contiguous `tokenToSheet` arms under
+  the front-57 banner)
+user-docs: "`repository/emilia/docs.md` § *Arbitrary values — the escape hatches*"
+reference: "`TAILWIND_CSS_DOCS.md § 3.1`, `§ 3.2`, `§ 3.3`, `§ 3.7` · https://tailwindcss.com/docs/adding-custom-styles"
+---
 # Front 57 — emilia escape hatches
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 2 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (arbitrary values sit beside theme lookups), 56 (`Variant`, `nestVariant`, `declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/arbitrary.bp` (validators, builders, the `…ToSheet`
-helpers; imports `tokens` and `output` only) · `src/tokens.bp` (`// ── front 57 — escape hatches`: six
-top-level variants, after front 34's block) · `src/emilia.bp` (six contiguous `tokenToSheet` arms under
-the front-57 banner)
-**User docs:** `repository/emilia/docs.md` § *Arbitrary values — the escape hatches*
-**Reference:** `TAILWIND_CSS_DOCS.md § 3.1`, `§ 3.2`, `§ 3.3`, `§ 3.7` · https://tailwindcss.com/docs/adding-custom-styles
 
 **Open:** none.
 

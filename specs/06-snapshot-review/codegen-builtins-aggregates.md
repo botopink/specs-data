@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: codegen `builtins.zig` (31 tests) + `aggregates.zig` (22 tests)
 
 Repo root: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang`

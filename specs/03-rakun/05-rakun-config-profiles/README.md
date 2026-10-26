@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: critical — `#[value("key")]` reads a table that nothing fills; an application cannot change environment without changing source
+target: erlang (server)
+wave: "1"
+depends-on: 01 · `01-std/01-std-lib-enablement` (`json.decode`, the `.json` reader — decision 117) · `01-std/06-validation-lib` (the validator the boot runs)
+owns: "`src/config.bp`, `src/profiles.bp`, `src/sidecars/rakun_config.erl` · `test/config_test.bp`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen · `src/runtime.bp` and `src/sidecars/rakun_runtime.erl` belong to front 04"
+reference: "`03-recursos-principais.md § Configuracao Externa` · `03-recursos-principais.md § Profiles` · <https://docs.spring.io/spring-boot/reference/features/external-config.html> · <https://docs.spring.io/spring-boot/reference/features/profiles.html>"
+---
 # Front 05 — Externalized Configuration and Profiles
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** critical — `#[value("key")]` reads a table that nothing fills; an application cannot change environment without changing source
-**Target:** erlang (server)
-**Wave:** 1
-**Depends on:** 01 · `01-std/01-std-lib-enablement` (`json.decode`, the `.json` reader — decision 117) · `01-std/06-validation-lib` (the validator the boot runs)
-**Owns:** `src/config.bp`, `src/profiles.bp`, `src/sidecars/rakun_config.erl` · `test/config_test.bp`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen · `src/runtime.bp` and `src/sidecars/rakun_runtime.erl` belong to front 04
-**Reference:** `03-recursos-principais.md § Configuracao Externa` · `03-recursos-principais.md § Profiles` · <https://docs.spring.io/spring-boot/reference/features/external-config.html> · <https://docs.spring.io/spring-boot/reference/features/profiles.html>
 
 ---
 

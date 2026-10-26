@@ -1,13 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: A std
+priority: |-
+  medium — the cache (front 12), the SSR pipeline (front 23) and both asset optimizers
+  (fronts 51, 52) each key on content, and each would otherwise invent its own hash
+target: both — std is the floor under both halves
+owns: the content hashes of `src/hash.bp` — `contentHash`, `strongHash`, `cacheKey`, `strongCacheKey`, `etag`, `weakEtag`, `matches`, `fingerprint` (decision 106 puts them beside the digests)
+does-not-touch: every other std module, and the digests of `hash.bp` (`sha256`, `sha512`, `md5`, `hmacSha256`, and front 01's `hmacSha256Base64Url`, `sha1Base64`, `sha256Base64Url`, `equalsConstantTime`)
+reference: "`NEXTJS-DOCS.md § 11. Cache` · [Caching](https://nextjs.org/docs/app/getting-started/caching) · [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) · [RFC 9110 § 8.8.3](https://www.rfc-editor.org/rfc/rfc9110#field.etag) · [`crypto:hash/2`](https://www.erlang.org/doc/apps/crypto/crypto.html#hash/2)"
+---
 # Front 03 — Std Content Hash
-
-**Milestone:** 1.0.10-beta
-**Track:** A std
-**Priority:** medium — the cache (front 12), the SSR pipeline (front 23) and both asset optimizers
-(fronts 51, 52) each key on content, and each would otherwise invent its own hash
-**Target:** both — std is the floor under both halves
-**Owns:** the content hashes of `src/hash.bp` — `contentHash`, `strongHash`, `cacheKey`, `strongCacheKey`, `etag`, `weakEtag`, `matches`, `fingerprint` (decision 106 puts them beside the digests)
-**Does not touch:** every other std module, and the digests of `hash.bp` (`sha256`, `sha512`, `md5`, `hmacSha256`, and front 01's `hmacSha256Base64Url`, `sha1Base64`, `sha256Base64Url`, `equalsConstantTime`)
-**Reference:** `NEXTJS-DOCS.md § 11. Cache` · [Caching](https://nextjs.org/docs/app/getting-started/caching) · [`ETag`](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/ETag) · [RFC 9110 § 8.8.3](https://www.rfc-editor.org/rfc/rfc9110#field.etag) · [`crypto:hash/2`](https://www.erlang.org/doc/apps/crypto/crypto.html#hash/2)
 
 ---
 

@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: "high — the container has no doors: nothing can resolve a bean, nothing runs at startup or shutdown, and nothing can react to anything"
+target: erlang (server)
+wave: "2"
+depends-on: 04 · 05
+owns: "`src/context.bp`, `src/events.bp`, `src/lifecycle.bp`, `src/rakun.d.bp` (removal of the `Context` stub only), `src/sidecars/rakun_context.erl` · `test/context_test.bp`, `test/events_test.bp`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen · conditional registration, which is front 72's"
+reference: "`02-desenvolvendo-com-spring-boot.md § Beans e Injecao de Dependencias` · `02 § Classes de Configuracao` · `03-recursos-principais.md § Eventos da Aplicacao` · `03 § Disponibilidade da Aplicacao` · `03 § Saida da Aplicacao` · <https://docs.spring.io/spring-boot/reference/using/spring-beans-and-dependency-injection.html> · <https://docs.spring.io/spring-boot/reference/features/spring-application.html#features.spring-application.application-events-and-listeners>"
+---
 # Front 06 — Context API, Lifecycle and Application Events
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — the container has no doors: nothing can resolve a bean, nothing runs at startup or shutdown, and nothing can react to anything
-**Target:** erlang (server)
-**Wave:** 2
-**Depends on:** 04 · 05
-**Owns:** `src/context.bp`, `src/events.bp`, `src/lifecycle.bp`, `src/rakun.d.bp` (removal of the `Context` stub only), `src/sidecars/rakun_context.erl` · `test/context_test.bp`, `test/events_test.bp`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen · conditional registration, which is front 72's
-**Reference:** `02-desenvolvendo-com-spring-boot.md § Beans e Injecao de Dependencias` · `02 § Classes de Configuracao` · `03-recursos-principais.md § Eventos da Aplicacao` · `03 § Disponibilidade da Aplicacao` · `03 § Saida da Aplicacao` · <https://docs.spring.io/spring-boot/reference/using/spring-beans-and-dependency-injection.html> · <https://docs.spring.io/spring-boot/reference/features/spring-application.html#features.spring-application.application-events-and-listeners>
 
 ---
 

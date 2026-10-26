@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 20 — cli-residuals-ii
-
-**Milestone:** 1.0.4-beta
 
 **Delivered in part** 2026-09-18 — defects **B** (`de4aa87`) and **C** (`c01695f`) landed; **D** was
 verified closed on the CLI side and reported, not edited, on the language-server side, where

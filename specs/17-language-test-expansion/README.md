@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 17 — language test expansion (the rest of the language)
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17/18 (`botopink-lang` merge `2f44b30`, closed out by `8433086`): **37 cells**
 beyond front 15's 31, taking `tests/language/` from decision 8 alone to the language the ecosystem

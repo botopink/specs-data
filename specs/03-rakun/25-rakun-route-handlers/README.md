@@ -1,24 +1,30 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  high — an application that renders pages but cannot answer `/api/posts` is not an
+  application; this is also the only path by which a webhook, a health probe or a non-browser client
+  reaches an `onze` app
+target: |-
+  erlang (server). Nothing here runs in a browser and nothing here declares an
+  `@External.Node` cell — the exit gate checks that, and this front is the easiest place to break it
+wave: "6"
+depends-on: |-
+  22 (route table and the `R` registration cell), 06 (scopes), 62 (request context —
+  `cookies()`, `headers()`, `after()`), 07 (the filter chain a handler runs inside), 23 (the shared
+  dispatch entry), 30 (the flush primitive streaming reuses), 01 (percent-decoding for form bodies)
+owns: "`repository/rakun/modules/rakun-app/src/route_handler.bp`, `repository/rakun/modules/rakun-app/test/route_handler_test.bp`"
+does-not-touch: |-
+  `repository/rakun/src/http.bp`, `src/decorators.bp`, `src/bootstrap.bp`,
+  `src/runtime.mjs` (frozen), and the files owned by 22 · 23 · 24. It declares no host cell of its own:
+  registration goes through front 22's `rkAppRegisterHandler`, which is why this front has no `.erl`
+  and no `.mjs`
+reference: |-
+  `NEXTJS-DOCS.md § 19. Route Handlers (API)` ·
+  <https://nextjs.org/docs/app/getting-started/route-handlers-and-middleware> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/route>
+---
 # Front 25 — Rakun Route Handlers
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — an application that renders pages but cannot answer `/api/posts` is not an
-application; this is also the only path by which a webhook, a health probe or a non-browser client
-reaches an `onze` app
-**Target:** erlang (server). Nothing here runs in a browser and nothing here declares an
-`@External.Node` cell — the exit gate checks that, and this front is the easiest place to break it
-**Wave:** 6
-**Depends on:** 22 (route table and the `R` registration cell), 06 (scopes), 62 (request context —
-`cookies()`, `headers()`, `after()`), 07 (the filter chain a handler runs inside), 23 (the shared
-dispatch entry), 30 (the flush primitive streaming reuses), 01 (percent-decoding for form bodies)
-**Owns:** `repository/rakun/modules/rakun-app/src/route_handler.bp`, `repository/rakun/modules/rakun-app/test/route_handler_test.bp`
-**Does not touch:** `repository/rakun/src/http.bp`, `src/decorators.bp`, `src/bootstrap.bp`,
-`src/runtime.mjs` (frozen), and the files owned by 22 · 23 · 24. It declares no host cell of its own:
-registration goes through front 22's `rkAppRegisterHandler`, which is why this front has no `.erl`
-and no `.mjs`
-**Reference:** `NEXTJS-DOCS.md § 19. Route Handlers (API)` ·
-<https://nextjs.org/docs/app/getting-started/route-handlers-and-middleware> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/route>
 
 ---
 

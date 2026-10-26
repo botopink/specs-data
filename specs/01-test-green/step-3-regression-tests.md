@@ -1,8 +1,10 @@
+---
+milestone: 1.0.0-beta
+prioridade: 🟢 MÉDIA
+branch: "`fix/step-3-regression-tests`"
+depende-de: Step 1
+---
 # Step 3 — Regression tests de decorator
-
-**Prioridade:** 🟢 MÉDIA
-**Branch:** `fix/step-3-regression-tests`
-**Depende de:** Step 1
 
 ---
 

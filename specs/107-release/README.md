@@ -1,14 +1,16 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+priority: |-
+  medium (decision 433) — opens after the library tier, or in a free thread when nothing it needs
+  is open.
+repository: "`rakun` (`modules/rakun-release`, a package of the workspace born in s1, decision 917) — worktree `--repo rakun`; s2's consumer commits (`rakun-cli`, `rakun-ssr`) are the same repository's"
+model: sonnet — the README fixes the design (`AGENTS.md` § Which model a thread runs on); the Conformance step opus
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+owns: "`repository/release/**` when born (`botopink/release`), the consumer lines step 2 names."
+depends-on: "`07-g` (a) · rakun 150 s7 (81) · onze 150 s62 (71). Goal: [`03-bundled-libs/107-release`](107-release/context.md)."
+---
 # Front 107 — release: a shared `release`, the OTP release text both frameworks render (conditional on `07-g`)
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-2
-**Priority:** medium (decision 433) — opens after the library tier, or in a free thread when nothing it needs
-is open.
-**Repository:** `rakun` (`modules/rakun-release`, a package of the workspace born in s1, decision 917) — worktree `--repo rakun`; s2's consumer commits (`rakun-cli`, `rakun-ssr`) are the same repository's
-**Model:** sonnet — the README fixes the design (`AGENTS.md` § Which model a thread runs on); the Conformance step opus
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
-**Owns:** `repository/release/**` when born (`botopink/release`), the consumer lines step 2 names.
-**Depends on:** `07-g` (a) · rakun 150 s7 (81) · onze 150 s62 (71). Goal: [`03-bundled-libs/107-release`](107-release/context.md).
 
 ## Alias table
 

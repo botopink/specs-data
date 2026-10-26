@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 13 — Ecosystem migration
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17/18. All five libraries are on the 1.0.3 surface — emilia `63f62d1`, erika
 `4a75280`, jhonstart `f2bf0e8`, onze `557fd9f`, rakun `0814492` — and

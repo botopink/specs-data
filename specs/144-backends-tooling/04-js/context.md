@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 04 — js: commonJS keeps no dead lowering and no marker std alone may write
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-2.md): s13 → B-06 · s12 → B-17 · s6 → B-22 · rows → B-22 · s9 → B-24 · s11 → B-25. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

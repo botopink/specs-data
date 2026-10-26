@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: codegen `wat.zig` + `narrowing.zig`
 
 - **Batch:** `modules/compiler-core/src/codegen/tests/wat.zig` (34 tests), `modules/compiler-core/src/codegen/tests/narrowing.zig` (11 tests)

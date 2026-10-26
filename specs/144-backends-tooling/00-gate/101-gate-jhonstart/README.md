@@ -1,18 +1,24 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  high — jhonstart's cells were green, but three of its manifests carried a
+  restriction the ledger tolerated (two at `0` failed, one at `1`), and its trees carried the PK-5
+  format drift decision 132 waits on.
+depends-on: |-
+  none to start. `113` lands after it (the three `jhonstart-*` ledger lines go with
+  the file).
+owns: |-
+  `repository/jhonstart/**` for the duration of the front — `examples/jhonstart-counter/botopink.json`,
+  `examples/jhonstart-todo/botopink.json`, `modules/jhonstart-dom-test/**`,
+  `.github/workflows/test.yml`, `.gitignore`, `scripts/git-hooks/**`, a reformat-only commit over
+  `modules/jhonstart/**` and `modules/jhonstart-link/**`.
+does-not-touch: |-
+  `repository/botopink-lang/**` (`scripts/restricted-targets.txt` is 113's);
+  `repository/onze/**`, `repository/rakun/**`; `modules/jhonstart-router`, `-forms`, `-link` source
+  beyond the reformat (`../../05-jhonstart/` fronts 26, 27, 67 own them).
+---
 # Front 101 — gate-jhonstart: no stale restriction, the dom-test cell decided, the repository's own gate hard
-
-**Milestone:** 1.0.11-beta
-**Priority:** high — jhonstart's cells were green, but three of its manifests carried a
-restriction the ledger tolerated (two at `0` failed, one at `1`), and its trees carried the PK-5
-format drift decision 132 waits on.
-**Depends on:** none to start. `113` lands after it (the three `jhonstart-*` ledger lines go with
-the file).
-**Owns:** `repository/jhonstart/**` for the duration of the front — `examples/jhonstart-counter/botopink.json`,
-`examples/jhonstart-todo/botopink.json`, `modules/jhonstart-dom-test/**`,
-`.github/workflows/test.yml`, `.gitignore`, `scripts/git-hooks/**`, a reformat-only commit over
-`modules/jhonstart/**` and `modules/jhonstart-link/**`.
-**Does not touch:** `repository/botopink-lang/**` (`scripts/restricted-targets.txt` is 113's);
-`repository/onze/**`, `repository/rakun/**`; `modules/jhonstart-router`, `-forms`, `-link` source
-beyond the reformat (`../../05-jhonstart/` fronts 26, 27, 67 own them).
 
 ---
 

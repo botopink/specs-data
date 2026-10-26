@@ -1,32 +1,38 @@
+---
+milestone: 1.0.10-beta
+track: E onze
+priority: |-
+  medium — an app has no CSS-module analogue, no global stylesheet and no preprocessor
+  hook, and nothing tells rakun-web's static server (front 82) to serve `public/`
+target: erlang (server)
+wave: 7 — after front 68 lands the manifest record this front appends to
+depends-on: |-
+  49 (config, `publicDir`, `outDir`, and the boot that fills jhonstart's
+  `RenderHooks.headExtra` and registers the static roots) · 03 (fingerprints) · 68 (the manifest it
+  appends `Y` records to) · 82 (rakun-web's static-file server, which serves the roots this front
+  declares — decision 116) · 01 (`escape.html`, `escape.attribute`, `io.process.run`, `io.fs`, `path`)
+owns: |-
+  `repository/onze/modules/onze-assets/src/**`,
+  `repository/onze/modules/onze-assets/test/**` — CSS modules, the global stylesheet and its
+  fingerprint, the `Y` manifest records, the two static roots handed to rakun-web front 82, the
+  preprocessor hook
+does-not-touch: |-
+  `repository/emilia/**` (emilia's `flush()` contract is not called here at
+  all), `repository/jhonstart/**` — the moments emilia's sheet is flushed into the document are
+  jhonstart front 30's `RenderPlugin` calls, and the adaptation to `flush()` is the
+  `jhonstart-emilia` bridge's (decision 113) — `repository/onze/modules/onze-bundler/src/manifest.bp`
+  (front 68 owns the record and the parser; this front hands it the style records),
+  `repository/onze/modules/onze/src/integration.bp` (front 49, which registers the bridge plugin at boot),
+  `repository/rakun/**` — the static-file server is rakun-web front 82's
+reference: |-
+  `NEXTJS-DOCS.md § 15. Estilização (CSS)` (CSS Modules · Global CSS · Sass ·
+  `useServerInsertedHTML`), `§ 3. Estrutura do Projeto` (`public/`) · `../../contracts.md § 4`
+  (class-name scheme, front 48) and `§ 6` (the manifest, front 68) ·
+  <https://nextjs.org/docs/app/getting-started/css> ·
+  <https://nextjs.org/docs/app/api-reference/functions/use-server-inserted-html> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/public-folder>
+---
 # Front 69 — onze Styling Pipeline
-
-**Milestone:** 1.0.10-beta
-**Track:** E onze
-**Priority:** medium — an app has no CSS-module analogue, no global stylesheet and no preprocessor
-hook, and nothing tells rakun-web's static server (front 82) to serve `public/`
-**Target:** erlang (server)
-**Wave:** 7 — after front 68 lands the manifest record this front appends to
-**Depends on:** 49 (config, `publicDir`, `outDir`, and the boot that fills jhonstart's
-`RenderHooks.headExtra` and registers the static roots) · 03 (fingerprints) · 68 (the manifest it
-appends `Y` records to) · 82 (rakun-web's static-file server, which serves the roots this front
-declares — decision 116) · 01 (`escape.html`, `escape.attribute`, `io.process.run`, `io.fs`, `path`)
-**Owns:** `repository/onze/modules/onze-assets/src/**`,
-`repository/onze/modules/onze-assets/test/**` — CSS modules, the global stylesheet and its
-fingerprint, the `Y` manifest records, the two static roots handed to rakun-web front 82, the
-preprocessor hook
-**Does not touch:** `repository/emilia/**` (emilia's `flush()` contract is not called here at
-all), `repository/jhonstart/**` — the moments emilia's sheet is flushed into the document are
-jhonstart front 30's `RenderPlugin` calls, and the adaptation to `flush()` is the
-`jhonstart-emilia` bridge's (decision 113) — `repository/onze/modules/onze-bundler/src/manifest.bp`
-(front 68 owns the record and the parser; this front hands it the style records),
-`repository/onze/modules/onze/src/integration.bp` (front 49, which registers the bridge plugin at boot),
-`repository/rakun/**` — the static-file server is rakun-web front 82's
-**Reference:** `NEXTJS-DOCS.md § 15. Estilização (CSS)` (CSS Modules · Global CSS · Sass ·
-`useServerInsertedHTML`), `§ 3. Estrutura do Projeto` (`public/`) · `../../contracts.md § 4`
-(class-name scheme, front 48) and `§ 6` (the manifest, front 68) ·
-<https://nextjs.org/docs/app/getting-started/css> ·
-<https://nextjs.org/docs/app/api-reference/functions/use-server-inserted-html> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/public-folder>
 
 ---
 

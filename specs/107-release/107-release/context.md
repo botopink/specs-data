@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 107 — release: a shared `release`, the OTP release text both frameworks render (conditional on `07-g`)
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [107-release](../README.md): s1 → 107 s1 · s2 → 107 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

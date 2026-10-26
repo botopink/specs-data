@@ -1,21 +1,27 @@
+---
+milestone: 1.0.11-beta
+owner: machine-1
+priority: |-
+  low — C-33 landed (the pool, the shards, the stages side by side, the `.beam` cache);
+  what is left is one measured row outside the runners' ownership and one script for the meta
+  repository.
+depends-on: |-
+  `00-gate` (the gate it times must be green first; the gate's own stages — the
+  widened `zig fmt` check, the widened `TREES` — add wall clock this front re-measures) · the
+  maintainer (the meta script's `AGENTS.md` sentence).
+owns: |-
+  `repository/botopink-lang/scripts/{gate.sh,check-docs.sh,test-libs.sh,lib/pool.sh}` ·
+  `modules/test-shard/**` · the compiler-core test step of `build.zig` · `tests/language/run.sh` (the
+  runner — not the cells, not `expected-failures.txt`, and not the `all)` line at `:155`, 12's
+  carve-out) · `modules/lib-test-runner/**` · the `AGENTS.md` of those directories · the meta
+  repository's `scripts/worktree-add.sh` (new) and the meta `AGENTS.md` § Worktrees sentence
+does-not-touch: |-
+  `modules/compiler-core/**` (every front's — the per-cell compile row is
+  reported, not fixed here), `modules/compiler-cli/src/cli/**` (26; step 4's `test_cmd.zig` cache is
+  landed), the language cells, `scripts/{known-red-libs,restricted-targets}.txt` (00-gate), the
+  libraries, `libs/std/src/async.bp` (the std track — the delay flake).
+---
 # Front 25 — gate-perf: two follow-ups
-
-**Milestone:** 1.0.11-beta
-**Priority:** low — C-33 landed (the pool, the shards, the stages side by side, the `.beam` cache);
-what is left is one measured row outside the runners' ownership and one script for the meta
-repository.
-**Depends on:** `00-gate` (the gate it times must be green first; the gate's own stages — the
-widened `zig fmt` check, the widened `TREES` — add wall clock this front re-measures) · the
-maintainer (the meta script's `AGENTS.md` sentence).
-**Owns:** `repository/botopink-lang/scripts/{gate.sh,check-docs.sh,test-libs.sh,lib/pool.sh}` ·
-`modules/test-shard/**` · the compiler-core test step of `build.zig` · `tests/language/run.sh` (the
-runner — not the cells, not `expected-failures.txt`, and not the `all)` line at `:155`, 12's
-carve-out) · `modules/lib-test-runner/**` · the `AGENTS.md` of those directories · the meta
-repository's `scripts/worktree-add.sh` (new) and the meta `AGENTS.md` § Worktrees sentence
-**Does not touch:** `modules/compiler-core/**` (every front's — the per-cell compile row is
-reported, not fixed here), `modules/compiler-cli/src/cli/**` (26; step 4's `test_cmd.zig` cache is
-landed), the language cells, `scripts/{known-red-libs,restricted-targets}.txt` (00-gate), the
-libraries, `libs/std/src/async.bp` (the std track — the delay flake).
 
 ## Carried from 1.0.10
 

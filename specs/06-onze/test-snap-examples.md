@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # onze — snapshot-test map of `repository/onze/examples/**`
 
 Same contract as [`test-snap.md`](test-snap.md). The example apps are packages; their tests live

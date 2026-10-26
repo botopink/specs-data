@@ -1,16 +1,18 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: high — the library tier (decision 433); runs after the 144 steps it names.
+repository: "`actions` — worktree `--repo actions` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)"
+model: sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
+owns: "`repository/actions/**`"
+depends-on: nothing open
+does-not-touch: |-
+  `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
+  front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
+  commit (decision 188), producer first.
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+---
 # Front 159 — actions: `id` done; consumer commits only
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** high — the library tier (decision 433); runs after the 144 steps it names.
-**Repository:** `actions` — worktree `--repo actions` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)
-**Model:** sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
-**Owns:** `repository/actions/**`
-**Depends on:** nothing open
-**Does not touch:** `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
-front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
-commit (decision 188), producer first.
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
 
 103 steps 1–2 are done; its one open box (the action secret from rakun-app's `#[config]` record) is rakun's
 (150 s2). The typed action shape is rakun's (150 s23, 127). It receives consumer commits only: 144 B-20 (the 330

@@ -1,14 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: A std
+priority: |-
+  high — a server-rendered page that issues three reads one after another is three round
+  trips deep before it renders its first byte
+target: both — std is the floor under both halves
+owns: "`src/async.bp` — at the pure root (decision 106): combinators over `@Task`, no I/O of its own"
+does-not-touch: |-
+  every other std module, including `io/http.bp` — this front adds combinators over
+  `@Task`, it does not change what produces one
+reference: "`NEXTJS-DOCS.md § 9. Busca de Dados (Fetching)` · [Fetching Data — parallel](https://nextjs.org/docs/app/getting-started/fetching-data) · [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) · [Erlang processes](https://www.erlang.org/doc/system/ref_man_processes.html) · decisions 120 and 121 (a Task never fails) · `decisions-pending.md` 24-g (the module's shape)"
+---
 # Front 02 — Std Async Primitives
-
-**Milestone:** 1.0.10-beta
-**Track:** A std
-**Priority:** high — a server-rendered page that issues three reads one after another is three round
-trips deep before it renders its first byte
-**Target:** both — std is the floor under both halves
-**Owns:** `src/async.bp` — at the pure root (decision 106): combinators over `@Task`, no I/O of its own
-**Does not touch:** every other std module, including `io/http.bp` — this front adds combinators over
-`@Task`, it does not change what produces one
-**Reference:** `NEXTJS-DOCS.md § 9. Busca de Dados (Fetching)` · [Fetching Data — parallel](https://nextjs.org/docs/app/getting-started/fetching-data) · [`Promise.all`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all) · [Erlang processes](https://www.erlang.org/doc/system/ref_man_processes.html) · decisions 120 and 121 (a Task never fails) · `decisions-pending.md` 24-g (the module's shape)
 
 ---
 

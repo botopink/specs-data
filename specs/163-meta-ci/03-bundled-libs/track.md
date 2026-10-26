@@ -1,6 +1,9 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+depends-on: "`02-std-and-packaging/97-std-dedupe` (steps 0–5 on feat — this track's std side)."
+---
 # Track 03 — bundled libraries: what the frameworks copy from each other
-
-**Depends on:** `02-std-and-packaging/97-std-dedupe` (steps 0–5 on feat — this track's std side).
 
 > **Decision 326.** The packages are not bundled: each is a repository of its own (`repository/<pkg>`,
 > `botopink/<pkg>`, moved with its history by front 138), an ordinary dependency a consumer declares

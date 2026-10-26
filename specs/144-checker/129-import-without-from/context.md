@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 129 — import-without-from: `from` names a package, never a module of the importing package
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

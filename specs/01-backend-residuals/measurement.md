@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Measuring a backend, and why erlang is not the oracle
 
 > Kept from the deep dives of the landed backend fronts (`1.0.4-beta/02-erlang/causes.md`, and its

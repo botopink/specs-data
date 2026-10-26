@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 33 (palette), 34 (modifiers, in the examples), 54 (`themeVar`, `--shadow-*`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 41 — effects` block: `Effect`,
+  `Blend`, `Mask`, and the top-level `EffectShadowRaw`, `EffectTextShadowRaw`, `MaskImageRaw`) ·
+  `src/emilia.bp` (front-41 block: `effectTokenToCss`, `blendTokenToCss`, `maskTokenToCss` and their
+  sub-dispatchers, all taking `th: Theme`; `effectEntries`; `rawShadow`, `rawTextShadow`, `rawMaskImage`;
+  five `tokenToSheet` arms)
+user-docs: "`repository/emilia/docs.md` § *Effect, Blend and Mask*"
+reference: "`TAILWIND_CSS_DOCS.md § 12` (shadow scale `§ 21.4`) · https://tailwindcss.com/docs/box-shadow"
+---
 # Front 41 — emilia effects
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 33 (palette), 34 (modifiers, in the examples), 54 (`themeVar`, `--shadow-*`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 41 — effects` block: `Effect`,
-`Blend`, `Mask`, and the top-level `EffectShadowRaw`, `EffectTextShadowRaw`, `MaskImageRaw`) ·
-`src/emilia.bp` (front-41 block: `effectTokenToCss`, `blendTokenToCss`, `maskTokenToCss` and their
-sub-dispatchers, all taking `th: Theme`; `effectEntries`; `rawShadow`, `rawTextShadow`, `rawMaskImage`;
-five `tokenToSheet` arms)
-**User docs:** `repository/emilia/docs.md` § *Effect, Blend and Mask*
-**Reference:** `TAILWIND_CSS_DOCS.md § 12` (shadow scale `§ 21.4`) · https://tailwindcss.com/docs/box-shadow
 
 **Open:** none.
 

@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 08 — SQL data access: lazy bootstrap, the migration lock, the ORM's two refusals
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s1 → 150 s4 · s2 → 150 s4 · s3 → 150 s4 · s4 → 150 s4 · s5 → 150 s4 · s6 → 150 s4 · s7 → 150 s4. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

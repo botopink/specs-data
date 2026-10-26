@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 65 — URL rules and static assets: the fall-through, a streamed relay, the dev cache default
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s1 → 150 s16 · s2 → 150 s16 · s3 → 150 s16 · s4 → 150 s16. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

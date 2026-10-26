@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Machine 1 — the work queue (the maintainer, 2026-10-17, night)
 
 What machine 1 (the checker and the language; the libraries' lane; front 165) executes without a

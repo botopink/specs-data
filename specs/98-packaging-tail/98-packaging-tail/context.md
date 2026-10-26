@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 98 — packaging tail: the rule checked across the seven repositories
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../144-botopink-lang/README.md): s2 → B-27 · s3 → B-27; [145-query](../../145-query/README.md): s1 → 145 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

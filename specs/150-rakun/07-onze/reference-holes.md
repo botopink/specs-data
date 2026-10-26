@@ -1,8 +1,12 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+track: |-
+  E — onze · **Cut:** [`modules.md`](modules.md) · the 1.0.10 `06-onze/unification.md`,
+  carried whole. **missing** rows naming a front are that front's steps here (`assetPrefix` → 50,
+  `<Script onReady/onError>` → 50, `-H` → 50); the rest stay deferred.
+---
 # onze — what no front covers yet
-
-**Track:** E — onze · **Cut:** [`modules.md`](modules.md) · the 1.0.10 `06-onze/unification.md`,
-carried whole. **missing** rows naming a front are that front's steps here (`assetPrefix` → 50,
-`<Script onReady/onError>` → 50, `-H` → 50); the rest stay deferred.
 
 Framework half of `NEXTJS-DOCS.md` vs the nine fronts. **Covered** rows omitted; each row is a
 hole and where it goes.

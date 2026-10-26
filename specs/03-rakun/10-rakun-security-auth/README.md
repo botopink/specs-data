@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: high — every endpoint rakun serves today is public, and there is no mechanism by which it could be anything else
+target: erlang (server)
+wave: "4"
+depends-on: 01 · 07 · 08
+owns: "`modules/rakun-security/src/**` · `modules/rakun-security/test/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen · `modules/rakun-web/src/**`, which is front 07's (this front registers into its chain) · `modules/rakun-security/src/oauth2/**`, `oidc/**`, `saml2/**`, `ldap/**`, which are front 79's"
+reference: "`04-web.md § Spring Security` · `09-actuator.md § Seguranca` · <https://docs.spring.io/spring-boot/reference/web/spring-security.html> · <https://www.rfc-editor.org/rfc/rfc7519> (JWT) · <https://www.rfc-editor.org/rfc/rfc7617> (Basic)"
+---
 # Front 10 — Authentication, Authorization and Method Security
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — every endpoint rakun serves today is public, and there is no mechanism by which it could be anything else
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 01 · 07 · 08
-**Owns:** `modules/rakun-security/src/**` · `modules/rakun-security/test/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen · `modules/rakun-web/src/**`, which is front 07's (this front registers into its chain) · `modules/rakun-security/src/oauth2/**`, `oidc/**`, `saml2/**`, `ldap/**`, which are front 79's
-**Reference:** `04-web.md § Spring Security` · `09-actuator.md § Seguranca` · <https://docs.spring.io/spring-boot/reference/web/spring-security.html> · <https://www.rfc-editor.org/rfc/rfc7519> (JWT) · <https://www.rfc-editor.org/rfc/rfc7617> (Basic)
 
 ---
 

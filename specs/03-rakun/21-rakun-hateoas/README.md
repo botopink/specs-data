@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: low — no other front depends on it, and an API without links is still an API
+target: erlang (server)
+wave: "3"
+depends-on: 06 (context), 22 (the route table, for `linkTo` — see *Building a link* below)
+owns: "`modules/rakun-hateoas/src/**`, `modules/rakun-hateoas/test/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone"
+reference: "`04-web.md § Spring HATEOAS` · https://docs.spring.io/spring-boot/reference/web/spring-hateoas.html"
+---
 # Front 21 — Rakun HATEOAS
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** low — no other front depends on it, and an API without links is still an API
-**Target:** erlang (server)
-**Wave:** 3
-**Depends on:** 06 (context), 22 (the route table, for `linkTo` — see *Building a link* below)
-**Owns:** `modules/rakun-hateoas/src/**`, `modules/rakun-hateoas/test/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone
-**Reference:** `04-web.md § Spring HATEOAS` · https://docs.spring.io/spring-boot/reference/web/spring-hateoas.html
 
 ---
 

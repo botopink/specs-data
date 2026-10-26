@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 134 — builtins-declared: every builtin declared in `builtins.d.bp`, and held to it
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-1.md): s2 box 4 → B-06 · s2 boxes 1, 2, 3, 6 → B-16 · s6 → B-17 · s2 box 5 → B-18. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

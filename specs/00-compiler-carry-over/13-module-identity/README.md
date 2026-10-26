@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 13 — module-identity
-
-**Milestone:** 1.0.10-beta
 
 One front for two concerns, **module naming** and **run-time type identity**; the measured analysis
 of both lives in the companion documents. Decisions 6, 21, 22, 23 and 62 of

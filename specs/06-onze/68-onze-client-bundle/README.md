@@ -1,44 +1,51 @@
+---
+milestone: 1.0.10-beta
+track: E onze
+priority: |-
+  critical — without it `onze build` ships a BEAM server and no browser half: every
+  `'use client'` component renders once and is then dead HTML, and fronts 26, 27, 29, 31 and 67 deliver
+  nothing that runs
+target: |-
+  both — the graph walk, the compile and the concatenation run at build time on the server
+  side (under `onze build`, on BEAM); the artifact they produce is the js client half. One file,
+  `manifest.bp`, compiles for both targets because the build host writes the manifest and the BEAM
+  server reads it back to emit script tags
+wave: "6"
+depends-on: |-
+  29 (the boundary marker, the `server-only` marker and the hydrate entry point) · 49
+  (config, `outDir`, and the public-environment rule this front enforces) · 03 (content hashes) · 50 (the
+  CLI that invokes it) · 01 (`io.fs` — `walk`, `glob`, `readText`, `writeText` — and `io.process.run`) · 30 (jhonstart's render:
+  the payload, the globals registry — `globals.fill` and `globals.signal` — and the `RenderHooks` head and body fields its tags fill) · 27 (the link runtime the entry mounts) · 48 (the class names the
+  tree carries) · 56 (emilia's `styleRule`, which the build-time rule evaluation calls — decision
+  116) · `01-std/06-validation-lib` (`setMessageSource`, which the entry calls) · 20 (the websocket the
+  dev rebuild pushes over)
+owns: |-
+  `repository/onze/modules/onze-bundler/src/**`,
+  `repository/onze/modules/onze-bundler/test/**` — including `headScriptTags`/`scriptTags` and the
+  `RenderHooks.headExtra`/`bodyExtra` values built from them, which `Onze.run` (front 49) hands to
+  jhonstart's render at boot. This front owns **no** definition in another repository: `RenderHooks`,
+  the payload and the globals registry are jhonstart front 30's, the island marker is front 29's, and
+  `linkMount` / `formMount` are fronts 27's and 67's — all imported here (decisions 113, 114). The
+  entry imports nothing from the bundled library `routing`: jhonstart's router and `Link` import it
+  themselves (decision 115), the navigation vocabulary included (`routing`'s `navigation`, decision
+  116) — the entry keeps no copy of it. Build-time rule evaluation calls emilia's `styleRule` (emilia
+  front 56) directly and the hash-parity check calls std's `hash.contentHash` (decision 116)
+does-not-touch: |-
+  `repository/onze/modules/onze/**` (front 49), `repository/onze/modules/onze-cli/**`
+  (front 50), `repository/onze/modules/onze-assets/**` (front 69), `repository/jhonstart/**`,
+  `repository/rakun/**`, `repository/emilia/**`
+reference: |-
+  `NEXTJS-DOCS.md § 7. Server e Client Components` (Regras fundamentais · Protegendo
+  código server-only · `NEXT_PUBLIC_`), `§ 2. Instalação e Configuração` (scripts), `§ 25. Referência de
+  Componentes` (`<Script>`), `§ 28. Configuração` (`env`, `generateBuildId`), `§ 29. CLI` (`next build`,
+  `next dev`) · `../../contracts.md § 2` (payload envelope, jhonstart front 30) and `§ 4` (class-name
+  scheme, front 48) ·
+  <https://nextjs.org/docs/app/getting-started/server-and-client-components> ·
+  <https://nextjs.org/docs/app/guides/environment-variables> ·
+  <https://nextjs.org/docs/app/api-reference/components/script> ·
+  <https://nextjs.org/docs/app/api-reference/cli/next>
+---
 # Front 68 — onze Client Bundle
-
-**Milestone:** 1.0.10-beta
-**Track:** E onze
-**Priority:** critical — without it `onze build` ships a BEAM server and no browser half: every
-`'use client'` component renders once and is then dead HTML, and fronts 26, 27, 29, 31 and 67 deliver
-nothing that runs
-**Target:** both — the graph walk, the compile and the concatenation run at build time on the server
-side (under `onze build`, on BEAM); the artifact they produce is the js client half. One file,
-`manifest.bp`, compiles for both targets because the build host writes the manifest and the BEAM
-server reads it back to emit script tags
-**Wave:** 6
-**Depends on:** 29 (the boundary marker, the `server-only` marker and the hydrate entry point) · 49
-(config, `outDir`, and the public-environment rule this front enforces) · 03 (content hashes) · 50 (the
-CLI that invokes it) · 01 (`io.fs` — `walk`, `glob`, `readText`, `writeText` — and `io.process.run`) · 30 (jhonstart's render:
-the payload, the globals registry — `globals.fill` and `globals.signal` — and the `RenderHooks` head and body fields its tags fill) · 27 (the link runtime the entry mounts) · 48 (the class names the
-tree carries) · 56 (emilia's `styleRule`, which the build-time rule evaluation calls — decision
-116) · `01-std/06-validation-lib` (`setMessageSource`, which the entry calls) · 20 (the websocket the
-dev rebuild pushes over)
-**Owns:** `repository/onze/modules/onze-bundler/src/**`,
-`repository/onze/modules/onze-bundler/test/**` — including `headScriptTags`/`scriptTags` and the
-`RenderHooks.headExtra`/`bodyExtra` values built from them, which `Onze.run` (front 49) hands to
-jhonstart's render at boot. This front owns **no** definition in another repository: `RenderHooks`,
-the payload and the globals registry are jhonstart front 30's, the island marker is front 29's, and
-`linkMount` / `formMount` are fronts 27's and 67's — all imported here (decisions 113, 114). The
-entry imports nothing from the bundled library `routing`: jhonstart's router and `Link` import it
-themselves (decision 115), the navigation vocabulary included (`routing`'s `navigation`, decision
-116) — the entry keeps no copy of it. Build-time rule evaluation calls emilia's `styleRule` (emilia
-front 56) directly and the hash-parity check calls std's `hash.contentHash` (decision 116)
-**Does not touch:** `repository/onze/modules/onze/**` (front 49), `repository/onze/modules/onze-cli/**`
-(front 50), `repository/onze/modules/onze-assets/**` (front 69), `repository/jhonstart/**`,
-`repository/rakun/**`, `repository/emilia/**`
-**Reference:** `NEXTJS-DOCS.md § 7. Server e Client Components` (Regras fundamentais · Protegendo
-código server-only · `NEXT_PUBLIC_`), `§ 2. Instalação e Configuração` (scripts), `§ 25. Referência de
-Componentes` (`<Script>`), `§ 28. Configuração` (`env`, `generateBuildId`), `§ 29. CLI` (`next build`,
-`next dev`) · `../../contracts.md § 2` (payload envelope, jhonstart front 30) and `§ 4` (class-name
-scheme, front 48) ·
-<https://nextjs.org/docs/app/getting-started/server-and-client-components> ·
-<https://nextjs.org/docs/app/guides/environment-variables> ·
-<https://nextjs.org/docs/app/api-reference/components/script> ·
-<https://nextjs.org/docs/app/api-reference/cli/next>
 
 ---
 

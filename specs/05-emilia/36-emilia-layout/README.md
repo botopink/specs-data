@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (`spacing(n)`, `spacingHalf(n)`, `--container-*`), 56 (`declSheet`), 33 (examples only)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 36 — layout` block: `Layout`) ·
+  `src/emilia.bp` (front-36 block: `layoutTokenToCss` and one sub-dispatcher per sub-section, all taking
+  `th: Theme`; the existing `Layout(_inner) -> declSheet(layoutTokenToCss(_inner, th))` arm)
+does-not-own: the flex/grid container properties and `Gap` (front 37); `Size` (front 35)
+user-docs: "`repository/emilia/docs.md` § *Layout*"
+reference: "`TAILWIND_CSS_DOCS.md § 5` (5.1–5.19) · https://tailwindcss.com/docs/display"
+---
 # Front 36 — emilia layout
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (`spacing(n)`, `spacingHalf(n)`, `--container-*`), 56 (`declSheet`), 33 (examples only)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 36 — layout` block: `Layout`) ·
-`src/emilia.bp` (front-36 block: `layoutTokenToCss` and one sub-dispatcher per sub-section, all taking
-`th: Theme`; the existing `Layout(_inner) -> declSheet(layoutTokenToCss(_inner, th))` arm)
-**Does not own:** the flex/grid container properties and `Gap` (front 37); `Size` (front 35)
-**User docs:** `repository/emilia/docs.md` § *Layout*
-**Reference:** `TAILWIND_CSS_DOCS.md § 5` (5.1–5.19) · https://tailwindcss.com/docs/display
 
 **Open:** none.
 

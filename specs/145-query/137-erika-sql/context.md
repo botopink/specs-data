@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 137 — erika queries a database: holes, a SQL target, the template annotation
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [145-query](../README.md): s2 → 145 s1 · s3 → 145 s1 · s4 → 145 s1 · s5 → 145 s1. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

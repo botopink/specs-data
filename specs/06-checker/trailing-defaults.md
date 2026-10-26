@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Trailing default parameters at the call site
 
 > **Carried from 1.0.2-beta comptime-dispatch** (its step 3, never executed). The fix is this

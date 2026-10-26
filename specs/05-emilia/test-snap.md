@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: D — emilia · **Repo:** `repository/emilia` · **Contract:** [`../01-std/snapshots.md`](../01-std/snapshots.md), [`../01-std/src-builtin.md`](../01-std/src-builtin.md), [`../01-std/asserts-api.md`](../01-std/asserts-api.md)
+---
 # test-snap — the snapshot-test map of the `emilia` modules
-
-**Track:** D — emilia · **Repo:** `repository/emilia` · **Contract:** [`../01-std/snapshots.md`](../01-std/snapshots.md), [`../01-std/src-builtin.md`](../01-std/src-builtin.md), [`../01-std/asserts-api.md`](../01-std/asserts-api.md)
 
 The snapshot suite to write for the landed modules. The fronts landed with inline string asserts in
 the source files; this map specifies the `emilia-test` helpers and the per-front `test/` files that

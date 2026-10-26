@@ -1,3 +1,6 @@
+---
+milestone: 1.0.12-beta
+---
 # Deferred and out of scope — 1.0.12-beta
 
 What the milestone does not cover, so Spring Boot 4 / Next.js / Tailwind CSS parity is checkable.

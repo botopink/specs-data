@@ -1,30 +1,36 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  critical — this is the front where "Erlang is the server" stops being a slogan: a page
+  request is matched, scoped and answered on BEAM, and every byte the browser later works from leaves
+  through the chunk writer this front owns
+target: erlang (server)
+wave: "5"
+depends-on: |-
+  04 (BEAM runtime, the transport that writes chunks), 22 (route table and layout
+  chain), 06 (scopes), 62 (request context — the request scope, `setPhase`, `markDynamic`), 03
+  (content hash for the build id). The page renderers arrive at boot from onze 49, which depends on
+  this front — not the reverse
+owns: |-
+  `repository/rakun/modules/rakun-app/src/ssr.bp` — `ChunkWriter`, `PageRenderer`, `page(pattern, render)`
+  through which onze hands it one renderer per page pattern, and the page dispatch —
+  `repository/rakun/modules/rakun-app/src/sidecars/rakun_ssr.erl` (the chunk writer), `repository/rakun/modules/rakun-app/test/ssr_test.bp` (the `rakun-app` member, `modules.md` § The cut)
+does-not-touch: |-
+  `repository/rakun/src/http.bp`, `src/decorators.bp`, `src/bootstrap.bp`
+  (frozen), the files owned by 22 · 24 · 25, and every file outside `repository/rakun/` — rakun
+  builds no HTML and imports nothing from `jhonstart`, `emilia` or `onze` (decision 113). The walker,
+  the escaping, the composition of the segment chain, the document, the payload (contract 2), the
+  island and hole ordinals, the fill protocol, `RenderHooks` and the render plugins are jhonstart
+  [front 30](../../04-jhonstart/30-jhonstart-streaming/README.md)'s
+reference: |-
+  `NEXTJS-DOCS.md § 5. Layouts e Páginas`, `§ 7. Server e Client Components`,
+  `§ 13. Streaming`, `§ 4. Hierarquia de renderização` ·
+  <https://nextjs.org/docs/app/getting-started/layouts-and-pages> ·
+  <https://nextjs.org/docs/app/getting-started/server-and-client-components> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/loading>
+---
 # Front 23 — Rakun SSR Pipeline
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** critical — this is the front where "Erlang is the server" stops being a slogan: a page
-request is matched, scoped and answered on BEAM, and every byte the browser later works from leaves
-through the chunk writer this front owns
-**Target:** erlang (server)
-**Wave:** 5
-**Depends on:** 04 (BEAM runtime, the transport that writes chunks), 22 (route table and layout
-chain), 06 (scopes), 62 (request context — the request scope, `setPhase`, `markDynamic`), 03
-(content hash for the build id). The page renderers arrive at boot from onze 49, which depends on
-this front — not the reverse
-**Owns:** `repository/rakun/modules/rakun-app/src/ssr.bp` — `ChunkWriter`, `PageRenderer`, `page(pattern, render)`
-through which onze hands it one renderer per page pattern, and the page dispatch —
-`repository/rakun/modules/rakun-app/src/sidecars/rakun_ssr.erl` (the chunk writer), `repository/rakun/modules/rakun-app/test/ssr_test.bp` (the `rakun-app` member, `modules.md` § The cut)
-**Does not touch:** `repository/rakun/src/http.bp`, `src/decorators.bp`, `src/bootstrap.bp`
-(frozen), the files owned by 22 · 24 · 25, and every file outside `repository/rakun/` — rakun
-builds no HTML and imports nothing from `jhonstart`, `emilia` or `onze` (decision 113). The walker,
-the escaping, the composition of the segment chain, the document, the payload (contract 2), the
-island and hole ordinals, the fill protocol, `RenderHooks` and the render plugins are jhonstart
-[front 30](../../04-jhonstart/30-jhonstart-streaming/README.md)'s
-**Reference:** `NEXTJS-DOCS.md § 5. Layouts e Páginas`, `§ 7. Server e Client Components`,
-`§ 13. Streaming`, `§ 4. Hierarquia de renderização` ·
-<https://nextjs.org/docs/app/getting-started/layouts-and-pages> ·
-<https://nextjs.org/docs/app/getting-started/server-and-client-components> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/loading>
 
 ---
 

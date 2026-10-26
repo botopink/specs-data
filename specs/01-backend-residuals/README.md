@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 01 — backend-residuals
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17 on `botopink-lang` `feat`, steps 1–4 — merges `00b8975` (beam), `4eadb70`
 (wasm), `dbe2863` (commonJS), `b4cf700` (step 4, decision 1a on commonJS, erlang and wasm). The three

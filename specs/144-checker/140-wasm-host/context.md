@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 140 — a wasm build binds to its runtime: wasmtime (WASI preview 2) and the browser, together
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-1.md): s4 → B-25 · s5 → B-25 · s6 → B-25. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

@@ -1,15 +1,17 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** medium · **Level:** 3 (no edge; arms after 33 · 34 · 35) · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (`themeVar`), 56 (`declSheet`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 42 — filters` block: `Filter`,
+  `BackdropFilter`, and the top-level `FilterRaw`, `BackdropRaw`) · `src/emilia.bp` (front-42 block:
+  `filterTokenToCss`, `backdropFilterTokenToCss`, `filterFamilyDecl`, `backdropFamilyDecl`, `filterChain`,
+  `backdropFilterChain`, `filterEntries`, `rawFilter`, `rawBackdropFilter`; four `tokenToSheet` arms after
+  front 41's)
+user-docs: "`repository/emilia/docs.md` § *Filter and BackdropFilter*"
+reference: "`TAILWIND_CSS_DOCS.md § 13` (blur literals `§ 13.1`; backdrop opacity from `§ 12.3`) · https://tailwindcss.com/docs/filter"
+---
 # Front 42 — emilia filters
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** medium · **Level:** 3 (no edge; arms after 33 · 34 · 35) · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (`themeVar`), 56 (`declSheet`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 42 — filters` block: `Filter`,
-`BackdropFilter`, and the top-level `FilterRaw`, `BackdropRaw`) · `src/emilia.bp` (front-42 block:
-`filterTokenToCss`, `backdropFilterTokenToCss`, `filterFamilyDecl`, `backdropFamilyDecl`, `filterChain`,
-`backdropFilterChain`, `filterEntries`, `rawFilter`, `rawBackdropFilter`; four `tokenToSheet` arms after
-front 41's)
-**User docs:** `repository/emilia/docs.md` § *Filter and BackdropFilter*
-**Reference:** `TAILWIND_CSS_DOCS.md § 13` (blur literals `§ 13.1`; backdrop opacity from `§ 12.3`) · https://tailwindcss.com/docs/filter
 
 **Open:** none.
 

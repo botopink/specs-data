@@ -1,19 +1,24 @@
+---
+milestone: 1.0.5-beta
+priority: |-
+  medium — one user-facing defect is fully implemented and parked because a documentation
+  fence reds; the rest of the directory has had no owner since 1.0.4-beta's front 05 delivered.
+depends-on: |-
+  [`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/08-hygiene/README.md) step 3.3 — the `docs.md:78` edit, which is the
+  only thing between step 1 and a commit. Nothing else blocks
+owns: |-
+  `modules/compiler-cli/**` **except** `src/cli/build.zig` and `src/cli/run.zig`
+  ([`13-module-identity`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/13-module-identity/README.md) owns those two — the output layout and
+  `botopink run --target erlang`) · `modules/lib-test-runner/**` where a fix needs it · this directory ·
+  no snapshot directory
+does-not-touch: |-
+  `modules/compiler-core/src/**` ([`01-checker`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/01-checker/README.md), 02–05) ·
+  `modules/language-server/**` ([`11-tooling`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/11-tooling/README.md)) · `libs/std/**`, `examples/**`,
+  `docs.md`, `README.md` ([`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/08-hygiene/README.md)) · `scripts/**`, `build.zig`,
+  `.github/**` · the sibling repositories under `repository/`
+  ([`09-ecosystem-residuals`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/09-ecosystem-residuals/README.md))
+---
 # Front 10 — cli-residuals
-
-**Milestone:** 1.0.5-beta
-**Priority:** medium — one user-facing defect is fully implemented and parked because a documentation
-fence reds; the rest of the directory has had no owner since 1.0.4-beta's front 05 delivered.
-**Depends on:** [`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/08-hygiene/README.md) step 3.3 — the `docs.md:78` edit, which is the
-only thing between step 1 and a commit. Nothing else blocks
-**Owns:** `modules/compiler-cli/**` **except** `src/cli/build.zig` and `src/cli/run.zig`
-([`13-module-identity`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/13-module-identity/README.md) owns those two — the output layout and
-`botopink run --target erlang`) · `modules/lib-test-runner/**` where a fix needs it · this directory ·
-no snapshot directory
-**Does not touch:** `modules/compiler-core/src/**` ([`01-checker`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/01-checker/README.md), 02–05) ·
-`modules/language-server/**` ([`11-tooling`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/11-tooling/README.md)) · `libs/std/**`, `examples/**`,
-`docs.md`, `README.md` ([`08-hygiene`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/08-hygiene/README.md)) · `scripts/**`, `build.zig`,
-`.github/**` · the sibling repositories under `repository/`
-([`09-ecosystem-residuals`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/09-ecosystem-residuals/README.md))
 
 Paths are relative to `repository/botopink-lang/`; `main.zig` and `cli/*.zig` live under
 `modules/compiler-cli/src/`. Measured at `botopink-lang` `c2dd780` (2026-09-18).

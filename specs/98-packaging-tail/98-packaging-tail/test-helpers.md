@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # The `-test` helper contract
 
 Front 98 checks every `<lib>-test` member against it; each library track writes its helpers.

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.12-beta
+---
 # Language gaps — 1.0.12-beta
 
 - Compiler frozen for every **library** front: a library is plain botopink + decorators over `syntax decl`, comptime

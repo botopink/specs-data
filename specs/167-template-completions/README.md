@@ -1,16 +1,19 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+priority: |-
+  later (the maintainer, 2026-10-20: "uma frente com essa ideia para ser feita depois") — opened in no queue; it
+  starts when the maintainer moves it into one.
+repository: |-
+  two (the maintainer, 2026-10-20), each step in one of them:
+  - `repository/botopink-lang` (`--lang`) — the `compiler` module's build surface (`libs/std/src/compiler.bp` and its readers) and
+    the language server, `modules/language-server/` (`textDocument/completion`, today `Server.completionItems` / `engine.completion`);
+    its build steps are front 144's (433, `fronts.md` § rule 1), this front holding the design and the order;
+  - `repository/vscode-extension` (`--repo vscode-extension`) — the client (`src/extension.ts`'s `LanguageClient`), the grammar
+    (`syntaxes/botopink.tmLanguage.json`) and the extension's defaults, so completion fires inside a template's text; beside front
+    161's steps, in that repository's lane.
+---
 # Front 167 — template completions: a template's own syntax answers the editor's completion
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-2
-**Priority:** later (the maintainer, 2026-10-20: "uma frente com essa ideia para ser feita depois") — opened in no queue; it
-starts when the maintainer moves it into one.
-**Repository:** two (the maintainer, 2026-10-20), each step in one of them:
-- `repository/botopink-lang` (`--lang`) — the `compiler` module's build surface (`libs/std/src/compiler.bp` and its readers) and
-  the language server, `modules/language-server/` (`textDocument/completion`, today `Server.completionItems` / `engine.completion`);
-  its build steps are front 144's (433, `fronts.md` § rule 1), this front holding the design and the order;
-- `repository/vscode-extension` (`--repo vscode-extension`) — the client (`src/extension.ts`'s `LanguageClient`), the grammar
-  (`syntaxes/botopink.tmLanguage.json`) and the extension's defaults, so completion fires inside a template's text; beside front
-  161's steps, in that repository's lane.
 
 A library that answers completions for its template (rakun-bpp's `html`, `query`) does it in its own front, after s2.
 **Model:** `fable` for s0 (a design step, `Plan` agent), then opus for the surface (s1) and sonnet for the language server's

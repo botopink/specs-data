@@ -1,26 +1,32 @@
+---
+milestone: 1.0.10-beta
+track: E onze
+priority: |-
+  low — a page with an unoptimized webfont still works; it reflows once, leaks the
+  visitor's IP to a third party, and blocks the first paint, and none of those block another front
+target: |-
+  both, and the halves are named. **erlang (server / build time)** — resolving a family to
+  font files, downloading and self-hosting them, reading their metrics, generating the `@font-face` and
+  the metric-adjusted fallback, and emitting the `<link rel="preload">` tags into the document head.
+  **js (client)** — the behaviour those bytes describe: the browser paints with the adjusted fallback,
+  swaps to the real face when it arrives, and the swap moves nothing
+wave: "8"
+depends-on: |-
+  49 (config, `outDir`, `publicDir`), 01 (`io.process` spawner for the fetch and the
+  metrics probe, `path`), 03 (content hash for the self-hosted filename), 69 (the asset manifest the files are listed in and
+  `public/` serving) — the CSS reaches the head through jhonstart's `RenderHooks.headExtra`, which
+  front 49 fills
+owns: "`modules/onze-assets/src/font.bp`, `modules/onze-assets/src/font_metrics.bp`, `modules/onze-assets/test/font_test.bp` (the member cut of [`../modules.md`](../modules.md))"
+does-not-touch: |-
+  `repository/onze/modules/onze/**` (F49), `repository/onze/modules/onze-assets/src/root.bp` and its `botopink.json`
+  (F69 — except the `pub mod font; pub mod font_metrics;` lines, handed to F69), `modules/onze-assets/src/image.bp` (F51),
+  `repository/emilia/src/**` (track D), every other repository
+reference: |-
+  `NEXTJS-DOCS.md § 17. Otimização de Fontes`, `§ 15. Estilização (CSS)` (where the CSS
+  lands) · <https://nextjs.org/docs/app/api-reference/components/font> ·
+  <https://nextjs.org/docs/app/getting-started/fonts>
+---
 # Front 52 — onze Font
-
-**Milestone:** 1.0.10-beta
-**Track:** E onze
-**Priority:** low — a page with an unoptimized webfont still works; it reflows once, leaks the
-visitor's IP to a third party, and blocks the first paint, and none of those block another front
-**Target:** both, and the halves are named. **erlang (server / build time)** — resolving a family to
-font files, downloading and self-hosting them, reading their metrics, generating the `@font-face` and
-the metric-adjusted fallback, and emitting the `<link rel="preload">` tags into the document head.
-**js (client)** — the behaviour those bytes describe: the browser paints with the adjusted fallback,
-swaps to the real face when it arrives, and the swap moves nothing
-**Wave:** 8
-**Depends on:** 49 (config, `outDir`, `publicDir`), 01 (`io.process` spawner for the fetch and the
-metrics probe, `path`), 03 (content hash for the self-hosted filename), 69 (the asset manifest the files are listed in and
-`public/` serving) — the CSS reaches the head through jhonstart's `RenderHooks.headExtra`, which
-front 49 fills
-**Owns:** `modules/onze-assets/src/font.bp`, `modules/onze-assets/src/font_metrics.bp`, `modules/onze-assets/test/font_test.bp` (the member cut of [`../modules.md`](../modules.md))
-**Does not touch:** `repository/onze/modules/onze/**` (F49), `repository/onze/modules/onze-assets/src/root.bp` and its `botopink.json`
-(F69 — except the `pub mod font; pub mod font_metrics;` lines, handed to F69), `modules/onze-assets/src/image.bp` (F51),
-`repository/emilia/src/**` (track D), every other repository
-**Reference:** `NEXTJS-DOCS.md § 17. Otimização de Fontes`, `§ 15. Estilização (CSS)` (where the CSS
-lands) · <https://nextjs.org/docs/app/api-reference/components/font> ·
-<https://nextjs.org/docs/app/getting-started/fonts>
 
 ---
 

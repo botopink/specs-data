@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # The command contract, and where HEAD departs from it
 
 > Carried from `1.0.2-beta/02-cli-gate/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

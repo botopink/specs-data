@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 34 — emilia source tail: std's hash, five families at upstream parity, the breakpoint refusal (carries 1.0.10's 40 · 42 · 43 · 44 · 45 · 54 · 56)
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-emilia.md): open → 150 s52 · s5 → 150 s52 · s2 → 150 s53 · s3 → 150 s54. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

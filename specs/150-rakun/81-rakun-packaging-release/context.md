@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 81 — Packaging and release: a tarball that boots, upgrades and validates
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s1 → 150 s7 · s2 → 150 s7 · s3 → 150 s7 · s4 → 150 s7. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

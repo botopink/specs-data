@@ -1,6 +1,9 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+repo: '`repository/rakun` · **Workspace:** `botopink.json` → `"workspaces": ["modules/*", "starters/*", "examples/*"]`, `"targets": ["erlang"]`'
+---
 # rakun — the members
-
-**Repo:** `repository/rakun` · **Workspace:** `botopink.json` → `"workspaces": ["modules/*", "starters/*", "examples/*"]`, `"targets": ["erlang"]`
 
 § Members and § The graph: the cut [`128-rakun-consolidation`](../128-rakun-consolidation/context.md)
 leaves (decision 187: 25 → 16), re-measured against the manifests of its patches (step 10); every

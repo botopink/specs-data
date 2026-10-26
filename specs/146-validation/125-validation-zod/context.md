@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 125 — validation zod: Zod's feature set in botopink
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [146-validation](../README.md): open → 146 s1 · gate → 146 s1. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 19 — `use` surface, construct by construct
 
 Paths relative to `modules/compiler-core/src/`. A row marked **recorded** has a checked-in snapshot

@@ -1,18 +1,21 @@
+---
+milestone: 1.0.10-beta
+track: compiler (carry-over item **C-30**)
+state: |-
+  closed. Decision 105 is in the language on commonJS, erlang, beam and wasm, and the
+  libraries are swept (no `loop (` left in rakun, jhonstart or erika). The generator loop is now
+  written with the `iter` / `stream` prefix of decision 125, landed by
+  [`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md), which owns the prefixed loop
+  (`GenLoop`) and its typing. Nothing is open.
+owns-still: |-
+  the loop forms in `parser/exprs.zig` (`while` / `for` / `for await` / `loop { }`,
+  labels, the `removed-loop-parenthesised` refusal) · `comptime/infer.zig`'s loop typing (statements
+  are `void`; the generator scope; `yield` / `break v` gating; ranges) · the loop lowering in
+  `codegen/{commonJS,erlang,beam_asm,wat}.zig` · the `while` / `for` printer arms in `format.zig` (a
+  named carve-out of [`16-formatter`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/16-formatter/README.md)) · `docs.md` § Loops · the
+  `tests/language` loop cells.
+---
 # Front 22 — loops: `loop` · `while` · `for`, and the loop that is an iterator
-
-**Milestone:** 1.0.10-beta
-**Track:** compiler (carry-over item **C-30**)
-**State:** closed. Decision 105 is in the language on commonJS, erlang, beam and wasm, and the
-libraries are swept (no `loop (` left in rakun, jhonstart or erika). The generator loop is now
-written with the `iter` / `stream` prefix of decision 125, landed by
-[`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md), which owns the prefixed loop
-(`GenLoop`) and its typing. Nothing is open.
-**Owns (still):** the loop forms in `parser/exprs.zig` (`while` / `for` / `for await` / `loop { }`,
-labels, the `removed-loop-parenthesised` refusal) · `comptime/infer.zig`'s loop typing (statements
-are `void`; the generator scope; `yield` / `break v` gating; ranges) · the loop lowering in
-`codegen/{commonJS,erlang,beam_asm,wat}.zig` · the `while` / `for` printer arms in `format.zig` (a
-named carve-out of [`16-formatter`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/16-formatter/README.md)) · `docs.md` § Loops · the
-`tests/language` loop cells.
 
 Paths are relative to `repository/botopink-lang/modules/compiler-core/src/`.
 

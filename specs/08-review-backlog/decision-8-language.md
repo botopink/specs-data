@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Decision 8 — types, `unknown`, unions, `is`, patterns, printing, effects and `loop`
 
 **Decided 2026-09-17 by the maintainer**, over several rounds of proposal and counter-proposal. It

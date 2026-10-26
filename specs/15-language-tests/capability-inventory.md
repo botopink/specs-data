@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Capability inventory — what the language has, and what `tests/language/**` pins
 
 Every row is a language capability that **exists today**: it is defined by a compiler test suite, by

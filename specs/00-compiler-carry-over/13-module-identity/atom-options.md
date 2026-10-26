@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Options — three naming schemes, compared against the proposal
 
 Read [`erlang-atoms.md`](erlang-atoms.md) first for the current state and why the proposal's `#`

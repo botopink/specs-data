@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: D — emilia · **Repo:** `repository/emilia` · **Reference:** Tailwind CSS v4 (`TAILWIND_CSS_DOCS.md`)
+---
 # Modules — the `emilia` package cut
-
-**Track:** D — emilia · **Repo:** `repository/emilia` · **Reference:** Tailwind CSS v4 (`TAILWIND_CSS_DOCS.md`)
 
 The granularity of `repository/emilia/modules/**` and `repository/emilia/examples/**`, the dependency
 graph, the target, what `emilia-test` is for, and the front → code ownership that

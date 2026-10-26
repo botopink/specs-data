@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 139 — `bigint`: an integer of any size, a primitive on the four targets
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-1.md): open → B-24. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

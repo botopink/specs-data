@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review — codegen `comptime.zig`, `std_package.zig`, `runtime_scratch.zig`, `comptime_module.zig`, `dts_skips_templates.zig` (+ cross-cutting)
 
 Repo: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang` (re-checked at HEAD `96ff203`;

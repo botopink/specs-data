@@ -1,30 +1,37 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  critical — nothing on the server can read a cookie or a header today, so authentication in
+  a layout, theme personalization, draft mode, per-request deduplication and the dynamic-rendering
+  decision front 60 keys off are all unreachable; fronts 12, 18, 23, 24, 25, 32, 60, 63, 64, 65 and 66
+  all read what this front writes
+target: erlang (server)
+wave: |-
+  2 — and it must land before `23` (wave 5), because `23` parses `searchParams` and has
+  to mark the render dynamic through this front
+depends-on: |-
+  01 (`hash`, `io.clock`, `io.random`, `encoding`), 04 (the supervision tree, the connection
+  process and `rkSetReplyHeader`)
+owns: |-
+  `repository/rakun/src/request_context.bp`, `repository/rakun/src/request_memo.bp`,
+  `repository/rakun/src/sidecars/rakun_request_context.erl`,
+  `repository/rakun/test/request_context_test.bp`, `repository/rakun/test/request_memo_test.bp`, and
+  two `pub mod` lines in `repository/rakun/src/root.bp`
+does-not-touch: |-
+  `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
+  `src/runtime.mjs` — frozen for the milestone; and the files owned by 22 · 23 · 24 · 25 · 60 · 63 · 66
+reference: |-
+  `NEXTJS-DOCS.md § 9. Busca de Dados (Fetching)` (Memoização · Reutilizando dados com
+  `React.cache` · Preloading), `§ 10. Cookies em Server Actions`, `§ 18. Memoização de dados`,
+  `§ 23. Autenticação`, `§ 26. Referência de Funções` (Data · Cache) ·
+  <https://nextjs.org/docs/app/api-reference/functions/cookies> ·
+  <https://nextjs.org/docs/app/api-reference/functions/headers> ·
+  <https://nextjs.org/docs/app/api-reference/functions/draftMode> ·
+  <https://nextjs.org/docs/app/api-reference/functions/connection> ·
+  <https://nextjs.org/docs/app/api-reference/functions/after>
+---
 # Front 62 — Rakun Request Context
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** critical — nothing on the server can read a cookie or a header today, so authentication in
-a layout, theme personalization, draft mode, per-request deduplication and the dynamic-rendering
-decision front 60 keys off are all unreachable; fronts 12, 18, 23, 24, 25, 32, 60, 63, 64, 65 and 66
-all read what this front writes
-**Target:** erlang (server)
-**Wave:** 2 — and it must land before `23` (wave 5), because `23` parses `searchParams` and has
-to mark the render dynamic through this front
-**Depends on:** 01 (`hash`, `io.clock`, `io.random`, `encoding`), 04 (the supervision tree, the connection
-process and `rkSetReplyHeader`)
-**Owns:** `repository/rakun/src/request_context.bp`, `repository/rakun/src/request_memo.bp`,
-`repository/rakun/src/sidecars/rakun_request_context.erl`,
-`repository/rakun/test/request_context_test.bp`, `repository/rakun/test/request_memo_test.bp`, and
-two `pub mod` lines in `repository/rakun/src/root.bp`
-**Does not touch:** `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
-`src/runtime.mjs` — frozen for the milestone; and the files owned by 22 · 23 · 24 · 25 · 60 · 63 · 66
-**Reference:** `NEXTJS-DOCS.md § 9. Busca de Dados (Fetching)` (Memoização · Reutilizando dados com
-`React.cache` · Preloading), `§ 10. Cookies em Server Actions`, `§ 18. Memoização de dados`,
-`§ 23. Autenticação`, `§ 26. Referência de Funções` (Data · Cache) ·
-<https://nextjs.org/docs/app/api-reference/functions/cookies> ·
-<https://nextjs.org/docs/app/api-reference/functions/headers> ·
-<https://nextjs.org/docs/app/api-reference/functions/draftMode> ·
-<https://nextjs.org/docs/app/api-reference/functions/connection> ·
-<https://nextjs.org/docs/app/api-reference/functions/after>
 
 ---
 

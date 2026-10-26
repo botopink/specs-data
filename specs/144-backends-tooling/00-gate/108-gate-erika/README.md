@@ -1,16 +1,22 @@
+---
+milestone: 1.0.11-beta
+owner: machine-2
+priority: |-
+  medium — every erika cell was green; what was wrong was one restriction that
+  restricted nothing and a CI matrix with two rows that measured nothing.
+depends-on: |-
+  none to start. `113` lands after it (the `erika-linq erlang 0` line goes with the
+  file).
+owns: |-
+  `repository/erika/**` for the duration of the front — `examples/erika-linq/botopink.json`,
+  `.github/workflows/test.yml`, `.gitignore`, `scripts/git-hooks/**`.
+does-not-touch: |-
+  `repository/botopink-lang/**` (`scripts/restricted-targets.txt` is 113's; the
+  erlang emitter's imported-method-owner fix the ledger line credits is landed and is not re-opened
+  here); `src/**` of `erika` beyond what a green cell needs (`../../01-compiler/09-ecosystem-residuals`
+  keeps the tree).
+---
 # Front 108 — gate-erika: `erika-linq` widened, two dead CI rows gone, the repository's own gate hard
-
-**Milestone:** 1.0.11-beta
-**Priority:** medium — every erika cell was green; what was wrong was one restriction that
-restricted nothing and a CI matrix with two rows that measured nothing.
-**Depends on:** none to start. `113` lands after it (the `erika-linq erlang 0` line goes with the
-file).
-**Owns:** `repository/erika/**` for the duration of the front — `examples/erika-linq/botopink.json`,
-`.github/workflows/test.yml`, `.gitignore`, `scripts/git-hooks/**`.
-**Does not touch:** `repository/botopink-lang/**` (`scripts/restricted-targets.txt` is 113's; the
-erlang emitter's imported-method-owner fix the ledger line credits is landed and is not re-opened
-here); `src/**` of `erika` beyond what a green cell needs (`../../01-compiler/09-ecosystem-residuals`
-keeps the tree).
 
 ---
 

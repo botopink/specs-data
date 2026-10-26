@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 71 — onze release packaging tail: the release assembled, verified and booted end to end
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-onze.md): s1 → 150 s62 · s2 → 150 s62 · s3 → 150 s62 · s4 → 150 s62 · s5 → 150 s62 · gate → 150 s62. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

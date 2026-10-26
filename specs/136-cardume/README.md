@@ -1,24 +1,29 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: |-
+  medium — no page needs it to render; every app with two islands that must agree
+  (a cart badge and a cart drawer) needs it to be correct, and rakun's request locals are its atoms (295) ·
+state: "not started · `repository/cardume` is a submodule `03-bundled-libs/138` adds (326): `botopink/cardume` exists, empty; the scaffold (0.0.1: the model's types, no store) is not in any checkout yet — 138 adds the submodule once it is pushed"
+repository: "`cardume` — worktree `--repo cardume`; the steps that add to `rakun-cardume` (1, 5, 6, 7; one package for both stores, decision 893) also change rakun — a full worktree, one commit per repository (decision 188); step 9 the meta repository (full)"
+model: sonnet — the README fixes the design (Recoil's model, decisions 295, 296, 400; `AGENTS.md` § Which model a thread runs on); a step that meets `atm-c` or `atm-d` waits on the answer; the Conformance step opus
+depends-on: |-
+  `26-jhonstart-router` (the core and its client runtime — `state` / `effect` rebinding
+  in `client_runtime.mjs`) · `08-bpp/120` (the island payload: one page store shared by every island) ·
+  `03-bundled-libs/125` (a `#[validated]` type's `encode` member, 306 — `T.encode(v)`, 327 — for the
+  values the server seeds) · decisions 128 (hooks), 297 (value-or-type parameters; `01-checker` step 26), 278
+  (`#[client]`), 281 (no string keys), 295 (request state as atoms), 296 (cardume) · 400 (`atm-a`: the cookie hooks in cardume's family) · open: `atm-c`, `atm-d`
+owns: |-
+  `repository/cardume/**` (the core: `modules/cardume/src/cardume.bp`, its tests) · new
+  member `repository/rakun/modules/rakun-cardume/**` (the request store, its hooks reading rakun's root context `RequestContext`, 354) ·
+  new member `repository/rakun/modules/rakun-bpp/src/cardume/**` (the page store, `sidecars/store_runtime.mjs`,
+  its hooks reading jhonstart's root context `ElementContext`, 354) · after 120: the store hand-off lines of `jhonstart/src/island_runtime.mjs`
+  (one subscription per island; 26's file, 189) · one `jhonstart-dom-test` test file
+does-not-touch: |-
+  `hooks.bp`'s five nouns (`state`, `effect`, `memo`, `ref`, `reducer`) · rakun's and
+  jhonstart's other members · `http`'s `Cookie<T>` (294 — an HTTP concept, it stays there).
+---
 # Front 136 — cardume: shared, derived and transactional state (Recoil's model, botopink's spelling)
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** medium — no page needs it to render; every app with two islands that must agree
-(a cart badge and a cart drawer) needs it to be correct, and rakun's request locals are its atoms (295) ·
-**State:** not started · `repository/cardume` is a submodule `03-bundled-libs/138` adds (326): `botopink/cardume` exists, empty; the scaffold (0.0.1: the model's types, no store) is not in any checkout yet — 138 adds the submodule once it is pushed
-**Repository:** `cardume` — worktree `--repo cardume`; the steps that add to `rakun-cardume` (1, 5, 6, 7; one package for both stores, decision 893) also change rakun — a full worktree, one commit per repository (decision 188); step 9 the meta repository (full)
-**Model:** sonnet — the README fixes the design (Recoil's model, decisions 295, 296, 400; `AGENTS.md` § Which model a thread runs on); a step that meets `atm-c` or `atm-d` waits on the answer; the Conformance step opus
-**Depends on:** `26-jhonstart-router` (the core and its client runtime — `state` / `effect` rebinding
-in `client_runtime.mjs`) · `08-bpp/120` (the island payload: one page store shared by every island) ·
-`03-bundled-libs/125` (a `#[validated]` type's `encode` member, 306 — `T.encode(v)`, 327 — for the
-values the server seeds) · decisions 128 (hooks), 297 (value-or-type parameters; `01-checker` step 26), 278
-(`#[client]`), 281 (no string keys), 295 (request state as atoms), 296 (cardume) · 400 (`atm-a`: the cookie hooks in cardume's family) · open: `atm-c`, `atm-d`
-**Owns:** `repository/cardume/**` (the core: `modules/cardume/src/cardume.bp`, its tests) · new
-member `repository/rakun/modules/rakun-cardume/**` (the request store, its hooks reading rakun's root context `RequestContext`, 354) ·
-new member `repository/rakun/modules/rakun-bpp/src/cardume/**` (the page store, `sidecars/store_runtime.mjs`,
-its hooks reading jhonstart's root context `ElementContext`, 354) · after 120: the store hand-off lines of `jhonstart/src/island_runtime.mjs`
-(one subscription per island; 26's file, 189) · one `jhonstart-dom-test` test file
-**Does not touch:** `hooks.bp`'s five nouns (`state`, `effect`, `memo`, `ref`, `reducer`) · rakun's and
-jhonstart's other members · `http`'s `Cookie<T>` (294 — an HTTP concept, it stays there).
 
 Reference: <https://recoiljs.org/docs/introduction/core-concepts>,
 <https://recoiljs.org/docs/api-reference/core/useRecoilTransaction>.

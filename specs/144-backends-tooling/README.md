@@ -1,7 +1,8 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # Front 144 — machine 2: backends, runtimes, std, tooling and the gate (lanes B and C, the cache group)
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-2
 
 The steps of [front 144](../milestone/machine-2.md) this machine runs: its goal, priority, ownership, order, lanes, the rules the two
 machines share and the alias table are the front's README; each step below is as it was there, unchanged. The

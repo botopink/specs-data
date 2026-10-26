@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # A2 — naming every module a package produces
 
 The maintainer accepted [option A](atom-options.md#option-a--the-path-joined-with-) and asked for the

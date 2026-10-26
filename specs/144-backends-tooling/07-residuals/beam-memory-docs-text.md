@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-2
+---
 # The `docs.md` text for `#[beamMemory]` — supplied by front 17, placed by front 07 (step 6)
 
 Front 17's text for `docs.md` (17 writes none), rewritten to decision 547 (the module `var` one value for the whole

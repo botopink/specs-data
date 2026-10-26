@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** critical · **Level:** 2 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (`spacing(n)`, `spacingHalf(n)`, `themeVar`, `--container-*`, `--breakpoint-*`), 56 (`declSheet`; `Sheet` for `Space`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 35 — spacing and sizing` block:
+  `Pad`, `Margin`, `Size`, `Space`) · `src/emilia.bp` (front-35 block: `padTokenToCss`, `marginTokenToCss`,
+  `sizeTokenToCss`, `spaceTokenToSheet`, `siblingSelector`, and their sub-dispatchers)
+does-not-own: "`Gap` (front 37), `Layout.Inset` (front 36)"
+user-docs: "`repository/emilia/docs.md` § *Pad and Margin*, § *Size*, § *Space*"
+reference: "`TAILWIND_CSS_DOCS.md § 7`, `§ 8`, `§ 21.2` · https://tailwindcss.com/docs/padding"
+---
 # Front 35 — emilia spacing and sizing
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** critical · **Level:** 2 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (`spacing(n)`, `spacingHalf(n)`, `themeVar`, `--container-*`, `--breakpoint-*`), 56 (`declSheet`; `Sheet` for `Space`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 35 — spacing and sizing` block:
-`Pad`, `Margin`, `Size`, `Space`) · `src/emilia.bp` (front-35 block: `padTokenToCss`, `marginTokenToCss`,
-`sizeTokenToCss`, `spaceTokenToSheet`, `siblingSelector`, and their sub-dispatchers)
-**Does not own:** `Gap` (front 37), `Layout.Inset` (front 36)
-**User docs:** `repository/emilia/docs.md` § *Pad and Margin*, § *Size*, § *Space*
-**Reference:** `TAILWIND_CSS_DOCS.md § 7`, `§ 8`, `§ 21.2` · https://tailwindcss.com/docs/padding
 
 **Open:** none.
 

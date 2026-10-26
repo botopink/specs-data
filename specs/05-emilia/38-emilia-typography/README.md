@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 54 (`themeVar`, `spacing(n)`, `--text-*`), 56 (`declSheet`), 33 (`paletteVar` for decoration colours)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (front-38 fences: `Text`, `Font`, `List`) ·
+  `src/emilia.bp` (front-38 block: `textTokenToCss`, `textSizeToCss`, `fontTokenToCss`, `fontWeightToCss`,
+  `listTokenToCss` and their sub-dispatchers, `typographyEntries`; the `List` arm of `tokenToSheet`)
+does-not-own: "`Color` (front 33) — `text-red-500` is a colour token"
+user-docs: "`repository/emilia/docs.md` § *Text, Font and List*, § *List*"
+reference: "`TAILWIND_CSS_DOCS.md § 9` (9.1–9.32), `§ 21.3` · https://tailwindcss.com/docs/font-size"
+---
 # Front 38 — emilia typography
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 54 (`themeVar`, `spacing(n)`, `--text-*`), 56 (`declSheet`), 33 (`paletteVar` for decoration colours)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (front-38 fences: `Text`, `Font`, `List`) ·
-`src/emilia.bp` (front-38 block: `textTokenToCss`, `textSizeToCss`, `fontTokenToCss`, `fontWeightToCss`,
-`listTokenToCss` and their sub-dispatchers, `typographyEntries`; the `List` arm of `tokenToSheet`)
-**Does not own:** `Color` (front 33) — `text-red-500` is a colour token
-**User docs:** `repository/emilia/docs.md` § *Text, Font and List*, § *List*
-**Reference:** `TAILWIND_CSS_DOCS.md § 9` (9.1–9.32), `§ 21.3` · https://tailwindcss.com/docs/font-size
 
 **Open:** none.
 

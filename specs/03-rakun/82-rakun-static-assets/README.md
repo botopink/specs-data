@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: medium — the server cannot serve a CSS file; `emilia`'s output, onze's client bundle and the image and font fronts all assume something will
+target: erlang (server)
+wave: "4"
+depends-on: 07 (the filter chain this sits in), 03 (content hashes for ETags and fingerprints), 01 (`io.fs`, `path`, `io.clock`), 05 (root configuration), 04 (`rkSetReplyHeader`)
+owns: "`modules/rakun-web/src/static/**` · `modules/rakun-web/test/static/**`"
+does-not-touch: front 07's `modules/rakun-web/src/*.bp` at the top level, front 20's `src/websocket/**`, and the four frozen files in `repository/rakun/src/`
+reference: decision 116 rule 6 (onze configures this server instead of specifying one) · `04-web.md § Conteudo Estatico` · `04-web.md § Auto-configuracao Spring MVC` · `08-container-images.md § Reproducao e Cache` · <https://docs.spring.io/spring-boot/reference/web/servlet.html#web.servlet.spring-mvc.static-content>
+---
 # Front 82 — rakun Static Assets
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** medium — the server cannot serve a CSS file; `emilia`'s output, onze's client bundle and the image and font fronts all assume something will
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 07 (the filter chain this sits in), 03 (content hashes for ETags and fingerprints), 01 (`io.fs`, `path`, `io.clock`), 05 (root configuration), 04 (`rkSetReplyHeader`)
-**Owns:** `modules/rakun-web/src/static/**` · `modules/rakun-web/test/static/**`
-**Does not touch:** front 07's `modules/rakun-web/src/*.bp` at the top level, front 20's `src/websocket/**`, and the four frozen files in `repository/rakun/src/`
-**Reference:** decision 116 rule 6 (onze configures this server instead of specifying one) · `04-web.md § Conteudo Estatico` · `04-web.md § Auto-configuracao Spring MVC` · `08-container-images.md § Reproducao e Cache` · <https://docs.spring.io/spring-boot/reference/web/servlet.html#web.servlet.spring-mvc.static-content>
 
 ---
 

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: `modules/compiler-core/src/codegen/tests/control_flow.zig`
 
 - **Repo root:** `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang`

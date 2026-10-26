@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 04 — rakun Erlang runtime: the core's open boxes
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../README.md): s2 → 150 s1 · s3 → 150 s1 · s4 → 150 s1 · s5 → 150 s1 · s6 → 150 s1 · s7 → 150 s1 · s8 → 150 s1. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

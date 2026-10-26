@@ -1,6 +1,7 @@
+---
+milestone: 1.0.4-beta
+---
 # Front 10 — library repos
-
-**Milestone:** 1.0.4-beta
 
 **Delivered** 2026-09-17 — erika `051cd97` (7b verified, 7c), emilia `321981d` (7d, hook + CI),
 jhonstart `8668c40` and onze `2fcf860` (`BOTOPINK_LANG_REF` → `feat`), rakun's export verified (no

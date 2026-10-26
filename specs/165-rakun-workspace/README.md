@@ -1,14 +1,16 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: |-
+  high (decision 433's tier of the libraries) — opens now (the maintainer, 2026-10-14), ahead of every open
+  step of 148, 149, 150, 153, 154 and 162, which pause until s1 lands; the threads open in those repositories land
+  first. **Repository:** rakun, erika, emilia, styled, jhonstart, onze, dbcontext, botopink-lang (s4), the meta (s8) —
+  a full worktree; each step one commit per repository (rule 10). **Model:** sonnet for s1, s3, s5; haiku for s2 (the
+  rename, the gate its oracle); opus for s4 and s7. **Gate:** standard (fronts.md § Gate); every step lands with rakun's
+  gate green, and s7 with its conformance whole. **Decision:** 724 (mono-a); amends 326, 338, 391, 398,
+  433. **Depends on:** nothing open; s4 is 144 B-86.
+---
 # Front 165 — rakun-workspace: one `rakun` repository, a workspace of 17 plug-and-play packages
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** high (decision 433's tier of the libraries) — opens now (the maintainer, 2026-10-14), ahead of every open
-step of 148, 149, 150, 153, 154 and 162, which pause until s1 lands; the threads open in those repositories land
-first. **Repository:** rakun, erika, emilia, styled, jhonstart, onze, dbcontext, botopink-lang (s4), the meta (s8) —
-a full worktree; each step one commit per repository (rule 10). **Model:** sonnet for s1, s3, s5; haiku for s2 (the
-rename, the gate its oracle); opus for s4 and s7. **Gate:** standard (fronts.md § Gate); every step lands with rakun's
-gate green, and s7 with its conformance whole. **Decision:** 724 (mono-a); amends 326, 338, 391, 398,
-433. **Depends on:** nothing open; s4 is 144 B-86.
 
 ## Alias table
 

@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # The three halves, what each gives the next, and the circular dependency the milestone still owes
 
 This front was two in 1.0.4-beta: **16 module-naming** (the atom, then policy 3) and **19 runtime

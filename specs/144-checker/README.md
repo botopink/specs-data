@@ -1,7 +1,8 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 144 — machine 1: the checker and the language (lane A, the module-model group)
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
 
 The steps of [front 144](../milestone/machine-1.md) this machine runs: its goal, priority, ownership, order, lanes, the rules the two
 machines share and the alias table are the front's README; each step below is as it was there, unchanged. The

@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: medium — every application eventually needs something to happen on its own, and today the only way is an external cron calling an HTTP endpoint
+target: erlang (server)
+wave: "4"
+depends-on: 01 (`io.clock`), 05 (config), 06 (context), 11 (endpoint host + health registry)
+owns: "`modules/rakun-scheduling/src/**`, `modules/rakun-scheduling/test/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone"
+reference: "`07-io.md § Quartz Scheduler` · https://docs.spring.io/spring-boot/reference/io/quartz.html"
+---
 # Front 16 — Rakun Scheduling
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** medium — every application eventually needs something to happen on its own, and today the only way is an external cron calling an HTTP endpoint
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 01 (`io.clock`), 05 (config), 06 (context), 11 (endpoint host + health registry)
-**Owns:** `modules/rakun-scheduling/src/**`, `modules/rakun-scheduling/test/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone
-**Reference:** `07-io.md § Quartz Scheduler` · https://docs.spring.io/spring-boot/reference/io/quartz.html
 
 ---
 

@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: C jhonstart
+priority: critical — this is the front the whole server/client split exists for; without it every component is a client component and the BEAM render has nothing to render
+target: erlang (server)
+wave: "4"
+depends-on: "26 · 01 (`escape`, `encoding.formParse`) · 30 (its `render` / `renderStream` receive the `RequestData` and enter it) · 94 (element builders used by the examples) — and no rakun module: the request reaches jhonstart as a `RequestData` onze builds from rakun's `Request` and hands to the render (decision 114, item 8)"
+owns: "`modules/jhonstart/src/server.bp` (with `server_runtime.mjs` / `sidecars/jhonstart_server.erl`), `modules/jhonstart/test/server_test.bp`"
+does-not-touch: "`element.bp`, `hooks.bp`, `jhonstart-html/src/html.bp` (frozen), `router.bp` (front 26), `jhonstart-link` (front 27), `client.bp` (front 29)"
+reference: "`NEXTJS-DOCS.md § 7. Server e Client Components` · `§ 9. Busca de Dados (Fetching)` · `§ 26. Referência de Funções` · https://nextjs.org/docs/app/getting-started/server-and-client-components · https://nextjs.org/docs/app/getting-started/fetching-data"
+---
 # Front 28 — Jhonstart Server Components
-
-**Milestone:** 1.0.10-beta
-**Track:** C jhonstart
-**Priority:** critical — this is the front the whole server/client split exists for; without it every component is a client component and the BEAM render has nothing to render
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 26 · 01 (`escape`, `encoding.formParse`) · 30 (its `render` / `renderStream` receive the `RequestData` and enter it) · 94 (element builders used by the examples) — and no rakun module: the request reaches jhonstart as a `RequestData` onze builds from rakun's `Request` and hands to the render (decision 114, item 8)
-**Owns:** `modules/jhonstart/src/server.bp` (with `server_runtime.mjs` / `sidecars/jhonstart_server.erl`), `modules/jhonstart/test/server_test.bp`
-**Does not touch:** `element.bp`, `hooks.bp`, `jhonstart-html/src/html.bp` (frozen), `router.bp` (front 26), `jhonstart-link` (front 27), `client.bp` (front 29)
-**Reference:** `NEXTJS-DOCS.md § 7. Server e Client Components` · `§ 9. Busca de Dados (Fetching)` · `§ 26. Referência de Funções` · https://nextjs.org/docs/app/getting-started/server-and-client-components · https://nextjs.org/docs/app/getting-started/fetching-data
 
 ---
 

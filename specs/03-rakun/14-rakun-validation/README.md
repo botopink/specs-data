@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 14 — Rakun Validation
-
-**Milestone:** 1.0.10-beta
 
 > **As built (Steps 1–5, `modules/rakun-validation`).** Where the code differs from the text below,
 > the code holds:

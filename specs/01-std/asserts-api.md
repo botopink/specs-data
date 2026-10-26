@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # `std/testing/asserts` — the canonical assertion API
 
 `import {testing.asserts} from "std";` then qualified calls, `try` at the call site — only the leaf

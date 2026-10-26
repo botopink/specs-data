@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: comptime `templates.zig` / `types.zig` / `infer_exprs.zig` + `fail_span_in_template`
 
 Repo: `repository/botopink-lang`, paths relative to `modules/compiler-core/`.

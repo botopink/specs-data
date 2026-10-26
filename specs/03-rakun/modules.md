@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+track: B — rakun · **Repo:** `repository/rakun` · **Reference:** Spring Boot 4 starters (`/home/ericfillipe/develop/spring-boot-4/docs/02-desenvolvendo-com-spring-boot.md § Starters`) · Next.js server half · **Cross-cutting rules:** [`../02-packaging/`](../02-packaging/) · **Tests:** [`test-snap.md`](test-snap.md) · [`test-snap-examples.md`](test-snap-examples.md) · **Starting proposal:** [`../02-packaging/README.md § Per-library proposal`](../02-packaging/README.md#per-library-proposal--the-starting-point)
+---
 # rakun — the package cut
-
-**Track:** B — rakun · **Repo:** `repository/rakun` · **Reference:** Spring Boot 4 starters (`/home/ericfillipe/develop/spring-boot-4/docs/02-desenvolvendo-com-spring-boot.md § Starters`) · Next.js server half · **Cross-cutting rules:** [`../02-packaging/`](../02-packaging/) · **Tests:** [`test-snap.md`](test-snap.md) · [`test-snap-examples.md`](test-snap-examples.md) · **Starting proposal:** [`../02-packaging/README.md § Per-library proposal`](../02-packaging/README.md#per-library-proposal--the-starting-point)
 
 This is the decision document for `repository/rakun/modules/**`: the final submodule list, why each
 one exists, the dependency graph between them, the target each compiles for, what `rakun-test`

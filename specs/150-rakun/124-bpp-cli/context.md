@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 124 — bpp CLI: what the build has to learn
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-onze.md): s1 → 150 s66 · s2 → 150 s66 · s3 → 150 s66 · s4 → 150 s66 · s5 → 150 s66 · gate → 150 s66. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

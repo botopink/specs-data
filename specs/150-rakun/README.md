@@ -1,16 +1,18 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+priority: high — the library tier (decision 433); runs after the 144 steps it names.
+repository: "`rakun` — worktree `--repo rakun` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)"
+model: sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
+owns: "`repository/rakun/**` (the tree 128 left; `04-rakun/README.md` § Where a merged member's front works)"
+depends-on: 144 B-11 (318 wrappers, 12 s5), B-12 (13, 15, 22, 91, 92, 93), B-13 (08 s6, 09 s6, 65 s4), B-17, B-19 (281 sites, 130 s5); decision 299 config records; pending 03r-ab, 03r-ae, 03r-af, 03r-ak, 03r-al, 03r-am, 03r-an, erk-b, lg2-b, 04-a
+does-not-touch: |-
+  `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
+  front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
+  commit (decision 188), producer first.
+gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
+---
 # Front 150 — rakun: the 16 members' fronts, middleware and typed actions — and, refiled by 165 s8, styled, jhonstart, dbcontext, emilia and onze
-
-**Milestone:** 1.0.12-beta
-**Machine:** machine-1
-**Priority:** high — the library tier (decision 433); runs after the 144 steps it names.
-**Repository:** `rakun` — worktree `--repo rakun` (§ Worktree strategy); a step that carries consumer commits runs in a full worktree, one commit per repository, producer first (decision 188)
-**Model:** sonnet — a library step whose README fixes the design (`AGENTS.md` § Which model a thread runs on); a step that names another tier keeps it; the Conformance step opus
-**Owns:** `repository/rakun/**` (the tree 128 left; `04-rakun/README.md` § Where a merged member's front works)
-**Depends on:** 144 B-11 (318 wrappers, 12 s5), B-12 (13, 15, 22, 91, 92, 93), B-13 (08 s6, 09 s6, 65 s4), B-17, B-19 (281 sites, 130 s5); decision 299 config records; pending 03r-ab, 03r-ae, 03r-af, 03r-ak, 03r-al, 03r-am, 03r-an, erk-b, lg2-b, 04-a
-**Does not touch:** `repository/botopink-lang/**` — a compiler or std gap is a `language-gaps.md` row and this
-front pauses on the 144 step that fixes it (fronts.md rules 1, 9); another library's files except a consumer
-commit (decision 188), producer first.
-**Gate:** standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
 
 Group A (04, 74, 08, 15, 79, 81, 93, 73, 19 s1) → group B (13, 12, 22, 17, 11, 65, 09, 91, 92) → group C (88,
 19 s2–7) → 123 → 127 (`04-rakun/README.md` § Parallel groups; fronts.md § Execution order). Inside the repository the

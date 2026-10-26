@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 130 — decorator outputs: a decorator's four places, then module-level `@emit` removed
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../milestone/machine-1.md): s9 → B-15 · s5 → B-19 · s6 → B-19 · rows → B-19 · s7 → B-19 · s8 → B-19 · s10 → B-19. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

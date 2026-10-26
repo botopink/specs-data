@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 135 — snap: the second test layer, re-evaluated case by case
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [144-botopink-lang](../../144-botopink-lang/README.md): s1 → B-27; [150-rakun](../../150-rakun/steps-jhonstart.md): s3 → 150 s45; [150-rakun](../../150-rakun/README.md): s2 → 150 s24; [150-rakun](../../150-rakun/steps-emilia.md): s4 → 150 s55; [150-rakun](../../150-rakun/steps-onze.md): s5 → 150 s68. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

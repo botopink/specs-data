@@ -1,12 +1,14 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 2 · **Target:** comptime (commonJS and erlang)
+depends-on: 56 (`Rule`, the `base` layer, `Options`, `withBase`, `renderRule`)
+code: |-
+  `repository/emilia/modules/emilia/src/preflight.bp` (`preflightRules`, `preflight`; inline
+  tests; no externals)
+user-docs: "`repository/emilia/docs.md` § *Preflight — the reset, opt-in*"
+reference: "`TAILWIND_CSS_DOCS.md § 4` (with `§ 3.2` for `::before`/`::after`, `§ 11.2` for the border default) · https://tailwindcss.com/docs/preflight"
+---
 # Front 55 — emilia preflight
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 2 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 56 (`Rule`, the `base` layer, `Options`, `withBase`, `renderRule`)
-**Code:** `repository/emilia/modules/emilia/src/preflight.bp` (`preflightRules`, `preflight`; inline
-tests; no externals)
-**User docs:** `repository/emilia/docs.md` § *Preflight — the reset, opt-in*
-**Reference:** `TAILWIND_CSS_DOCS.md § 4` (with `§ 3.2` for `::before`/`::after`, `§ 11.2` for the border default) · https://tailwindcss.com/docs/preflight
 
 **Open:** none.
 

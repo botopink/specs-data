@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: comptime `infer_decls.zig` (42) and `variants.zig` (39)
 
 Repo root: `/home/ericfillipe/develop/botopink-lang/repository/botopink-lang`

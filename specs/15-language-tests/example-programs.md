@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Example programs — one cell per gap
 
 Every program below was run through `zig-out/bin/botopink` at `botopink-lang` `1193d3c`

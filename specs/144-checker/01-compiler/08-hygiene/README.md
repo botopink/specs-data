@@ -1,19 +1,24 @@
+---
+milestone: 1.0.11-beta
+owner: machine-1
+priority: low — no program is wrong; comments, documents and one text to place.
+depends-on: |-
+  each item lands after the front that owns its file (C-23): `01-checker` (its step
+  14), `02-erlang` (step 11), `07-review-backlog` (step 5), `18-comptime-runtimes` (the transport
+  test, its step 4), `17-beam-memory` step 1 (part 2 of the `@BeamMemory` text publishes only when
+  `keyed = true` lands) · `00-gate` (FC-2: `examples/**`'s two trees are reformatted and join `TREES`
+  by the gate; this front edits `examples/**` afterwards).
+owns: |-
+  `repository/botopink-lang/docs.md`, `README.md`, `examples/**`, every `AGENTS.md` of the
+  compiler tree, the relative links of `specs/`, `libs/std/botopink.json` and `libs/std/AGENTS.md`
+  (with 23) · [`beam-memory-docs-text.md`](beam-memory-docs-text.md) · comments in other fronts'
+  files, only after their owners
+does-not-touch: any behaviour. Every edit is a comment, a manifest, a document or a link.
+does-not-touch-until-00-gate-lands: |-
+  `examples/generic-loader-binding/**`, `examples/stdlib-tour/**`
+  (FC-2).
+---
 # Front 08 — hygiene
-
-**Milestone:** 1.0.11-beta
-**Priority:** low — no program is wrong; comments, documents and one text to place.
-**Depends on:** each item lands after the front that owns its file (C-23): `01-checker` (its step
-14), `02-erlang` (step 11), `07-review-backlog` (step 5), `18-comptime-runtimes` (the transport
-test, its step 4), `17-beam-memory` step 1 (part 2 of the `@BeamMemory` text publishes only when
-`keyed = true` lands) · `00-gate` (FC-2: `examples/**`'s two trees are reformatted and join `TREES`
-by the gate; this front edits `examples/**` afterwards).
-**Owns:** `repository/botopink-lang/docs.md`, `README.md`, `examples/**`, every `AGENTS.md` of the
-compiler tree, the relative links of `specs/`, `libs/std/botopink.json` and `libs/std/AGENTS.md`
-(with 23) · [`beam-memory-docs-text.md`](beam-memory-docs-text.md) · comments in other fronts'
-files, only after their owners
-**Does not touch:** any behaviour. Every edit is a comment, a manifest, a document or a link.
-**Does not touch until 00-gate lands:** `examples/generic-loader-binding/**`, `examples/stdlib-tour/**`
-(FC-2).
 
 Paths are relative to `repository/botopink-lang/`. Item numbers are 1.0.1-beta's
 `05-repo-hygiene.md` groups, kept so old references resolve.

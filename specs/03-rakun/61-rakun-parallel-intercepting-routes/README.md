@@ -1,33 +1,40 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  high — front 22's one-liner promises `@slots`, and without this front `@slot` is a folder
+  name the scanner recognizes and nothing more: layouts never receive named slot props, `default.bp` has
+  no meaning, and the modal-over-a-feed pattern of `§ 21` — the reason most real Next apps use the App
+  Router at all — is unbuildable
+target: |-
+  erlang. The server resolves slots and decides interception (`rakun-app`, erlang); the
+  slot-state codec the browser reads is pure botopink in the bundled library `routing` (`libs/routing`,
+  erlang and commonJS, decision 115), written by `01-std/04-routing-lib` to this front's Step 5 and
+  imported here; the two halves are named below
+wave: "6"
+depends-on: |-
+  22 (the table), `01-std/04-routing-lib` (the matcher and the `z` codec), 23 (the page dispatch), 27
+  (client navigation, which sets the soft-navigation marker), 30 (per-slot `loading` boundaries),
+  62 (the request frame the marker is read from)
+owns: |-
+  `repository/rakun/modules/rakun-app/src/route_slots.bp`, `repository/rakun/modules/rakun-app/src/route_intercept.bp`,
+  `repository/rakun/modules/rakun-app/src/sidecars/rakun_route_slots.erl`,
+  `repository/rakun/modules/rakun-app/test/route_slots_test.bp`, `repository/rakun/modules/rakun-app/test/route_intercept_test.bp`, two
+  `pub mod` lines in `repository/rakun/modules/rakun-app/src/root.bp`; the codec file `libs/routing/src/slot_states.bp`
+  is `01-std/04-routing-lib`'s, written to Step 5's format
+does-not-touch: |-
+  `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
+  `src/runtime.mjs` — frozen; `src/file_router.bp` (front 22) and `src/ssr.bp` (front 23) are read-only
+  here; this front names no jhonstart type — placing the slots in a layout is jhonstart front 30's
+  `compose`, fed by onze (decisions 113, 114)
+reference: |-
+  `NEXTJS-DOCS.md § 21. Rotas Paralelas e Interceptadas`,
+  `§ 3. Estrutura do Projeto` (`default` file convention), `§ 5. Layouts e Páginas` (Props das páginas e
+  layouts) · <https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/default>
+---
 # Front 61 — Rakun Parallel and Intercepting Routes
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — front 22's one-liner promises `@slots`, and without this front `@slot` is a folder
-name the scanner recognizes and nothing more: layouts never receive named slot props, `default.bp` has
-no meaning, and the modal-over-a-feed pattern of `§ 21` — the reason most real Next apps use the App
-Router at all — is unbuildable
-**Target:** erlang. The server resolves slots and decides interception (`rakun-app`, erlang); the
-slot-state codec the browser reads is pure botopink in the bundled library `routing` (`libs/routing`,
-erlang and commonJS, decision 115), written by `01-std/04-routing-lib` to this front's Step 5 and
-imported here; the two halves are named below
-**Wave:** 6
-**Depends on:** 22 (the table), `01-std/04-routing-lib` (the matcher and the `z` codec), 23 (the page dispatch), 27
-(client navigation, which sets the soft-navigation marker), 30 (per-slot `loading` boundaries),
-62 (the request frame the marker is read from)
-**Owns:** `repository/rakun/modules/rakun-app/src/route_slots.bp`, `repository/rakun/modules/rakun-app/src/route_intercept.bp`,
-`repository/rakun/modules/rakun-app/src/sidecars/rakun_route_slots.erl`,
-`repository/rakun/modules/rakun-app/test/route_slots_test.bp`, `repository/rakun/modules/rakun-app/test/route_intercept_test.bp`, two
-`pub mod` lines in `repository/rakun/modules/rakun-app/src/root.bp`; the codec file `libs/routing/src/slot_states.bp`
-is `01-std/04-routing-lib`'s, written to Step 5's format
-**Does not touch:** `repository/rakun/src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`,
-`src/runtime.mjs` — frozen; `src/file_router.bp` (front 22) and `src/ssr.bp` (front 23) are read-only
-here; this front names no jhonstart type — placing the slots in a layout is jhonstart front 30's
-`compose`, fed by onze (decisions 113, 114)
-**Reference:** `NEXTJS-DOCS.md § 21. Rotas Paralelas e Interceptadas`,
-`§ 3. Estrutura do Projeto` (`default` file convention), `§ 5. Layouts e Páginas` (Props das páginas e
-layouts) · <https://nextjs.org/docs/app/api-reference/file-conventions/parallel-routes> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/intercepting-routes> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/default>
 
 ---
 

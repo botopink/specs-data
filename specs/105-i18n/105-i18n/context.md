@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 105 — i18n: a shared `i18n`, one locale grammar for the server and the page
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [105-i18n](../README.md): s1 → 105 s1 · s2 → 105 s2. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

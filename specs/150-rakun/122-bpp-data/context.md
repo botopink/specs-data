@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 122 — bpp data: the `Astro` global, mapped
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-jhonstart.md): s0 box 2 → 150 s42 · s1 → 150 s42 · s2 → 150 s42 · s4 → 150 s42 · s5 → 150 s42; [150-rakun](../steps-onze.md): s0 box 1 → 150 s65 · s3 → 150 s65. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

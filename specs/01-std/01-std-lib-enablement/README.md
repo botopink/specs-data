@@ -1,12 +1,13 @@
+---
+milestone: 1.0.10-beta
+track: A std
+priority: critical — the milestone's fronts bottom out in a socket, a clock, a path, a digest or an escape; this front puts each one in std, dual-target, instead of a private `#[@External.Node]` cell per front
+target: both — std is the floor under both halves
+owns: "`src/io/net.bp`, `src/escape.bp`; the base64url digests of `src/hash.bp`; the codec half of `src/encoding.bp`; the functions it added to `src/path.bp`, `src/io/fs.bp` (`walk`, `glob`), `src/io/clock.bp`, `src/io/random.bp`, `src/regex.bp`, `src/io/process.bp`; `json.bp`'s writers, `Json` and `decode` (Steps 11–14). Paths are the tree of `../modules.md` (decision 106)"
+does-not-touch: "`src/primitives.bp`, `src/builtins.d.bp`, `src/builtins_fns.d.bp` (the three ambient files); the functions that predate it in the modules it extends; `querystring.bp`, `url.bp`, `io/env.bp`, `io/os.bp`, `io/http.bp`, `erlang.bp`, `beam.bp`, `collections.bp`, `math.bp`, `string_builder.bp`, `unicode.bp`, `async.bp`, `testing/**`"
+reference: Erlang/OTP — [`gen_tcp`](https://www.erlang.org/doc/apps/kernel/gen_tcp.html) · [`ssl`](https://www.erlang.org/doc/apps/ssl/ssl.html) · [`crypto`](https://www.erlang.org/doc/apps/crypto/crypto.html) · [`re`](https://www.erlang.org/doc/apps/stdlib/re.html) · [`filelib`](https://www.erlang.org/doc/apps/stdlib/filelib.html) · [`filename`](https://www.erlang.org/doc/apps/stdlib/filename.html) · [`calendar`](https://www.erlang.org/doc/apps/stdlib/calendar.html) · [`uri_string`](https://www.erlang.org/doc/apps/stdlib/uri_string.html). Node.js — [`net`](https://nodejs.org/api/net.html) · [`tls`](https://nodejs.org/api/tls.html) · [`child_process`](https://nodejs.org/api/child_process.html) · [`crypto`](https://nodejs.org/api/crypto.html) · [`path`](https://nodejs.org/api/path.html)
+---
 # Front 01 — Std Lib Enablement
-
-**Milestone:** 1.0.10-beta
-**Track:** A std
-**Priority:** critical — the milestone's fronts bottom out in a socket, a clock, a path, a digest or an escape; this front puts each one in std, dual-target, instead of a private `#[@External.Node]` cell per front
-**Target:** both — std is the floor under both halves
-**Owns:** `src/io/net.bp`, `src/escape.bp`; the base64url digests of `src/hash.bp`; the codec half of `src/encoding.bp`; the functions it added to `src/path.bp`, `src/io/fs.bp` (`walk`, `glob`), `src/io/clock.bp`, `src/io/random.bp`, `src/regex.bp`, `src/io/process.bp`; `json.bp`'s writers, `Json` and `decode` (Steps 11–14). Paths are the tree of `../modules.md` (decision 106)
-**Does not touch:** `src/primitives.bp`, `src/builtins.d.bp`, `src/builtins_fns.d.bp` (the three ambient files); the functions that predate it in the modules it extends; `querystring.bp`, `url.bp`, `io/env.bp`, `io/os.bp`, `io/http.bp`, `erlang.bp`, `beam.bp`, `collections.bp`, `math.bp`, `string_builder.bp`, `unicode.bp`, `async.bp`, `testing/**`
-**Reference:** Erlang/OTP — [`gen_tcp`](https://www.erlang.org/doc/apps/kernel/gen_tcp.html) · [`ssl`](https://www.erlang.org/doc/apps/ssl/ssl.html) · [`crypto`](https://www.erlang.org/doc/apps/crypto/crypto.html) · [`re`](https://www.erlang.org/doc/apps/stdlib/re.html) · [`filelib`](https://www.erlang.org/doc/apps/stdlib/filelib.html) · [`filename`](https://www.erlang.org/doc/apps/stdlib/filename.html) · [`calendar`](https://www.erlang.org/doc/apps/stdlib/calendar.html) · [`uri_string`](https://www.erlang.org/doc/apps/stdlib/uri_string.html). Node.js — [`net`](https://nodejs.org/api/net.html) · [`tls`](https://nodejs.org/api/tls.html) · [`child_process`](https://nodejs.org/api/child_process.html) · [`crypto`](https://nodejs.org/api/crypto.html) · [`path`](https://nodejs.org/api/path.html)
 
 ---
 

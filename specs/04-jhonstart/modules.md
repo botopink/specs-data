@@ -1,6 +1,8 @@
+---
+milestone: 1.0.10-beta
+repo: "`repository/jhonstart` · **Pattern:** front 95 (`../02-packaging/95-ecosystem-package-restructure/README.md`) — `modules/<name>/`, `modules/<name>-test/`, `modules/<name>-<domain>/`, `examples/**` · **Fronts delivering into it:** 26 · 27 · 28 · 29 · 30 · 31 · 32 · 67 · 94 · **Cross-track files landing here:** front 48's `html_attrs.bp` (emilia track)"
+---
 # Track C — jhonstart · modules
-
-**Repo:** `repository/jhonstart` · **Pattern:** front 95 (`../02-packaging/95-ecosystem-package-restructure/README.md`) — `modules/<name>/`, `modules/<name>-test/`, `modules/<name>-<domain>/`, `examples/**` · **Fronts delivering into it:** 26 · 27 · 28 · 29 · 30 · 31 · 32 · 67 · 94 · **Cross-track files landing here:** front 48's `html_attrs.bp` (emilia track)
 
 ## 0 · Where the tree is
 

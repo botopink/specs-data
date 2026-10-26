@@ -1,28 +1,34 @@
+---
+milestone: 1.0.10-beta
+track: compiler
+priority: |-
+  critical — the ecosystem milestone froze the compiler and wrote fifty rows of
+  [`language-gaps.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/language-gaps.md) around it; eleven of those rows bottom out in
+  an item below, and the first three items are what every server front runs on
+target: all four backends; erlang and beam first, because that is where identity and `xs[0]` are wrong
+wave: "0"
+depends-on: |-
+  none — this front is the floor. Inside it the items depend on each other as each
+  section says; C-01 is the spine
+owns: |-
+  `repository/botopink-lang/modules/compiler-core/src/**` (checker, parser, formatter, the four
+  emitters), `repository/botopink-lang/modules/compiler-cli/src/cli/{build,run,format_cmd}.zig`,
+  `repository/botopink-lang/libs/std/**` (the rows named below), `repository/botopink-lang/tests/language/**`,
+  `repository/botopink-lang/scripts/gate.sh`, and `repository/botopink-lang/modules/language-server/**`
+  for C-19 — the ownership per item is the 1.0.5 front's, carried in each copied README; two items that
+  touch one file are sequenced, never merged
+does-not-touch: |-
+  the five library repositories except where an item names a `libs/std` or reformat
+  row (C-02, C-14, C-17); the 1.0.10 track fronts under `03-rakun/`, `04-jhonstart/`, `05-emilia/`,
+  `06-onze/` — they consume what lands here and add nothing to it
+reference: |-
+  [`specs/1.0.5-beta/closure.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/closure.md) (what landed, with evidence) ·
+  [`specs/decisions-taken-steps.md`](../decisions-taken-steps.md) (the record every item
+  implements against — it is **not** copied; links inside the copied deep dives that say
+  `../decisions-taken.md` resolve there) · [`specs/1.0.5-beta/fronts.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/fronts.md)
+  (ownership and carve-outs)
+---
 # Front 00 — Compiler Carry-Over
-
-**Milestone:** 1.0.10-beta
-**Track:** compiler
-**Priority:** critical — the ecosystem milestone froze the compiler and wrote fifty rows of
-[`language-gaps.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/language-gaps.md) around it; eleven of those rows bottom out in
-an item below, and the first three items are what every server front runs on
-**Target:** all four backends; erlang and beam first, because that is where identity and `xs[0]` are wrong
-**Wave:** 0
-**Depends on:** none — this front is the floor. Inside it the items depend on each other as each
-section says; C-01 is the spine
-**Owns:** `repository/botopink-lang/modules/compiler-core/src/**` (checker, parser, formatter, the four
-emitters), `repository/botopink-lang/modules/compiler-cli/src/cli/{build,run,format_cmd}.zig`,
-`repository/botopink-lang/libs/std/**` (the rows named below), `repository/botopink-lang/tests/language/**`,
-`repository/botopink-lang/scripts/gate.sh`, and `repository/botopink-lang/modules/language-server/**`
-for C-19 — the ownership per item is the 1.0.5 front's, carried in each copied README; two items that
-touch one file are sequenced, never merged
-**Does not touch:** the five library repositories except where an item names a `libs/std` or reformat
-row (C-02, C-14, C-17); the 1.0.10 track fronts under `03-rakun/`, `04-jhonstart/`, `05-emilia/`,
-`06-onze/` — they consume what lands here and add nothing to it
-**Reference:** [`specs/1.0.5-beta/closure.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/closure.md) (what landed, with evidence) ·
-[`specs/decisions-taken-steps.md`](../decisions-taken-steps.md) (the record every item
-implements against — it is **not** copied; links inside the copied deep dives that say
-`../decisions-taken.md` resolve there) · [`specs/1.0.5-beta/fronts.md`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.5-beta/fronts.md)
-(ownership and carve-outs)
 
 ---
 

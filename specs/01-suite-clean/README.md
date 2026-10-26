@@ -1,8 +1,9 @@
+---
+milestone: 1.0.1-beta
+version: 1.0.1-beta
+status: delivered
+---
 # Spec 01 — Suite clean
-
-**Milestone:** 1.0.1-beta
-**Version:** 1.0.1-beta
-**Status:** delivered
 
 ---
 

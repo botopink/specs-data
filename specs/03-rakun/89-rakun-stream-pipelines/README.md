@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: low — real work, but an application that never builds a processing topology never misses it; front 15 and front 86 already cover consume-one-message-and-handle-it
+target: erlang (server)
+wave: "6"
+depends-on: 15 (the broker arms a source and a sink are built from), 86 (per-stage retry and the dead-letter path), 11 (hosts the graph endpoint), 08 (the durable state and metadata store arm), 05 (poller and topology configuration), 01/std `io.clock`
+owns: "`modules/rakun-stream/src/**`, `modules/rakun-stream/test/**`"
+does-not-touch: "`src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone. `modules/rakun-messaging/**` belongs to fronts 15, 86, 90 and 91 and is read-only here."
+reference: "`06-messaging.md § Spring Integration` (Configuracao, RSocket com Integration) · `§ Apache Kafka · Kafka Streams` · `09-actuator.md § Endpoints` (`integrationgraph`) · https://docs.spring.io/spring-boot/reference/messaging/spring-integration.html · https://docs.spring.io/spring-boot/reference/messaging/kafka.html#messaging.kafka.streams"
+---
 # Front 89 — Rakun Stream Pipelines
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** low — real work, but an application that never builds a processing topology never misses it; front 15 and front 86 already cover consume-one-message-and-handle-it
-**Target:** erlang (server)
-**Wave:** 6
-**Depends on:** 15 (the broker arms a source and a sink are built from), 86 (per-stage retry and the dead-letter path), 11 (hosts the graph endpoint), 08 (the durable state and metadata store arm), 05 (poller and topology configuration), 01/std `io.clock`
-**Owns:** `modules/rakun-stream/src/**`, `modules/rakun-stream/test/**`
-**Does not touch:** `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` — frozen for the milestone. `modules/rakun-messaging/**` belongs to fronts 15, 86, 90 and 91 and is read-only here.
-**Reference:** `06-messaging.md § Spring Integration` (Configuracao, RSocket com Integration) · `§ Apache Kafka · Kafka Streams` · `09-actuator.md § Endpoints` (`integrationgraph`) · https://docs.spring.io/spring-boot/reference/messaging/spring-integration.html · https://docs.spring.io/spring-boot/reference/messaging/kafka.html#messaging.kafka.streams
 
 ---
 

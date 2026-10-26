@@ -1,26 +1,32 @@
+---
+milestone: 1.0.10-beta
+track: E onze
+priority: |-
+  low — without it `opengraph-image` can only be a static file and every post of a blog
+  shares one social card. Visible, not structural; and it is the one front in track E with a genuine
+  external dependency
+target: |-
+  erlang (server) — the element-tree→SVG half is pure botopink on BEAM; only SVG→PNG leaves
+  the VM
+wave: "9"
+depends-on: |-
+  66 (which registers `opengraph-image.bp` as a route) · 32 (the metadata that links the
+  card's URL) · 52 (the font files, and the metrics sidecar this front measures with) · 12 (cache — a
+  card is rendered once per content hash) · 03 (that content hash) · 49 (`Params`, `RouteContext`) ·
+  01 (`io.process.run`, `io.fs`, `path`)
+owns: "`repository/onze/modules/onze-og/src/**`, `repository/onze/modules/onze-og/test/**`"
+does-not-touch: |-
+  `repository/onze/modules/onze-assets/src/image.bp` (front 51 — the `Image` component and the
+  optimizer, a different front for a different problem), `repository/onze/modules/onze-assets/**`
+  (front 69), `repository/jhonstart/**`, `repository/emilia/**`
+reference: |-
+  `NEXTJS-DOCS.md § 18. Metadata e OG Images` (OG Images dinâmicas — ImageResponse ·
+  Metadata Files) ·
+  <https://nextjs.org/docs/app/api-reference/functions/image-response> ·
+  <https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image> ·
+  <https://github.com/vercel/satori>
+---
 # Front 70 — onze Image Response
-
-**Milestone:** 1.0.10-beta
-**Track:** E onze
-**Priority:** low — without it `opengraph-image` can only be a static file and every post of a blog
-shares one social card. Visible, not structural; and it is the one front in track E with a genuine
-external dependency
-**Target:** erlang (server) — the element-tree→SVG half is pure botopink on BEAM; only SVG→PNG leaves
-the VM
-**Wave:** 9
-**Depends on:** 66 (which registers `opengraph-image.bp` as a route) · 32 (the metadata that links the
-card's URL) · 52 (the font files, and the metrics sidecar this front measures with) · 12 (cache — a
-card is rendered once per content hash) · 03 (that content hash) · 49 (`Params`, `RouteContext`) ·
-01 (`io.process.run`, `io.fs`, `path`)
-**Owns:** `repository/onze/modules/onze-og/src/**`, `repository/onze/modules/onze-og/test/**`
-**Does not touch:** `repository/onze/modules/onze-assets/src/image.bp` (front 51 — the `Image` component and the
-optimizer, a different front for a different problem), `repository/onze/modules/onze-assets/**`
-(front 69), `repository/jhonstart/**`, `repository/emilia/**`
-**Reference:** `NEXTJS-DOCS.md § 18. Metadata e OG Images` (OG Images dinâmicas — ImageResponse ·
-Metadata Files) ·
-<https://nextjs.org/docs/app/api-reference/functions/image-response> ·
-<https://nextjs.org/docs/app/api-reference/file-conventions/metadata/opengraph-image> ·
-<https://github.com/vercel/satori>
 
 ---
 

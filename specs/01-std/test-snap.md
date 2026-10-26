@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # std — the preventive snapshot-test map
 
 The tests std records as snapshots, written in `.bp` with `@src()` and `\\` line-strings, and the

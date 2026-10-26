@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Evidence — what the BEAM actually does with these names
 
 Every mechanical claim in this front was produced by running `erlc` / `erl` on hand-written files,

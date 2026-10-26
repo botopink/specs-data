@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 51 — onze image, font and image response tail (carries 52 · 70)
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-onze.md): s2 → 150 s61 · s3 → 150 s61 · s4 → 150 s61 · s5 → 150 s61 · s6 → 150 s61 · s8 → 150 s61. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

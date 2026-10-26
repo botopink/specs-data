@@ -1,24 +1,30 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: |-
+  medium — a multilingual app has to hand-roll locale negotiation in its own middleware and
+  hand-roll dictionary loading, and `hreflang`/`alternates` metadata never appears. Not fatal to a
+  single-locale app, which is why it is medium and not high
+target: erlang (server)
+wave: "7"
+depends-on: |-
+  22 (the `[locale]` dynamic segment and the route table), 07 (the filter chain the
+  negotiation step installs into), 62 (reads `Accept-Language` and the locale cookie), 63 (the redirect
+  from an unprefixed path), 32 (the `alternates` entries it hands over), 12 (caching a dictionary when
+  the locale set is open), 01 (`encoding.percentEncode`/`percentDecode`, `path.glob`)
+owns: |-
+  `repository/rakun/modules/rakun-i18n/botopink.json`,
+  `repository/rakun/modules/rakun-i18n/src/**`, `repository/rakun/modules/rakun-i18n/test/**` — a new
+  module, so it collides with no existing owner
+does-not-touch: |-
+  `repository/rakun/src/**` in any form; `modules/rakun-web/**` (fronts 07 · 20 · 65);
+  `decorators.bp`, `http.bp`, `bootstrap.bp`, `runtime.mjs` — frozen
+reference: |-
+  `NEXTJS-DOCS.md § 22. Internacionalização (i18n)` (Estrutura com route groups ·
+  Middleware de detecção de locale · Dicionários de tradução), `§ 18. Metadata e OG Images` (alternates) ·
+  <https://nextjs.org/docs/app/guides/internationalization>
+---
 # Front 64 — Rakun i18n Routing
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** medium — a multilingual app has to hand-roll locale negotiation in its own middleware and
-hand-roll dictionary loading, and `hreflang`/`alternates` metadata never appears. Not fatal to a
-single-locale app, which is why it is medium and not high
-**Target:** erlang (server)
-**Wave:** 7
-**Depends on:** 22 (the `[locale]` dynamic segment and the route table), 07 (the filter chain the
-negotiation step installs into), 62 (reads `Accept-Language` and the locale cookie), 63 (the redirect
-from an unprefixed path), 32 (the `alternates` entries it hands over), 12 (caching a dictionary when
-the locale set is open), 01 (`encoding.percentEncode`/`percentDecode`, `path.glob`)
-**Owns:** `repository/rakun/modules/rakun-i18n/botopink.json`,
-`repository/rakun/modules/rakun-i18n/src/**`, `repository/rakun/modules/rakun-i18n/test/**` — a new
-module, so it collides with no existing owner
-**Does not touch:** `repository/rakun/src/**` in any form; `modules/rakun-web/**` (fronts 07 · 20 · 65);
-`decorators.bp`, `http.bp`, `bootstrap.bp`, `runtime.mjs` — frozen
-**Reference:** `NEXTJS-DOCS.md § 22. Internacionalização (i18n)` (Estrutura com route groups ·
-Middleware de detecção de locale · Dicionários de tradução), `§ 18. Metadata e OG Images` (alternates) ·
-<https://nextjs.org/docs/app/guides/internationalization>
 
 ---
 

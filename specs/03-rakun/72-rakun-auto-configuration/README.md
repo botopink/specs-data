@@ -1,6 +1,7 @@
+---
+milestone: 1.0.10-beta
+---
 # Front 72 — rakun Auto-Configuration
-
-**Milestone:** 1.0.10-beta
 
 > **As built.** Where the code differs from the text below, the code holds:
 >

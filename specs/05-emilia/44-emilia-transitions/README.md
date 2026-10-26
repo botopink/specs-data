@@ -1,14 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
+depends-on: 34 (modifiers — a transition is observable only when a state changes), 54 (`themeVar`, `--animate-*`, `keyframeEntries()`), 56 (`declSheet`, `blockSheet`, `Sheet.blocks`)
+code: |-
+  `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 44 — transitions and animation`
+  block: `Transition`, `Animate`, and the top-level `TransitionProperty`, `AnimateRaw`) · `src/emilia.bp`
+  (front-44 block: `transitionTokenToCss`, `animateTokenToSheet`, `animationSheet`, `transitionEntries`,
+  `rawTransitionProperty`, `rawAnimate`; four `tokenToSheet` arms after front 43's)
+user-docs: "`repository/emilia/docs.md` § *Transition and Animate*"
+reference: "`TAILWIND_CSS_DOCS.md § 15` (animation values `§ 21.6`) · https://tailwindcss.com/docs/transition-property"
+---
 # Front 44 — emilia transitions and animation
-
-**Milestone:** 1.0.10-beta
-**Track:** D emilia · **Priority:** high · **Level:** 3 · **Target:** comptime (commonJS and erlang)
-**Depends on:** 34 (modifiers — a transition is observable only when a state changes), 54 (`themeVar`, `--animate-*`, `keyframeEntries()`), 56 (`declSheet`, `blockSheet`, `Sheet.blocks`)
-**Code:** `repository/emilia/modules/emilia/src/tokens.bp` (`// ── front 44 — transitions and animation`
-block: `Transition`, `Animate`, and the top-level `TransitionProperty`, `AnimateRaw`) · `src/emilia.bp`
-(front-44 block: `transitionTokenToCss`, `animateTokenToSheet`, `animationSheet`, `transitionEntries`,
-`rawTransitionProperty`, `rawAnimate`; four `tokenToSheet` arms after front 43's)
-**User docs:** `repository/emilia/docs.md` § *Transition and Animate*
-**Reference:** `TAILWIND_CSS_DOCS.md § 15` (animation values `§ 21.6`) · https://tailwindcss.com/docs/transition-property
 
 **Open:** none.
 

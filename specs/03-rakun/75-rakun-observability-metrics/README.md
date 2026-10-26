@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: high — front 11 exposes a metrics endpoint and nothing exports to a scraper or a collector, so in production the numbers exist and nobody can see them; a metric that is only readable by `curl` on the box is not observability
+target: erlang (server)
+wave: "4"
+depends-on: 11 · 13 · 74 — and it reads front 17's correlation field without owning it
+owns: "`modules/rakun-metrics/botopink.json`, `modules/rakun-metrics/src/**`, `modules/rakun-metrics/test/**`, `modules/rakun-metrics/src/sidecars/rakun_metrics.erl`"
+does-not-touch: "`modules/rakun-actuator/src/**` — front 11 owns the endpoint infrastructure and front 76 owns its exposure; `modules/rakun-logging/src/**` — front 17 owns logs; `modules/rakun-web/src/middleware.bp` — this front registers a filter into front 07's chain, it does not edit the chain"
+reference: "`09-actuator.md § Metrics` (Micrometer, Prometheus, Customizando, Tags Comuns via Properties, Per-Meter, Metricas Automaticas, Registrando Metricas Customizadas, MeterFilter, Endpoint Metrics), `§ JMX`, `§ Endpoints (prometheus, threaddump, heapdump)` · `02-desenvolvendo-com-spring-boot.md § DevTools (management.tracing.sampling.probability)` · <https://docs.spring.io/spring-boot/reference/actuator/metrics.html> · <https://docs.spring.io/spring-boot/reference/actuator/tracing.html>"
+---
 # Front 75 — rakun Observability: Metrics and Tracing Export
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** high — front 11 exposes a metrics endpoint and nothing exports to a scraper or a collector, so in production the numbers exist and nobody can see them; a metric that is only readable by `curl` on the box is not observability
-**Target:** erlang (server)
-**Wave:** 4
-**Depends on:** 11 · 13 · 74 — and it reads front 17's correlation field without owning it
-**Owns:** `modules/rakun-metrics/botopink.json`, `modules/rakun-metrics/src/**`, `modules/rakun-metrics/test/**`, `modules/rakun-metrics/src/sidecars/rakun_metrics.erl`
-**Does not touch:** `modules/rakun-actuator/src/**` — front 11 owns the endpoint infrastructure and front 76 owns its exposure; `modules/rakun-logging/src/**` — front 17 owns logs; `modules/rakun-web/src/middleware.bp` — this front registers a filter into front 07's chain, it does not edit the chain
-**Reference:** `09-actuator.md § Metrics` (Micrometer, Prometheus, Customizando, Tags Comuns via Properties, Per-Meter, Metricas Automaticas, Registrando Metricas Customizadas, MeterFilter, Endpoint Metrics), `§ JMX`, `§ Endpoints (prometheus, threaddump, heapdump)` · `02-desenvolvendo-com-spring-boot.md § DevTools (management.tracing.sampling.probability)` · <https://docs.spring.io/spring-boot/reference/actuator/metrics.html> · <https://docs.spring.io/spring-boot/reference/actuator/tracing.html>
 
 ---
 

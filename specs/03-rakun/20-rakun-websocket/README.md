@@ -1,14 +1,15 @@
+---
+milestone: 1.0.10-beta
+track: B rakun
+priority: low — nothing else in the milestone depends on it, and an application that needs push today polls
+target: erlang (server)
+wave: "5"
+depends-on: 01 (`io.net`), 04 (the BEAM runtime and its supervision tree), 05 (config), 06 (context), 07 (the HTTP path the upgrade happens on), 10 (authorization at upgrade), 11 (health registry), 62 (per-request context)
+owns: "`modules/rakun-web/src/websocket/**`, `modules/rakun-web/test/websocket/**`"
+does-not-touch: "`modules/rakun-web/src/*.bp` — front 07 owns those, and this front adds no arm to its filter chain. `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` are frozen for the milestone"
+reference: "`02-desenvolvendo-com-spring-boot.md § Starters` (`spring-boot-starter-websocket`) · `06-messaging.md § RSocket` (the WebSocket transport) · https://docs.spring.io/spring-framework/reference/web/websocket.html"
+---
 # Front 20 — Rakun WebSocket
-
-**Milestone:** 1.0.10-beta
-**Track:** B rakun
-**Priority:** low — nothing else in the milestone depends on it, and an application that needs push today polls
-**Target:** erlang (server)
-**Wave:** 5
-**Depends on:** 01 (`io.net`), 04 (the BEAM runtime and its supervision tree), 05 (config), 06 (context), 07 (the HTTP path the upgrade happens on), 10 (authorization at upgrade), 11 (health registry), 62 (per-request context)
-**Owns:** `modules/rakun-web/src/websocket/**`, `modules/rakun-web/test/websocket/**`
-**Does not touch:** `modules/rakun-web/src/*.bp` — front 07 owns those, and this front adds no arm to its filter chain. `src/decorators.bp`, `src/http.bp`, `src/bootstrap.bp`, `src/runtime.mjs` are frozen for the milestone
-**Reference:** `02-desenvolvendo-com-spring-boot.md § Starters` (`spring-boot-starter-websocket`) · `06-messaging.md § RSocket` (the WebSocket transport) · https://docs.spring.io/spring-framework/reference/web/websocket.html
 
 ---
 

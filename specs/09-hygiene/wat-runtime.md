@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # Group A — the removed WAT runtime (5.6, 5.7)
 
 > Carried from `1.0.2-beta/11-hygiene/` into 1.0.4-beta. `file:line` and counts were measured at that milestone's

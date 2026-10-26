@@ -1,13 +1,16 @@
+---
+milestone: 1.0.10-beta
+track: compiler (carry-over item **C-28**)
+state: |-
+  closed. The effect vocabulary of `builtins.d.bp` is decisions 118–128's, owned by
+  [`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md).
+owns-still: |-
+  the non-effect declarations of `repository/botopink-lang/libs/std/src/builtins.d.bp`
+  (`External`, `Target`, the intrinsics, the option and result sections) and `infer.zig`'s
+  `external_variants` table. The effect behaviors, `EffectKind`, `effect_chain.zig` and the effect
+  diagnostics are front 24's.
+---
 # Front 20 — the builtins surface
-
-**Milestone:** 1.0.10-beta
-**Track:** compiler (carry-over item **C-28**)
-**State:** closed. The effect vocabulary of `builtins.d.bp` is decisions 118–128's, owned by
-[`24-effects-by-return`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/00-compiler-carry-over/24-effects-by-return/README.md).
-**Owns (still):** the non-effect declarations of `repository/botopink-lang/libs/std/src/builtins.d.bp`
-(`External`, `Target`, the intrinsics, the option and result sections) and `infer.zig`'s
-`external_variants` table. The effect behaviors, `EffectKind`, `effect_chain.zig` and the effect
-diagnostics are front 24's.
 
 ---
 

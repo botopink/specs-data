@@ -1,10 +1,12 @@
+---
+milestone: 1.0.1-beta
+version: 1.0.1-beta
+status: |-
+  closed — what this spec did not reach is carried by
+  [`09-hygiene/README.md`](../09-hygiene/README.md)
+priority: low
+---
 # Spec 05 — Repo hygiene
-
-**Milestone:** 1.0.1-beta
-**Version:** 1.0.1-beta
-**Status:** closed — what this spec did not reach is carried by
-[`09-hygiene/README.md`](../09-hygiene/README.md)
-**Priority:** low
 
 ---
 

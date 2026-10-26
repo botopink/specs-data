@@ -1,3 +1,6 @@
+---
+milestone: 1.0.1-beta
+---
 # Snapshot review: `modules/compiler-core/src/codegen/tests/features.zig`
 
 - **Batch:** codegen features (lambda/enum/destructure/star/import/range/pipeline/hooks/prim methods/enum sections)

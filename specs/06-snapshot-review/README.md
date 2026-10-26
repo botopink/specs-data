@@ -1,10 +1,12 @@
+---
+milestone: 1.0.1-beta
+version: 1.0.1-beta
+status: |-
+  closed for the review and the harness — the findings the waves did not reach are
+  carried by [`08-review-backlog/README.md`](../08-review-backlog/README.md)
+priority: critical — the snapshots are the oracle of most of the suite
+---
 # Spec 06 — Snapshot review
-
-**Milestone:** 1.0.1-beta
-**Version:** 1.0.1-beta
-**Status:** closed for the review and the harness — the findings the waves did not reach are
-carried by [`08-review-backlog/README.md`](../08-review-backlog/README.md)
-**Priority:** critical — the snapshots are the oracle of most of the suite
 
 ---
 

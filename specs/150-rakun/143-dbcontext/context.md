@@ -1,3 +1,7 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+---
 # Front 143 — dbcontext: botopink's JPA over erika — entities, the context, repositories (decision 398)
 
 > **Former front — context only** (decision 433): its goal, mechanism and notes, kept beside the steps that took its open work — [150-rakun](../steps-dbcontext.md): s1 → 150 s48 · s2 → 150 s49 · s3 → 150 s50. Its done steps are in git history, `decisions-taken.md` and the 1.0.11 closure.

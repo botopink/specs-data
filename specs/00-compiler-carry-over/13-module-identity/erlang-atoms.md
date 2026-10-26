@@ -1,3 +1,6 @@
+---
+milestone: 1.0.10-beta
+---
 # Erlang and BEAM — how a module is named today, and what the proposal changes
 
 Paths are relative to `repository/botopink-lang/`. Line numbers were read at `botopink-lang`

@@ -1,7 +1,11 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+repo: |-
+  `repository/rakun/modules/rakun-stylesheet` · **Reference:** Tailwind CSS v4 docs (4.3.2 compiled output) · tree on
+  disk: [`modules.md`](modules.md).
+---
 # Track 06 — emilia
-
-**Repo:** `repository/rakun/modules/rakun-stylesheet` · **Reference:** Tailwind CSS v4 docs (4.3.2 compiled output) · tree on
-disk: [`modules.md`](modules.md).
 
 emilia is CSS (decision 113): a `Token` enum resolved through a theme, emitted as a layered `<style>`
 document, both targets, importing nobody — until `34` step 5 makes it the third layer over the

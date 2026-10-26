@@ -1,7 +1,9 @@
+---
+milestone: 1.0.0-beta
+prioridade: 🟡 ALTA
+branch: "`fix/step-2-allocation-leaks`"
+---
 # Step 2 — Allocation leaks
-
-**Prioridade:** 🟡 ALTA
-**Branch:** `fix/step-2-allocation-leaks`
 
 ---
 

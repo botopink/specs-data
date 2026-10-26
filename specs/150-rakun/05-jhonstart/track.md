@@ -1,7 +1,11 @@
+---
+milestone: 1.0.12-beta
+owner: machine-1
+repo: |-
+  `repository/rakun/modules/rakun-bpp` · **Reference:** Next.js docs, the React half · tree on disk:
+  [`modules.md`](modules.md).
+---
 # Track 05 — jhonstart
-
-**Repo:** `repository/rakun/modules/rakun-bpp` · **Reference:** Next.js docs, the React half · tree on disk:
-[`modules.md`](modules.md).
 
 jhonstart writes the HTML (decision 113): render, document, payload, islands, streaming, links,
 hydration, client router, navigation signals, UI file conventions. All exist and are green

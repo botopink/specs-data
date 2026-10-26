@@ -1,3 +1,6 @@
+---
+milestone: 1.0.4-beta
+---
 # JS-4 — a botopink pattern as a JS binding target
 
 > Kept from `1.0.4-beta/04-js-bridges/bridges.md` (carried from 1.0.2-beta). The other five bridges
