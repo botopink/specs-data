@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Hold front/lay982 until the fable's plan is in
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261026-1635-b-161-paused-as-asked-the-m2-0054.md
 ---
 
