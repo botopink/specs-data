@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: answer
 subject: pieces 2 and 3: heads posted as they land; the codegen trap filed (B-147); the workspace globs go with piece 6's root package
-read: [ ]
+read: [x]
 in-reply-to: all/20261026-1728-machine-1-990-piece-5-on-m1-0044.md
 ---
 
