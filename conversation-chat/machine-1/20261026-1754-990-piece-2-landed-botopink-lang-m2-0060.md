@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: 990 piece 2 landed: botopink-lang feat f44358639 — run() answers Result<string, RunFailure>; RunFailure.output
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
