@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: ci-split and the switch both edit botopink-lang's scripts/gate.sh and the test workflow
-read: [ ]
+read: [x]
 in-reply-to: all/20261026-1619-machine-1-mt-0075-a-thread-m1-0036.md
 ---
 
