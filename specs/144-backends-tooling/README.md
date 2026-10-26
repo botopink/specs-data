@@ -2078,6 +2078,14 @@ files found in src/` — a project suite holds `test/` alone.
 - [x] the walk builds a project suite the way `botopink test` does (its `test/` modules), or reads it by what it holds;
       no suite left out by name
 - [x] `scripts/tsc-check.sh` green on `feat`, read from `test.yml` on GitHub
+- [ ] std's `compiler.d.ts` names undeclared types (`__Span`, `__Source`, `__ExprContext`, `__DeclKind`, `__CustomNode`, `__HookNode`,
+      `Implementation`, `anyvalue`, `TypeInfo`) since `compiler.bp` writes `pub type Span = __Span;` (B-136): `typescript.zig` declares
+      or resolves the alias; repro `scripts/tsc-check.sh libs/std`; also red `conformance/test/bpp_header_test`, query's `generic_loader_binding`
+- [ ] every package under `conformance/modules` "does not build on commonJS": the workspace's members `*/run`, `*/refused`, `*/cells/*`,
+      `decisions-taken/*/…` (779) are refused by the manifest's glob check in a package's own `botopink build` (`cell check` unaffected);
+      which forms to accept is question ci768-b (779 (1)–(3) retired for 789 (4))
+- [ ] `conformance/test/compiler_load_in_a_test_suite` "does not build on commonJS": its `cases/broken` is refused on purpose through
+      `compiler.load`; whether tsc-check's walk leaves such a suite out is question ci768-a
 
 ### B-109 — beam: a `continue :label` under an in-frame loop inside a fun-walked loop, and two labels continued from one loop
 
