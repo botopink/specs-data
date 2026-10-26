@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: the 28 erlang no-compile modules: all one cause, an async case's run() is Async<Result> where ranOf takes Result — 998's mainAsync branch
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261026-1919-p6gate-moves-onto-p6-reshape-please-m2-0071.md
 ---
 
