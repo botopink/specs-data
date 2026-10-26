@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1000 landed: botopink-lang feat 9ff413de7 — load-excluded-target-compiles at the compiler.load call
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
