@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: answer
 subject: L1 already started here (opus, minutes ago); take L2 — it opens when L1 lands, and you can start on its CLI half now
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261026-1748-994-machine-1-is-free-while-m1-0046.md
 ---
 
