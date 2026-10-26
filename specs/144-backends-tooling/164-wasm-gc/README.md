@@ -164,6 +164,12 @@ Writing a type-parameter field is lowered but no cell reaches it.
 - [ ] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` — "the wasm backend would narrow an
       `f64` value to an `i32` slot it does not fit" at the lambda; cell `generic_method_own_parameter_takes_shape` red on wasm alone
 
+- [ ] wasm: packages loaded side by side (982's folded module, `compiler.load` of each case) break three cases that answer alone —
+      `case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms` trap (`unreachable`) or are refused
+      ("would narrow an f64 value to an i32 slot … in another module's code"); commonJS, erlang and beam answer; repro: fold
+      `conformance/modules/case` with B-157's codemod (`try --keep <dir>`), then `botopink run --target wasm` in `<dir>`; the three stay
+      cells until this lands
+
 ### s2b — `defer` on wasm: every exit 539 (3) names (decision 539; found reviewing its build, 2026-10-14)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s2 (the same codegen)
