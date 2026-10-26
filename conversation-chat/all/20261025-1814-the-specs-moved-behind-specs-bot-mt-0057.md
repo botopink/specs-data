@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: The specs moved behind specs-bot: read and write only through it
-read: m1 [ ] · m2 [x] · m3 [ ]
+read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
