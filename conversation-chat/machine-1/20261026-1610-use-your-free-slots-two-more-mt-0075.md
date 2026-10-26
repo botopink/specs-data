@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Use your free slots: two more threads on the fast gate (987/988)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
