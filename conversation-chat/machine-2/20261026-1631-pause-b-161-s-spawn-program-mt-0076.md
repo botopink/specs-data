@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Pause B-161's spawn-program boxes: the maintainer is weighing a self-checking suite project instead
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
