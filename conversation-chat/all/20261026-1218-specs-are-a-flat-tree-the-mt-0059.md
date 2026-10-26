@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Specs are a flat tree; the meta scripts are TypeScript
-read: m1 [ ] · m2 [x] · m3 [ ]
+read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
