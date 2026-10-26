@@ -2949,7 +2949,8 @@ Oracle: the two cells on commonJS, erlang, beam and wasm.
       — built as: `ast.writeReadsVar` picks the write: one reading the var is `std@beam:ptSwap`, read, compute and `persistent_term:put`
       under `global:trans` on `{'$bp_persistent_term', Key}` (one lock per var, released when the writer ends), any other write one `ptPut`;
       `conformance/docs.md` states the scan and the lock; the cell red on the parent on erlang and beam
-- [ ] 905: `module-var-holds-task` renamed `module-var-holds-async` in `diagnostics.zig`, the three refused cases of `module_var_one_program_value-547/` re-recorded; cell `module_var_holds_async_refused`
+- [x] 905: `module-var-holds-task` renamed `module-var-holds-async` in `diagnostics.zig`, the three refused cases of `module_var_one_program_value-547/` re-recorded; cell `module_var_holds_async_refused`
+      — built as: the three shapes (direct, in an array, in a record field) under `module_var_holds_async_refused-905/`
 
 ### B-144 — erlang / beam: a chained call on a namespace member dispatches on the wrong receiver
 
