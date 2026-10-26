@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 906's red fixed: botopink-lang feat 1b69092ef — std's io/process compiles on erlang and beam again
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
