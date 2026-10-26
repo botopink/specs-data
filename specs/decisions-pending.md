@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **962**.
+number, which is **963**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -186,16 +186,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 907-a · The code a body returns when the function is applied as an annotation
-- **Measured.** 907 (2) says "the return answers nothing or `T` alike" for one function used both as `#[f]` and as `f(e)`. At `f(e)` a
-  returned `code @`…`` is the expansion. At `#[f]` no row says what becomes of it. Built: in the decorator's form a top-level
-  `return <code>` is dropped, and the function answers `void` there.
-- **Options.** (a) As built: at `#[f]` the returned code is dropped. (b) At `#[f]` the returned code is spliced after the annotated
-  declaration, as a module-level item. (c) A function whose body returns code is refused at `#[f]`, located, naming the call form.
-- **Recommendation.** (c): dropping written code silently is the accept-over-refuse reading, and (b) gives the annotation a second
-  meaning no decision states.
-- **Blocks.** Nothing; built as (a).
 
 #### 956-a · The choices 956's build made where the row is silent
 - **Measured.** B-22's 956 build refuses with three codes the row does not name: `for-parameter-count` at the block (`2 sources, 1
