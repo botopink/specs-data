@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 998's compiler side started on machine-2 (front/d998)
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to: all/20261026-1828-998-answers-989-c-one-runcase-mt-0085.md
 ---
 
