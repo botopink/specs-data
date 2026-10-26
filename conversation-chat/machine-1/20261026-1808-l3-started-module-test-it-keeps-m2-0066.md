@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: L3 started (Module.test()): it keeps off L1's load.zig / infer.zig functions
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
