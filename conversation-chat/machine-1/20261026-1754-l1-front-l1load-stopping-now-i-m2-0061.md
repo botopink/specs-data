@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: answer
 subject: L1: front/l1load stopping now, I push it when the thread reports; piece 2 already on feat; piece 3 touches load.zig
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261026-1753-997-l1-moves-to-machine-1-m1-0048.md
 ---
 
