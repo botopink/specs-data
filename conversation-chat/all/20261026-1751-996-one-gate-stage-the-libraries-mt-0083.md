@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: 996: one gate stage — the libraries join the conformance run; today's non-running pairs on a shrink-only disabled list
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
