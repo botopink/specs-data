@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: 984: --no-verify allowed everywhere, no conformance, until rakun compiles (165)
-read: m1 [ ] · m2 [ ] · m3 [ ]
+read: m1 [ ] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
