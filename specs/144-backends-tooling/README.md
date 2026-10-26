@@ -3276,11 +3276,9 @@ The `fable` plan is written (2026-10-20): a commonJS program at `conformance/che
 - [x] `io.process`: `start` takes `cwd` and `env` as parameters, no shell (798 (6)); `run` keeps `stderr` apart on erlang, or the program runs on commonJS alone (the choice written here); a spawn
       whose output comes back as an `Async<Exit>`, so N packages run at once within the pool's jobs
       — built as (22a892b58): `start(cmd, args, cwd: ?string, env: string[]) -> Result<Captured, ProcessError>`, `Captured.wait() ->
-      Async<Exit>` (repeatable) and `kill(Signal)`; node's `spawn`, no shell, stdout and stderr apart. The choice written here: the program
-      runs on commonJS alone and `run` is unchanged (an erlang port folds stderr into stdout); on erlang and beam `start` answers
-      `Error(Unsupported(…))` (a call refused there would refuse the whole module, `spawn` with it), on wasm the call is refused
-      `std-unsupported-on-target`; `env` `NAME=value` entries added to the parent's — `env` confirmed and the erlang / beam answer replaced by a refusal at the call by 906, a box below; cells under
-      `cell_check_program-790/`
+      Async<Exit>` (repeatable) and `kill(Signal)`; node's `spawn`, no shell, stdout and stderr apart. The program
+      runs on commonJS alone and `run` is unchanged (an erlang port folds stderr into stdout); on erlang, beam and wasm a call to `start`
+      is refused at the call (906, a box below); `env` `NAME=value` entries added to the parent's; cells under `cell_check_program-790/`
 - [x] `conformance/check/` — a package run on commonJS: finds every cell / module package, builds each package once with
       `--json --emit-runtime <scratch>`, each build and run with its working directory the package's (838 (4)), and runs every target of its manifest from the intermediate (798 (6)), the scratch removed after, builds the records (475 (2) with 789's `build`), applies the departures under
       `snapshot/targets/<t>/`, a cell's `deps/`, compares, writes `.new`, never accepts (67); its report the CLI's
@@ -3302,7 +3300,10 @@ The `fable` plan is written (2026-10-20): a commonJS program at `conformance/che
       `scripts/gate.sh`, the CI and the fronts' Conformance step call the program; the AGENTS files and the meta `AGENTS.md` follow;
       `proof.sh` leaves with it
 - [ ] 904: `records.bp` takes `build` lines before the package's refusal records and refuses a `build` after a `refused`; `observe` and `cell_records_build_phase` record so; cell `build_lines_precede_refusal` (a top-level `comptime` that prints and then fails: `build <text>` then `refused …`, one answer on the four targets)
-- [ ] 906: a call reaching `io.process.start` on erlang, beam or wasm refused at the call, `std-unsupported-on-target` — `target_check.zig`'s per-call refusal read for erlang and beam as for wasm, a `declare fn` with no cell for the target emitted unreachable, a method body over it no longer refusing its module —; the run-time `Error(Unsupported)` of `start` removed; `env` `NAME=value` as built, an entry with no `=` or an empty name `Error(Other(…))` naming it; the `cell_check_program-790/` cells' erlang / beam answer the refusal; cell `process_start_commonjs_only` (the refusal the answer, commonJS's run its departure)
+      — built but the cell: `records.bp` / `observe` order the `build` lines first; `build --json` reports the prints of a top-level
+      `comptime` block that is then refused (the fail / raise replies and `attachWarnings`). The cell waits for the switch above: its
+      snapshot holds a `build` record, which the CLI's `cell check` parser refuses (796); the program records it in order
+- [x] 906: a call reaching `io.process.start` on erlang, beam or wasm refused at the call, `std-unsupported-on-target` — `target_check.zig`'s per-call refusal read for erlang and beam as for wasm, a `declare fn` with no cell for the target emitted unreachable, a method body over it no longer refusing its module —; the run-time `Error(Unsupported)` of `start` removed; `env` `NAME=value` as built, an entry with no `=` or an empty name `Error(Other(…))` naming it; the `cell_check_program-790/` cells' erlang / beam answer the refusal; cell `process_start_commonjs_only` (the refusal the answer, commonJS's run its departure)
 
 ### B-163 — the resolved program and the build's three modes (decision 798)
 
