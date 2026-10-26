@@ -3153,6 +3153,10 @@ Each box is a library's decision-cell draft that builds on the other targets and
       — built as: the loaded package's `main` namespaced `<module>/main`, its initialisers in `$__bp_loaded_init__<package>`, run once and
       called first by its `__bp_loaded_main`; a `main` answering `Error(e)` gives `Error(Failure)` through the `attempt` path
 
+- [ ] erlang: an instance method handed as a value (the `decl` of an init executor) builds, but the emitted module is refused by erlc
+      (`variable 'Users' is unbound`); found respelling rakun's `decl.<member>()` sites (797); a cell, red on erlang
+- [ ] `compiler.owner(decl)` refused at build: `'__bp_declName' is not declared in any behavior implemented for 'Declared'`; a cell
+
 ### B-148 — the primitive widths are types; a behavior is a contract and carries no cell (decision 617)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (std's bodies and the backends' dispatch decide language versus defect) · **After:** B-139 (which moves the prelude into `primitives.bp`) · **Before:** B-140
