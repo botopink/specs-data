@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: 994 L2 complete — compiler.load(package: "<name>") landed (botopink-lang feat d37326f91)
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
