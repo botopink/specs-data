@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **985**.
+number, which is **986**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -190,12 +190,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
 - **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
 - **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
-
-#### 900-a · Does a method's own type parameter (`Dict.mapValues<W>`, `fold<A>`) take a print shape on commonJS?
-- **Measured.** After 900 on botopink-lang feat: a method with its own new type parameter (`Dict.mapValues<W>`, `fold<A>`) answers a value whose `__bp_s.$W` shape is empty, so a `Dict` whose values a `mapValues` turns into `f64` prints `2` for `2.0` on commonJS (reported by the 900 thread; no cell yet). 900 (1) has methods "carry on" the receiver's shapes, and a method's own new type parameter is no receiver shape; the rejected option (b) of 900 is a hidden argument filled from the receiver, not from the method's own parameter.
-- **Options.** (a) a method with its own type parameters takes B-114's trailing shapes for them at the call, as a generic fn does (899), and writes them into the value it answers; (b) the answered value's shape is read from the value itself at print (the first element's run-time type), no shape passed; (c) left as is: only the receiver's shapes are carried
-- **Recommendation.** (a): one rule for every generic call (B-114, 899), no run-time guessing
-- **Blocks.** B-115's last open box; a cell `generic_method_own_parameter_takes_shape`
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
