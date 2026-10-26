@@ -67,3 +67,106 @@ question (`specs-bot pending-add`).
 | 951 | A `?T` is matched by `null` and `_`, the value read as `x!`; 54's binder arm refused `case-bare-name-arm`. | It amends 54, but 54 stays in-force and unsuperseded and still states the `v` binder arm as the rule. |
 | 952 | Track 04's 21 rakun implementation choices stand under package names; 03r-a/e/r overtaken, seven amended, rest confirmed. | A very broad omnibus across caching, messaging, config, OAuth2, outbox and targets, with no cell. It overlaps 724, 762, 196, 299 and 318. |
 | 954 | Track 06's nine rakun-stylesheet choices stand as Tailwind 4.3.2 output (350), held as literal text under 150 s52. | A code-bearing bundle with no cell named. It rests on the 350 test rather than a decision cell. |
+
+## A — holds up
+
+| Step | Rule (one line) | Reason |
+|---|---|---|
+| 814 | Opaque type: constructor and fields type-private; its non-`pub` methods module-private like any declaration; amends 811 (1). | Narrow; consistent with 811, 829, 830. |
+| 821 | Call numbers count within the nearest `component` body, its lambdas included; a body's call stamps over a plain function's. | Kept and refined by 891 (1), which distinguishes body counts from plain-function counts. |
+| 825 | std `run(c, scope: ?Scope = null)` makes and closes its own root unless handed one; `close` marks closed everywhere. | Amends 822 and 824 coherently; cell `root_closed_by_run` plausible. |
+| 826 | `Composition`, `Composable` and `Component` are prelude names in `primitives.bp`; the checker reads them nominally. | Consistent with 606 (1), 815, 819. |
+| 828 | Type-form refusal codes: `implement-component-not-composable`, `component-compose-unmarked`, `component-scope-field`, `component-compose-called`, `component-arg-is-component`. | Consistent with 815 (3) and 824's `Fill` exception. |
+| 829 | `opaque` closes a record only: a contextual word before `type`; refused elsewhere with `opaque-not-record`. |  |
+| 830 | Compiler lowering calls are known by a mark on the call node; a hand-written `__bp_` call is `reserved-name`. | Consistent with 814 (2); 885 reuses the mark for `Link(path)`. |
+| 831 | A behavior's run-time identity is its declaration atom `<package>@<path>@@<B>`; no counter crosses a package. |  |
+| 832 | A record field may hold an inline type; each occurrence is a private nominal type named `Bp__<Owner>__<field>`. | Widens the syntax (fields as well as parameters) but by the maintainer's explicit ruling; consistent with 831 (3) and 836. |
+| 833 | A `compiler.load` file is checked for every target in the caller's manifest, never the build's `--target`. |  |
+| 834 | *(process)* `--emit-resolved` writes one `.bp` per module under `<dir>/<pkg>/`, names as written and imports kept. | Tooling and output rule; consistent with 837. |
+| 836 | Compiler-written twin names move into the reserved space (`__bp_<f>__type`, `Bp__<Enum>__<Section>`, `__bp_embed_<p>`). | `__embed_<p>` may be moot once 885 removes `@embed`; minor. |
+| 837 | *(process)* One `.bpr` per package and per std module; only the root's file carries the program order and builds. |  |
+| 838 | *(process)* A `.bpr` is built and run only from the directory of the project that wrote it; else `runtime-other-project`. | 885 rewords 838 (1)'s assets clause; nothing reversed. |
+| 839 | `use context(ctx)` names a module-level context value only, never a parameter, local or expression. | Consistent with 722 and 723. |
+| 840 | Call `compiler.meta(d, Entity)` or `compiler.metaAll(d, Index)` as declared; `compiler.meta<M>(d)` is no spelling. |  |
+| 841 | A function with a `syntax` parameter may return any written `T`, `void` included, besides `anyvalue` or `anytype`. | Reads 719's "a type" broadly; consistent with 622 and 846. |
+| 842 | A member a decorator adds and needs is held as a value, never read back through `decl`; behavior `decl` needs `implement`. | Consistent with 716 (1); retires 626 (2) as stated. |
+| 843 | Answered by 606 (1), 639, 826 (3): a module may shadow compiler-ruled prelude names except literal types. | One-liner; no cell needed. |
+| 845 | Answered by 583 and 408: `fn() { … }` without typed parameters is the untyped form, typed by position, writes no `->`. | One-liner. |
+| 846 | Answered by 622: arrow-less `fn f(x: T) R` is no spelling, refused `fn-return-missing`. | One-liner; consistent with 841. |
+| 847 | A `template` text starting `std:` is refused on every variant and target, naming `.Wasm(std: "…")`. | Consistent with 305 and 516. |
+| 848 | `compiler.variants(d)` answers `compiler.Variant[]` entries with name, fields, annotations and dotted section. |  |
+| 849 | `clock.formatIso8601` always writes `.sssZ` milliseconds on every target; `parseIso8601` reads both widths | Agrees with 497's domain, cell named. |
+| 850 | Answered by 826, 629, 828: a `Component<T>` alias declares nothing; `implement Component<…>` refused; behaviour implemented by `R` |  |
+| 851 | Overtaken by 804: `Renderable` gone; `#[client]` checks only that the return is a component | Status overtaken, supersededBy 804, consistent. |
+| 854 | A backtick type name has no first letter, so a backtick type application before `.m()` parses as two comparisons | Narrows 561 and says so explicitly. |
+| 855 | Overtaken by B-128: typed `AsyncIter` yields keys as they arrive; no `readKey`; `keys()` stays the one API | Small oddity: worded "Overtaken by" but status is in-force (a one-liner, no cell needed). |
+| 857 | The `Children` walk cell is rewritten over `children: El[]` and moved under 804's module | Follows 804 (4). |
+| 858 | Every exhaustiveness refusal carries the code `non-exhaustive` | Narrow, cell named. |
+| 860 | *(process)* The lib-agnostic gate refuses `rakun` anywhere and `query` only as a package; `jhonstart` dropped |  |
+| 861 | *(process)* Answered by 650: one Markdown relative-link form in every reference, markers rewritten by codemod |  |
+| 863 | *(process)* The version set is one row per workspace package in `version_set.bp`; the name grep skips that file |  |
+| 865 | `catch` is the lowest-precedence infix, below `or`; `??` stays the tightest binary operator | Corrects 537 (2) explicitly; consistent with 330 (4) and 595. |
+| 867 | Answered by 607: `Asset` is std's `asset.bp`; `embed-open-needs-fs` and its cell leave with B-139 |  |
+| 868 | *(process)* Refusal cells claim `from <file>:<line>:<column>` frame lines exactly; the header stays `botopink-cell 1` | Conformance-file format; amends 475 the way 485 did. |
+| 869 | `comptime-badarith` names the dividing `binaryOp` exactly as written at its caret | Consistent with 532 and 868; 883 (8) restates it. |
+| 870 | On commonJS the entry module installs the abort handler itself, before `main`; the runner's `--import` guard is dropped there |  |
+| 872 | A required contract member the type already has is met by the type's own method and checked against the contract | Consistent with 799 and 800. |
+| 874 | Answered by 553, 147, 819, 584: a `component` lambda's `throw` channel is its expected return's |  |
+| 875 | Answered by 575 (6), 621: `Implementation` cells are checked as ordinary enum constructor calls |  |
+| 876 | Answered by 823: erlang/beam `Async<T>` calls are settled; racing uses `raceOf`/`runAll` thunks |  |
+| 877 | Answered by 547: an unannotated module `var` is one program-wide value (ETS on BEAM); the lag is a defect |  |
+| 879 | `String.slice` becomes `fn:` bodies in `primitives.bp` counting codepoints; the index forms use the same bodies | Follows 585 and 320. |
+| 880 | A `Bytes` leaf traps outside its domain: `bytes.at` uses bare `array.get_u`, `ofWords` is `unreachable` | No cell, but std-private (445) and covered by a unit test; plausible. |
+| 881 | A std decorator imported as a leaf annotates by that name; `std-decorator-leaf-import` removed |  |
+| 882 | *(process)* A library's test helpers live in its package's `testing/` module; no `-test` packages | Library layout rule; no cell needed. |
+| 885 | A folded `Asset` prints `Asset(Link(path: …))`, folded bytes `bytes.fromHex("…")`; adds `bytes.fromHex` / `toHex`; no `@embed` remains | Fits the maintainer's note that `@embed` was removed and 607 (1). It adds std surface in `primitives.bp`. |
+| 886 | A type's own non-`pub` method meets an extension block's contract only in its own module, else `method-not-pub` at the block | Narrows 872 (2) and keeps 859 (2). 894 relies on it. |
+| 887 | Members added by `compiler.addMember` are `pub`; a primitive's property is written `pub val length: i32;` | Consistent with 859 and 842. |
+| 890 | Two modules whose paths fold to one module atom are refused on every target, before any backend | Amends 853 (2) under 831 and 833. The cell is renamed to `module_atom_pair_refused`. |
+| 891 | The renderer's child list runs child `i` with `Place.index(i)`; an index keeps a body's count and a key | Amends 884 (1) and (2). Consistent with 958 (`place-duplicate`) and 960 (`key-outside-body`). |
+| 892 | *(process)* Retired forms stated as current in rows 751–879 are read as their replacements; no rule changes | Reading sweep, no cell needed. The replacement chains it names match 884, 885, 889, 890 and 891. |
+| 894 | The `.d.ts` also declares non-`pub` methods that implement a behavior the type's own `implement` clause names | Amends 859 (4) to match 859 (2). It excludes members met only by an extension block, as 886 does. No cell, since the `.d.ts` runs nothing, which is plausible. |
+| 895 | `_` is a lambda parameter that binds nothing, may repeat, and lowers as 888 (2)'s unnamed parameter | Lets the `{ _ -> v }` spelling written by 815, 817, 819 and 888 parse. The cell is named. |
+| 896 | `close()` on a non-root `Scope` fails `scope-not-root` at run time; a second `close()` on a closed root is a no-op | Narrows 824 (2) and 825 (2). Consistent with 897. |
+| 899 | On commonJS a call into another module's bodied generic fn passes the print shapes, judged by the callee's signature alone | Settles B-115 box 2 under 673. The cache stays sound per 509 (2). |
+| 900 | On commonJS a generic type's value carries its type arguments' print shapes (`__bp_s`), copied by the methods that answer a new value | Settles B-115 box 3 and is consistent with 899 and 673. It touches every std generic constructor. |
+| 901 | The first SIGINT during a comptime body interrupts it (exit 130); a second SIGINT, or one with no body running, ends the process | Confirms what was built, under 878. A unit test, not a cell, is plausible for CLI signal handling. |
+| 902 | `--emit-resolved`'s origin comments are `// from <template>`, `// from comptime`, `// from comptime { … }` with file:line | Confirms 798 (2)'s shape. The oracle is unit tests, so no cell. |
+| 904 | A refused package's `.snap` lists its `build` lines first, then the refusal records; a `build` after `refused` is malformed | Amends 789 (1)'s order list to match its clause. The cell is named. |
+| 905 | The refusal code for a module `var` holding an `Async` is `module-var-holds-async`, with its reach as built | A rename away from the retired `@Task` wording (547 (iii), 553). |
+| 906 | `io.process.start(…, env: string[])` takes `NAME=value` entries, exists on commonJS only, and a call is refused on other targets | Applies 518 (4) and 67. It changes `target_check` so a `declare fn` with no cell for a target is emitted unreachable, which is wider than this one function. |
+| 908 | *(process)* Seven cells that use an outside `render(c, scope)` helper are rewritten to resolve children inside the providing body, keeping their answers | A cell-maintenance rule; its id says process although its process flag is false. Consistent with 817 (5), 891 and 888. |
+| 909 | A `compiler.variants` section wrapper has one field `value` and `section` (null at top level); entries in source order | Confirms 848 (3) as built. The cell is named. |
+| 910 | Overtaken by 576 and 840: hooks-list declarations are opaque handles whose meta is read typed | One-liner marked overtaken by 576, so no cell is needed. |
+| 913 | `unicode_tables` stays a flat private sibling until B-75, then moves to `src/internal/`; importing std's `internal/` is refused | Consistent with 592 (8) and 703. The refusal depends on B-69. |
+| 914 | Over an array `query` has one public spelling, the template grammar; `Query<T>`'s LINQ methods become private lowering targets | A library-API decision within the delegated scope (170, 283). The cell is named. |
+| 915 | Malformed, non-UTF-8 or control-character query components and cookie chunks are refused; cookies answer the chunk as absent | `03r-e` lapses and `std-a` stands. The cell is in `http`. |
+| 916 | `rakun-ssr` content gains `toElementWith(doc, render)`; the page's function maps each `MdNode` to a `NodeChild`, or `null` for the default | Typed by 804 and 809 (7). Keeps `markdown` free of framework names (396 (3)). |
+| 917 | *(process)* The OTP release renderers are one `rakun` workspace package, `rakun-release`; no `release` repository is born | Amends 326's example and 187's fold of `rakun-release` into `rakun-cli`, under 724. Process, no cell needed. |
+| 920 | Library tests refused for a missing host binding carry id `host-binding-missing`; the audit matches ids, never text. |  |
+| 921 | `log`'s `fileSink` answers `Error` of log's enum on a failed host call, never raises; `consoleSink` prints through `terminal.print`. |  |
+| 922 | compiler-core snapshot tests lose their runtime-output cache; every `erl`/`node` run reruns; interrupted runs never recorded. | The cell name `bugs_sweep_choices_confirmed` is generic for a bundle of four choices. |
+| 923 | *(process)* Locale routing lives in `rakun-app/src/i18n.bp`; no `rakun-i18n` member; BCP 47 subset is `i18n`'s. |  |
+| 924 | `notFound()`/`redirect(url)` answer a `Component<Element>` node `NavSignal(outcome: NavOutcome)` the renderer reads; no raise, no `noreturn`. | Wide surface (rakun-bpp, rakun-app, routing), but it is consistent with 527 (5), 554 and 929. 953 (3) contradicts it. |
+| 925 | Component lifecycle via `Startable` (rakun) and `Closeable` (std) behaviors tested with `is`; `#[postConstruct]`/`#[preDestroy]` go. |  |
+| 926 | A declaration answering `Component<R>` named `use[A-Z]…` is refused `hook-name-use-prefix`; write `use actionState(createPost, initial)`. |  |
+| 927 | `rakun-ssr.json`'s six keys read at build into typed `SsrConfig`; unknown or ill-typed keys refused naming the path. |  |
+| 928 | Browser-visible env values are `#[publicEnv] pub val x = env.read("…")`; the `RAKUN_SSR_PUBLIC_` prefix goes. | 955 (7) still says public-env entries carry `RAKUN_SSR_PUBLIC_`. |
+| 929 | `noreturn` is the bottom type; a `-> noreturn` body that can complete is refused `noreturn-falls-through`. |  |
+| 930 | Overtaken by 804: `NodeChild = Component<Element>`, no coercion; boundary `child` fields become `Component<Element>`. |  |
+| 931 | No module-graph reflection; handles answer declarations only; rakun-ssr bundler keeps `importsOf` textual scan. | No cell, but the row states an absence (a gap closed by design), so none is needed. |
+| 932 | *(process)* A new package needs two or more consuming libraries (115); in-library duplicates go to std or that library's core. |  |
+| 933 | `rakun-data` `#[documentRepository]` behavior with `#[documentQuery]` template annotations; `${name}` holes bound to parameters. |  |
+| 934 | 150 s17 ships ets, mnesia, redis, https arms; other NoSQL schemes refuse boot naming the driver; HTTP via `rkRegisterHttpClient`. |  |
+| 935 | *(process)* The seven unbuilt rakun example projects are retired; every `rakun/examples/` directory carries a README. |  |
+| 936 | `release_test.bp` validates the SBOM against the checked-in CycloneDX 1.5 schema using 399's vendored ajv validator, test-only. |  |
+| 937 | The outbox relay publishes through `withProducerTransaction` on the in-process broker; the real-broker run is a deferred row. |  |
+| 938 | Broker and scheduler doubles live in `rakun`'s `testing/`, reaching registries only via core hooks, importing no member. |  |
+| 939 | Core declares `enum Transport { Tcp, Tls, WebSocket }` and `rkRegisterTransport`; rakun-websocket registers `.WebSocket`. |  |
+| 940 | `fake_dom.mjs` gains form, input, FormData and submit; DOM-side forms boxes asserted in `forms_dom_test.bp`. |  |
+| 941 | `Json` gains `isString()` beside `isObject`, in std `json.bp` until 151 s1 moves it; rakun-ssr drops its own. |  |
+| 942 | A malformed integer in og metrics or a gradient angle is refused with an `Error`, never read as `0`. |  |
+| 944 | *(process)* No atom effects in cardume's first cut; `persistLocal`/`syncSearchParam` later, keyed by declaration, never a string. |  |
+| 946 | *(process)* A bundled package may not export a name std or a framework exports; standing rule, aliases only for programs. |  |
+| 948 | *(process)* A comments-only carve-out is the owning step's; org-3 sequences nothing; amends 189's org-3. |  |
+| 949 | 337 (2),(3) overtaken by 592 (1): no `mod`/`pub mod`; 337 keeps `shorthand-import` refusal and its migration. |  |
