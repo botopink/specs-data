@@ -2176,9 +2176,14 @@ calls still write an `f64` bound to `T` the JS engine's way on commonJS (`2` for
       — the callee takes its shapes (28ed413f9); the caller passes them to every bodied, non-host generic fn of another module, judged by its signature alone (899; cell `generic_fn_of_other_module_takes_shape`)
       — built as (f8f9f116c): the callee's declared signature in the export info (`shape_sig`), one trailing `__bp_ty_<T>` per type
       parameter at the call (a missing trailing default filled `undefined` first); cells under `generic_fn_of_other_module_takes_shape-899/`
-- [ ] a generic method's type parameters (`Dict<K, V>.display` through `collections.shown`) — a cell red on commonJS
+- [x] a generic method's type parameters (`Dict<K, V>.display` through `collections.shown`) — a cell red on commonJS
       today
       — the instance carries its type arguments' shapes (`__bp_s`), written by the generic constructor from the shapes its call handed it and copied by the methods that answer a new value (900; cell `generic_type_value_carries_shapes`); wasm's `shown` not monomorphised through a behavior's member is a 164 row
+      — built as: `__bp_s` holds `$K` / `$V` / `$T`; std's `Dict` / `Set` / `Queue` statics take the trailing `__bp_ty_*`; a generic
+      method reads `this.__bp_s`; `Dict.display` walks its pairs with the 956 loop; the cell green on commonJS, erlang and beam, red on
+      wasm until its 164 row lands
+- [ ] a method's own type parameter (`Dict.mapValues<W>`, `fold<A>`) answers a value whose `$W` shape is empty, so a `mapValues` to `f64`
+      prints `2` on commonJS — question 900-a
 - [x] a tuple held in a type-parameter slot is printed as a tuple (`Box(value: #(1, 2))`, `id(#(3, "x"))` answers
       `#(3, "x")`; today `[1, 2]`, `[3, "x"]`) — found by 164 s2's tuple subtype; a cell on every target
       — built as: commonJS prints a tuple in a type-parameter slot and a tuple-typed record field as `#(…)`; cell
