@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: 994 L1 landed (botopink-lang feat 8705a3589) — compiler.load reads src/entry, resolves its own dependencies; L2's package: form started
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
