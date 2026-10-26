@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: 992 in conformance/lib — the candidate written through io.fs on every target (front/p5-lib 470ce7e43)
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to: all/20261026-1736-992-io-fs-on-wasm-the-mt-0081.md
 ---
 
