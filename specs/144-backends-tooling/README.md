@@ -3165,6 +3165,14 @@ Each box is a library's decision-cell draft that builds on the other targets and
 - [ ] an upper-case module `val` used as a receiver breaks the emitted code: `HEADER.length` on beam, `TARGETS.any(…)` on erlang
       (found by 990 piece 5's `conformance/lib`, which uses lower-case functions instead); a cell on four targets, red on erlang and beam
 
+- [ ] beam: std's own tests (`botopink test --target beam` in `libs/std`) fail `async: race … element zero on erlang` (`async.bp:540`) and three
+      `net:` tests (`io/net.bp:273`, `:276`, `:301`), deterministic; green after 906's fix alone, so one of the commits landed since broke them
+      (they look tied to `hostTarget()` answering `.Erlang(<<"erlang">>)` on beam); six `fs.*` tests fail on beam since before 906; bisect, fix, a cell
+- [ ] 999 on wasm: an entry `main`'s `Error(e)` prints its `failed: <text>` line only when `e` is a `string`; another payload exits non-zero
+      with no text — `<text>` must be `print`'s rendering of `e` (999); a cell with a record payload, four targets, red on wasm
+- [ ] 999 on erlang and beam: `failed: <text>` renders `e` through `__bp_show` without commonJS's static print shapes, so an `f64` or tuple
+      payload may differ from `print`; a cell with an `f64` and a tuple payload, four targets
+
 ### B-148 — the primitive widths are types; a behavior is a contract and carries no cell (decision 617)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (std's bodies and the backends' dispatch decide language versus defect) · **After:** B-139 (which moves the prelude into `primitives.bp`) · **Before:** B-140
