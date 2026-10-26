@@ -191,6 +191,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
 - **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
 
+#### 989-c · Where does 989 (9)'s `runCase` await an async `run()`?
+- **Measured.** After 990 piece 2 on botopink-lang feat, `run()` answers `Async<Result<string, RunFailure>>` when the loaded case's `main` is async. An init body cannot `await`; and 808 (2)'s expansion of `runCase` inside an async `main` (989 (9)'s shape) refuses today both `compiler.load` with a non-literal path and an `await` in the executor's definition-site check. The cell `module_run_answers_output`'s async case therefore awaits inside an `async { }` block in the init body, and its `main` waits `async.delay(10, 0)` so the task settles first on commonJS — a workaround, not a shape 989 names.
+- **Options.** (a) an executor expanded inside an async body (808 (2)) may `await`, and `compiler.load` there takes a path known at build (the expansion's argument), so runCase awaits run() in the suite's async `main`; (b) the init body may `await` (init becomes async when it does), the module's init list awaited before `main`; (c) run() never answers `Async`: an async loaded `main` is driven to completion inside run() (a blocking wait per target)
+- **Recommendation.** (a): 989 (9) already places runCase in the suite's `main`; (b) changes every program's init order and (c) needs a blocking wait commonJS does not have
+- **Blocks.** 990 piece 5 / 6's runCase over an async case (machine-1's adapter `ranOf`); the cell module_run_answers_output's async case shape
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
