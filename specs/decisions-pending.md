@@ -177,7 +177,7 @@ The maintainer asked (2026-10-21) that every decision a `fable` took for him, an
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
-## Machine 2 — maximum priority (front 144, `machine-2/144-backends-tooling/`)
+## Machine 2 — maximum priority (front 144, `144-backends-tooling/`)
 
 #### 810-d · Do `!(v is A)` and `v is A && …` narrow `v`? (decision 810 (2); 144 B-162, B-155)
 
@@ -193,7 +193,7 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
-## Machine 1 — maximum priority (front 144, `machine-1/144-checker/`)
+## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 

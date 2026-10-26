@@ -20,7 +20,7 @@ comptime compiler.load("src/cases/narrow_ends_at_assignment/main.bp") catch { ds
 ```
 
 Next:
-- machine 1, `machine-1/144-checker` B-158: the member answers the `Result`. The cells are `compiler_load_answers_diagnostics`
+- machine 1, `144-checker` B-158: the member answers the `Result`. The cells are `compiler_load_answers_diagnostics`
   (780) and `compiler_load_answers_result` (782): a refused file's records printed from `catch { ds -> … }`, and a file that
   compiles answers `Ok`.
 - machine 2, `machine-2/144` B-157 piece 5 (781): each refused case's handler prints its old records. A case whose `load` answers

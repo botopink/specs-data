@@ -177,7 +177,7 @@ O mantenedor pediu (2026-10-21) que toda decisão que um `fable` tomou por ele, 
 
 Nenhuma aberta: cada entrada foi respondida por 899–955 (2026-10-21), decidida pelo fable por delegação do mantenedor e listada em § Para revisar.
 
-## Máquina 2 — prioridade máxima (frente 144, `machine-2/144-backends-tooling/`)
+## Máquina 2 — prioridade máxima (frente 144, `144-backends-tooling/`)
 
 #### 810-d · `!(v is A)` e `v is A && …` estreitam `v`? (decisão 810 (2); 144 B-162, B-155)
 
@@ -193,7 +193,7 @@ Nenhuma aberta: cada entrada foi respondida por 899–955 (2026-10-21), decidida
 
 Nenhuma aberta: cada entrada foi respondida por 899–955 (2026-10-21), decidida pelo fable por delegação do mantenedor e listada em § Para revisar.
 
-## Máquina 1 — prioridade máxima (frente 144, `machine-1/144-checker/`)
+## Máquina 1 — prioridade máxima (frente 144, `144-checker/`)
 
 Nenhuma aberta: cada entrada foi respondida por 899–955 (2026-10-21), decidida pelo fable por delegação do mantenedor e listada em § Para revisar.
 

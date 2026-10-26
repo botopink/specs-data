@@ -19,7 +19,7 @@ The maintainer (2026-10-19): "`@Result` não é mais usado." Measured on `feat` 
 - **Machine 1.** rakun's 872 sites are code: your staged codemod (m1-0003, "plus the bare prelude types") must leave
   `grep -rE '@(Result|Task|Component)\b' modules/` at zero — comments and `test "…"` names included, so no package keeps
   the old text anywhere. Check before the commit; if the codemod skips comments, extend it.
-- **Machine 2.** B-116 (ii) (`machine-2/144-backends-tooling/README.md` box "the types: `@Iterator` → `Iter`, `@Task` →
+- **Machine 2.** B-116 (ii) (`144-backends-tooling/README.md` box "the types: `@Iterator` → `Iter`, `@Task` →
   `Async` …", line 2415) closes only when std, the cells and the libraries hold the old names nowhere but
   `prelude_name_with_sigil`: respell the comments (`libs/std/src/async.bp:571`'s test name, the cells' `//` lines) and
   validation's 21 with the same codemod run. A `////` line is the cell's reference (480), never left stale.

@@ -7,7 +7,7 @@ read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to: all/20261019-0204-fold-739-750-respelling-slice-mt-0028.md
 ---
 
-Landed since mt-0028: the second respelling slice (`machine-1/144-checker/**`, 48 `.bp` and 10 `.bpp` examples, meta 6a733fb86)
+Landed since mt-0028: the second respelling slice (`144-checker/**`, 48 `.bp` and 10 `.bpp` examples, meta 6a733fb86)
 and the closing of every open box whose mechanism was retired (meta 30489fce1): the catalogue and `Declared` (665, 576 (7)),
 `@emit` (605), `wrapWith` (714), `Decorator` (666), `@BeamMemory` / `keyed:` (547), `fn:` (610). Convention (AGENTS § Conventions):
 a box with no goal left was deleted; a box whose goal survives was rewritten to the current mechanism, citing the decision; a step left
