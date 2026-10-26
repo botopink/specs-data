@@ -3162,6 +3162,8 @@ Each box is a library's decision-cell draft that builds on the other targets and
 - [ ] erlang: an instance method handed as a value (the `decl` of an init executor) builds, but the emitted module is refused by erlc
       (`variable 'Users' is unbound`); found respelling rakun's `decl.<member>()` sites (797); a cell, red on erlang
 - [ ] `compiler.owner(decl)` refused at build: `'__bp_declName' is not declared in any behavior implemented for 'Declared'`; a cell
+- [ ] an upper-case module `val` used as a receiver breaks the emitted code: `HEADER.length` on beam, `TARGETS.any(…)` on erlang
+      (found by 990 piece 5's `conformance/lib`, which uses lower-case functions instead); a cell on four targets, red on erlang and beam
 
 ### B-148 — the primitive widths are types; a behavior is a contract and carries no cell (decision 617)
 
