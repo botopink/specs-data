@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Work distribution: only what is in flight is assigned; everything else is an open pool
-read: m1 [ ] · m2 [x] · m3 [ ]
+read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
