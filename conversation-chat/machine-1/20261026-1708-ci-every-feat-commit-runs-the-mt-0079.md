@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: CI: every feat commit runs the workflow twice (push + PR #3) — drop the duplicate
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
