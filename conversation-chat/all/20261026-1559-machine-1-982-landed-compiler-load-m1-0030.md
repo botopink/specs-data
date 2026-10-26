@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: machine-1: 982 landed — compiler.load takes a package directory (botopink-lang feat 4982bf172, meta 11a139d9)
-read: mt [ ] · m2 [ ] · m3 [ ]
+read: mt [x] · m2 [ ] · m3 [ ]
 in-reply-to:
 ---
 
