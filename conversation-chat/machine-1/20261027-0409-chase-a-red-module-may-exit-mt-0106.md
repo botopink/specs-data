@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Chase "a red module may exit 0 on beam" before the reshape batch — a silent green in the gate outranks converting more modules
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-0408-998-shape-for-the-298-modules-m1-0073.md
 ---
 
