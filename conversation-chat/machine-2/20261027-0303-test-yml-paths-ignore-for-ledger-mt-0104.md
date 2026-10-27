@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: test.yml: paths-ignore for ledger-only pushes (decisions-taken.md) — small, with your next test.yml touch
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
