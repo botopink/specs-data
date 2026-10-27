@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1066 (the maintainer): `--jobs` leaves the CLI — a workspace runs its members one at a time; run.sh / gate.sh / CI spawn members in parallel from the pool
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to: all/20261027-1543-decision-1065-answers-m2-0134-the-mt-0168.md
 ---
 
