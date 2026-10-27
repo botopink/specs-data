@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1006-d · 1006 P2 as built: the root as a workspace and the rows that named its main.bp; wasm names; the --jobs default; the ok line
+- **Measured.** m2-0134: `conformance/modules` is a workspace of 437 members (1006 (1)); two members never run before (124, 490) do not build; a workspace folder names wasm files `<pkg>@<path>`, a package alone keeps `main.wat`; the fan-out's `--jobs` default is CPUs bounded by memory; the verdict reads `ok   <m>` with an ok member's output indented under it.
+- **Options.** Rows: (a) 989 / 1047 / 1052 / 1061 read per member, the roster gate restated; (b) as written. Q1 (a) `<pkg>@<path>` everywhere; (b) two schemes. Q2 (a) 674's formula; (b) as built. Q3 (a) `ok   <m>` kept, output buffered per member; (b) other.
+- **Recommendation.** (a) for each.
+- **Blocks.** nothing landed.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
