@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1032 runner: three more choices (follow-up to m2-0109)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
