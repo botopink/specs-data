@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1015: one flat output folder per target, files named `<pkg>@<path>` on every target (std@math.js / .d.ts / .erl / .S) — replaces 1013's `_shared` links
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
