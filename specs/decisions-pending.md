@@ -205,6 +205,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 1021-a · 1021's runtime unit: the whole std-wasm in `std@__rt`, or std split per module with `std@__rt` reduced to the core?
+- **Measured.** 1021 P3 (ready, not landed) builds `std@__rt` holding the memory, allocator, every `std:` export of std-wasm decoded whole, the WASI imports and the panic tag; the entry imports it. The component frame embeds the whole unit, so hello-world's `main.wat` grows 14 KB → 748 KB (programs reaching std/io/fs were already ~740 KB). std-wasm is one block today (`zig build std-wasm`).
+- **Options.** (a) as P3 built: the whole std-wasm in `std@__rt`; (b) std split per module like any package — `std@<module>.wasm` per std module (`std@math.wasm`, `std@io@fs.wasm`, …), each written once, importing the std modules it uses; `std@__rt` reduced to the core (memory, allocator, panic tag, scheduler, shared table, type registry, WASI imports); a program links only the std modules it reaches
+- **Recommendation.** (b) — the same `<pkg>@<path>` scheme as every other package; a small program carries the core and what it uses
+- **Blocks.** 1021 P3's landing, P4
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
