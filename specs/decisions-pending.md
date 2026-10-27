@@ -203,6 +203,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a): cells are for the language's behaviour (647)
 - **Blocks.** check 7 (1011's cell column)
 
+#### tsc-a · tsc-check folded into the commonJS row over one unified tree; `.d.ts` always emitted; one file per package?
+- **Measured.** tsc-check rebuilds 1068 projects serially (10–19 min in CI) to run one `tsc` each, because each project emits its own std copy; the commonJS conformance row already builds and runs the same `.js`. The fable: tsc resolves symlinks to their real path, so a tree whose members link one shared std gives one `std.d.ts` in one program; one `tsc` there costs ~10–30 s. "One output file per package" would, on erlang / beam, merge every source module into one `-module` (amending 109 / 21), lose the parallel compile and 1007's per-file reuse; wasm is already one component per program; on commonJS it is a bundler that breaks the loaded-package `require` cache purge and host imports of deep paths (326).
+- **Options.** Q1 `.d.ts`: (a) always emitted beside the `.js` on commonJS, `--typescript` and `typings` leave; (b) the row runs `build --typescript`. Q2 the shared dependencies: (a) the CLI links each member's dependency to one `_shared/<pkg>-<key>/`; (b) root-in-path emission in codegen. Q3 one file per package: (a) not on erlang / beam / wasm; a commonJS bundle per package only as a future question tied to 326; (b) on every target
+- **Recommendation.** Q1 (a), Q2 (a), Q3 (a)
+- **Blocks.** the tsc-check job's time
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
