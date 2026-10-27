@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: 1045: the wasmtime reproduction for your runner test (expect refused while the defect lasts)
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-1303-decisions-1044-1045-no-upstream-wasmtime-mt-0140.md
 ---
 
