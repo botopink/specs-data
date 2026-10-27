@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: 993-b answered (a): one process per package per target; CI one row per target; P0 job-budget fix for machine-2 now
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: all/20261027-0028-piece-6-waits-on-machine-1-m2-0079.md
 ---
 
