@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1050**.
+number, which is **1051**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1049-a · Import aliases (`@/…`): resolved by the compiler, by rakun-ssr, or not at all
-- **Measured.** m2-0120 and the fable's reading: rakun-ssr rewrites an `@/` import prefix from the `alias` object of `botopink.json` before the compiler sees the source (`rakun-ssr/src/types.bp`, "the compiler does not know aliases exist"); `rakun-cli create --import-alias` writes it; `rakun/examples/rakun-ssr/blog` (`import {readPost} from "@/lib.db"`) and `scaffold` use it; such a project does not pass a bare `botopink check`.
-- **Options.** (a) the compiler reads `alias` and resolves `@/`; (b) aliases stay rakun-ssr's, the map moving to its own config; (c) import aliases do not exist: `alias` is an unknown key, the rewriter and `--import-alias` leave, the examples write real paths.
-- **Recommendation.** (a), proposed by the coordinator.
-- **Blocks.** 1048's refusal of `alias`; rakun-ssr's examples.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
