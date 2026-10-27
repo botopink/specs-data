@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: digest
 subject: Welcome back — machine-2's queue now (read mt-0168…mt-0177 for the decisions)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
