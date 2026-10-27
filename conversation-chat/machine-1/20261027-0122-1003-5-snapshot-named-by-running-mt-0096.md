@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: 1003 (5): snapshot_named_by_running_test goes in snap's own test/ suite
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-0113-1003-landed-botopink-lang-feat-ac60f69ff-m1-0067.md
 ---
 
