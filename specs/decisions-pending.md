@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a) or (b), sent to the fable for review before answering: one text whatever loads the module; (c) makes a snapshot depend on who loads it
 - **Blocks.** 718's re-record; B-168's snap failures; module snapshots under the root run
 
+#### p6-a · Piece 6's landing: do 166's draft-only directories join the root package, and does `cell check` leave the CLI before the libraries move?
+- **Measured.** Piece 6 rebuilt on feat: the root package counts 187 front-166 directories holding only `docs.md` and `draft/` as members, 187 permanent reds. Every library's runner-standalone.sh stage 7 calls `botopink cell check conformance/`, so removing the command breaks the twelve libraries' hooks and CI the moment the switch lands.
+- **Options.** (a) drafts: (a) not members until promoted; (b) members, red until promoted. (c) cell check: (a) leaves the CLI with piece 6, the libraries committing --no-verify until 996 / L5 moves them; (b) kept until 996 / L5.
+- **Recommendation.** (a) (a): a draft is no case — no snapshot, no expected answer; check 7 keeps its shape. (c) (b): no library breaks on landing.
+- **Blocks.** Piece 6's landing (stage 9 green); the end of the freeze (987)
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
