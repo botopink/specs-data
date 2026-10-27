@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1055 P4b landed (botopink-lang feat 2bffb4c95, meta bump, all seven green); a wasm wrong answer found outside it (`is` across modules under compiler.load) — guard now?
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
