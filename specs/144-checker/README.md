@@ -2865,6 +2865,190 @@ First classification (1047 (3)):
 - [ ] each by-design case rewritten and recorded loaded, its line removed; each defect filed as a row with the case as its repro
 - [ ] proof: `conformance/run.sh --self-test` and the line `0 cases outside 989's shape` once only defect lines remain and are fixed; the list only shrinks (1011 (2))
 
+### B-173 — a loaded package's module names come out mangled `bp_load__cases__<case>/…` (B-172, against 1003 (1))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Run loaded, typeinfo, decl, hooks and `compiler` names carry the loader's internal prefix instead of the package-relative module path. Repros (each case kept on `leftover-cases.txt` until fixed): 170, 254 typeinfo_all_registration, 256, 277 ×5, 293, 375 decl_hooks_async_imported, 389 ×2, 415 ×4, 575 compiler_point_reads, 579, 216 typeinfo_all_spelled_in_string, 665 decl_member_owner and template_reads_program_catalogue.
+
+- [ ] a loaded package's names read as when it runs alone; every repro green loaded and its line removed
+
+### B-174 — `context-declared-twice` counts every loaded package of one program (B-172, against 379 (1))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 388 ×2, 574, 791 component_use_in_body, 379 decl_hooks_context, 723, 416 ×3.
+
+- [ ] the refusal counts declarations within one package; every repro green loaded
+
+### B-175 — a package loaded by a loaded package: its tests are not found and a by-name load fails `load-package-unknown` (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: module_test_reports_each_test-993 ×9 (``m.`test`()`` answers no tests; the by-name load is refused).
+
+- [ ] a nested load resolves and tests as a first-level one; every repro green loaded
+
+### B-176 — a `.bpp` package's located refusal is lost loaded: only "unresolved module declaration" (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 212, 221, 289, 338 ×3, 552, 561 ×2, 890.
+
+- [ ] the loaded package answers its own located refusal; every repro green loaded
+
+### B-177 — a multi-module package's shorthand import is unresolved loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 886 ×2 (`import {box.Box}`), 872 ×4, 799.
+
+- [ ] shorthand imports resolve inside a loaded package; every repro green loaded
+
+### B-178 — an abort's stderr text is lost in `RunFailure` (panic, crash, host, overflow) (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 535 ×4, 597, 675, 999 ×2, 606 panic_from_failure, case/case_no_arm_matches_raises.
+
+- [ ] `RunFailure` carries the abort's text as 535 / 999 print it; every repro green loaded
+
+### B-179 — hygiene: loader and `syntax`-expansion names resolve in the wrong scope loaded (B-172, 719 / 841)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 719 ×2, behavior/behavior_named_like_prelude_type, 606 prelude_name_shadowed.
+
+- [ ] names resolve where written under `compiler.load`; every repro green loaded
+
+### B-180 — an emit-time host refusal fails the caller's build instead of answering `.Refused` / `.Excluded` (B-172, against 989 (3))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: external ×5.
+
+- [ ] the refusal is the loaded package's answer; every repro green loaded
+
+### B-181 — a dependency's decorator names nothing loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 216 typeinfo_all_dependency_declarations, 665 typeinfo_all_default_at_caller.
+
+- [ ] every repro green loaded
+
+### B-182 — `typeinfo-all-default-outside-root`: a loaded package's `src/main.bp` is not taken as its root (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 665 comptime_expand_boot, typeinfo_all_default_override.
+
+- [ ] every repro green loaded
+
+### B-183 — dependency diagnostics change loaded: the code dropped, `at.file` not package-relative, init prints missing, a transitive import resolved (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 242 ×2, 309 dependency_imports_itself_with_from, 575 files_one_module_twice, 676 ×4, 770 targets_declared_beyond_dependency, 793 library_block_level_order.
+
+- [ ] a dependency's diagnostics and init prints read as when run alone; every repro green loaded
+
+### B-184 — `module-import-with-from` is not refused loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 206, 309 import_own_package_with_from.
+
+- [ ] every repro green loaded
+
+### B-185 — a dependency's function names resolve wrongly loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: import ×2.
+
+- [ ] every repro green loaded
+
+### B-186 — the load changes what is reached: unreached functions and a root package's unimported modules (B-172, 1047 (3))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 531 ×2, 677 ×2.
+
+- [ ] reachability under `compiler.load` as when run alone; every repro green loaded
+
+### B-187 — a refused loaded package answers only its root module's diagnostic (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repro: imported_declaration_error_location.
+
+- [ ] the imported modules' diagnostics answered too; the repro green loaded
+
+### B-188 — a case aborts beside its module's other cases but answers right loaded alone (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repro: optional_enum_method_unimported (commonJS, beam).
+
+- [ ] the repro green inside its module
+
+### B-189 — `run()` of a package with no `main` refuses the caller's build (`load-no-main`) (B-172, against 787 (3))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repro: run_without_main.
+
+- [ ] refused where 787 (3) places it, located; the repro green loaded
+
+### B-190 — a module var's initialiser runs twice loaded on erlang and beam (B-172, against 547 (i))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repro: beam/beam_memory_ets_initialiser.
+
+- [ ] the initialiser runs once; the repro green loaded
+
+### B-191 — `load_refused_for_every_manifest_target` answers `false` loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repro: 833.
+
+- [ ] the repro green loaded
+
+### B-192 — erlang loaded: an external method answers 2 instead of 20 (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repro: commonjs_variant_is_subclass_of_its_type-5 external_method_local.
+
+- [ ] the repro green loaded on erlang
+
+### B-193 — async and host cases answer differently loaded on commonJS or beam (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 126, 489, 537 ×3, 967.
+
+- [ ] every repro green loaded
+
+### B-194 — two fs cases answer differently per target loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: 540 fs_file_streams, 711 std_fs_walk_root_spellings.
+
+- [ ] every repro green loaded on its targets
+
+### B-195 — beam: `external_host_record` aborts after `10`; `beam_memory_persistent_term` answers `badarg` loaded (B-172)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Repros: external/external_host_record (red alone too), beam/beam_memory_persistent_term.
+
+- [ ] both repros green on beam
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
