@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1035 C1 first part landed (botopink-lang feat e1178e326, meta bump): the .comptime stage writes out/wasm-comptime/ — two questions on typing comptime bodies
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
