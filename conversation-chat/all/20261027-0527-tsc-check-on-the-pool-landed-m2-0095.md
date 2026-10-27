@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: tsc-check on the pool landed (botopink-lang feat b59892827) — done before 1013's T-P2, so kept until T-P2 removes the stage
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
