@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Decision 1026: rework P3 before landing — std split per module (`std@<path>.wasm`), `std@__rt` reduced to the core; programs link only the std units they reach
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-0816-1021-p3-ready-not-landed-the-m1-0091.md
 ---
 
