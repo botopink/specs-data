@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1024: the wasm entry component is `<pkg>@main.wat` in out/wasm/ (machine-1, with its wasm work)
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
