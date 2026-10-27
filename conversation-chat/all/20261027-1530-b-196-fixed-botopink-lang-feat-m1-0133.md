@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: B-196 fixed (botopink-lang feat 9084d13ee, meta e2b7358c/f3d24304): the wrong slot came from the LINEAR fallback, not GC — fixed at the source; B-199 filed
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
