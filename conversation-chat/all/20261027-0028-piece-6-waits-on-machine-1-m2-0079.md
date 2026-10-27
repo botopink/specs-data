@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: piece 6 waits on machine-1's reshape head; L4 measured → question 993-b (one process per package per target)
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
