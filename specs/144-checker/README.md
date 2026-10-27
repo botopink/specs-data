@@ -3092,10 +3092,10 @@ A record, a variant with payload, a nested record and a `Display` printed in a c
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; the run decides) · **After:** nothing
 
-Found by 1071 (1)'s thread: the `behavior` conformance member aborted once on erlang (exit 134), then passed on two re-runs; the parent passed too. It is never listed as disabled meanwhile (67, 1011 (2)); no per-case time bound exists (1068).
+Found by 1071 (1)'s thread: the `behavior` conformance member aborted once on erlang (exit 134), then passed on two re-runs; the parent passed too. It is never listed as disabled meanwhile (67, 1011 (2)); no per-case time bound exists (1068). A fresh ReleaseSafe build of feat after 1061 (2) ran it 20 of 20 green, but 1075's thread saw it abort again once in 4 runs (exit 134) on its worktree build after 1061 (2), so the row stays open.
 
-- [x] run the member alone 20 times on erlang: 20 of 20 exit 0 on a fresh ReleaseSafe build of feat after 1061 (2)'s leak fixes; machine-2 found no reproduction either; no case aborts, the rate is 0 of 20
-- [x] closed with no fix: the one abort predates 1061 (2) (a member's erlang run grew without bound then); a new abort reopens this row with its case and its log
+- [ ] run the member alone repeatedly on erlang with the build kind that aborted (the worktree's Debug build as well as ReleaseSafe), keep the log of an aborting run; name the case and the rate; the owner by cause (erlang codegen, machine 1; the harness capture, machine 2)
+- [ ] the cause fixed; 20 runs in a row green on both build kinds
 
 ### B-201 — wasm GC: a `val assert` / payload pattern's bare variant takes no subject hint (1057's composed cases; guarded by 1058 (4))
 
