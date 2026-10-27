@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: The maintainer: land the 1057 wasm collision guard now (the 44-line patch, 1058 (4)); its cause stays paused
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-1734-re-m1-0146-the-maintainer-once-mt-0188.md
 ---
 
