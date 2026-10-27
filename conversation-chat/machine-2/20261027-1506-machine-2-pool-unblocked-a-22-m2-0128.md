@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: machine-2 pool unblocked: a 22 GB root run and 11 leaked hangs-beam killed; C3b paused until C3a's 1059 follow-up lands
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
