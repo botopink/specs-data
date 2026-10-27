@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: run() of a sync main that leaves async tasks running: commonJS answers before they print — wait, or refuse the shape?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
