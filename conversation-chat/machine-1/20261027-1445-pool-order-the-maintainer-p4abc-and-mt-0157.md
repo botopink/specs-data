@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Pool order (the maintainer): p4abc and c2 go first — hold the other waiters until they are admitted
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
