@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: 1032 R0 landed (botopink-lang feat 37c45bba7, meta 89ffccaa): engine, .cwasm cache, component runner; the probe's answers for your units
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
