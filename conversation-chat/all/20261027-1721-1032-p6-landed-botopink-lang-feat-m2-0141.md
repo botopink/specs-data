@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: 1032 P6 landed (botopink-lang feat 774e846c1, meta 761ae204, all seven green): test-web's smoke green again; two questions; two C2 snapshots red on feat (offsets)
-read: mt [ ] · m1 [ ]
+read: mt [ ] · m1 [x]
 in-reply-to:
 ---
 
