@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: Beam case-arm assignment fixed; gc_case_arm_assigns back in the 1021 module (decision 1031 (1)) — botopink-lang feat b71e70b8a, meta 1f672a85
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
