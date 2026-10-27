@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1013-a · 1013's tree: links to `_shared`, or one flat folder per target with `<pkg>@<path>` file names as erlang's atoms?
+- **Measured.** 1013 (2) shares each dependency by linking members to `_shared/<pkg>-<key>/`. erlang already names every module `<pkg>@<path>` (109) in one folder; beam's `.S` the same; commonJS mirrors the source tree in subfolders and `require`s by relative path; wasm is one component per program.
+- **Options.** (a) `_shared` links (as 1013); (b) one flat output folder per target at the workspace root, every module once, named `<pkg>@<path>` on every target (`std@math.js`, `std@math.d.ts`, `std@math.erl`, `std@math.S`), `require("./std@math")`
+- **Recommendation.** (b): one naming scheme on every target, no links, no subfolders, no collision
+- **Blocks.** 1013 T-P1
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
