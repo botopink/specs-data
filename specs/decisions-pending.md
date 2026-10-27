@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1059-a · C3a under 1059: the std name in a trap, 451's text, how `printed` and `frames` reach the reply, row 1059's Cell
+- **Measured.** m2-0131: the host names the WASI import (`clock_time_get`, `bp_fs.open`), not the std function; 451's refusal text ends in "(decision 451)"; the host's error reply has no `frames`, and how the codec reads the capture is not fixed; no program reaches the host until C4.
+- **Options.** Q1 (a) the evaluator names the innermost std frame; (b) the import name. Q2 (a) 451 / 456's texts lose the decision number everywhere, one source; (b) kept. Q3 (a) the codec closes the core's capture; the core mirrors writes to the host's `fd_write` under comptime; the host's error reply carries frames from the trap's backtrace; (b) other. Q4 the Cell until C4.
+- **Recommendation.** (a) for Q1–Q3; Q4 the snapshot and zig test as interim proof.
+- **Blocks.** C3a's follow-up, C2 part 2.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
