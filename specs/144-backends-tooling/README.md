@@ -3601,3 +3601,19 @@ It reproduces on feat before 1003, so it is not the `root` field. The conformanc
 
 - [ ] wasm binds the `run()` alias of a package loaded by a loaded package, as the other backends do. It closes with cell `src_root_at_depth` (decision 1003 (5): program → `packages/m` → `cases/c`, four targets), red on wasm before and green after. The cell waits on this box, because no `"targets"` narrowing may stand in for a defect.
 
+### B-170 — what 992 met on the way to `io.fs` on wasm: GC gaps worked around, and a commonJS crash
+
+Decision 992 made `std/io/fs` and `conformance/lib` compile in wasm's GC lowering by rewriting their own code around these defects. Each workaround is marked `(B-170)` in its source, and each defect below reproduces as written. A module that falls back to linear memory makes the whole program fall back, and there `io.fs`'s `.wat` leaves are refused; that is why each gap was a hard red.
+
+- [ ] **wasm: string ordering.** `<`, `<=`, `>`, `>=` between strings have no wasm lowering. GC refuses `fn within(xs: array<string>, ch: string) -> bool { val lo = xs.at(0) ?? ""; return lo <= ch; }` at the typecheck (`op got 64 want 0`). Linear memory compares the two pointers, so it can answer wrongly with no refusal. Worked around in `fs.bp` `classHas` by `charCodeAt`.
+- [ ] **wasm GC: `catch` with a binder.** `try f() catch { e -> … }` is `gcFail("a catch { e -> … } handler")` (`lowerTryCatch`), and `try f() catch null` assigned to a `?T` is typed by its `null`. `conformance/lib` now writes a `case` with block arms, or a helper whose arms each `return` / `throw`.
+- [ ] **wasm GC: an `if` answering `null` or a value.** `val a: ?string = if (f == "") null else f + "!";` fails the typecheck with either branch order. Written as `var a: ?string = null; if (…) a = …;` in `observe.bp` and `sections.bp`.
+- [ ] **wasm GC: a nested `if` beside an `else if` that appends.** Inside a `while`, `if (c == "{") { if (depth == 0) { } } else if (c == ",") { cuts = cuts.append([j]); }` in a function answering `array<string>` fails as `__arr_concat_i32` "a number where a reference was taken". Written as separate `if`s in `fs.bp` `expandBraces`.
+- [ ] **wasm GC: a `case` arm that assigns** (`Ok(s) -> kept = s;`) is "no lowering for a `binding` expression". Block arms (`Ok(s) { kept = s; }`) lower.
+- [ ] **wasm GC: `"${e}"` of an enum value** (an `FsError`) fails the typecheck of its generated printer (`__pr<k>`, "a value of another type").
+- [ ] **wasm: a `.Wasm(body: f)` body `-> void` without a final `return;`** leaves a value on the stack (`linkToWasm`; an empty `{}` body in std is an unlocated `TypeError`). Both are written with `return;`.
+- [x] **wasm GC: a `-> void` function whose last statement answers a reference** (a call answering a `Result` it ignores) is dropped, not converted. This one is fixed in `wat.zig` `renderBody`, by widening the dropped-task case.
+- [ ] **commonJS: `FsError.message()` crashes** (`e.message is not a function`) on the `FsError` a `writeText` failure answers, on feat before 992 too. Decision 563 says it reads the same on every target; erlang, beam and wasm do. `candidate.deliver` now names only the path.
+
+Not a defect: a module that uses `io.fs` takes about 31 s to build on wasm, against 3 s on the other targets.
+
