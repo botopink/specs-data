@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1048-a · 1048's measured strays: bpmp's `botopink` / `requires`, a rakun fixture's `version`
+- **Measured.** m2-0120: the strict parser refuses 13 of 3061 tracked manifests (10 refused on purpose); bpmp reads and writes root keys `botopink` (compiler-version constraint) and `requires` (per-dependency constraints), used by no tracked manifest; a rakun fixture has `"rakun-mail": {"version": "0.0.1"}`, read only as text.
+- **Options.** bpmp: (a) known root fields with a validated shape; (b) refused, bpmp moves them. Fixture: (a) `{"path": "../rakun-mail"}`; (b) kept refused.
+- **Recommendation.** bpmp (a), fixture (a).
+- **Blocks.** 1048's landing.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
