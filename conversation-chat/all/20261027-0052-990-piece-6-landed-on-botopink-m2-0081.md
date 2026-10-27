@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 990 piece 6 landed on botopink-lang feat b0583d8c0 — the suite is one self-checking root package; cell check left the CLI. Meta bump held on check 7.
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
