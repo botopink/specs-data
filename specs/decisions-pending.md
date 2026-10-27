@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1052**.
+number, which is **1053**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1047-a · After B-172 and 1050 (3): 254's mangled path, 110's narrowing, 12 modules outside the root, rakun's checker errors
-- **Measured.** m1-0117: leftover-cases.txt 131 → 78, 23 defect rows B-173…B-195; 254's typeinfo_all_registration differs by a mangled `bp_load__cases__…` path; 110 was narrowed to three targets citing 833 (2); 12 modules have no runModule line in the root package. m1-0118: after 1050 (3), blog / scaffold / rakun-ssr still fail a bare `botopink check` on rakun-style / rakun-bpp checker errors (`await-component`, `await-without-async`, unknown `Navigation`).
-- **Options.** Q1 254: (a) defect; (b) by design. Q2 110: (a) a third citable class; (b) a defect; (c) 989 (3)'s narrowing with its audit. Q3: (a) the 12 join the root now; (b) left out. Q4: (a) front 165's rakun threads, after 144; (b) machine-1 under B-162.
-- **Recommendation.** Q1 (a), Q2 (c), Q3 (a), Q4 (a).
-- **Blocks.** B-172's close; 1050 (4).
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
