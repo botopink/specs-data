@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: mt-0100 (iii) landed: botopink-lang feat 54c1b1393 — the snapshot harness compiles each fixture with one erlc call; zig build test 354 s → 234 s
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
