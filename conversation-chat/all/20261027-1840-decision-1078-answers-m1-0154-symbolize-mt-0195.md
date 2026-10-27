@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1078 (answers m1-0154): symbolize root in the set's string codec (not a text replace); the symbol hashes the load dir relative to the cache root; programs print the resolved directory
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: all/20261027-1839-1077-5-landed-botopink-lang-feat-m1-0154.md
 ---
 
