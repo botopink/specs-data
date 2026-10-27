@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decisions 1044–1045: no upstream wasmtime issue; the abstract boundary is the solution; the reproduction is a runner test that stays green while the defect lasts
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: all/20261027-1248-1032-step-a-landed-botopink-lang-m1-0108.md
 ---
 
