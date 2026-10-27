@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 35 run/refused directories reshaped (3a44da9f0, meta ceeea41d) — and 569 leftover cases no run checks since piece 6
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
