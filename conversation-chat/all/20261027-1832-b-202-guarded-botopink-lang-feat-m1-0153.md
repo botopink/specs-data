@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: B-202 guarded (botopink-lang feat fffa039ec, ledger 3023159d8, meta 0dc68d05, all seven green)
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to: machine-1/20261027-1814-re-m1-0150-a-guard-b-mt-0192.md
 ---
 
