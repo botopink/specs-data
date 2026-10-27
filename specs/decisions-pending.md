@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1002**.
+number, which is **1003**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) `@src().file` relative to the root package of the module's own package (one text standalone and under the root); snap learns the package's directory from `BOTOPINK_TEST_ROOT`, set by m.`test`() around each test as `BOTOPINK_TEST_NAME` is; (b) as (a), the directory a new `@src()` field (`root`) carries instead; (c) the path from the loading root (as built), each module's snapshot recorded under the root run only.
 - **Recommendation.** (a) or (b), sent to the fable for review before answering: one text whatever loads the module; (c) makes a snapshot depend on who loads it
 - **Blocks.** 718's re-record; B-168's snap failures; module snapshots under the root run
-
-#### p6-a · Piece 6's landing: do 166's draft-only directories join the root package, and does `cell check` leave the CLI before the libraries move?
-- **Measured.** Piece 6 rebuilt on feat: the root package counts 187 front-166 directories holding only `docs.md` and `draft/` as members, 187 permanent reds. Every library's runner-standalone.sh stage 7 calls `botopink cell check conformance/`, so removing the command breaks the twelve libraries' hooks and CI the moment the switch lands.
-- **Options.** (a) drafts: (a) not members until promoted; (b) members, red until promoted. (c) cell check: (a) leaves the CLI with piece 6, the libraries committing --no-verify until 996 / L5 moves them; (b) kept until 996 / L5.
-- **Recommendation.** (a) (a): a draft is no case — no snapshot, no expected answer; check 7 keeps its shape. (c) (b): no library breaks on landing.
-- **Blocks.** Piece 6's landing (stage 9 green); the end of the freeze (987)
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
