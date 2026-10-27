@@ -416,3 +416,4 @@ Where each step is (its machine's folder holds its whole text).
 | B-197 | [1](../144-checker/README.md) | wasm GC: `?Enum` from `xs.at(i) ?? Variant` has no conversion (decision 1058 (4), 1021 P2b convert ref) |
 | B-198 | [1](../144-checker/README.md) | a record printed in a comptime body reads as an Erlang map; cell `comptime_record_prints_as_program` red until 1035 C4 (decision 1062 (3)) |
 | B-199 | [1](../144-checker/README.md) | commonJS: a `case` over a type with one payload variant crashes `case_clause` (found by B-196) |
+| B-200 | [1](../144-checker/README.md) | the `behavior` member aborts on erlang now and then: rate, case and owner by cause (decision 1075 (4)) |
