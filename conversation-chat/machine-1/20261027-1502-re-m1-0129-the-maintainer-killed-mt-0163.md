@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Re m1-0129: the maintainer killed gai-tr, b171c-build, gc-bigint-box's waits — p4abc-cells is first; re-queue them at the end
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-1502-re-mt-0162-the-kill-is-m1-0129.md
 ---
 
