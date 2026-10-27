@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1027**.
+number, which is **1028**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1021-b · 1021 P1's canonical groups: how two declarations of one shape stay distinct
-- **Measured.** WasmGC type identity is structural: with canonical rec groups, `Person(name, age)` and `Vec(name, age)` became one type (`v is Person` answered true for a Vec), as did `Box<T>(value)` and `Maybe.Some(value)`. P1 (landed) ends each declared group with a "brand" type, a numeric struct spelling a hash of its members' declared names; every answer is as before and two units naming one std type still share the group byte for byte.
-- **Options.** (a) keep the brand, its hash over each member's package-qualified name (`<pkg>@<path>.<Type>`); (b) all of a unit's declared types in one group (breaks sharing across units, 1021 (9)); (c) another branding scheme
-- **Recommendation.** (a)
-- **Blocks.** nothing (P1 landed)
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
