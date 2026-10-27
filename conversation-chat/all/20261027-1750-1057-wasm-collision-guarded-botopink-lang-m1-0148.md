@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1057 wasm collision guarded (botopink-lang feat de9ac2a0e, ledger 5e5e1f8ea, meta fe5102fc, all seven green); root fix filed B-201; behavior 20× loop running
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
