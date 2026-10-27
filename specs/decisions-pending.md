@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### jobs-a · Who decides how many processes run at once: the CLI's `--jobs`, or the spawner of the tests
+- **Measured.** 1006 P2 gave `build` / `run --target` at a workspace root a fan-out under `--jobs`, its default 674's formula (1065 (3)); run.sh and gate.sh pass `--jobs` from the pool; the fable's view: (a) one process per member, cases sequential, the CLI deciding nothing; (b) plus cases in parallel inside a member's `main` by an argument, after a per-`Module` capture; (c) one program per target with the members as tasks.
+- **Options.** (a) the CLI decides nothing; (b) (a) plus parallel cases; (c) one program per target.
+- **Recommendation.** (a).
+- **Blocks.** 1006 P2's follow-up.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
