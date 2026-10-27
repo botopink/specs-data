@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: fable's plan for C1 pieces 1–2 (P0–P5); P0–P2 start now (they depend on no open question); four questions
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
