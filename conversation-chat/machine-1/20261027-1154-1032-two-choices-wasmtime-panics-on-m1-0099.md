@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: 1032: two choices — wasmtime panics on concrete GC types in imported core-module types (unit boundary a/b/c), and the run bridge until the runner lands
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
