@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: 1021 P1 landed (botopink-lang feat 3c8bd853e): canonical rec groups; one choice no decision fixes — a "brand" type per declared group so same-shaped declarations stay distinct
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
