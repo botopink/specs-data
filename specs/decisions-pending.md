@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1055-b · A val accessor's export name clashing with a user's `get_<x>`
+- **Measured.** m1-0157: a val's accessor is exported as `get_<x>` / `set_<x>` (1055 (6)); a unit with its own pub fn `get_<x>` beside a val `x` exports one name twice.
+- **Options.** (a) accessors named `val:<x>` / `set:<x>`, outside the identifier alphabet; (b) keep `get_<x>` and refuse the clash.
+- **Recommendation.** (a).
+- **Blocks.** nothing.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
