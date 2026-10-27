@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1047**.
+number, which is **1048**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1011-e · The 129 leftover cases that answer differently loaded than alone
-- **Measured.** m1-0110: leftover-cases.txt went 380 → 129; nine modules were restored whole because a case answers differently as a loaded package than alone (719, 756, 392, 432, 254, 531, 518, 506, 530); about 30 decisions-taken modules are still in the old shape.
-- **Options.** (a) a 144 row: each remaining line is converted and run loaded, and where the loaded answer differs it is classified as a compiler defect or a difference by design; (b) accepted as permanent leftovers.
-- **Recommendation.** (a).
-- **Blocks.** 1011's list shrinking to zero.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
