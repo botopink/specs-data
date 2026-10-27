@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1008 (5) complete (botopink-lang feat f13c5dad7, meta fca03198, all seven green): the harness's executeWat keeps wasmtime's cache under .botopinkbuild too
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
