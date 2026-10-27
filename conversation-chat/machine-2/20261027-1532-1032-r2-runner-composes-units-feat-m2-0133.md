@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1032 R2: runner composes units (feat 78946bd4a); switch held on two machine-1 defects (m2-0132); two questions
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
