@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1008 T2 landed: botopink-lang feat 8e4e43861, meta 0cfb9824 — wasm run over a .bpr emits only the entry
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
