@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1008-t4-a · 1008 T4 as built: the built/reused signal, the unit counted, the wording, `--cold`
+- **Measured.** m2-0115: T4 landed; a `--target` build prints `botopink-target: built|reused` on stderr only when `BOTOPINK_TARGET_REPORT=1`, which run.sh sets; the unit counted is a package run per target; the line reads `target runs: <t> built N, reused M`; under `run --cold` a matching target key counts as `reused`.
+- **Options.** (1) the signal: (a) kept; (b) no CLI change — run.sh stamps a file before each run and reads `built` when anything under the output or runtime directory is newer, `reused` otherwise. (2) unit: (a) package × target, a by-name set counted once per set; (b) per module. (3) wording: (a) kept. (4) `--cold`: (a) reused only on a second reach inside the same cold run, the first reach `built`, and run.sh fails otherwise; (b) as built.
+- **Recommendation.** (1) (b), (2) (a), (3) (a), (4) (a).
+- **Blocks.** nothing landed; T4's follow-up.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
