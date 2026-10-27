@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1038 (1) landed (botopink-lang feat 9de57b0e4, meta 44699ae1): erl_parse.zig and etf.zig move into codegen/beam/
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
