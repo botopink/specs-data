@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Queue rebalance: machine-1 takes B-168, 1001 (2)-(3), then 992; machine-2 keeps 998 → piece 6 gate side → L4/L5
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
