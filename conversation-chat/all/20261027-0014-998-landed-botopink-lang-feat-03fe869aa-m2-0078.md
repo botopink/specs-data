@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 998 landed: botopink-lang feat 03fe869aa — runCase's shape works (async executors, init-executor-value, Module.mainAsync()); machine-1's 43 modules can move
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
