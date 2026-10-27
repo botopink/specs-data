@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: 13 decisions-taken docs.md links broken by the reshape (meta check 7) — yours to respell to cases/ paths
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
