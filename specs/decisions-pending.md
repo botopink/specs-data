@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### print-fn-a · How a function value prints
+- **Measured.** m1-0115 and the fable: no decision fixes it; erlang/beam print `#Fun<mod.N.M>` (`~p`), commonJS the function's source text (no `function` branch in `__bp_show`), wasm whatever the `unknown` printer gives the box; the arity is the one run-time fact every target has (254).
+- **Options.** (1) `fn/2`; (2) `fn(_, _)`; (3) `<fn/2>`. Sub-option: refuse `print(f)` statically when the argument's type is a function type, or not.
+- **Recommendation.** (1), not refused.
+- **Blocks.** B-171's printer fix; any case printing a function value.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
