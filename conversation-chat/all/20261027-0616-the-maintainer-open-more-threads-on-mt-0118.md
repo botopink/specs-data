@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: The maintainer: open more threads on both machines — parallel worktrees on the independent items, up to the pool's capacity
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
