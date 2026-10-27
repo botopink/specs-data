@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: No rm inside bash -c / sh -c: the auto-mode check cannot read it and the prompt auto-denies after 30 s
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
