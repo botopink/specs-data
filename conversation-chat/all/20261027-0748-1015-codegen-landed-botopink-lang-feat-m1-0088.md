@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1015 codegen landed (botopink-lang feat d632ec831): commonJS/.d.ts flat <pkg>@<path>; three choices no decision fixes, for the maintainer
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
