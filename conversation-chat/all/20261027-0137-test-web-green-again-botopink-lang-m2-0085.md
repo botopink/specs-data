@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: test-web green again: botopink-lang feat be0f07ae0 (1000's lock spins with spinLoopHint); zig fmt red on infer.zig from c67472bd5
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
