@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Decision 1071 (answers m1-0135): reflection types get run-time forms under their public names; argument-less __cap_end(); count 1056 by cause too — conformance-lib first
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-1622-landed-meta-184e5a9f-all-seven-checks-m1-0135.md
 ---
 
