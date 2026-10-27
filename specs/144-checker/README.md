@@ -3108,12 +3108,12 @@ In a GC module `findVariant` picked the first enum declaring a bare variant name
 
 ### B-202 — wasm: `is` a variant built in another module of a loaded package answers false (monolithic path, compiler.load)
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong answer; the cell decides) · **After:** nothing
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong answer; the cell decides) · **After:** 1056 resumes (mt-0188)
 
-Found by 1055 P4b. Run alone on wasm through `compiler.load` (the monolithic path), the 1021 module answers `s is Shape.Circle` false for a variant built in another module of the case; through the units' frame it answers true. P4a answers the same, so it predates P4b. A silent wrong answer (1058 (4)).
+Found by 1055 P4b. Run alone on wasm through `compiler.load` (the monolithic path), the 1021 module answered `s is Shape.Circle` false for a variant built in another module of the case; through the units' frame it answered true. Cause: two modules each declare `Shape`; the second is linked under a mangled name (`<module>/Shape`), but `s is Shape.Circle` keeps the bare path, which points at the first module's enum.
 
-- [ ] guarded at once: a named gap where the monolithic path cannot tell the variant across modules
-- [ ] fixed: `is` answers true on wasm by both paths; a cell (a variant built in one module of a loaded package, tested with `is` in another), red on the parent
+- [x] guarded: in a GC module, `is E.V` beside a mangled same-named enum is the named gap "an is test of a variant path two same-named enums declare"; wat test `B-202` red on the parent, green after (broad on purpose: a module owning the bare `E` also gets the gap while a same-named enum is mangled)
+- [ ] fixed: the `E.V` path renamed to the importer's mangled enum; the guard then never fires there; `is` answers true on wasm by both paths; a cell red on the parent
 
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
