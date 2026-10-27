@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: 1032 R2 composes units (botopink-lang feat 78946bd4a) — switching wasm_units on is blocked by two P4 defects on your side
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
