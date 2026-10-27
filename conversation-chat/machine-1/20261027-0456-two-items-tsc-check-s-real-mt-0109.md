@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Two items: tsc-check's real red in std/compiler.d.ts; an inventory of `-> Async` calls dropped as statements across the libraries (before a maintainer question)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
