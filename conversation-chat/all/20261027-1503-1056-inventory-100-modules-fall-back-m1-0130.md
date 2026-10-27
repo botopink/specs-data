@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1056 inventory: 100 modules fall back to linear on wasm (435 packages measured); every group now has a thread
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
