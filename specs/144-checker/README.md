@@ -3052,6 +3052,24 @@ Repros: external/external_host_record (red alone too), beam/beam_memory_persiste
 
 - [ ] both repros green on beam
 
+### B-196 — wasm GC: an array bound in a `case` arm then mapped reads the wrong slot (decision 1058 (4))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong answer in the GC lowering; the cell decides) · **After:** nothing
+
+Found by 1035 C2's probing. Mapping an array bound in a `case` arm reads the wrong slot on wasm: a silent wrong answer, not a fallback.
+
+- [ ] guarded at once: `gcFail("array bound in a case arm then mapped")`, so it is a named gap (the program's fallback until P2c, a recorded refusal in comptime); cell `gc_case_bound_array_mapped`, red on the parent
+- [ ] the wasm snapshots of modules that use a `case` and a map swept for an `on wasm` departure recording a wrong answer (458 (1)); any found removed and the case left red
+- [ ] the lowering fixed: the bound array read from its own slot, the guard removed, the cell green on wasm
+
+### B-197 — wasm GC: `?Enum` from `xs.at(i) ?? Variant` has no conversion (decision 1058 (4))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing
+
+Found by 1035 C2's probing; part of 1021 P2b's convert-ref group (1056).
+
+- [ ] the optional enum read from an array with a default lowers in GC; its cell green on wasm, red on the parent
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
