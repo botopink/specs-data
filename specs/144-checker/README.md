@@ -2836,6 +2836,33 @@ Found by 1027 (2)'s case (decision 1040 (3)). The decision-1021 module does not 
 - [ ] std-wasm's `fs.cwd` leaf builds and answers in wasm's GC lowering, so the 1021 module builds and runs whole on wasm; the module's wasm cases green in one run
 - [ ] `conformance/run.sh`'s CI line that runs `wasm_same_shape_types_distinct_two_packages` alone on wasm removed once the module runs whole
 
+### B-172 — the conformance leftovers converted and run loaded: each a defect or a difference by design (decision 1047)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (each case is classified defect or by design; by design needs a decision cited) · **After:** nothing
+
+`conformance/leftover-cases.txt` holds 129 lines: cases whose answer differs when run as a loaded package (989's shape) from their answer alone. To these add the 9 modules restored whole at the last absorption and the decisions-taken modules still without a `botopink.json`. Each one is converted and run loaded. Where its loaded answer differs, it is either:
+- **a defect**: a row of its own, the case its repro, the line kept until the fix; or
+- **a difference by design**: the case rewritten for the loaded model, its snapshot recorded loaded, the line removed.
+
+There is no third state. By design only with the deciding decision cited: `root` (1003 (2)); the execution model under `run()` (989 (1), (2), (4)).
+
+First classification (1047 (3)):
+- 756: by design (1003 (2)), unless `at.file` itself carries the root.
+- 719: defect (`print` hygiene under `compiler.load`, 719 / 841).
+- 392, 432: by design, rewritten as an `async main` that awaits its tasks (989 (1), (2)).
+- 254: by design (the loaded diagnostic's location); a defect only if the refusal's code changes.
+- 531: defect (the load changes what is reached).
+- 518: defect, filed under 1035 C5, not fixed twice.
+- 506: by design (a child process writes to fd 1 outside the capture; the case reads it through a pipe).
+- 530: unclassified until its red is named.
+
+| Case | Defect / by design | Defect row or snapshot |
+|---|---|---|
+
+- [ ] every line of `leftover-cases.txt`, the 9 restored modules and the modules without a `botopink.json` converted, run loaded and classified in the table above
+- [ ] each by-design case rewritten and recorded loaded, its line removed; each defect filed as a row with the case as its repro
+- [ ] proof: `conformance/run.sh --self-test` and the line `0 cases outside 989's shape` once only defect lines remain and are fixed; the list only shrinks (1011 (2))
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
