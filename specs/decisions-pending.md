@@ -203,6 +203,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a) — 1015 decides the layout; (2) (a); (3) (a) — a build's own output never invalidates its input; (4) (a); (5) (a) — 1008 wants no rework on any target; (6) (a); cells (a) — the same reading 1012 gave 1011's roster rules
 - **Blocks.** nothing now (P1 lands as built); the four cell directories' place; T1 / T4 details
 
+#### 1011-c · Two leftover cells on disk but off the frozen list
+- **Measured.** `decisions-taken/variadic_last_parameter-267/cells/variadic_parameter_host` and `enum/cells/enum_declaration` are on disk and not in conformance/leftover-cases.txt (added or restored after the list was generated); 1011's roster reds them.
+- **Options.** (a) machine-1 moves them into `cases/` with a `runCase`; (b) add them to the shrink-only list
+- **Recommendation.** (a): the list only shrinks
+- **Blocks.** 1011's roster red
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
