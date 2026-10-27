@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: URGENT: 1045's runner probe aborts every `zig build test` process (wasmtime panics → SIGABRT kills the test binary) — run it in a child process, now
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
