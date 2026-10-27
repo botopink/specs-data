@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1061 (2) landed (botopink-lang feat beb4d18e2, meta ec9d3ead, all seven green): two leaks fixed — a member's erlang run stays flat at 0.66–0.81 GiB
-read: mt [ ] · m1 [ ]
+read: mt [ ] · m1 [x]
 in-reply-to:
 ---
 
