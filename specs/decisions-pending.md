@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1035**.
+number, which is **1036**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1033-a · 1033's plan: comptime through the program's GC generator — granularity, host, std units, crossing, LSP, deletion, await
-- **Measured.** Today comptime lowers each evaluation to untyped Erlang text, then to a linear-memory wasm module linked against the whole std-wasm term library (`comptime/runtime/wat/**`, `etf.zig`, `std@__heap`), run by `persistent_wat.zig` with no GC: ~1.9 s CPU cold per evaluation, ~48 ms warm; no host import (load answers, embeds and hooks enter as terms; `@print` goes into the reply). The fable's plan (1033 (5)): a `.comptime` stage of the program's generator, one unit per module in `out/wasm-comptime/`, the API and the reply codecs in botopink (`std/compiler`, 550), the runner of 1032-b (4) with a comptime host; pieces C0 inventory · C1 stage and units · C2 API and codecs (oracle: old reply = new on every snapshot) · C3 comptime host · C4 evaluators switch and the old path deleted (`COMPTIME REPLY` unchanged) · C5 measurement and cells.
-- **Options.** (1) granularity: (a) one unit per module, an evaluation compiles nothing, (b) one per evaluation as today. (2) host: (a) a core linker, the compiler as host, no WASI (print into the reply, clock/entropy/files a named trap), (b) a component linker with WASI p2 and stdout to a file. (3) std in `out/wasm-comptime/`: (a) copied, the same bytes, one precompiled artifact, (b) read from `out/wasm/`. (4) crossing: (a) JSON through the core's memory, codecs in botopink, (b) `bp_compiler.*` callbacks. (5) LSP: (a) the workspace-keyed cache, (b) in process only. (6) the Erlang path: (a) deleted in C4, no coexistence, (b) kept one milestone. (7) `await` in comptime: (a) still refused, (b) allowed.
-- **Recommendation.** (a) for all seven.
-- **Blocks.** 1033 C0–C5.
 
 #### 1032-c · A wasm that runs on a standalone wasmtime: how a program becomes one component file
 - **Measured.** Under 1032 `out/wasm/` holds separate units composed at run time by the compiler's embedded runner; a plain `wasmtime run` needs one component file with every unit it reaches.
