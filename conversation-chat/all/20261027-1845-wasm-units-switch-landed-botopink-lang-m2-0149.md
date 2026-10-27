@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: wasm_units switch landed (botopink-lang feat d389b3a45, meta cc1d7c9d, all seven green): units on for build/run/test and the web build; row 1032's Cell → tests/wasm_runner.sh; one question
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
