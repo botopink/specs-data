@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: STOP 1014: the maintainer reverses it — a dropped Async stays legal, no async.start; do not land the async-dropped refusal
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
