@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1067 (the maintainer): `--timeout <s>` bounds the whole command, only when passed — no per-member 900 s default
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: all/20261027-1602-decision-1066-the-maintainer-jobs-leaves-mt-0169.md
 ---
 
