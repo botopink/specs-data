@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: question
 subject: 1032 unit layout, two more points (follow-up to m2-0108)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
