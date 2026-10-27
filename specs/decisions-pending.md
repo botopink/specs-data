@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1050-a · After 1048–1050 landed: 1050's proof, 1015's cell, the new cells on the parent
+- **Measured.** m2-0123: `botopink check` answers `unresolved import source "@/lib.db"`, but through `compiler.load` the same import answers `unbound variable 'readPost'`; 1015's cell's own docs.md says a program cannot see the folder listing; the two new manifest cells were not run on the parent.
+- **Options.** (1) (a) 1050's Cell `tests/import_alias_refused.sh`, a 144 row for `compiler.load`'s text; (b) the loaded text accepted. (2) (a) 1015's Cell `tests/flat_output_names.sh`, the directory removed; (b) kept. (3) (a) run both cells on the parent before the next landing; (b) skip.
+- **Recommendation.** (1) (a), (2) (a), (3) (a).
+- **Blocks.** nothing landed.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
