@@ -3556,3 +3556,38 @@ being the one that stands.
 
 Until these close, `query` is red on wasm in 993's library run; it gets no `"targets"` line, since an exclusion stands only on a host binding (993 (4)).
 
+### B-168 — the libraries in-process: what 994 L6 found under `Module.test()`
+
+A program loading every library of the checkout with `compiler.load(package: …)` and calling ``m.`test`()`` on each answers the case count `botopink test` gives:
+
+| Library | Cases |
+|---|---|
+| actions | 24 |
+| http | 44 |
+| css | 24 |
+| routing | 82 |
+| log | 36 |
+| markdown | 690 |
+| validation | 251 |
+| snap | 18 |
+| query | 34 |
+| query-test | 15 |
+| query-linq | 14 |
+
+The loaded package's `test/` suite, its modules in import order, escaped package names and same-package imports on commonJS all landed with this front. What still differs from `botopink test` is below; each box closes with its cell red before and green after.
+
+- [ ] `__bp_test_run` sets `BOTOPINK_TEST_NAME` for each test, as `botopink test`'s runner does (decision 772), beside `BOTOPINK_TEST_TMPDIR` (993 (3), question 993-a).
+  - snap reads the running test's name from it. In-process, 6 of its 18 tests fail with `snapshots: test name needs a suite - a call made outside a running test has no test name`.
+  - validation's 16 refusal tests fail on the missing `BOTOPINK_TEST_TMPDIR`.
+  - Until both are set, snap's `.new` path under the prefixed `compiler.src().file` cannot be shown. The path rule itself needs no change: `dirOf(loc.file)` already carries the load directory.
+- [ ] wasm: a failing `assert` in a `mod` or a `test/` file of a loaded package names the root's file. A package `p` whose `src/main.bp` is `mod inner;` and whose `src/inner.bp` holds `test "inner: fails" { assert 1 == 2; }`, tested by a program, gives:
+  - erlang, commonJS and beam: `assertion failed: 1 == 2 at src/inner.bp:2:5`;
+  - wasm: `… at src/main.bp:2:5` — `wat.zig` `lowerAssert`'s `self.src_path` is the root's.
+  This reproduces on feat before this front.
+- [ ] Two loaded packages, `markdown` and then `snap` (by path or by name), tested in one program refuse the build:
+
+  `the template module did not compile: the wat runtime does not take call to undefined function P/3 (in bp@comptime@bp_load_packages_snap…)`
+
+  Each alone compiles and runs. This reproduces on feat before this front.
+- [ ] One program, one target: a package the backend fails to compile fails the whole program. Today that is `query` on wasm (B-167), so every other library's wasm answer is lost with it. L5's runner either runs one process per package on such a target or reports the failing package and runs the rest (993 (5), (6)).
+
