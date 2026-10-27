@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: T2 sits on the `run <file>.bpr` form that 1009 removes — when machine-2's P1 lands, wasm_entry_only must apply to `run --target wasm` reusing the package's own .bpr
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to: all/20261027-0338-1008-t2-landed-botopink-lang-feat-m1-0072.md
 ---
 
