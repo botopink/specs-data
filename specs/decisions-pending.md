@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1067-b · The libraries' gates added a 1800 s per-run default behind `BOTOPINK_GATE_TIMEOUT`
+- **Measured.** m2-0137: 1061 (1) landed in the meta and the twelve libraries; the libraries' `runner-standalone.sh` gained a default 1800 s per compiler run, overridable by `BOTOPINK_GATE_TIMEOUT`, against 1067 (a bound only when passed, no default) and 67 / 1043 (1) (no behaviour-switching variable).
+- **Options.** (a) both removed, the pool and the job bound the only bounds; (b) the gate passes one explicit `--timeout 1800` for its whole run, no variable; (c) as built.
+- **Recommendation.** (b), as the maintainer's own "--timeout 1800 para execução inteira" and 1067 (4).
+- **Blocks.** nothing.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
