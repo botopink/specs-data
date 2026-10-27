@@ -2835,8 +2835,9 @@ Found by 1027 (2)'s case (decision 1040 (3)). The cause is not `fs.cwd` itself: 
 
 - [x] the decision-1021 module (every case, `wasm_same_shape_types_distinct_two_packages` among them) and 792 build and run whole on wasm: a linked module's namespace call shadowed by a local, a `__bp_` alias read as a value at depth two, a type pattern of a mangled type, a variant's i64 field and a function-typed field printed through the i32 printer
 - [x] no CI line to remove: `conformance/run.sh` never ran the case alone (its `--only` takes no module), and the case now runs inside its module
-- [ ] 310, `import` and `imported` still fall back to linear (the "convert ref" gap, 1021 P2b), and 107 for a gap not yet named; the root package builds whole on wasm once they lower in GC
-- [ ] 603 lowers in GC but answers wrong loaded: `other.describe()` on the aliased `ShapeBox` answers "other slow" instead of "shapes:2", then traps; green on its own package
+- [x] 107 builds and runs whole on wasm: a linked module's function alias read as a value (`val f = other`, `apply(other, 3)`) is renamed as its calls are
+- [x] 603 answers right loaded on wasm: a method call on a receiver whose type is written by its alias (`ShapeBox`) resolves through the module's type renames instead of another loaded package's free function
+- [ ] 310, `import` and `imported` still fall back to linear (the "convert ref" gap, 1021 P2b); the root package builds whole on wasm once they lower in GC
 - [ ] the modules 1052 (3) joined to the root fall back to linear on wasm and meet the same leaf: async, task, 392, 432, 525, 606, 998
 - [ ] wasm runtime aborts (exit 134), lowered in GC: 375's `component_default_fn_sync`, `component_method_sync`, `component_sync_plain_function`; 523's `task_failure_rejects`; 110's `import_std_folder_namespace` traps `unreachable` where `std-unsupported-on-target` is expected (110's 989 (3) audit passes: no `load-excluded-target-compiles`)
 
