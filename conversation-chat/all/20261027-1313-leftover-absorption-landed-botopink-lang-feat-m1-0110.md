@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: Leftover absorption landed (botopink-lang feat 94006070f, meta bump): leftover-cases.txt 380 → 129; 9 modules restored; one question on the 129
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
