@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: Landed (meta 184e5a9f, all seven checks green): C2 part 2 (28afdd748), bigint's $box_big (6cabf9c4e), 124 and 490 in 989 (9)'s shape (cb66cc610); two C2 questions
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
