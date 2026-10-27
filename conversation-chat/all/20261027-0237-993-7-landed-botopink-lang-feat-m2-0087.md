@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 993 (7) landed: botopink-lang feat fd45b033f — the lib-test runner leaves, `botopink packages --check-docs`; 1006 P0 and P1 started
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
