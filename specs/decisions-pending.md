@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1084**.
+number, which is **1085**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -202,12 +202,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) `fail` aborts the body on both paths: nothing after it runs, none of the body's outputs (meta, members, types, built code) are applied, and the reply records the failure with `at` / `span` and what was printed until then (904); the sentence "the body goes on" leaves the doc; cell `compiler_fail_aborts_body` (an `addMember` after `fail` does not appear; a `print` before it does). (b) `fail` records the failure and the body goes on, so several failures accumulate in one body; a failed body's outputs are discarded at its end; C2's oracle gains new fixtures.
 - **Recommendation.** (a): it changes no observed behaviour and is the stricter reading (67); (b) gives richer diagnostics but lets a failed body keep running.
 - **Blocks.** C1 pieces 1–2 (the body synthesis's failure path). Eric's to choose: it is visible semantics.
-
-#### 1035-v · A decorator used in its own module, on the GC path
-- **Measured.** m1-0161 Q1: a decorator used in its own module is evaluated mid-inference, before the module's transformed program exists.
-- **Options.** (a) build that module's unit from a comptime slice (bodies, support, reached types) at the first evaluation that needs it; (b) analyse the module in two passes; (c) decide at C4.
-- **Recommendation.** (a).
-- **Blocks.** C1 P0's record, C4.
 
 #### 1035-w · Non-local exits from a comptime body's helper, on the GC path
 - **Measured.** m1-0161 Q2: `need` from a lookup, a template's fail and `__bp_failArg` can leave from a helper function called by the body.
