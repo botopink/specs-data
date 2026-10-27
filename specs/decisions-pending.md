@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1067-a · 1067 (3) named a per-case `async` timeout that does not exist
+- **Measured.** The maintainer: "await async.timeout isso não existe ainda nem defini" — 1067 (3) said a member bounds one case by "an `async` timeout around the case", an API no decision defines.
+- **Options.** (a) strike 1067 (3): no per-case bound exists; a timeout API in std is the maintainer's design, not invented by a thread; (b) define one now.
+- **Recommendation.** (a).
+- **Blocks.** nothing.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
