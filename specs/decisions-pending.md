@@ -203,6 +203,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a).
 - **Blocks.** C1 pieces 1–2.
 
+#### 1035-u · Does `compiler.fail` abort the body or let it go on?
+- **Measured.** m1-0160 Q3: the Erlang path throws on `compiler.fail` and aborts the body; std's `Compiler` doc (`libs/std/src/compiler.bp`) says "the body goes on". C1's GC path must pick one. No cell can have observed a body going on after `fail`, because the Erlang path throws.
+- **Options.** (a) `fail` aborts the body on both paths: nothing after it runs, none of the body's outputs (meta, members, types, built code) are applied, and the reply records the failure with `at` / `span` and what was printed until then (904); the sentence "the body goes on" leaves the doc; cell `compiler_fail_aborts_body` (an `addMember` after `fail` does not appear; a `print` before it does). (b) `fail` records the failure and the body goes on, so several failures accumulate in one body; a failed body's outputs are discarded at its end; C2's oracle gains new fixtures.
+- **Recommendation.** (a): it changes no observed behaviour and is the stricter reading (67); (b) gives richer diagnostics but lets a failed body keep running.
+- **Blocks.** C1 pieces 1–2 (the body synthesis's failure path). Eric's to choose: it is visible semantics.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
