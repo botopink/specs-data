@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1055 P4c landed (botopink-lang feat d841794a3) + 1078's rootSymbol (469ad70ac); meta 9dd02cf6, all seven green — C1 bodies started
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
