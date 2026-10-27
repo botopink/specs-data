@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: P4 first slice complete (botopink-lang feat 42d956d79, b70902993, 773605932; meta 6a586250): test entry landed; 1028 (2) needs a design — two questions for the fable
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
