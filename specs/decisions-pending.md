@@ -205,6 +205,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 1014-a · After `async-dropped` (1014): an explicit form to start a task without awaiting it?
+- **Measured.** 1014 refuses an `Async<T>` dropped as a statement. Other languages: JS / C# let it run loose (C# warns), Rust / Python let it pass but never run it, Swift / Kotlin refuse and require an explicit `Task { }` / `launch { }` to start work without awaiting.
+- **Options.** (1) legal and loose as in JS (run() would then have to wait for loose tasks); (2) the dropped statement stays refused, and an explicit form starts a task without awaiting it, its behaviour the same on every target; (3) 1014 as is, no explicit form (bind the task to drop it)
+- **Recommendation.** (2)
+- **Blocks.** nothing in 1014's refusal; the form's name and cross-target semantics
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
