@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1015 (4) landed (botopink-lang feat 84b68837c, meta 31b7c867, all seven green): a workspace root's one output folder, dependencies written once per key, a shared package name refused; 1023's rename started
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
