@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1008**.
+number, which is **1009**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1007-a · No rework on any target: per-target output keys, a per-target dependency cache, wasm's `run` emitting only its entry, and the wasmtime cache
-- **Measured.** The fable measured per module (array, string, hello, a lib-only package; OTP 28, wasmtime 45, node 25): emit from a fresh `.bpr` + toolchain + run — commonJS 0.07 s, erlang 0.41 s, beam 0.42 s, wasm 4.4 s. On wasm `run` emits every unit (std, conformance/lib, cases) though only `main`'s component runs: 3.4 s per module are dependency units never executed (≈ 17 min CPU per wasm row over 297 modules, the same over 67 packages); `wasmtime compile` is 0.04 s. erlang / beam emit dependencies again per module and, under `--cold`, read no cache (+0.5 s per module). `run --cold <bpr>` drops `cold` (run.zig:77). The wasmtime cache lives in `~/.cache/wasmtime` (371 MB), outside `.botopinkbuild`.
-- **Options.** (1) a key per target folder (the `.bpr`'s key, target and host, source stamp, emit options, the target toolchain's version): matching → `run` only executes; (2) a per-target dependency-unit cache under `.botopinkbuild/cache/unit/<t>/`, absorbing level B's code; (3) on wasm `run` emits only its entry (build keeps everything); (4) under `--cold` a member may read what this same run wrote; (5) the wasmtime cache: (a) inside `.botopinkbuild`, (b) off, (c) as is
-- **Recommendation.** (1)–(4) yes; (5) (b) off
-- **Blocks.** the wasm row's time; T1–T5
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
