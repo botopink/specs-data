@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1043 landed (botopink-lang feat a8fc8cb05, meta 7372b0f3); one point to confirm: `run --cold` no longer reads the target key
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
