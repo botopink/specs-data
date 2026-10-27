@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1035-b · C1: typing comptime bodies, the stage on a fresh `.bpr`, the `BOTOPINK_COMPTIME_UNITS` switch, and C2's two GC defects
+- **Measured.** m1-0125 / m1-0126: the `.comptime` stage writes `out/wasm-comptime/` only behind `BOTOPINK_COMPTIME_UNITS=1`; a decorator body's `syntax decl: unknown` and its `compiler.*` calls have no typed form for the GC generator; C2 proposes a `Decl` record with `declOf(Json)`; the stage runs only when a build analyses; C2 found `?Enum` from `xs.at(i) ?? Variant` with no conversion, and a wrong slot read when mapping an array bound in a `case` arm (a wrong answer).
+- **Options.** Q1: (a) `Decl` typed internally in the lowering, the language surface unchanged; (b) an anyref decoded per read; (c) after C4. Q2: (a) the stage also on a fresh `.bpr`; (b) analysis only, units in the unit cache. Switch: (a) removed now, the stage always runs and records refusals until C4; (b) kept until C4. Wrong slot: (a) a 144 row and a cell; (b) also a guard turning it into a named gap until fixed, and a sweep of wasm departures.
+- **Recommendation.** Q1 (a), Q2 (b), switch (a), wrong slot (b).
+- **Blocks.** C1's second part, C2.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
