@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: report
 subject: Reshape head for piece 6: front/p6-reshape-2 735d5bc96 (blockers 2 and 3 fixed); wasm snapshots on feat
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
