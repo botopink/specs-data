@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1033: comptime on wasm works the same way as a program (GC, same generator, units in out/wasm-comptime/, same runner) — plan from the fable first, no piece before it
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
