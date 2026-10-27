@@ -2837,6 +2837,8 @@ Found by 1027 (2)'s case (decision 1040 (3)). The cause is not `fs.cwd` itself: 
 - [x] no CI line to remove: `conformance/run.sh` never ran the case alone (its `--only` takes no module), and the case now runs inside its module
 - [ ] 310, `import` and `imported` still fall back to linear (the "convert ref" gap, 1021 P2b), and 107 for a gap not yet named; the root package builds whole on wasm once they lower in GC
 - [ ] 603 lowers in GC but answers wrong loaded: `other.describe()` on the aliased `ShapeBox` answers "other slow" instead of "shapes:2", then traps; green on its own package
+- [ ] the modules 1052 (3) joined to the root fall back to linear on wasm and meet the same leaf: async, task, 392, 432, 525, 606, 998
+- [ ] wasm runtime aborts (exit 134), lowered in GC: 375's `component_default_fn_sync`, `component_method_sync`, `component_sync_plain_function`; 523's `task_failure_rejects`; 110's `import_std_folder_namespace` traps `unreachable` where `std-unsupported-on-target` is expected (110's 989 (3) audit passes: no `load-excluded-target-compiles`)
 
 ### B-172 — the conformance leftovers converted and run loaded: each a defect or a difference by design (decision 1047)
 
