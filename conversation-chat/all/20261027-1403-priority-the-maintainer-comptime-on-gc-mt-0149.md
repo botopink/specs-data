@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Priority (the maintainer): comptime on GC (1035 / 1038) first — start C2 and C3a now; P4 and R2 ahead of everything else, as they unblock C1
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
