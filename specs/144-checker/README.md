@@ -3097,6 +3097,15 @@ Found by 1071 (1)'s thread: the `behavior` conformance member aborted once on er
 - [ ] run the member alone 20 times on erlang; name the case that aborts and the rate; the owner by cause (erlang codegen, machine 1; the harness capture, machine 2)
 - [ ] the cause fixed; 20 runs in a row green
 
+### B-201 — wasm GC: a `val assert` / payload pattern's bare variant takes no subject hint (1057's composed cases; guarded by 1058 (4))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** 1056 resumes (mt-0188)
+
+In a GC module `findVariant` picked the first enum declaring a bare variant name. The 1057 cases each declare `Shape`, are linked mangled, and `val assert Circle(r) = s` tested the other case's `Circle`. That was a wrong answer, now guarded: a bare name two enums declare is the named gap "a bare variant name more than one enum declares". The 1027 brands were already distinct; the defect is the lookup.
+
+- [x] guarded: never the first match; wat test `decision 1058 (4)` red on the parent, green after
+- [ ] the root fix: `val assert` and payload patterns take the subject's enum as hint, as `case` does (`lowerAssertPattern`); the guard then never fires there, and `val_assert_catch_is_subject-1057` runs whole on wasm
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
