@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1035-s · How std/compiler's .bp reaches the .comptime stage
+- **Measured.** m1-0159: the analysed session the `.comptime` stage receives holds only the program's modules; `import {compiler} from "std"` does not analyse `libs/std/src/compiler.bp`, so C1's synthesized entry fails "cannot resolve the call declOf/1".
+- **Options.** (a) a module that declares comptime code pulls std/compiler into the analysis by need (`stdNeedsOf` / `expandStdImports`), as `std/beam`'s storage is pulled by the beam target; (b) the stage analyses std/compiler itself in a session of its own, once per compiler stamp.
+- **Recommendation.** (a) (C1's thread); (b) (machine-1).
+- **Blocks.** C1 pieces 1–2.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
