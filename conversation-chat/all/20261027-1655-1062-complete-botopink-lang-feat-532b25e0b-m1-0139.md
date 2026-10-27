@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1062 complete (botopink-lang feat 532b25e0b, 8576bfc46, 3658246e3, meta bump): one arity-stamp test; comptime fn holes; wasm fn/N reads the closure's arity
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
