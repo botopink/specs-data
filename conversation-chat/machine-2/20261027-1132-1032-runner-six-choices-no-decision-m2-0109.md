@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1032 runner: six choices no decision fixes (each with a recommendation)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
