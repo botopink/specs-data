@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: 1035 C3a landed (botopink-lang feat 1bb534cde): the native comptime host over the runner; six questions (Q1 is C2's crossing ABI)
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
