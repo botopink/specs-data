@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois"): a front of its own, opened last in the milestone (front 168, library-check hardening) once specs-bot can open a front; until then the check stays as built.
 
+#### 1005-a · 1005's plan: the root as a workspace, a bare `build`, `--cold` with a `.bpr`, and the fan-out's jobs
+- **Measured.** The fable's plan for 1005, with the maintainer's shape (`botopink build` at conformance/modules writes every module's `.bpr`; `botopink run --target <t>` there runs every module, each its own process). Four points the plan needs fixed: the root's shape, what a bare `build` writes, how `--cold` (509 (5)) reads beside a fresh `.bpr`, and the fan-out's default jobs.
+- **Options.** (1) (a) conformance/modules becomes a workspace (members `*`, `decisions-taken/*`), src/main.bp's list deleted — the tree is the list; (b) the root package keeps its list. (2) (a) a bare `build` writes the `.bpr` and no `out/`; (b) it writes both. (3) (a) `build --cold` rebuilds ignoring the key; `run --cold` reuses a fresh `.bpr` and reads no code cache; (b) `run --cold` rebuilds too. (4) (a) the fan-out's default jobs are the CPUs bounded by MemAvailable over a module's peak (the pool's rule), gate.sh / run.sh handing their share; (b) a fixed number
+- **Recommendation.** (a) on all four
+- **Blocks.** 1005's pieces P1–P4
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
