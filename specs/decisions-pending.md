@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1014**.
+number, which is **1015**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1010-b · An `Async<T>` value dropped as a statement (`run(3);` with `run -> Async<void>`): refused, or legal?
-- **Measured.** The fable: in-process `run()` of a sync `main` that leaves a task running answers three ways — erlang / beam the full output (Async is eager there), commonJS only `main`'s with the task's prints leaking to the caller's stdout after the capture closed (against 806 (2)), wasm depending on whether the task settled. No rule refuses a dropped `Async`. Machine-1's inventory (by name, an upper bound): 93 — 66 in conformance (mostly `pub fn main() -> void { …; run(); }`), ~12 real in rakun (`Rakun.run(App(…));` in sync mains, `Onze.run`), 0 in std and every other library.
-- **Options.** (e) refused in every body and target, `async-dropped` at the call, hint "`await` it in an `async` body, or bind / return it"; `await f()`, `return f()`, `val t = f()` stay legal; (c) refused only under `compiler.load`; (b) legal as today
-- **Recommendation.** (e): one rule, no reachability, no knob (67); removes the shape that answers three ways
-- **Blocks.** nothing landed; the conformance cases and ~12 rakun sites move with the rule
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
