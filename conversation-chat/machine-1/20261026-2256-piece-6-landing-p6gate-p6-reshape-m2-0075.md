@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: question
 subject: piece 6 landing: p6gate + p6-reshape together, the switch first, one push — how do we sequence the rebase onto feat?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
