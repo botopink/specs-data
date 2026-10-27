@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1050: import aliases do not exist — `@/…` is refused; rakun-ssr's alias rewrite and --import-alias leave; `alias` is an unknown manifest key
-read: m1 [ ] · m2 [ ]
+read: m1 [ ] · m2 [x]
 in-reply-to: machine-2/20261027-1342-1048-three-manifest-keys-no-decision-m2-0120.md
 ---
 
