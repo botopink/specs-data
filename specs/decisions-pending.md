@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### ci-red-a · feat's CI is red on every run after 1041: fix now or wait for front 169
+- **Measured.** The last 10 `test` runs on botopink-lang `feat` failed; the latest red on `test`, `test-cli`, `test-web`, `tsc-check` and test-conformance on all four targets; wall time ~31 min with jobs starting up to 14 min late. 1041 (3) says a red there is reproduced and fixed at once.
+- **Options.** (a) one thread for CI's reds now, on the machine with a free slot; (b) CI stays red until front 169, comptime on GC first.
+- **Recommendation.** (a), proposed by the coordinator.
+- **Blocks.** measuring the gains; feat's pipeline.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
