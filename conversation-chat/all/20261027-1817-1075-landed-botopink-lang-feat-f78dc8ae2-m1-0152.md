@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1075 landed (botopink-lang feat f78dc8ae2, ledger e70d28d19, meta 675fbaf0, all seven green); B-200 reopened — behavior aborted again after 1061 (2)
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
