@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1032**.
+number, which is **1033**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1026-b · 1026 P3 question 3: units embedded in every program's component, or separate unit files compiled once and linked at run?
-- **Measured.** The fable measured P3 reworked on 25 conformance modules (wasmtime 45): wasmtime's cache keys the whole component's bytes, so identical std units are recompiled inside every program; per program 82 ms today, 90 ms with a binary component embedding the units, 60 ms with the units precompiled once (~9 s per wasm row of 298). `botopink run --target wasm` itself costs 2.9 s per program under P3 (0.69 s before; erlang 1.35 s) — the compiler writing ~1 MB of text per program with the units embedded as text — about 14 min per row against 27 s in wasmtime. The C API 49.0.3 can instantiate a program's component from separately precompiled units (`wasmtime_module_deserialize_file`, `wasmtime_component_linker_instance_add_module`) with WASI p2 (`add_wasip2`, `add_wasi_http`) and one host; core-module linking (`--preload`) gives only WASI p1.
-- **Options.** (a) a binary component per program embedding each unit's bytes (units written once per stamp); (b) separate unit files now — each unit compiled once to a precompiled artifact keyed as 1008, the program's file only its own code, `botopink run` composing the component at run time through the C API (WASI p2, one host); (c) (a) now, (b) later
-- **Recommendation.** the fable: (a) now, (b) once wasmtime passes 10 % of `run`; and fix P3's 0.69 s → 2.9 s `run` regression first
-- **Blocks.** P3's landing, P4, P5
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
