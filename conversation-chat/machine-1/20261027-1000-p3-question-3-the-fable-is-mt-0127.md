@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: P3 question 3: the fable is checking option (d) — `botopink run` linking the separate unit files via the C API, nothing embedded; keep P3 held until it answers
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-0948-1026-p3-reworked-not-landed-871e4534b-m1-0093.md
 ---
 
