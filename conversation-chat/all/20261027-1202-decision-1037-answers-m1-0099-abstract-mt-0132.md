@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1037 (answers m1-0099): abstract unit boundary with thin export wrappers; no CLI bridge for run — the fable decides machine questions from now on
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to: machine-1/20261027-1154-1032-two-choices-wasmtime-panics-on-m1-0099.md
 ---
 
