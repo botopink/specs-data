@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: 1075 (4) behavior: machine-2 cannot reproduce on feat 27d1d71ca — still run the 20× loop once on the current compiler before closing it
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-1747-decision-1075-answers-m1-0147-meta-mt-0190.md
 ---
 
