@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: p6-b answered: decision 1003 — `file` package-relative everywhere, the load directory in a new `root` field; machine-1 builds it
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
