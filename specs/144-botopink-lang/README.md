@@ -409,3 +409,4 @@ Where each step is (its machine's folder holds its whole text).
 | B-109 | [2](../144-backends-tooling/README.md) | beam: a `continue :label` under an in-frame loop inside a fun-walked loop, and two labels continued from one loop |
 | B-110 | [2](../144-backends-tooling/README.md) | an unknown generic type name is accepted unchecked (`Bogus<i32, i32>`) |
 | B-111 | [2](../144-backends-tooling/README.md) | a `val` annotation naming an unknown type: `type mismatch`, located at the statement |
+| B-171 | [1](../144-checker/README.md) | wasm: std-wasm's `fs.cwd` leaf keeps the 1021 module from building whole; until fixed, `wasm_same_shape_types_distinct_two_packages` runs alone on wasm in CI (decision 1040 (3)) |
