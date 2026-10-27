@@ -3052,15 +3052,17 @@ Repros: external/external_host_record (red alone too), beam/beam_memory_persiste
 
 - [ ] both repros green on beam
 
-### B-196 — wasm GC: an array bound in a `case` arm then mapped reads the wrong slot (decision 1058 (4))
+### B-196 — wasm: an array bound in a `case` arm then mapped reads the wrong slot (decision 1058 (4))
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong answer in the GC lowering; the cell decides) · **After:** nothing
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong answer; the cell decides) · **After:** nothing
 
-Found by 1035 C2's probing. Mapping an array bound in a `case` arm reads the wrong slot on wasm: a silent wrong answer, not a fallback.
+Found by 1035 C2's probing. The wrong answer came from the linear fallback, not the GC lowering: a variant's array payload bound in a `case` arm carried no element type, so the GC lowering stopped at its own named gap ("an array whose elements disagree with its class"), the module fell back to linear memory, and the linear lowering read the field at slot 0 and printed heap addresses at exit 0.
 
-- [ ] guarded at once: `gcFail("array bound in a case arm then mapped")`, so it is a named gap (the program's fallback until P2c, a recorded refusal in comptime); cell `gc_case_bound_array_mapped`, red on the parent
-- [ ] the wasm snapshots of modules that use a `case` and a map swept for an `on wasm` departure recording a wrong answer (458 (1)); any found removed and the case left red
-- [ ] the lowering fixed: the bound array read from its own slot, the guard removed, the cell green on wasm
+- [x] cell `gc_case_bound_array_mapped`, red on the parent (wrong output standalone; a refusal at the fs.cwd leaf as a module), green on all four targets; no guard needed: the fix landed with the cell
+- [x] the wasm snapshots swept: the 32 `on wasm` sections and 23 `snapshot/targets/wasm/` cells hold no case that maps an array bound in a `case` arm; nothing removed
+- [x] the lowering fixed: the payload binder gets its array element type (`noteParamShape`), and the module lowers in GC with no gap
+
+The linear fallback can answer wrongly where the GC lowering names a gap: P2c (1056) removes it.
 
 ### B-197 — wasm GC: `?Enum` from `xs.at(i) ?? Variant` has no conversion (decision 1058 (4))
 
