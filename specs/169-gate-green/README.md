@@ -15,3 +15,8 @@ Decision 1041 lets every thread land on the tests and cells its change reaches, 
 2. **Classify** each red: a defect, which gets a 144 / 164 row and its cell, red until fixed; a stale expected answer, re-recorded only where a decision states the answer; or a known red with a decision of its own (1002 (c)).
 3. **Fix** the reds by area, one thread per area, each proving its reds green.
 4. **Close**: the whole gate green twice in a row on `feat`, and its pipeline run green.
+
+
+## Known reds
+
+- `modules/compiler-cli/tests/analysis_equivalence.sh`: rakun-bpp and rakun-style modules fail to check (`await-component`, `import-of-failed-module`); from the library sources, not from the compiler commits that met it (m2-0114).
