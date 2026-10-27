@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1027 (2) case and closure_invariant's wasm row landed (botopink-lang feat a97ad862f, meta b21c72bc); two small questions
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
