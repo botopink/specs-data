@@ -2827,14 +2827,16 @@ Found by B-115 (machine 2). Inside a generic type's method, a lambda passed to a
 
 - [ ] a lambda argument's parameters typed from the callee's parameter type with the method's receiver type parameters substituted (`K` in `Dict<K, V>`), so `p._0` is `K` and the instantiation's `f64` reaches the print; cell `generic_method_lambda_binds_type_param` (a user generic type whose method prints a `K` through a `forEach` lambda: `2.0` on four targets), red on the parent
 
-### B-171 — wasm: std-wasm's `fs.cwd` leaf keeps the 1021 module from building whole (decision 1040 (3))
+### B-171 — wasm: a module falling back to linear memory meets std-wasm's `fs.cwd` leaf and does not build (decision 1040 (3))
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a wasm GC lowering gap; the cells decide) · **After:** nothing
 
-Found by 1027 (2)'s case (decision 1040 (3)). The decision-1021 module does not build whole on wasm: std-wasm's `fs.cwd` leaf stops it, so its wasm cases are proven one by one, and `conformance/run.sh` runs `wasm_same_shape_types_distinct_two_packages` alone on wasm in CI. A case that is not run counts as red, never as green by omission (67).
+Found by 1027 (2)'s case (decision 1040 (3)). The cause is not `fs.cwd` itself: a module whose whole program meets a GC-lowering gap falls back to linear memory, and linear memory refuses std-wasm's `.wat` leaf, so the module does not build on wasm. A case that is not run counts as red, never as green by omission (67).
 
-- [ ] std-wasm's `fs.cwd` leaf builds and answers in wasm's GC lowering, so the 1021 module builds and runs whole on wasm; the module's wasm cases green in one run
-- [ ] `conformance/run.sh`'s CI line that runs `wasm_same_shape_types_distinct_two_packages` alone on wasm removed once the module runs whole
+- [x] the decision-1021 module (every case, `wasm_same_shape_types_distinct_two_packages` among them) and 792 build and run whole on wasm: a linked module's namespace call shadowed by a local, a `__bp_` alias read as a value at depth two, a type pattern of a mangled type, a variant's i64 field and a function-typed field printed through the i32 printer
+- [x] no CI line to remove: `conformance/run.sh` never ran the case alone (its `--only` takes no module), and the case now runs inside its module
+- [ ] 310, `import` and `imported` still fall back to linear (the "convert ref" gap, 1021 P2b), and 107 for a gap not yet named; the root package builds whole on wasm once they lower in GC
+- [ ] 603 lowers in GC but answers wrong loaded: `other.describe()` on the aliased `ShapeBox` answers "other slow" instead of "shapes:2", then traps; green on its own package
 
 ### B-172 — the conformance leftovers converted and run loaded: each a defect or a difference by design (decision 1047)
 
