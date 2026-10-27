@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1062**.
+number, which is **1063**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1051-a · 1051 as built: where commonJS stamps the arity; a comptime template hole of a function; a comptime record printed as a map
-- **Measured.** m1-0131: commonJS stamps `__bp_arity` only where `length` differs (rest, a generic's print-shape parameter), static methods with rest missed; a comptime hole `"${f}"` writes `#Fun<bp_wat>`; a comptime record prints as `#{…}`, no row, no COMPTIME REPLY pins it.
-- **Options.** Stamp: (a) only where it differs, decided by one emit-time function; (b) every function. Hole: (a) the Erlang comptime arm now; (b) wait for C4. Record: (a) a row now, fixed by C4, no new `#{` snapshot meanwhile; (b) fix the Erlang path now.
-- **Recommendation.** Stamp (a), hole (a), record (a).
-- **Blocks.** nothing.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
