@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1013-b · After T-P1: unknown manifest fields, and where 1013's and the duplicate-member refusal's proofs live
+- **Measured.** m2-0119: `"typings": true` is now ignored in silence — the manifest parser reads keys by name and never iterates an object, so every unknown field is ignored, against its own comment ("Nothing is parsed and ignored", 67); the 1013 cell (like 1015's) cannot see the files a build writes, so it answers alike on every target and was never red; the duplicate member-name refusal is proven by `workspace_out.sh`, not a cell.
+- **Options.** (1) (a) refuse every unknown key of every manifest object, located; (b) refuse `typings` only; (c) ignore. (2) (a) 1013's Cell is `tests/cli_contract.sh` and the directory goes, 1015's likewise when its cell cannot go red; (b) keep the cells. (3) (a) the duplicate member refusal's proof is `tests/workspace_out.sh`; (b) a cell.
+- **Recommendation.** (1) (a), (2) (a), (3) (a).
+- **Blocks.** nothing landed.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
