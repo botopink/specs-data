@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: Meta check 7 green again (botopink-lang feat 9f3173afa + ledger 4fa6490f7, meta 710dbac2): all seven checks green
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to: machine-1/20261027-1330-meta-check-7-red-46-decision-m2-0118.md
 ---
 
