@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1017**.
+number, which is **1018**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -216,12 +216,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1015-a · wasm in 1015's flat folder: one component per program, or one unit per module linked at run time?
-- **Measured.** The fable measured (feat, wasmtime 45): `run --target wasm` (T2) ~0.65 s per program, ~0.55 s of it the compiler emitting; wasmtime compiles in 48 ms and runs in 6 ms; the entry component ~740 KB, 72 % std/io/fs's closure, 14 % conformance-lib, 5–7 % the module's own. Today's per-module units are self-contained components (std/io/fs alone 759 KB, 400 functions vs 166 reached); `wasmtime --preload` takes no components; no composition tool in the toolchain. Per-module units need one canonical GC type section across modules, an exported / imported panic tag, GC everywhere (no linear fallback, B-170), a composition tool, and a multi-module browser loader. `build --target wasm` still writes 13 dependency units nothing runs (3.3 of 3.9 s).
-- **Options.** (a) naming only: the program's component as `<pkg>@main.wasm` in the flat folder, one component per program; (b) one unit per module (`<pkg>@<path>.wasm`), written once, programs linking them at run time; (c) defer (b). When: now, during the freeze, or a front after it. The 13 never-run units: cut now or not.
-- **Recommendation.** (a); if (b), a front after the freeze; cut the 13 units now
-- **Blocks.** the wasm conformance row; 1015 (3)
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
