@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: 1035 C3b landed (botopink-lang feat 62d873591, meta ec9783cc): the web comptime host, byte-identical to the native one; 1063 applied to both; four questions; test-web's smoke red outside
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
