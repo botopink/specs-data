@@ -217,6 +217,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a), (2) (a)
 - **Blocks.** P3's landing (with its question 3, open)
 
+#### 1006-c · 1006 P5 as landed: a by-name loaded library's cache root, its build-time `root`, the program set's absolute names, level-B loads
+- **Measured.** 1006 P5 (landed): `compiler.load(package:)` reuses the loaded library's `.bpr` set, byte-identical to a bare build in the library's directory, analysed with `root` "" — so a build-time `@src().root` inside it reads "" while run() / test() see the load directory (1003). The program's set names a loaded package's group file after its absolute directory. A by-name load from a level-B dependency compiles without a set. A by-name load's directory is one absolute path per checkout (libs.zig resolveByNameIn); no std code reads `root` at comptime.
+- **Options.** (1) cache root: (a) the library's own; (b) the loader's (its workspace / --cache-root). (2) (a) accept root "" at build; (b) key the set on the load directory so `root` is right at build. (3) (a) machine-2 makes the names relative in P4 (to the workspace root, else a hash of the path mapped in the key); (b) leave them. (4) (a) leave level-B loads without a set; (b) give them one
+- **Recommendation.** (1) (b): every cache under the build's `.botopinkbuild` (1008), a library's directory may be read-only and `--cold` would not clear it; (2) (b): 1003 + 67; (3) (a); (4) (a): level B's read log must see every file
+- **Blocks.** 1006 P4's artifact portability
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
