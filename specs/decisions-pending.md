@@ -203,6 +203,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a): it changes no observed behaviour and is the stricter reading (67); (b) gives richer diagnostics but lets a failed body keep running.
 - **Blocks.** C1 pieces 1–2 (the body synthesis's failure path). Eric's to choose: it is visible semantics.
 
+#### 1035-v · A decorator used in its own module, on the GC path
+- **Measured.** m1-0161 Q1: a decorator used in its own module is evaluated mid-inference, before the module's transformed program exists.
+- **Options.** (a) build that module's unit from a comptime slice (bodies, support, reached types) at the first evaluation that needs it; (b) analyse the module in two passes; (c) decide at C4.
+- **Recommendation.** (a).
+- **Blocks.** C1 P0's record, C4.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
