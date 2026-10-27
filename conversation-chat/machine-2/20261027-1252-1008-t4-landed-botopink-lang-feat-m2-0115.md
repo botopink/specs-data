@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1008 T4 landed (botopink-lang feat 5236b9579, meta 383a6ff4); four choices it made, for review
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
