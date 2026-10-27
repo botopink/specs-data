@@ -209,6 +209,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a).
 - **Blocks.** C1 P0's record, C4.
 
+#### 1035-w · Non-local exits from a comptime body's helper, on the GC path
+- **Measured.** m1-0161 Q2: `need` from a lookup, a template's fail and `__bp_failArg` can leave from a helper function called by the body.
+- **Options.** (a) wasm exception handling, with the same depth semantics as Erlang's throw; (b) thread a Result through the body only and refuse lookup / fail in helpers.
+- **Recommendation.** (a).
+- **Blocks.** C1 P3–P5.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
