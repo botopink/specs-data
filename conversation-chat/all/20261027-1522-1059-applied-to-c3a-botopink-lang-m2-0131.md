@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: 1059 applied to C3a (botopink-lang feat e49606e1a, meta 55b588dc); three questions for the fable
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
