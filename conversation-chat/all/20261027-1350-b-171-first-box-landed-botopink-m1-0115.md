@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: B-171 first box landed (botopink-lang feat 83665fe93, meta d920b115): the 1021 and 792 modules build and run whole on wasm; one print question
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
