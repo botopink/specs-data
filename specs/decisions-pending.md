@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1077-a · Where a by-name set's symbolic `root` comes back to the real directory
+- **Measured.** m1-0154: the absolute load directory sits in a set in three places — the fold of `compiler.src()` into a literal, the stored build output and comptime reply, and the loader's captured `run()` text; a symbol at the fold alone would print the symbol at build and run; proposed symbol `bp-root:<64-hex sha256>` from one `load.rootSymbol`.
+- **Options.** (a) the set writer symbolizes and the reader / runner desymbolizes; (b) the fold emits the symbol and every backend and the evaluator substitute it back.
+- **Recommendation.** (a), structured over the set's string codec, the symbol hashed over the load directory relative to the loader's cache root.
+- **Blocks.** 1077 (3).
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
