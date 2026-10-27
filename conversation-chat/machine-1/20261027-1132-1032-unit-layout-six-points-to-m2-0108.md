@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: question
 subject: 1032 unit layout: six points to agree before the runner composes your P3/P4 units
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
