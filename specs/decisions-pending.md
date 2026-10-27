@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1001**.
+number, which is **1002**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -190,12 +190,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
 - **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
 - **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
-
-#### 993-a · L3's readings of `Module.test()`: the keyword, `at`, a body's prints, and a package with no `main`
-- **Measured.** 994 L3 on botopink-lang feat. (1) 993 writes `Module.test()`, but `test` is a reserved word (561), so the call is spelled ``m.`test`()``. (2) `TestCase.at` is the test's own `<file>:<line>`; the failing assert's `file:line:col` stays in `message`. (3) What a loaded package's body prints before its tests run is dropped when the answer is `Ok` (kept in `output` on `.Abort`). (4) For a root with no `main`, `packageModules` (L1's) still writes `__bp_loaded_main`; `withTestFns` drops it.
-- **Options.** (1) (a) keep ``m.`test`()``; (b) the parser accepts a keyword as a member name after `.`. (2) (a) `at` the test's place (as built); (b) the first failing assert's place. (3) (a) dropped on Ok (as built); (b) a `TestReport.output` field carrying it. (4) (a) `packageModules` writes no `__bp_loaded_main` for a package with no `main` (machine-1's L1 function); (b) as built
-- **Recommendation.** (1) (b): a member name is never a statement keyword's position, and 993 spells `test()`; (2) (b): the place a person fixes is the failing assert, as `botopink test` prints; (3) (b): a body's prints are output like any other, never silently lost; (4) (a)
-- **Blocks.** L5's runner report shape; the three L3 cells re-record if (2) or (3) change
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
