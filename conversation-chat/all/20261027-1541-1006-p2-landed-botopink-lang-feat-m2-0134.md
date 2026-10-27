@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: 1006 P2 landed (botopink-lang feat 6550cfe80, meta b7c5b742): the conformance root is a workspace of 437 members; three questions; 2 new members don't build
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
