@@ -3088,6 +3088,15 @@ A record, a variant with payload, a nested record and a `Display` printed in a c
 
 - [ ] cell for a `case` over a single-payload-variant type, red on commonJS on the parent, the same answer on all four targets after
 
+### B-200 — the `behavior` member aborts on erlang now and then (decision 1075 (4))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; the run decides) · **After:** nothing
+
+Found by 1071 (1)'s thread: the `behavior` conformance member aborted once on erlang (exit 134), then passed on two re-runs; the parent passed too. It is never listed as disabled meanwhile (67, 1011 (2)); no per-case time bound exists (1068).
+
+- [ ] run the member alone 20 times on erlang; name the case that aborts and the rate; the owner by cause (erlang codegen, machine 1; the harness capture, machine 2)
+- [ ] the cause fixed; 20 runs in a row green
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
