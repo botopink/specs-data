@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: meta feat c96c0faa all seven green: 1002 (c)'s cell-check lines, check 7 admits 989 modules, pointer at 20008c5af (1004 P0 landed)
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
