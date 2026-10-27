@@ -21,3 +21,4 @@ Decision 1041 lets every thread land on the tests and cells its change reaches, 
 
 - `modules/compiler-cli/tests/analysis_equivalence.sh`: rakun-bpp and rakun-style modules fail to check (`await-component`, `import-of-failed-module`); from the library sources, not from the compiler commits that met it (m2-0114).
 - 1050 (4), "a bare `botopink check` passes": blog, scaffold and rakun-ssr fail on rakun-style / rakun-bpp checker errors (`await-component`, `await-without-async`, unknown `Navigation`) — front 165's migration, after 144; green when `analysis_equivalence.sh` is (1052 (4)).
+- feat's pipeline: every `test` run since the scoped landings of 1041 is red (`test`, `test-cli`, `test-web`, `tsc-check`, test-conformance on all four targets); left red until this front by decision 1053. Step 1's inventory starts from feat's latest run; the gains are measured only once it is green.
