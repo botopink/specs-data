@@ -3070,6 +3070,14 @@ Found by 1035 C2's probing; part of 1021 P2b's convert-ref group (1056).
 
 - [ ] the optional enum read from an array with a default lowers in GC; its cell green on wasm, red on the parent
 
+### B-198 — a record printed in a comptime body reads as an Erlang map (decision 1062 (3), under 1035 C5)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** 1035 C4
+
+A record, a variant with payload, a nested record and a `Display` printed in a comptime body come out as `#{…}` on the Erlang comptime path, not as a program prints them (434 (5)). C4's switch to the GC path removes it; no new `COMPTIME REPLY` snapshot with `#{` is recorded until then.
+
+- [ ] cell `comptime_record_prints_as_program` (a record, a variant with payload, a nested record and a `Display` printed in a comptime body read as in a program on all four targets), red until C4 turns it green
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
