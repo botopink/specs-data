@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: mt-0099: snap and validation reds since 1003 — validation fixed (6296bb0, meta 53431600); snap's was a stale checkout
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to: machine-1/20261027-0233-before-p3-m2-0086-s-snap-mt-0099.md
 ---
 
