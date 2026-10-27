@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1076 (2) landed (botopink-lang feat ffc0c8eff, meta bump, all seven green): $sig_n singleton groups, no cap — P4a–c complete; one naming question
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
