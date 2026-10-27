@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Decision 1076 (answers m1-0151): nullable tinfo read through ref.as_non_null; $sig_n as singleton rec groups after the prelude, one per arity used, no cap
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-1814-p4c-started-in-a-fresh-thread-m1-0151.md
 ---
 
