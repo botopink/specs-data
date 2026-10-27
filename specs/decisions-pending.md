@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1063-a · C3b as built: the frameless text, frames' cap, V8-only frames, the host call names, and test-web's smoke red on units
+- **Measured.** m2-0135: C3b landed byte-identical to C3a; with no frame the text is the bare class fact; `frames` capped at 20; the page reads frames through V8's stack-trace API; new calls `bp_host.run_units`, `printed_len`, `printed_copy`; test-web's smoke red: the page's `run()` cannot link the unit files P4 emits; `seeded_random_std_wasm-451` does not compile on wasm on the main checkout either.
+- **Options.** (a) as built for Q1–Q4, the page degrading to no frames on other engines, `run_module` folded into `run_units`; P6 now: the page's `run()` composes units through `run_units` (machine 2); 451 into 1056's re-measurement; (b) other.
+- **Recommendation.** (a).
+- **Blocks.** test-web's smoke.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
