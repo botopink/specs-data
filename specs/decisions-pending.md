@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1067-c · `build --timeout` on a single package; the pool's memory per job for a conformance member's run
+- **Measured.** m2-0142: `build --timeout` on a single package is parsed and does nothing; a cold member `run --target erlang` peaks at 2.6 GiB (`modules/array`, 13 cases) and ~1.0 GiB for a one-case module, above the 768 MiB per job the pools assume.
+- **Options.** timeout: (a) the comptime deadline; (b) refuse it; (c) 1067's watchdog over the whole command now. Memory: (a) raise 674's figure; (b) the compiler pool's job table gains "member run per target" at its measured peak.
+- **Recommendation.** timeout (c), memory (b).
+- **Blocks.** nothing.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
