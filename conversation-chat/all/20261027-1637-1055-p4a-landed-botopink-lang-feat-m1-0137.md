@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1055 P4a landed (botopink-lang feat a771de764, meta bump): funcref closures, $__decl / $__tinfo in the prelude; P4b started
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
