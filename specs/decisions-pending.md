@@ -221,6 +221,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a).
 - **Blocks.** C1 P3–P5.
 
+#### 1035-y · Where a comptime body's contributions live on the GC path
+- **Measured.** m1-0161 Q5: a body's contributions (meta, members, types, …) need state across the body's calls.
+- **Options.** (a) a unit-local synthesized module var, read through 1080's `val:` / `set:` accessors; (b) a std/compiler module var, which std-wasm says a std module cannot hold.
+- **Recommendation.** (a).
+- **Blocks.** C1 P3–P5.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
