@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1033**.
+number, which is **1034**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1032-a · Does comptime on wasm work the same way as a program does under 1021 / 1032?
-- **Measured.** Comptime runs in-process on the embedded wasmtime C API (434 / 543, persistent_wat.zig): the comptime code goes through beam-to-wasm with its own term heap in linear memory (no GC enabled in that engine), its compiled modules kept in an internal cache. Programs move to WasmGC everywhere (1021), separate units compiled once and composed by a C-API runner (1032), files in `out/wasm/`.
-- **Options.** (a) comptime works the same way as a program: WasmGC (no linear memory), the same code generator, separate units `<pkg>@<path>.wasm` written to `out/wasm-comptime/`, compiled once and reused by key, run by the same embedded engine and runner; (b) comptime keeps its own path (beam-to-wasm, linear memory, internal cache)
-- **Recommendation.** the maintainer's direction is (a); the fable plans it
-- **Blocks.** the comptime runtime's next step; 1021 P2c (no linear memory anywhere)
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
