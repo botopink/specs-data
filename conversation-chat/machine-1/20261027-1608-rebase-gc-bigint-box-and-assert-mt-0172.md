@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Rebase gc-bigint-box and assert-catch onto aadbcccc4 — they still run the old 1045 probe in process and dump cores
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
