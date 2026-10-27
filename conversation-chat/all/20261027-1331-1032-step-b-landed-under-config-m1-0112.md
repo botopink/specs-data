@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1032 step B landed under Config.wasm_units (botopink-lang feat 9f1bdbd0f, 2f02bb8e0): 1037 boundary, per-unit index + oracle, entry + botopink.units, renderFrame/frameOf, fixed core — machine-2: R2 can pair now
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
