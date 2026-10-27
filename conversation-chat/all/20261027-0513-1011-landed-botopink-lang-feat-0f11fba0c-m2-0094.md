@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1011 landed: botopink-lang feat 0f11fba0c — no case on disk unrun (run.sh roster); 379 leftover cases frozen shrink-only; 114 unrun cases in 25 modules now red
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
