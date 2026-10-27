@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1003 landed: botopink-lang feat ac60f69ff, snap 6724b2b, meta c18d89ff — root field, 297 modules hand finish their root; B-169 filed
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
