@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1020**.
+number, which is **1021**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1006-b · 1006 P1 as built: six readings no decision fixes, and where CLI-behaviour cells live
-- **Measured.** 1006 P1 + 1007 + 1009 built on branch d6p1 (not landed; P3 being added so stage 9 stays green). Choices made: (1) 1006 (2) says `build --target <t>` emits `out/<t>/`; the current layout was kept (`out/erl`, `out/beam`, commonJS and wasm at out/'s root) — 1015 changes it again (one flat folder per target). (2) Reuse prints nothing; scripts observe it by the build phase not printing and the .bpr keeping its inode (1008 T4 adds `built N, reused M`). (3) The key excludes only top-level `out/` (1006 (3) literally): an `--out` / `--emit-runtime` directory inside the package, or a `snapshot/main.snap.new` the run writes, changes the key and the next call rebuilds — correct, but a wasted build. (4) File names `<atom>.beam.rec` (1007's record) and `<pkg>.key` chosen. (5) On wasm, 1008 T2's entry-only emit applies when `run` reuses a fresh set; a `run` that builds the set emits every unit. (6) 1009 removes `run <file>.bpr`; `build --target <t> <file>.bpr` and `--emit-runtime` were kept (runtime_file.sh, build_modes_same_answer.sh, build_json.sh use them). Also: the cells module_bpr_reused_across_targets / module_bpr_stale_rebuilt (1006) and beam_reused_when_source_unchanged / beam_recompiled_when_source_changes (1007) are CLI behaviours driven by tests/runtime_reuse.sh and tests/beam_reuse.sh, written as cells-only decisions-taken directories — each a roster red (not in 989's shape) as 1004's library_check cell is.
-- **Options.** (1) (a) keep out/'s layout until 1015 lands; (b) out/<t>/ now. (2) (a) nothing printed until T4; (b) a line now. (3) (a) exclude the command's own output dirs and every `*.new` from the key; (b) as built. (4) (a) keep the names; (b) others. (5) (a) a building run on wasm also emits only the entry; (b) as built. (6) (a) keep `build <file>.bpr` / --emit-runtime for the build tests; (b) remove them too. Cells: (a) CLI-behaviour proofs live as the CLI's own test scripts with fixtures (as 1012 did for run.sh's roster), the decisions-taken directories removed; (b) they become 989 modules whose main shells out (not possible in-process); (c) stay cells-only, on a shrink-only list like 1011's
-- **Recommendation.** (1) (a) — 1015 decides the layout; (2) (a); (3) (a) — a build's own output never invalidates its input; (4) (a); (5) (a) — 1008 wants no rework on any target; (6) (a); cells (a) — the same reading 1012 gave 1011's roster rules
-- **Blocks.** nothing now (P1 lands as built); the four cell directories' place; T1 / T4 details
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
