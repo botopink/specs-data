@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1028**.
+number, which is **1029**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -210,12 +210,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1026-a · 1026 P3 reworked: names of std-wasm units no std `.bp` declares, and where the write / GC print helpers live
-- **Measured.** P3 reworked splits std-wasm into units std@number, std@string, std@array, std@bigint, std@bytes, std@encoding, std@hash, std@heap, std@io@fs, std@io@random; array / bigint / bytes / text / number are all bound in std's primitives.bp, heap has no `.bp` (the runtime's term heap), random is io/random.bp. `$__write_bytes` and the GC print helpers stay in the entry because they depend on the program's capture state.
-- **Options.** (1) (a) one unit per primitive (std@string, std@array, …), heap as `std@__heap` (internal, no `.bp`, outside the core); (b) name each after the std `.bp` that binds it (one std@primitives unit). (2) (a) move the write / print helpers into the core in P4 with the type registry, the capture state a core global the entry's __bp_init sets; (b) leave them per entry
-- **Recommendation.** (1) (a), (2) (a)
-- **Blocks.** P3's landing (with its question 3, open)
 
 #### 1006-c · 1006 P5 as landed: a by-name loaded library's cache root, its build-time `root`, the program set's absolute names, level-B loads
 - **Measured.** 1006 P5 (landed): `compiler.load(package:)` reuses the loaded library's `.bpr` set, byte-identical to a bare build in the library's directory, analysed with `root` "" — so a build-time `@src().root` inside it reads "" while run() / test() see the load directory (1003). The program's set names a loaded package's group file after its absolute directory. A by-name load from a level-B dependency compiles without a set. A by-name load's directory is one absolute path per checkout (libs.zig resolveByNameIn); no std code reads `root` at comptime.
