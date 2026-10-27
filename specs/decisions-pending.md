@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1032-f · std's `.bp` code and its `std@<path>` unit: one unit per std module, or linked into each importer
+- **Measured.** m1-0140: with units on, the `std@<path>` unit is std-wasm's alone and std's `.bp` bodies are linked into each importer; no row fixes whether they share one unit.
+- **Options.** (a) one unit per std module holding its `.bp` code and the std-wasm functions it binds, compiled once per stamp; (b) std's `.bp` linked into each importer.
+- **Recommendation.** (a): (b) contradicts 1026 (1)–(3), 1032 (1), (2) and 1035 (3).
+- **Blocks.** 1035 C4; the wasm_units switch's claim.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
