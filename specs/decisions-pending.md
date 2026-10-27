@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1031**.
+number, which is **1032**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1021-c · 1021 P2b batch 1: the beam-blocked wasm case, and bigint in an `unknown` slot
-- **Measured.** P2b batch 1 (landed) fixed the catch binder, if-null / catch null, bigint and string order in the GC lowering. The wasm case `gc_case_arm_assigns` was kept out of the 1021 module because beam answers it wrong (a statement-form case whose arms assign a local var loses the assignment on beam; a fix is under way). A bigint stored into an `unknown` slot still falls back to linear memory on purpose: as GC bytes it would read as a string.
-- **Options.** (1) (a) put the case back into the 1021 module once the beam fix lands; (b) leave it a wasm test only. (2) (a) give bigint its own box kind in a later P2b batch (needed before P2c); (b) leave it
-- **Recommendation.** (1) (a), (2) (a)
-- **Blocks.** nothing now; P2c
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
