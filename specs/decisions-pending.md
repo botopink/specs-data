@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1055-a · P4a as built: a nullable tinfo field, and closure arities capped at 8
+- **Measured.** m1-0151: the tinfo field is `(ref null $__tinfo)` because the wasm model has no non-null references; `$sig_0 … $sig_8` cap a closure's arity at 8, a call with more falls back to linear. The fable probed on wasmtime 45: a singleton rec group `$sig_n` outside the prelude's group, referencing the prelude's `closure`, canonicalises by structure across modules.
+- **Options.** Q1 (a) nullable, the core reading `info` through `ref.as_non_null`, non-null refs a later row; (b) non-null refs now. Q2 (a) one singleton `$sig_n` per arity a unit uses, after the prelude, no cap; (b) keep 8.
+- **Recommendation.** Q1 (a), Q2 (a).
+- **Blocks.** nothing landed.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
