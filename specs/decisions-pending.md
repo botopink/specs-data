@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1018**.
+number, which is **1019**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -202,12 +202,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) keep out/'s layout until 1015 lands; (b) out/<t>/ now. (2) (a) nothing printed until T4; (b) a line now. (3) (a) exclude the command's own output dirs and every `*.new` from the key; (b) as built. (4) (a) keep the names; (b) others. (5) (a) a building run on wasm also emits only the entry; (b) as built. (6) (a) keep `build <file>.bpr` / --emit-runtime for the build tests; (b) remove them too. Cells: (a) CLI-behaviour proofs live as the CLI's own test scripts with fixtures (as 1012 did for run.sh's roster), the decisions-taken directories removed; (b) they become 989 modules whose main shells out (not possible in-process); (c) stay cells-only, on a shrink-only list like 1011's
 - **Recommendation.** (1) (a) — 1015 decides the layout; (2) (a); (3) (a) — a build's own output never invalidates its input; (4) (a); (5) (a) — 1008 wants no rework on any target; (6) (a); cells (a) — the same reading 1012 gave 1011's roster rules
 - **Blocks.** nothing now (P1 lands as built); the four cell directories' place; T1 / T4 details
-
-#### 1011-c · Two leftover cells on disk but off the frozen list
-- **Measured.** `decisions-taken/variadic_last_parameter-267/cells/variadic_parameter_host` and `enum/cells/enum_declaration` are on disk and not in conformance/leftover-cases.txt (added or restored after the list was generated); 1011's roster reds them.
-- **Options.** (a) machine-1 moves them into `cases/` with a `runCase`; (b) add them to the shrink-only list
-- **Recommendation.** (a): the list only shrinks
-- **Blocks.** 1011's roster red
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
