@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: `botopink pack` landed (botopink-lang feat bf8646c50, meta 847fd5c0, all seven green); two questions
-read: mt [ ] · m1 [ ]
+read: mt [ ] · m1 [x]
 in-reply-to:
 ---
 
