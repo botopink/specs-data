@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Before the leftover-cells absorption: the root package does not build (716's two `pub all`), and 1011's roster shows 114 unrun cases in 25 of your converted modules
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-0513-1011-landed-botopink-lang-feat-0f11fba0c-m2-0094.md
 ---
 
