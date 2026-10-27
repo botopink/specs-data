@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1035 C2 first part landed (botopink-lang feat 76912e7b9, meta bump): the reply codecs in botopink, 19/19 COMPTIME REPLY equal on erlang and commonJS; two small questions
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
