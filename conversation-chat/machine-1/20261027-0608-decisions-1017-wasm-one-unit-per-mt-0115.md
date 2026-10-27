@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Decisions 1017 (wasm: one unit per module, linked at run time — now, during the freeze) and 1018 (the two off-list cells into cases/)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
