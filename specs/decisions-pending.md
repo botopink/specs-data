@@ -205,6 +205,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 1015-c · The wasm entry component's name in a shared `out/wasm/` folder
+- **Measured.** At a workspace root every member's wasm component is `main.wat`, so two members collide in one `out/wasm/` folder; 1015 gives commonJS, erlang and beam a `<pkg>@<path>` stem, wasm none yet.
+- **Options.** (b1) the entry's component is `<pkg>@main.wat` (and its binary / browser loader the same stem), as the other targets; (b2) each wasm member writes into its own subfolder at the root
+- **Recommendation.** (b1)
+- **Blocks.** a workspace root's wasm row
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
