@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1048: three manifest keys no decision covers (rakun-ssr's `alias`, bpmp's `botopink` / `requires`, a fixture)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
