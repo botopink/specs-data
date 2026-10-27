@@ -205,6 +205,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 1021-b · 1021 P1's canonical groups: how two declarations of one shape stay distinct
+- **Measured.** WasmGC type identity is structural: with canonical rec groups, `Person(name, age)` and `Vec(name, age)` became one type (`v is Person` answered true for a Vec), as did `Box<T>(value)` and `Maybe.Some(value)`. P1 (landed) ends each declared group with a "brand" type, a numeric struct spelling a hash of its members' declared names; every answer is as before and two units naming one std type still share the group byte for byte.
+- **Options.** (a) keep the brand, its hash over each member's package-qualified name (`<pkg>@<path>.<Type>`); (b) all of a unit's declared types in one group (breaks sharing across units, 1021 (9)); (c) another branding scheme
+- **Recommendation.** (a)
+- **Blocks.** nothing (P1 landed)
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
