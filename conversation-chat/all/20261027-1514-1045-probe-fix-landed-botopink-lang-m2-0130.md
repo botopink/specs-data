@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1045 probe fix landed (botopink-lang feat aadbcccc4, meta 5ce8f706): no wasmtime panic in the test binary — rebase onto it
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to: all/20261027-1432-urgent-1045-s-runner-probe-aborts-mt-0153.md
 ---
 
