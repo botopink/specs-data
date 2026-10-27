@@ -203,6 +203,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a), (2) (a), (3) (a), (4) (a), (5) (a), (6) (c), (7) (a), (8) (a), (9) (a).
 - **Blocks.** 1032 runner pieces R1–R3; 1033 C3.
 
+#### 1033-a · 1033's plan: comptime through the program's GC generator — granularity, host, std units, crossing, LSP, deletion, await
+- **Measured.** Today comptime lowers each evaluation to untyped Erlang text, then to a linear-memory wasm module linked against the whole std-wasm term library (`comptime/runtime/wat/**`, `etf.zig`, `std@__heap`), run by `persistent_wat.zig` with no GC: ~1.9 s CPU cold per evaluation, ~48 ms warm; no host import (load answers, embeds and hooks enter as terms; `@print` goes into the reply). The fable's plan (1033 (5)): a `.comptime` stage of the program's generator, one unit per module in `out/wasm-comptime/`, the API and the reply codecs in botopink (`std/compiler`, 550), the runner of 1032-b (4) with a comptime host; pieces C0 inventory · C1 stage and units · C2 API and codecs (oracle: old reply = new on every snapshot) · C3 comptime host · C4 evaluators switch and the old path deleted (`COMPTIME REPLY` unchanged) · C5 measurement and cells.
+- **Options.** (1) granularity: (a) one unit per module, an evaluation compiles nothing, (b) one per evaluation as today. (2) host: (a) a core linker, the compiler as host, no WASI (print into the reply, clock/entropy/files a named trap), (b) a component linker with WASI p2 and stdout to a file. (3) std in `out/wasm-comptime/`: (a) copied, the same bytes, one precompiled artifact, (b) read from `out/wasm/`. (4) crossing: (a) JSON through the core's memory, codecs in botopink, (b) `bp_compiler.*` callbacks. (5) LSP: (a) the workspace-keyed cache, (b) in process only. (6) the Erlang path: (a) deleted in C4, no coexistence, (b) kept one milestone. (7) `await` in comptime: (a) still refused, (b) allowed.
+- **Recommendation.** (a) for all seven.
+- **Blocks.** 1033 C0–C5.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
