@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1055**.
+number, which is **1056**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1028-b · The core's type registry (1028 (2), 1021 (5)), and closures crossing units (1021 (4))
-- **Measured.** m1-0121: P4's first slice landed behind `Config.wasm_units`; functions with a function value in their signature stay statically linked because a GC closure is an index into its own unit's table; with `final` types (1037 (2)) the core cannot read a foreign struct. The fable probed on wasmtime 45: a closure with a `funcref` field and `call_ref` by a canonical signature from the prelude's rec group works across modules; a lambda must be declared with the prelude's `$sig_n` or the cast fails.
-- **Options.** Q1: (a) machine-1's registry keyed by brand in a core funcref table; (b) an abstract supertype `$__decl` in the prelude carrying a `$__tinfo` (print / eq / display funcrefs) per declared type, dispatched in O(1) with no key. Q2: (a) closures cross units now, before C1 — as a `funcref` field with `call_ref` (amending 1021 (4), which rejected funcref closures) or, if 1021 (4) stands, a shared core table with per-unit bases; (b) after C1, statically linked meanwhile.
-- **Recommendation.** Q1 (b); Q2 (a) with funcref closures.
-- **Blocks.** P4b, P4c, C1.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
