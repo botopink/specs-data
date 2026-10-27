@@ -3106,6 +3106,15 @@ In a GC module `findVariant` picked the first enum declaring a bare variant name
 - [x] guarded: never the first match; wat test `decision 1058 (4)` red on the parent, green after
 - [ ] the root fix: `val assert` and payload patterns take the subject's enum as hint, as `case` does (`lowerAssertPattern`); the guard then never fires there, and `val_assert_catch_is_subject-1057` runs whole on wasm
 
+### B-202 — wasm: `is` a variant built in another module of a loaded package answers false (monolithic path, compiler.load)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong answer; the cell decides) · **After:** nothing
+
+Found by 1055 P4b. Run alone on wasm through `compiler.load` (the monolithic path), the 1021 module answers `s is Shape.Circle` false for a variant built in another module of the case; through the units' frame it answers true. P4a answers the same, so it predates P4b. A silent wrong answer (1058 (4)).
+
+- [ ] guarded at once: a named gap where the monolithic path cannot tell the variant across modules
+- [ ] fixed: `is` answers true on wasm by both paths; a cell (a variant built in one module of a loaded package, tested with `is` in another), red on the parent
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
