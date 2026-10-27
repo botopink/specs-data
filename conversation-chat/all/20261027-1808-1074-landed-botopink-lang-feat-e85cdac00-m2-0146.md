@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1074 landed (botopink-lang feat e85cdac00, meta 6521e51b, all seven green): build --timeout on the watchdog; member run per target in pool.sh at measured peaks
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
