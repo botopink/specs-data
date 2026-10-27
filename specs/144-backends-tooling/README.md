@@ -3591,3 +3591,13 @@ The loaded package's `test/` suite, its modules in import order, escaped package
   Each alone compiles and runs. This reproduces on feat before this front.
 - [ ] One program, one target: a package the backend fails to compile fails the whole program. Today that is `query` on wasm (B-167), so every other library's wasm answer is lost with it. L5's runner either runs one process per package on such a target or reports the failing package and runs the rest (993 (5), (6)).
 
+### B-169 — wasm: a `run()` inside a loaded package that loads its own package is unbound
+
+A program loads `packages/m`; `m`'s top-level `comptime` block loads `cases/c` and, in its `compiler.init` executor, calls `c.run()`; the program's executor calls `m.run()`. On commonJS, erlang and beam both runs answer, and each `compiler.src()` names its own `file` with `root` `packages/m` and `packages/m/cases/c` (decision 1003). On wasm the build is refused:
+
+`` `__bp_run__bp_load__packages__m__cases__c` is not bound here: the wasm backend found no local, global, function or variant of that name — in another module's code this line reaches ``
+
+It reproduces on feat before 1003, so it is not the `root` field. The conformance root package's own depth (root → module → case, each module's `runCase`) answers on wasm, so the difference is a `run()` written in a loaded package's own executor.
+
+- [ ] wasm binds the `run()` alias of a package loaded by a loaded package, as the other backends do. It closes with cell `src_root_at_depth` (decision 1003 (5): program → `packages/m` → `cases/c`, four targets), red on wasm before and green after. The cell waits on this box, because no `"targets"` narrowing may stand in for a defect.
+
