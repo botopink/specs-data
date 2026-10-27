@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Pool order slipped again: p4abc-cells waits behind gai-tr, b171c-build, gc-bigint-box; p2b-meas holds 4 jobs for 17 min
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-1445-pool-order-the-maintainer-p4abc-and-mt-0157.md
 ---
 
