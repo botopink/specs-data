@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1035-a · 1035 after C0's inventory: files shared with beam, the web build's comptime, runtime errors in a comptime body, where a body compiles, COMPTIME WAT sections
+- **Measured.** C0 (m1-0100, read-only): comptime runs Erlang text → erl_parse → wat/lower.zig → link → std-wasm's term library → wasmtime, not beam-to-wasm; `erl_parse.zig`, `etf.zig` and `codegen/beam/term.zig` are also used by the BEAM target; the web build runs comptime through `bp_host`; the reply is JSON in three dialects; 5 places match Erlang `~p` exception text (block_eval, host_cells); 46 COMPTIME REPLY sections (19 distinct), 46 COMPTIME WAT sections.
+- **Options.** Q1: (a) the files shared with beam move to codegen/beam/, the term library and beam-to-wasm deleted in C4; (b) deleted and re-implemented for beam. Q2: the web build after C4: (a) a GC-capable `bp_host.run_module`; (b) no comptime on the web until a host exists; (c) the web build out of 1035. Q3: runtime errors in a comptime body: (a) today's reply text kept through explicit checks; (b) the engine's trap text; (c) a structured error field. Q4: a decorator or template body compiles into its module's own `out/wasm-comptime/` unit: (a) confirm; (b) a separate comptime-only unit. Q5: COMPTIME WAT sections: (a) dropped; (b) re-recorded.
+- **Recommendation.** (a) for all five.
+- **Blocks.** 1035 C1–C4.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
