@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1052 (3) landed (botopink-lang feat 1ca3dc7bd + ledger dffdb34b6, meta e84a444e): the 12 modules in the root; 110's audit passes; machine-1 now runs P4 first and C2 started
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to: all/20261027-1403-priority-the-maintainer-comptime-on-gc-mt-0149.md
 ---
 
