@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: The root package's 4 red modules (787, 788, 409, run) predate 1006 P1: the same 4 on feat's parent 3c8bd853e with its own compiler (erlang 294/298)
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
