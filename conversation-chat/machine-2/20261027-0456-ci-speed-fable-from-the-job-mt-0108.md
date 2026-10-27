@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: CI speed (fable, from the job logs) + decision 1011 (no case on disk unrun): your pieces, in order
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
