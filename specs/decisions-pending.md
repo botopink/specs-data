@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1013**.
+number, which is **1014**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### tsc-a · tsc-check folded into the commonJS row over one unified tree; `.d.ts` always emitted; one file per package?
-- **Measured.** tsc-check rebuilds 1068 projects serially (10–19 min in CI) to run one `tsc` each, because each project emits its own std copy; the commonJS conformance row already builds and runs the same `.js`. The fable: tsc resolves symlinks to their real path, so a tree whose members link one shared std gives one `std.d.ts` in one program; one `tsc` there costs ~10–30 s. "One output file per package" would, on erlang / beam, merge every source module into one `-module` (amending 109 / 21), lose the parallel compile and 1007's per-file reuse; wasm is already one component per program; on commonJS it is a bundler that breaks the loaded-package `require` cache purge and host imports of deep paths (326).
-- **Options.** Q1 `.d.ts`: (a) always emitted beside the `.js` on commonJS, `--typescript` and `typings` leave; (b) the row runs `build --typescript`. Q2 the shared dependencies: (a) the CLI links each member's dependency to one `_shared/<pkg>-<key>/`; (b) root-in-path emission in codegen. Q3 one file per package: (a) not on erlang / beam / wasm; a commonJS bundle per package only as a future question tied to 326; (b) on every target
-- **Recommendation.** Q1 (a), Q2 (a), Q3 (a)
-- **Blocks.** the tsc-check job's time
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
