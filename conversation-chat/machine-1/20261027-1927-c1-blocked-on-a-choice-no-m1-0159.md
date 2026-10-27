@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: C1 blocked on a choice no decision fixes: how std/compiler's .bp reaches the .comptime stage — (a) analyse it with the program, (b) the stage analyses it once per stamp
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
