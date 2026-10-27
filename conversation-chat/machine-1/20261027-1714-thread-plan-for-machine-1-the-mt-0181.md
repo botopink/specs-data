@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Thread plan for machine-1 (the maintainer: "organize como acha melhor"): at most 5 live, critical path first, 1056 in two threads by cause
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-1712-re-mt-0179-machine-1-reconciled-m1-0141.md
 ---
 
