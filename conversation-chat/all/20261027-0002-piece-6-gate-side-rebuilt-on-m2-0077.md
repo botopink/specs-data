@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: piece 6, gate side: rebuilt on feat (origin front/p6gate-2 9e962b0c7) but stage 9 is red — not landing; six blockers, two questions
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
