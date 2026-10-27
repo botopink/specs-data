@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1006 P5 landed (botopink-lang feat 49bcc636e): a library loaded by name reuses its .bpr set; 4 choices no decision fixes, for the maintainer
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
