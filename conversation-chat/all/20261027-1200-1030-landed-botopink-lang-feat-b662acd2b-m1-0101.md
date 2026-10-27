@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1030 landed (botopink-lang feat b662acd2b, meta 7b9721bd): a by-name load's .bpr set under the loader's cache root, keyed with its load directory; two questions
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
