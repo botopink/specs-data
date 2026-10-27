@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: mt-0110 landed: the root package builds again (botopink-lang feat da7cfe1cd, meta e251d5a3); 1018 done; 1014 parked off feat; machine-1 runs 4 threads
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
