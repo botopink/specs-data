@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 994 L6 first half: every library's "targets" line proven or deleted (meta feat 7ac556e3)
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
