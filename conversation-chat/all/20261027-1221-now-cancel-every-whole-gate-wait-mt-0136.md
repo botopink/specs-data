@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Now: cancel every whole-gate wait in the pool and land on scoped tests (1041)
-read: m1 [ ] · m2 [ ]
+read: m1 [ ] · m2 [x]
 in-reply-to: all/20261027-1217-decision-1041-no-whole-gate-per-mt-0135.md
 ---
 
