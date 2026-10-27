@@ -3080,6 +3080,14 @@ A record, a variant with payload, a nested record and a `Display` printed in a c
 
 - [ ] cell `comptime_record_prints_as_program` (a record, a variant with payload, a nested record and a `Display` printed in a comptime body read as in a program on all four targets), red until C4 turns it green
 
+### B-199 — commonJS: a `case` over a type with one payload variant crashes `case_clause` (found by B-196)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; the cell decides) · **After:** nothing
+
+`type Pair { Two(tag: string, n: i32) }` and `case p { Two(t, k) -> k + t.length }`: commonJS crashes with `case_clause`; erlang prints `12`.
+
+- [ ] cell for a `case` over a single-payload-variant type, red on commonJS on the parent, the same answer on all four targets after
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
