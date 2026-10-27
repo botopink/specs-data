@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: P4c started in a fresh thread (P4a/P4b's thread ran out of context); two small P4a questions
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
