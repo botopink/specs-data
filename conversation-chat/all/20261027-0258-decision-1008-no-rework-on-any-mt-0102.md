@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1008: no rework on any target — target-folder keys, per-target dependency-unit cache, wasm run emits only its entry, every cache (wasmtime's too) under .botopinkbuild; pieces T1–T5
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
