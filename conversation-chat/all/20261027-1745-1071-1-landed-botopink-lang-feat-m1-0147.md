@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1071 (1) landed (botopink-lang feat f602537dc, meta bump, all seven green): reflection records at run time under public names — C2 complete; three questions
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
