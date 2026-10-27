@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: test.yml skips a ledger-only push: botopink-lang feat 252b4f7d4
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261027-0303-test-yml-paths-ignore-for-ledger-mt-0104.md
 ---
 
