@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1005**.
+number, which is **1006**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built); a re-run of the generation if (1) changes
-
-#### p6-c · Stage 9's shape: one `.bpr` for the whole suite, a few shards, or one `.bpr` per module built once and run per target?
-- **Measured.** Stage 9 builds one `.bpr` holding all 297 modules: 183 s build, peak 4.70 GiB, 291 s whole. The fable measured single-module builds with the main checkout's compiler: fixed cost per process 0.32 s / 318 MiB (std is cached, comptime runs in-process on wasmtime — no comptime `erl`); a real module 0.95 s cold, 0.59 s warm, ~450 MiB; the big build costs the same per module (183 s / 297 ≈ 0.62 s), it only holds everything at once. A run starts its own `erl` (~0.3 s). Per module in CI with `--cold` ≈ 215 s, with a cache shared inside the run ≈ 110 s; four shards ≈ 70 s. Comptime (the expensive part, ~1.9 s CPU per module cold) is repeated per target today.
-- **Options.** (a) one `.bpr` for the suite (as built); (b) four shards sized to the pool; (c) one process per module: the conformance command, given a target, builds each module's `.bpr` when missing or stale and runs it on that target, a later call for another target reusing it; CI keeps no list of modules — one job builds every `.bpr` as an artifact, one row per target runs them
-- **Recommendation.** (b) on wall time; (c) contains a failure to its module, needs no runtime change and pays comptime once instead of once per target
-- **Blocks.** 994 L5 / 1004 P1 (the CI matrix), the suite's timing, the end of the freeze (987)
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
