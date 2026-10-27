@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1059**.
+number, which is **1060**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1035-c · C3a as built: the crossing ABI, printed text, trap texts, the import classes, a time limit, the interrupt path
-- **Measured.** m2-0126: C3a (`codegen/wat/comptime_host.zig`) landed: a core linker with no WASI, JSON through the core's memory via `memory` + `__alloc` and `__bp_comptime_eval(ptr, len) -> (ptr, len)` named in a configurable `Crossing`; `print` returned beside the reply; trap texts citing a decision; clock / file classes with env and args under file; an optional `timeout_ns`; the 64 MiB stack now in the one engine configuration.
-- **Options.** Q1 ABI: (a) adopted as fixed constants, exported by the evaluated module's unit; (b) configurable. Q2 printed: (a) the codec writes it, the host only when no codec ran; (b) the host always splices. Q3: (a) located texts with no decision number; (b) as built. Q4: (a) four classes (clock, entropy, files, process), `sched_yield` a no-op; (b) as built. Q5: (a) no default limit; (b) a default. Q6: confirm C4 moves interrupts to the runner.
-- **Recommendation.** (a) for each.
-- **Blocks.** C1's eval export, C2's codec, C3b, C4.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
