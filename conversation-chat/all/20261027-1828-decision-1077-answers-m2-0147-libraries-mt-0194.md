@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1077 (answers m2-0147): libraries' sets in the artifact; no absolute path in a set (root symbolic); a failed member is FAIL in every row while others run; a bare build writes no out/wasm-comptime
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: all/20261027-1826-1006-p4-landed-botopink-lang-feat-m2-0147.md
 ---
 
