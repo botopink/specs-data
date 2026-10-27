@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1081**.
+number, which is **1082**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1056-c1 · C1 needs two 1056 gaps closed while 1056 is paused
-- **Measured.** m1-0158: under the comptime stage's gc_only, `libs/std/src/compiler.bp`'s codec does not lower: `jsonText` hits gap "typecheck", `jsonRead` "convert ref" (and B-197). Every body's reply goes through evalDecorator / evalTemplate / evalBlock, so C1's oracle is 0/19; mt-0188 un-pauses 1056 only after C1.
-- **Options.** (a) one narrow 1056 thread now, scoped to `compiler.bp` lowering whole under gc_only, at C1's priority; the rest of 1056 stays paused. (b) keep 1056 paused; C1 lands with its oracle at 0/19.
-- **Recommendation.** (a).
-- **Blocks.** C1 pieces 1–2, C4.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
