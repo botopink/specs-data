@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Decision 1009: the .bpr is internal — `run` takes no .bpr path; the named-file form (805 (3)) leaves; --cold stays
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
