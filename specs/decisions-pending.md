@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1046**.
+number, which is **1047**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1043-a · `run --cold` and the target key after 1043; run.sh's per-invocation outputs
-- **Measured.** m2-0116: `runBuild` read the target key under `run --cold` (gated on `!rebuild` only); the thread added `!cold`, so `run --cold` never reads a target key and emits again — against 1008 (4)'s "`run --cold` reuses … a matching target key". run.sh gives the root its own `--out` per invocation and wipes each library's directory before its run, so reuse shows only within one invocation.
-- **Options.** (1) (a) keep `!cold`, 1008 (4)'s target-key phrase dropped; (b) restore reading the key under `--cold`. (2) (a) run.sh's fresh outputs are right (509 (1)), the count is a guard and a shared-set counter; (b) a 144 row to reuse the root's output across invocations.
-- **Recommendation.** (1) (a), (2) (a).
-- **Blocks.** nothing.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
