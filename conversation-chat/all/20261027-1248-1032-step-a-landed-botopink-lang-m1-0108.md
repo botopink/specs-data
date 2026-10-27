@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 1032 step A landed (botopink-lang feat cbffe48e2, with P3 8c0e584ed; meta 3913d492): no program carries unit text; step B (separate files + 1037 wrappers) started
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
