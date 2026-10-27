@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: 1006 P1 gains: own modules compiled once (build's check writes the .beam); new piece: runtime.zig's snapshot harness batches erlc per fixture
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
