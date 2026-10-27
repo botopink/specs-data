@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1061**.
+number, which is **1062**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### orphan-a · Orphaned `beam.smp` from the self-test, and the root's erlang run growing to 22 GB
-- **Measured.** m2-0128: 11 `beam.smp` from `run.sh --self-test`'s `hangs-beam` fixture orphaned, each spinning a core up to 2 h (16 more this morning): the timeout kills the compiler, and its `defer child.kill` does not run under SIGKILL; 1006 P2's single root `run --target erlang` grew to 22 GB RSS over 22 minutes.
-- **Options.** Leak: (a) a 144 row fixed now; (b) front 169. Root: (a) a per-run memory limit that refuses; (b) measure the growth per loaded module, fix a leak first, then 989 (8)'s split into processes.
-- **Recommendation.** Leak (a); root (b).
-- **Blocks.** both machines' pools; 1006 P2.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
