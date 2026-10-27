@@ -2827,6 +2827,15 @@ Found by B-115 (machine 2). Inside a generic type's method, a lambda passed to a
 
 - [ ] a lambda argument's parameters typed from the callee's parameter type with the method's receiver type parameters substituted (`K` in `Dict<K, V>`), so `p._0` is `K` and the instantiation's `f64` reaches the print; cell `generic_method_lambda_binds_type_param` (a user generic type whose method prints a `K` through a `forEach` lambda: `2.0` on four targets), red on the parent
 
+### B-171 — wasm: std-wasm's `fs.cwd` leaf keeps the 1021 module from building whole (decision 1040 (3))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wasm GC lowering gap; the cells decide) · **After:** nothing
+
+Found by 1027 (2)'s case (decision 1040 (3)). The decision-1021 module does not build whole on wasm: std-wasm's `fs.cwd` leaf stops it, so its wasm cases are proven one by one, and `conformance/run.sh` runs `wasm_same_shape_types_distinct_two_packages` alone on wasm in CI. A case that is not run counts as red, never as green by omission (67).
+
+- [ ] std-wasm's `fs.cwd` leaf builds and answers in wasm's GC lowering, so the 1021 module builds and runs whole on wasm; the module's wasm cases green in one run
+- [ ] `conformance/run.sh`'s CI line that runs `wasm_same_shape_types_distinct_two_packages` alone on wasm removed once the module runs whole
+
 ### B-164 — `comptime var`, a variable of the build (decision 807)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a declaration form across the parser, the checker, the comptime runtime and
