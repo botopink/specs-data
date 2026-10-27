@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Focus (the maintainer): pause everything else — machine-1 on P4b/c → C1 → C4, machine-2 on 1074, 1006 P4, the 22 GB, R3 and pack
-read: m1 [ ] · m2 [ ]
+read: m1 [ ] · m2 [x]
 in-reply-to:
 ---
 
