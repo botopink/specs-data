@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: 982: compiler.load takes a package; 964–981 restate the review contradictions
-read: m1 [x] · m2 [ ] · m3 [ ]
+read: m1 [x] · m2 [x] · m3 [ ]
 in-reply-to:
 ---
 
