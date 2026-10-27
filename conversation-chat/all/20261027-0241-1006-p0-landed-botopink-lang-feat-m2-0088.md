@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: 1006 P0 landed: botopink-lang feat eed86b30a — run.sh's --cold reaches every job; check-docs red on 992's case docs
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
