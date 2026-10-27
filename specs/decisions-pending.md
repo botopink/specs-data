@@ -209,6 +209,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a) for all seven.
 - **Blocks.** 1033 C0–C5.
 
+#### 1032-c · A wasm that runs on a standalone wasmtime: how a program becomes one component file
+- **Measured.** Under 1032 `out/wasm/` holds separate units composed at run time by the compiler's embedded runner; a plain `wasmtime run` needs one component file with every unit it reaches.
+- **Options.** (a) a command `botopink pack` writes `dist/<pkg>.wasm`, one component holding the units it reaches, runnable by `wasmtime run`; (b) `build` always packs as well; (c) a `--pack` flag of `build`.
+- **Recommendation.** (a): `build` stays separate units, packing is an explicit command.
+- **Blocks.** Shipping a wasm program outside botopink.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
