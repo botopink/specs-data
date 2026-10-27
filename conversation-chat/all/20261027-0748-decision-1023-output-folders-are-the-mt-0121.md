@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1023: output folders are the target's literal name — out/commonJS/, out/erlang/, out/beam/, out/wasm/ (every build); after machine-1's flat names
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
