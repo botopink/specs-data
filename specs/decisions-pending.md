@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1087**.
+number, which is **1088**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -202,12 +202,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) `fail` aborts the body on both paths: nothing after it runs, none of the body's outputs (meta, members, types, built code) are applied, and the reply records the failure with `at` / `span` and what was printed until then (904); the sentence "the body goes on" leaves the doc; cell `compiler_fail_aborts_body` (an `addMember` after `fail` does not appear; a `print` before it does). (b) `fail` records the failure and the body goes on, so several failures accumulate in one body; a failed body's outputs are discarded at its end; C2's oracle gains new fixtures.
 - **Recommendation.** (a): it changes no observed behaviour and is the stricter reading (67); (b) gives richer diagnostics but lets a failed body keep running.
 - **Blocks.** C1 pieces 1–2 (the body synthesis's failure path). Eric's to choose: it is visible semantics.
-
-#### 1035-y · Where a comptime body's contributions live on the GC path
-- **Measured.** m1-0161 Q5: a body's contributions (meta, members, types, …) need state across the body's calls.
-- **Options.** (a) a unit-local synthesized module var, read through 1080's `val:` / `set:` accessors; (b) a std/compiler module var, which std-wasm says a std module cannot hold.
-- **Recommendation.** (a).
-- **Blocks.** C1 P3–P5.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
