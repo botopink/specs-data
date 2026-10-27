@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1010**.
+number, which is **1011**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 998-a · The cases whose sync `main` starts async work it does not await: commonJS's in-process `run()` answers before it prints
-- **Measured.** 11 folded modules (await, 494, 394, 690, 392, 523, 432, and one case each in 525, 956, 125, 150) hold a case whose `main` is sync and calls an `async fn` without awaiting it. Run alone every target prints all of it; under `m.run()` in process erlang and beam answer the full output, commonJS answers "" (the sync `run()` closes the capture when `main` returns, before the promises run).
-- **Options.** (a) `run()` answers once every task its `main` started has ended, on every target; (b) the cases change: each awaits its work in an `async main` — a sync `main` that starts tasks it does not await stays legal; (c) `run()` of a package whose sync `main` reaches an unawaited task is refused at build
-- **Recommendation.** (b): the cases test await semantics, not fire-and-forget; with `async main` 998's path awaits the run on every target
-- **Blocks.** the 11 modules' conversion to 989's shape
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
