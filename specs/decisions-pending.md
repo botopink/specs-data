@@ -203,6 +203,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a) for all five.
 - **Blocks.** 1035 C1–C4.
 
+#### 1030-a · 1030 as built: the wasm host in the set's key, orphan set directories, and a moved library's stale set
+- **Measured.** Machine-1 landed 1030 (1), (2), (4) (m1-0101): a by-name library's `.bpr` set under the loader's `.botopinkbuild/`, keyed with its load directory and, added on its own, the loading build's wasm host; the set's directory is `<pkg>@<key>` with the library's content in the key, so each library edit leaves the old directory behind; where a name resolves (`BOTOPINK_LIB_ROOTS`) is not in the loader's key, so a moved library keeps the old set until the loader's program changes (as before 1030).
+- **Options.** Host: (a) the wasm host in the key kept; (b) removed. Q1: (a) content in the directory name, a later prune; (b) the directory named by package + load directory + wasm host, the content hash in the key file, a new set overwriting the old. Q2: (a) a 144 row: the resolved load directory joins the loader's key; (b) left.
+- **Recommendation.** Host (a), Q1 (b), Q2 (a).
+- **Blocks.** nothing landed; the cleanup of 1030's cache.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
