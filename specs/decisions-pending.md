@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1003**.
+number, which is **1004**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -190,12 +190,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
 - **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
 - **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
-
-#### p6-b · What `@src().file` reads in a module loaded at depth (root → module → case), and how snap finds its `__snapshots__` then
-- **Measured.** Under piece 6's root package, a case loaded at depth 2 reads `@src().file` as the path from the root (L6's load-dir prefix), so its text differs between a standalone module run and the root run; 718's snapshot (compiler_src_is_a_call) predates the prefix. Snap finds `src/__snapshots__` from `@src().file` relative to the process cwd — the prefix is what makes it work in-process, and B-168's six snap failures sit on that path.
-- **Options.** (a) `@src().file` relative to the root package of the module's own package (one text standalone and under the root); snap learns the package's directory from `BOTOPINK_TEST_ROOT`, set by m.`test`() around each test as `BOTOPINK_TEST_NAME` is; (b) as (a), the directory a new `@src()` field (`root`) carries instead; (c) the path from the loading root (as built), each module's snapshot recorded under the root run only.
-- **Recommendation.** (a) or (b), sent to the fable for review before answering: one text whatever loads the module; (c) makes a snapshot depend on who loads it
-- **Blocks.** 718's re-record; B-168's snap failures; module snapshots under the root run
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
