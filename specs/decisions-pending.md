@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1019**.
+number, which is **1020**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -210,12 +210,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1016-a · Keep 1014's `async-dropped` refusal and 1016's explicit start form?
-- **Measured.** 1014 refuses an `Async<T>` dropped as a statement; 1016 keeps that and adds one explicit std form to start a task without awaiting (designed as `async.start({ -> … })`). Neither has landed; machine-1 holds the refusal uncommitted.
-- **Options.** (a) reverse both: a dropped `Async<T>` statement stays legal, no explicit start form; the in-process `run()` divergence for a sync `main` that leaves tasks running stays an open point, parked; (b) keep both
-- **Recommendation.** (b) — but the maintainer decides
-- **Blocks.** machine-1's 1014 work
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
