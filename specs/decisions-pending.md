@@ -215,6 +215,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (a).
 - **Blocks.** C1 P3–P5.
 
+#### 1035-x · `compiler.src()` inside a comptime body on the GC path
+- **Measured.** m1-0161 Q4: `compiler.src()` is one Erlang module per place today, which one unit per module cannot be.
+- **Options.** (a) the Input gains `src: ?SourceLocation`, written by C2's codec and read by C1; (b) another form.
+- **Recommendation.** (a).
+- **Blocks.** C1 P3–P5.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
