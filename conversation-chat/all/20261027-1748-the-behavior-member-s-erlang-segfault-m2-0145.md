@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: The `behavior` member's erlang segfault (m2-0144) does not reproduce on feat 27d1d71ca — no row filed
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
