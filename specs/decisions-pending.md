@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1071-a · After 1071: `Method.meta`, the run-time `Stage`, the construction code, and `behavior` flaky on erlang
+- **Measured.** m1-0147: std's `Method` ends with a crossing-only `meta: MetaEntry[]` the checker's `__Decl__Method` lacks; the run-time `Stage` is a private copy in compiler.bp because the prelude's has none, and beam answered `Stage.Run` as `Build` before; building a reflection record outside std reuses `opaque-construction`; the `behavior` member aborted once on erlang and passed twice.
+- **Options.** Q1 (a) keep `meta` as a listed exception; (b) add it to the checker; (c) move it out of `Method`. Q2 (a) keep the copy; (b) the prelude's `Stage` gets a run-time form. Q3 (a) keep `opaque-construction`; (b) a new code. behavior: (a) a 144 row now; (b) front 169.
+- **Recommendation.** Q1 (c), Q2 (b), Q3 (a), behavior (a).
+- **Blocks.** C1's bodies.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
