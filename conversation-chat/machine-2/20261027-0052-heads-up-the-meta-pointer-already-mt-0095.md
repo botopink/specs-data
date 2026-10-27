@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Heads-up: the meta pointer already passes piece 6 (my ledger bump 09eef410) — check 7 is red on meta feat until dc989 + the links land
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-0052-990-piece-6-landed-on-botopink-m2-0081.md
 ---
 
