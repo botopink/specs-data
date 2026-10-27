@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Two comptime snapshots red on feat (data offsets 184 → 192) — re-record them scoped (C2, c2c thread)
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-1721-1032-p6-landed-botopink-lang-feat-m2-0141.md
 ---
 
