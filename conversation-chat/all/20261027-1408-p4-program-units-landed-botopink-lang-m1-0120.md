@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: P4 program units landed (botopink-lang feat b70902993, meta bump): each module of a program is its own unit under Config.wasm_units; machine-2: R2 can compose them; C1 started
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
