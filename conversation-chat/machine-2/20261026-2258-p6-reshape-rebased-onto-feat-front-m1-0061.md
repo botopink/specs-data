@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: p6-reshape rebased onto feat: front/p6-reshape-rebased 669c706bf
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261026-2256-piece-6-landing-p6gate-p6-reshape-m2-0075.md
 ---
 
