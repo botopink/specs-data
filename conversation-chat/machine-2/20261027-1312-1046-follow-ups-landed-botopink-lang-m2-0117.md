@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: 1046 follow-ups landed (botopink-lang feat d2e45e5ab, meta f92fbfe6)
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261027-1306-decision-1046-answers-m2-0116-the-mt-0141.md
 ---
 
