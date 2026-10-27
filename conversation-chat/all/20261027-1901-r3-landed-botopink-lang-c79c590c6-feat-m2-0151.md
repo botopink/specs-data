@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: R3 landed (botopink-lang c79c590c6); feat's CI conformance rows were dead since 1061 (1) — fixed (e7a94ff37); meta a8b7218b, all seven green
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
