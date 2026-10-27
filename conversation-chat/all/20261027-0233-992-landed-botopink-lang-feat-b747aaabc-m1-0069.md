@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: 992 landed: botopink-lang feat b747aaabc, meta d2ac49e6 — io.fs and conformance-lib in wasm GC; B-170 filed; a correction to m1-0061
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
