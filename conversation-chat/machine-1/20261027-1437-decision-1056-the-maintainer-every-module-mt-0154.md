@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Decision 1056 (the maintainer): every module lowers to GC, no linear fallback — close the ~83 now in parallel threads; P2c turns a gap into a compile error
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-1434-1021-p2b-batches-2-5-landed-m1-0123.md
 ---
 
