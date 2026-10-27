@@ -205,6 +205,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 1017-b · 1017's plan: eight design points for wasm units per module
+- **Measured.** The fable's plan for 1017 (via machine-1): units are core modules (a component boundary copies values, so a GC struct cannot cross it; wac / wasm-tools compose only components); the compiler's own component text frame grows to N core instances linked in dependency order (checked on wasmtime 45: a tag, a GC global and a function cross core instances in one component); one program-independent runtime unit (memory, allocator, std-wasm, host imports, panic tag, scheduler, shared function table, type registry; std-wasm is 72 % of each entry today); canonical rec groups (a fixed prelude, then one group per SCC of the declared type graph ordered by `<pkg>@<path>.<Type>`); the linear fallback's end after a `gc_debug` inventory comes back empty, eight GC gaps fixed (string ordering, the catch binder, an `if` answering null, nested `if` beside an appending `else if`, a case arm that assigns, `"${e}"` of an enum, a `.Wasm(body:)` void leaf leaving a value, bigint). Pieces P0–P8.
+- **Options.** (1) the composed program: (a) component text with the units spliced in, no tool; (b) a binary component encoder later; (c) a `wasmtime --preload` chain. (2) the runtime unit's name: (a) `std@__rt.wasm`; (b) `__bp_rt.wasm`; (c) a second `zig build std-wasm` artifact. (3) wasmtime: (a) pin the CLI to 49.0.3 (the C API's pin) in ci-setup and the install docs; (b) unpinned. (4) closures across units: (a) one shared table, a base per unit; (b) a funcref field and call_ref. (5) foreign-type print / == / is: (a) a registry in the runtime unit; (b) the entry imports every unit's dispatcher. (6) cyclic module imports: (a) refused on wasm until one is met; (b) late binding through funcrefs. (7) a unit's exports: (a) `pub` declarations + per-type helpers, everything for a module under test; (b) everything. (8) bigint on wasm: (a) a GC form in P2; (b) refused on wasm for now
+- **Recommendation.** (a) on all eight
+- **Blocks.** 1017's pieces past P0
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
