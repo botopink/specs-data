@@ -197,6 +197,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
 
+#### 1032-d · 1032's separate units against a wasmtime defect: concrete GC types in an imported core module's type; and the run bridge until the runner lands
+- **Measured.** Machine-1 (m1-0099), confirmed by the fable on wasmtime 45: a component importing a core module whose type names a concrete GC type (`(func (param (ref null $str)))`) panics at compile (`module_types.rs: no entry found for key`); the C API 49.0.3 does the same. Abstract refs compile; inline modules compile; separate core modules linked by the core linker with concrete types run (types are canonical engine-wide), but the core linker has no WASI p2. A failed `ref.cast` traps `wasm trap: cast failure`.
+- **Options.** Q1: (a) an abstract boundary — cross-unit signatures typed only with anyref/eqref/structref/arrayref/funcref, the callee casting; per-unit precompile kept; (b) the runner splices each unit into a placeholder frame, the component compiled whole per program (1032 (2) lost); (c) inline units until upstream fixes it. Q2: (a) a cache-only bridge — `run`/`test` link a component in `.botopinkbuild/cache/wasm-link/` from unit texts and run it with the wasmtime CLI until the runner lands; (b) no bridge, P3/P4's separate files land with the runner.
+- **Recommendation.** Q1 (a) with thin export wrappers; Q2 (b).
+- **Blocks.** 1021 P3/P4, 1032 R2.
+
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
