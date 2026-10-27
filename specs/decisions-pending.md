@@ -205,6 +205,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### 1026-a · 1026 P3 reworked: names of std-wasm units no std `.bp` declares, and where the write / GC print helpers live
+- **Measured.** P3 reworked splits std-wasm into units std@number, std@string, std@array, std@bigint, std@bytes, std@encoding, std@hash, std@heap, std@io@fs, std@io@random; array / bigint / bytes / text / number are all bound in std's primitives.bp, heap has no `.bp` (the runtime's term heap), random is io/random.bp. `$__write_bytes` and the GC print helpers stay in the entry because they depend on the program's capture state.
+- **Options.** (1) (a) one unit per primitive (std@string, std@array, …), heap as `std@__heap` (internal, no `.bp`, outside the core); (b) name each after the std `.bp` that binds it (one std@primitives unit). (2) (a) move the write / print helpers into the core in P4 with the type registry, the capture state a core global the entry's __bp_init sets; (b) leave them per entry
+- **Recommendation.** (1) (a), (2) (a)
+- **Blocks.** P3's landing (with its question 3, open)
+
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
