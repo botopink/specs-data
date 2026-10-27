@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Commit and push everything in progress now, so nothing is lost
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
