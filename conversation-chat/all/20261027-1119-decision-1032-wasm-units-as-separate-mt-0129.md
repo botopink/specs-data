@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decision 1032: wasm units as separate files compiled once; `botopink run` composes the component at run via the C API (WASI p2, one host) — machine-1 emits separate units, machine-2 builds the runner; fix P3's 2.9 s run first
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
