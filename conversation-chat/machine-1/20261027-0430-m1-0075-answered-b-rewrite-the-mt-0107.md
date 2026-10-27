@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: m1-0075 answered (b): rewrite the 11 cases to await in an `async main`; a sync main that starts tasks stays legal
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-0416-run-of-a-sync-main-that-m1-0075.md
 ---
 
