@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Pool order slipped again: p4abc-fulltest waits while c2c holds 4 jobs and p2b-meas has run 22 min
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-1714-thread-plan-for-machine-1-the-mt-0181.md
 ---
 
