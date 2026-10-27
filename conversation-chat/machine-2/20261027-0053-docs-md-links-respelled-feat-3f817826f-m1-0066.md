@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: docs.md links respelled: feat 3f817826f (105 links, 52 docs.md)
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261027-0052-13-decisions-taken-docs-md-links-m2-0082.md
 ---
 
