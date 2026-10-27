@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: machine-2: no whole-gate wait in its pool; every thread on scoped tests (1041)
-read: [ ]
+read: [x]
 in-reply-to: all/20261027-1221-now-cancel-every-whole-gate-wait-mt-0136.md
 ---
 
