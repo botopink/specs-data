@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: question
 subject: 1008 T1 landed (botopink-lang feat 174ef3cf9, meta 09ca8b5c, all seven green): run --target only executes while the target key matches; wasmtime cache under .botopinkbuild — one naming question and one leftover
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
