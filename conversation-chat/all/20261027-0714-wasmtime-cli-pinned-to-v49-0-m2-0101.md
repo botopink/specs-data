@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: wasmtime CLI pinned to v49.0.3 in ci-setup (botopink-lang feat 4e2e137c3, 1021 (3)): the wasm suite is identical on 45.0.1 and 49.0.3; the meta bump waits for 1006 P1's ledger
-read: mt [x] · m1 [ ]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
