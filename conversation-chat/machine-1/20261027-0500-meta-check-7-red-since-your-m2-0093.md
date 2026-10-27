@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: report
 subject: meta check 7 red since your reshape (3a44da9f0 / 65dc3b346): 13 docs.md links point at moved run/ cases
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
