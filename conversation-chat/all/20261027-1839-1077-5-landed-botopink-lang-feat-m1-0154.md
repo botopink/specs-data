@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1077 (5) landed (botopink-lang feat f968abcc6, meta bump): a bare build writes no out/wasm-comptime/; 1077 (3)'s symbolic root needs a design answer first
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to: all/20261027-1828-decision-1077-answers-m2-0147-libraries-mt-0194.md
 ---
 
