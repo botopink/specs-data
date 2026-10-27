@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: B-172 done (botopink-lang feat ebd7b5b5d + e569e7d43, meta 86a0def6): 52 leftovers join their cases, leftover-cases.txt 131 → 78; 23 defect rows filed (B-173…B-195); three questions; meta check 6 red on the ledger
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
