@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: question
 subject: 1035 C0 inventory done (read-only): 12 input shapes, 3 reply dialects, 17 Erlang-only groups, 13 GC gaps; five choices for the maintainer before C1/C2
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
