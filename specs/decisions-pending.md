@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1025**.
+number, which is **1026**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -204,12 +204,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### 1015-d · 1015's commonJS codegen as landed: the require form, the `.mjs` sidecars, a behavior's brand key
-- **Measured.** machine-1 landed 1015's commonJS / `.d.ts` flat `<pkg>@<path>` names; three choices no decision fixes: requires are written `require("./std@math")`; std's `.mjs` sidecars (random) shipped flat as `std@random.mjs`; a behavior's brand key now carries the package (`__bp_b_main@@Shape` → `__bp_b_test@main@@Shape`), a side effect of building the commonJS index with packages.
-- **Options.** (1) (a) `require("./std@math")`, no extension; (b) `require("./std@math.js")`. (2) (a) `.mjs` sidecars flat `<pkg>@<base>.mjs`, each relative require rewritten; (b) kept under `<out>/<lib>/`. (3) (a) the package-qualified brand key accepted; (b) the old key kept
-- **Recommendation.** (a) on all three
-- **Blocks.** nothing (landed as built)
 
 ## Front 165 — rakun-workspace (the maintainer, 2026-10-14)
 
