@@ -3094,8 +3094,8 @@ A record, a variant with payload, a nested record and a `Display` printed in a c
 
 Found by 1071 (1)'s thread: the `behavior` conformance member aborted once on erlang (exit 134), then passed on two re-runs; the parent passed too. It is never listed as disabled meanwhile (67, 1011 (2)); no per-case time bound exists (1068).
 
-- [ ] run the member alone 20 times on erlang; name the case that aborts and the rate; the owner by cause (erlang codegen, machine 1; the harness capture, machine 2)
-- [ ] the cause fixed; 20 runs in a row green
+- [x] run the member alone 20 times on erlang: 20 of 20 exit 0 on a fresh ReleaseSafe build of feat after 1061 (2)'s leak fixes; machine-2 found no reproduction either; no case aborts, the rate is 0 of 20
+- [x] closed with no fix: the one abort predates 1061 (2) (a member's erlang run grew without bound then); a new abort reopens this row with its case and its log
 
 ### B-201 — wasm GC: a `val assert` / payload pattern's bare variant takes no subject hint (1057's composed cases; guarded by 1058 (4))
 
