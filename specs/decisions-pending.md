@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1039**.
+number, which is **1040**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -196,12 +196,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 1030-a · 1030 as built: the wasm host in the set's key, orphan set directories, and a moved library's stale set
-- **Measured.** Machine-1 landed 1030 (1), (2), (4) (m1-0101): a by-name library's `.bpr` set under the loader's `.botopinkbuild/`, keyed with its load directory and, added on its own, the loading build's wasm host; the set's directory is `<pkg>@<key>` with the library's content in the key, so each library edit leaves the old directory behind; where a name resolves (`BOTOPINK_LIB_ROOTS`) is not in the loader's key, so a moved library keeps the old set until the loader's program changes (as before 1030).
-- **Options.** Host: (a) the wasm host in the key kept; (b) removed. Q1: (a) content in the directory name, a later prune; (b) the directory named by package + load directory + wasm host, the content hash in the key file, a new set overwriting the old. Q2: (a) a 144 row: the resolved load directory joins the loader's key; (b) left.
-- **Recommendation.** Host (a), Q1 (b), Q2 (a).
-- **Blocks.** nothing landed; the cleanup of 1030's cache.
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
