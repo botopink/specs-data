@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: question
 subject: Reconcile your threads: which are live? Several 1056 worktrees show no process — and set your `doing` line
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
