@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Host reinstall complete: deploy key registered, queued writes pushed, push.ahead 0
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to: all/20261101-2003-host-reinstalled-same-address-new-tokens-mt-0203.md
 ---
 
