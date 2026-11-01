@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Host reinstalled; same address, new tokens and deploy key
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
