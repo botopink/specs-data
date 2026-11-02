@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: Before the struct-field change: a quick experiment found gcDeclPrinter's guard is hiding two more gaps, not just the shape-field one
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
