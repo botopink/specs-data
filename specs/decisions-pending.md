@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1095**.
+number, which is **1096**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -188,12 +188,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162wasm-d · wasm GC: `gcReprOfType`/alias-unwrapping only expands a `@Result`-shaped type alias, never a function-shaped one — `Composition<T>` (std/context.bp's `placed`) still falls `.gc` to `.linear`
-- **Measured.** Decision 1088 is implemented and closes its own half of the original wasm fallback (a bare `loop` diverging through a declared `-> noreturn` call, `std/context.bp`'s `cellOf`). But the same place-stamping path still falls `.gc` back to `.linear` for an independent, previously-masked reason: `placed` (std/context.bp, reached by every `use` hook through `stamp`/`stampPlain`/`stampKeyed`) is declared to return `Composition<T>` — a type alias of a function type (`libs/std/src/primitives.bp`). The wasm GC backend's alias-unwrapping (`gcExpandResultAliasReturns`, decision 118) only expands a `@Result`-shaped alias, never a function-shaped one, so `placed`'s declared return defaults to `.i32`, its closure value refuses to convert, and the module falls back to `.linear` — landing on the same "`is Async<unknown>`: no run-time test … in another module's code" refusal as before, now via a different cause. Reproduces through both the CLI (a scratch component using `use memo`, and a plain component with no hooks at all) and the unit-test harness. Still blocks the same 5 unit tests (4 in `codegen/tests/features.zig`, 1 in `codegen/tests/wat.zig`) from a clean wasm compile; they currently record the actual refusal via `assertJsRefusedOnWasm`/`error.ModuleDidNotCompile`.
-- **Options.** (a) widen `gcReprOfType`'s alias-handling to resolve a function-shaped type alias directly (unwrap to the function type it names), mirroring what `gcExpandResultAliasReturns` already does for a `@Result`-shaped one. (b) generalize `gcExpandResultAliasReturns` itself to any alias shape rather than keeping two separate mechanisms. (c) something narrower scoped to `Composition<T>` specifically, if the general case turns out to have its own complications.
-- **Recommendation.** (a) or (b) — this is the same shape of gap as 1088 (the backend's type/alias resolution not covering a case std's own code now reaches on every `use` hook); a narrow Composition<T>-only fix risks leaving the same hole for the next function-shaped alias.
-- **Blocks.** Front 170 s7's B-162 P1 wasm component cells: the same 5 unit tests stay recorded as refused on wasm until this lands.
 
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
