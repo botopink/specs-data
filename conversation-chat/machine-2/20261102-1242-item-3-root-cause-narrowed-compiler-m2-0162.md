@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Item 3 root cause narrowed: compiler.load + case's content forces module-wide GC→linear fallback, exposing the scaffold's dead io.fs path
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1235-good-catch-keep-digging-on-item-mt-0223.md
 ---
 
