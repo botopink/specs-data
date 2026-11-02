@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: shown<T> fix built, verified and landed — the real cause wasn't the guard at all
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
