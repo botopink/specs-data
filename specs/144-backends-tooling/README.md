@@ -1028,8 +1028,7 @@ After the step's other boxes have landed on `feat`; it holds back no front that 
       (`docs.md` until B-29 step I moves it to `conformance/docs.md`)
 - [x] the pipeline's state in the step's report (474): each repository the step changes, its runs on `feat` since
       the step's base, green or each red named
-- [ ] what the move left: the decorator `random.float()` cell once B-46 lands; the reds B-43 and B-44 found
-      (`generic-loader-binding` is erika's cell `conformance/modules/generic_loader_binding`)
+- [ ] what the move left — moved to front 170 (conformance-complete) s1; see its Alias table
 
 | Behaviour (decision) | Test |
 |---|---|
