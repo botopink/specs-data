@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: (a) — the shown-dispatch fix, and it's likely the actually-correct design for wasm, not a shortcut
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
