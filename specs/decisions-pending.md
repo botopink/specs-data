@@ -207,6 +207,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### b162wasm-a · wasm: divergence/tail-type inference never recognizes a declared `-> noreturn` call or a bare `loop`, only the builtin panic/todo
+- **Measured.** B-162 P1's wasm port adds `libs/std/src/context.bp`'s `cellOf` (place stamping, decision 821): a bare top-level `loop` whose only exit is `return`, diverging on one branch through std's declared `failure.panic` (`-> noreturn`; decision 606 removed the `@panic`/`@todo` builtin spellings, so a diverging branch has no other surface form). `wat.zig`'s `isNoReturnCall` only recognizes the builtins `panic`/`todo`; `wasmTypeOf`/`gcReprOfExpr`/`recordTypeOfExpr` have no case for a bare `.loop` or a global call declared `noreturn`. `cellOf`'s tail type defaults to `.i32`, `emitConvert` refuses ("convert ref"), and the module falls back `.gc` → `.linear`. Reproduces on the current `feat` tip with a minimal repro (a record type, a bare loop, `failure.panic` — no components, no hooks). Latent in the backend already, not introduced by this work.
+- **Options.** (a) widen `isNoReturnCall` to recognize any declared `-> noreturn` call, and give `wasmTypeOf`/`gcReprOfExpr`/`recordTypeOfExpr` a case for a bare `loop` whose exits are all `return`. (b) restructure `cellOf`/`treeOf` instead — checked, no alternative shape avoids it; decision 606 left no other spelling for "this diverges".
+- **Recommendation.** (a) — (b) has no real alternative; blocks any std or user code that diverges via a declared noreturn fn inside a loop on wasm.
+- **Blocks.** Front 170 s7's B-162 P1 wasm component cells: 4 unit tests in `codegen/tests/features.zig` now refused on wasm, recorded via `assertJsRefusedOnWasm` pending this.
+
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
