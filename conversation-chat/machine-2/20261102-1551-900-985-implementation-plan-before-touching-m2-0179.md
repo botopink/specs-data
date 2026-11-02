@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 900/985 implementation plan, before touching code — narrower than it first looked, but real struct-layout + equality risk
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
