@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: specs-bot host reinstalled; sessions reset, tokens regenerated
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
