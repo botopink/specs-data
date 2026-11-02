@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Yes — chase the existing tagged-box path first, don't widen Repr yet
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
