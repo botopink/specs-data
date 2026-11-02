@@ -9,7 +9,7 @@ gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` addi
 owns: "`repository/i18n/**` when born (`botopink/i18n`), the consumer lines step 2 names."
 depends-on: |-
   155 s2 (104 s5) · rakun 150 s13 (22) · jhonstart 150 s36 · `03r-q` confirmed. Goal and mechanism:
-  [`03-bundled-libs/105-i18n`](105-i18n/context.md).
+  [`03-bundled-libs/105-i18n`](context.md).
 ---
 # Front 105 — i18n: a shared `i18n`, one locale grammar for the server and the page
 

@@ -26,8 +26,8 @@ current answer:
 
 | Box | Front | Owner of the remaining work |
 |---|---|---|
-| The unknown-prefix refusal of `extendTheme` is in the compiler's Zig suite | [54](54-emilia-theme/README.md) | compiler test suite |
-| `hashHex` is gone; the class name is std's `hash.contentHash`, fixture unchanged (decision 116) | [56](56-emilia-cascade-and-output/README.md) | one std import in `emilia.bp`, with or after `00 · 23-std-purity` |
-| No file under jhonstart's `src/` names emilia | [48](48-emilia-attributes/README.md) | jhonstart front 30 (`streaming.bp` comment) |
-| …asserted by the `jhonstart-emilia` bridge test | [48](48-emilia-attributes/README.md) | jhonstart front 30 |
-| The literal fixture is asserted by the bridge test and onze 68 | [48](48-emilia-attributes/README.md) | jhonstart front 30, onze front 68 |
+| The unknown-prefix refusal of `extendTheme` is in the compiler's Zig suite | [54](../54-emilia-theme/README.md) | compiler test suite |
+| `hashHex` is gone; the class name is std's `hash.contentHash`, fixture unchanged (decision 116) | [56](../56-emilia-cascade-and-output/README.md) | one std import in `emilia.bp`, with or after `00 · 23-std-purity` |
+| No file under jhonstart's `src/` names emilia | [48](../48-emilia-attributes/README.md) | jhonstart front 30 (`streaming.bp` comment) |
+| …asserted by the `jhonstart-emilia` bridge test | [48](../48-emilia-attributes/README.md) | jhonstart front 30 |
+| The literal fixture is asserted by the bridge test and onze 68 | [48](../48-emilia-attributes/README.md) | jhonstart front 30, onze front 68 |

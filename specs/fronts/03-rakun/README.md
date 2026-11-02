@@ -40,54 +40,54 @@ half depends on 06, and a citation of 11 is read as one or the other). Ties brea
 | # | Front | Priority | Wave | Level | Submodule | Depends on (track B) | Depends on (other tracks) |
 |---|---|---|---|---|---|---|---|
 | 04 | [`04-rakun-erlang-runtime`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/04-rakun-erlang-runtime/README.md) | critical | 1 · 1 | 1 | `rakun` | — | std 01 |
-| 05 | [`05-rakun-config-profiles`](05-rakun-config-profiles/README.md) | critical | 1 · 1 | 1 | `rakun` | — | std 01 |
+| 05 | [`05-rakun-config-profiles`](../181-rakun-config-profiles/README.md) | critical | 1 · 1 | 1 | `rakun` | — | std 01 |
 | 22 | [`22-rakun-file-routing`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/22-rakun-file-routing/README.md) | critical | 1 · 1 | 2 | `rakun-app` | 05 | std 01 · std `04-routing-lib` |
-| 72 | [`72-rakun-auto-configuration`](72-rakun-auto-configuration/README.md) | critical | 1 · 3 | 3 | `rakun` | 04 · 05 · 06 | — |
-| 06 | [`06-rakun-context-api`](06-rakun-context-api/README.md) | high | 2 · 2 | 2 | `rakun` | 04 · 05 | — |
-| 62 | [`62-rakun-request-context`](62-rakun-request-context/README.md) | critical | 2 · 2 | 2 | `rakun` | 04 | std 01 |
+| 72 | [`72-rakun-auto-configuration`](../72-rakun-auto-configuration/README.md) | critical | 1 · 3 | 3 | `rakun` | 04 · 05 · 06 | — |
+| 06 | [`06-rakun-context-api`](../182-rakun-context-api/README.md) | high | 2 · 2 | 2 | `rakun` | 04 · 05 | — |
+| 62 | [`62-rakun-request-context`](../62-rakun-request-context/README.md) | critical | 2 · 2 | 2 | `rakun` | 04 | std 01 |
 | 74 | [`74-rakun-tls-ssl-bundles`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/74-rakun-tls-ssl-bundles/README.md) | high | 2 · 2 | 2 | `rakun` | 04 · 05 | — |
-| 80 | [`80-rakun-devtools`](80-rakun-devtools/README.md) | high | 2 · 2 | 2 | `rakun-devtools` | 04 · 05 | std 01 |
-| 07 | [`07-rakun-middleware`](07-rakun-middleware/README.md) | high | 2 · 3 | 3 | `rakun-web` | 06 · 76 (soft) | — |
+| 80 | [`80-rakun-devtools`](../80-rakun-devtools/README.md) | high | 2 · 2 | 2 | `rakun-devtools` | 04 · 05 | std 01 |
+| 07 | [`07-rakun-middleware`](../183-rakun-middleware/README.md) | high | 2 · 3 | 3 | `rakun-web` | 06 · 76 (soft) | — |
 | 08 | [`08-rakun-data-sql`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/08-rakun-data-sql/README.md) | high | 2 · 3 | 3 | `rakun-data` | 06 | — |
 | 11 | [`11-rakun-actuator`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/11-rakun-actuator/README.md) | medium | 2 · 1/3 | 1 (API) · 3 (host) | `rakun-actuator-api` · `rakun-actuator` | — (API) · 06 (host) | — |
 | 13 | [`13-rakun-http-clients`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/13-rakun-http-clients/README.md) | medium | 2 · 3 | 3 | `rakun-client` | 05 · 06 · 12 (soft) | std 01 |
-| 14 | [`14-rakun-validation`](14-rakun-validation/README.md) | medium | 2 · 3 | 3 | core (`config_check.bp`); the library is the bundled `validation` | 05 · 06 | std 01 · `01-std/06-validation-lib` |
+| 14 | [`14-rakun-validation`](../185-rakun-validation/README.md) | medium | 2 · 3 | 3 | core (`config_check.bp`); the library is the bundled `validation` | 05 · 06 | std 01 · `01-std/06-validation-lib` |
 | 15 | [`15-rakun-messaging`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/15-rakun-messaging/README.md) | medium | 2 · 3 | 3 | `rakun-messaging` | 05 · 06 · 11 (API) | std 01 |
 | 19 | [`19-rakun-test-utilities`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/19-rakun-test-utilities/README.md) | low (blocking as a dependency) | 2 · 3 | 3 | `rakun-test` | 04 · 06 | `#[mock]` is `rakun-test`'s ([`../02-packaging/README.md § 3`](../02-packaging/README.md)) |
-| 21 | [`21-rakun-hateoas`](21-rakun-hateoas/README.md) | low | 2 · 3 | 3 | `rakun-hateoas` | 06 · 22 (ro) | — |
-| 23 | [`23-rakun-ssr-pipeline`](23-rakun-ssr-pipeline/README.md) | critical | 2 · 2 | 3 | `rakun-app` | 04 · 06 · 22 · 62 | onze 49 (the render function it hands) · std 01 · 02 · 03 |
-| 16 | [`16-rakun-scheduling`](16-rakun-scheduling/README.md) | medium | 2 · 3 | 4 | `rakun-scheduling` | 05 · 06 · 11 (host) | std 01 |
+| 21 | [`21-rakun-hateoas`](../187-rakun-hateoas/README.md) | low | 2 · 3 | 3 | `rakun-hateoas` | 06 · 22 (ro) | — |
+| 23 | [`23-rakun-ssr-pipeline`](../23-rakun-ssr-pipeline/README.md) | critical | 2 · 2 | 3 | `rakun-app` | 04 · 06 · 22 · 62 | onze 49 (the render function it hands) · std 01 · 02 · 03 |
+| 16 | [`16-rakun-scheduling`](../16-rakun-scheduling/README.md) | medium | 2 · 3 | 4 | `rakun-scheduling` | 05 · 06 · 11 (host) | std 01 |
 | 17 | [`17-rakun-logging`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/17-rakun-logging/README.md) | low (high as a dependency) | 2 · 3 | 4 | `rakun-logging` | 05 · 06 · 11 (host) · 62 | std 03 |
-| 61 | [`61-rakun-parallel-intercepting-routes`](61-rakun-parallel-intercepting-routes/README.md) | high | 2 · 4 | 4 | `rakun-app` | 22 · 23 · 62 | jhonstart 27 · 30 |
-| 63 | [`63-rakun-navigation-signals`](63-rakun-navigation-signals/README.md) | high | 2 · 3 | 4 | `rakun-app` | 22 · 62 | — |
+| 61 | [`61-rakun-parallel-intercepting-routes`](../61-rakun-parallel-intercepting-routes/README.md) | high | 2 · 4 | 4 | `rakun-app` | 22 · 23 · 62 | jhonstart 27 · 30 |
+| 63 | [`63-rakun-navigation-signals`](../63-rakun-navigation-signals/README.md) | high | 2 · 3 | 4 | `rakun-app` | 22 · 62 | — |
 | 73 | [`73-rakun-starters`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/73-rakun-starters/README.md) | high | 2 · 4 | 4 | `starters/` | 04 · 72 · the modules each starter aggregates | — |
-| 75 | [`75-rakun-observability-metrics`](75-rakun-observability-metrics/README.md) | high | 2 · 4 | 4 | `rakun-metrics` | 11 (API) · 13 · 74 · 17 (reads its correlation field, owns nothing there) | — |
-| 82 | [`82-rakun-static-assets`](82-rakun-static-assets/README.md) | medium | 2 · 4 | 4 | `rakun-web` | 04 · 05 · 07 | std 01 · 03 |
+| 75 | [`75-rakun-observability-metrics`](../75-rakun-observability-metrics/README.md) | high | 2 · 4 | 4 | `rakun-metrics` | 11 (API) · 13 · 74 · 17 (reads its correlation field, owns nothing there) | — |
+| 82 | [`82-rakun-static-assets`](../82-rakun-static-assets/README.md) | medium | 2 · 4 | 4 | `rakun-web` | 04 · 05 · 07 | std 01 · 03 |
 | 12 | [`12-rakun-cache`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/12-rakun-cache/README.md) | medium | 2 · 3 | 5 | `rakun-cache` | 05 · 06 · 11 (host) · 13 · 18 · 62 | std 01 · 03 |
 | 65 | [`65-rakun-url-rules`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/65-rakun-url-rules/README.md) | high | 2 · 4 | 5 | `rakun-web` | 07 · 13 · 22 · 62 · 63 | std 01 |
-| 85 | [`85-rakun-mail`](85-rakun-mail/README.md) | medium | 2 · 4 | 6 | `rakun-mail` | 05 · 11 (API) · 74 · 83 · 23 (seam) | std 01 |
+| 85 | [`85-rakun-mail`](../85-rakun-mail/README.md) | medium | 2 · 4 | 6 | `rakun-mail` | 05 · 11 (API) · 74 · 83 · 23 (seam) | std 01 |
 | 88 | [`88-rakun-cli`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/88-rakun-cli/README.md) | medium | 2 · 5 | 7 | `rakun-cli` | 04 · 05 · 06 · 80 · 81 · 93 (optional, reversed) | std 01 |
-| 66 | [`66-rakun-metadata-file-routes`](66-rakun-metadata-file-routes/README.md) | medium | 3 · 4 | 3 | `rakun-app` | 22 · 62 · 60 (optional) | jhonstart 32 · onze 70 (optional) · std 01 · 03 |
+| 66 | [`66-rakun-metadata-file-routes`](../66-rakun-metadata-file-routes/README.md) | medium | 3 · 4 | 3 | `rakun-app` | 22 · 62 · 60 (optional) | jhonstart 32 · onze 70 (optional) · std 01 · 03 |
 | 09 | [`09-rakun-data-nosql`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/09-rakun-data-nosql/README.md) | low | 3 · 4 | 4 | `rakun-data` | 08 · 07 (ro) | — |
-| 10 | [`10-rakun-security-auth`](10-rakun-security-auth/README.md) | high | 3 · 4 | 4 | `rakun-security` | 07 · 08 | std 01 |
-| 18 | [`18-rakun-session`](18-rakun-session/README.md) | low (high as a security surface) | 3 · 4 | 4 | `rakun-session` | 05 · 06 · 07 · 08 · 11 (host) · 62 | std 01 |
-| 25 | [`25-rakun-route-handlers`](25-rakun-route-handlers/README.md) | high | 3 · 3 | 4 | `rakun-app` | 06 · 07 · 22 · 23 · 62 | jhonstart 30 · std 01 |
-| 77 | [`77-rakun-db-migrations`](77-rakun-db-migrations/README.md) | high | 3 · 4 | 4 | `rakun-data` | 08 · 72 | std 03 |
-| 78 | [`78-rakun-orm-entities`](78-rakun-orm-entities/README.md) | high | 3 · 4 | 4 | `rakun-data` | 08 · 14 | — |
+| 10 | [`10-rakun-security-auth`](../184-rakun-security-auth/README.md) | high | 3 · 4 | 4 | `rakun-security` | 07 · 08 | std 01 |
+| 18 | [`18-rakun-session`](../18-rakun-session/README.md) | low (high as a security surface) | 3 · 4 | 4 | `rakun-session` | 05 · 06 · 07 · 08 · 11 (host) · 62 | std 01 |
+| 25 | [`25-rakun-route-handlers`](../25-rakun-route-handlers/README.md) | high | 3 · 3 | 4 | `rakun-app` | 06 · 07 · 22 · 23 · 62 | jhonstart 30 · std 01 |
+| 77 | [`77-rakun-db-migrations`](../77-rakun-db-migrations/README.md) | high | 3 · 4 | 4 | `rakun-data` | 08 · 72 | std 03 |
+| 78 | [`78-rakun-orm-entities`](../78-rakun-orm-entities/README.md) | high | 3 · 4 | 4 | `rakun-data` | 08 · 14 | — |
 | 93 | [`93-rakun-soap-webservices`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/93-rakun-soap-webservices/README.md) | low | 3 · 4 | 4 | `rakun-soap` | 05 · 07 · 13 · 74 | — |
-| 20 | [`20-rakun-websocket`](20-rakun-websocket/README.md) | low | 3 · 4 | 5 | `rakun-websocket` | 04 · 05 · 06 · 07 · 10 · 11 (API) · 62 | std 01 |
-| 76 | [`76-rakun-actuator-security-probes`](76-rakun-actuator-security-probes/README.md) | high | 3 · 5 | 5 | `rakun-actuator` | 10 · 11 · 74 | — |
+| 20 | [`20-rakun-websocket`](../186-rakun-websocket/README.md) | low | 3 · 4 | 5 | `rakun-websocket` | 04 · 05 · 06 · 07 · 10 · 11 (API) · 62 | std 01 |
+| 76 | [`76-rakun-actuator-security-probes`](../76-rakun-actuator-security-probes/README.md) | high | 3 · 5 | 5 | `rakun-actuator` | 10 · 11 · 74 | — |
 | 79 | [`79-rakun-oauth2-sso`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/79-rakun-oauth2-sso/README.md) | high | 3 · 5 | 5 | `rakun-security` | 05 · 10 · 11 (API) · 13 · 18 · 74 | std 01 |
-| 83 | [`83-rakun-distributed-transactions`](83-rakun-distributed-transactions/README.md) | medium | 3 · 4 | 5 | `rakun-tx` | 05 · 08 · 15 · 16 · 77 | — |
-| 84 | [`84-rakun-persistent-jobs`](84-rakun-persistent-jobs/README.md) | medium | 3 · 4 | 5 | `rakun-scheduling` | 05 · 08 · 11 (host) · 16 · 77 | — |
-| 86 | [`86-rakun-messaging-reliability`](86-rakun-messaging-reliability/README.md) | medium | 3 · 4 | 5 | `rakun-messaging` | 05 · 15 · 75 · 83 (seam) | std 01 |
-| 24 | [`24-rakun-server-actions`](24-rakun-server-actions/README.md) | critical | 3 · 3 | 6 | `rakun-app` | 06 · 12 · 14 · 22 · 23 · 62 · 63 | jhonstart 67 (through onze) · std 01 · 03 |
-| 60 | [`60-rakun-static-generation`](60-rakun-static-generation/README.md) | critical | 3 · 4 | 6 | `rakun-app` | 12 · 22 · 23 · 62 | std 01 · 02 · 03 |
-| 64 | [`64-rakun-i18n-routing`](64-rakun-i18n-routing/README.md) | medium | 3 · 4 | 6 | `rakun-app` | 07 · 12 · 22 · 62 · 63 | jhonstart 32 · std 01 |
+| 83 | [`83-rakun-distributed-transactions`](../83-rakun-distributed-transactions/README.md) | medium | 3 · 4 | 5 | `rakun-tx` | 05 · 08 · 15 · 16 · 77 | — |
+| 84 | [`84-rakun-persistent-jobs`](../84-rakun-persistent-jobs/README.md) | medium | 3 · 4 | 5 | `rakun-scheduling` | 05 · 08 · 11 (host) · 16 · 77 | — |
+| 86 | [`86-rakun-messaging-reliability`](../86-rakun-messaging-reliability/README.md) | medium | 3 · 4 | 5 | `rakun-messaging` | 05 · 15 · 75 · 83 (seam) | std 01 |
+| 24 | [`24-rakun-server-actions`](../24-rakun-server-actions/README.md) | critical | 3 · 3 | 6 | `rakun-app` | 06 · 12 · 14 · 22 · 23 · 62 · 63 | jhonstart 67 (through onze) · std 01 · 03 |
+| 60 | [`60-rakun-static-generation`](../60-rakun-static-generation/README.md) | critical | 3 · 4 | 6 | `rakun-app` | 12 · 22 · 23 · 62 | std 01 · 02 · 03 |
+| 64 | [`64-rakun-i18n-routing`](../64-rakun-i18n-routing/README.md) | medium | 3 · 4 | 6 | `rakun-app` | 07 · 12 · 22 · 62 · 63 | jhonstart 32 · std 01 |
 | 81 | [`81-rakun-packaging-release`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/81-rakun-packaging-release/README.md) | high | 3 · 2 | 6 | `rakun-release` | 04 · 05 · 11 (host) · 76 | std 01 |
-| 87 | [`87-rakun-audit-and-exchanges`](87-rakun-audit-and-exchanges/README.md) | medium | 3 · 5 | 6 | `rakun-actuator` | 07 · 08 · 10 · 11 · 76 | std 01 |
-| 89 | [`89-rakun-stream-pipelines`](89-rakun-stream-pipelines/README.md) | low | 3 · 5 | 6 | `rakun-stream` | 05 · 08 · 11 (host) · 15 · 86 | std 01 |
-| 90 | [`90-rakun-jms-brokers`](90-rakun-jms-brokers/README.md) | low | 3 · 5 | 6 | `rakun-messaging` | 05 · 11 (API) · 15 · 74 · 86 | — |
+| 87 | [`87-rakun-audit-and-exchanges`](../87-rakun-audit-and-exchanges/README.md) | medium | 3 · 5 | 6 | `rakun-actuator` | 07 · 08 · 10 · 11 · 76 | std 01 |
+| 89 | [`89-rakun-stream-pipelines`](../89-rakun-stream-pipelines/README.md) | low | 3 · 5 | 6 | `rakun-stream` | 05 · 08 · 11 (host) · 15 · 86 | std 01 |
+| 90 | [`90-rakun-jms-brokers`](../90-rakun-jms-brokers/README.md) | low | 3 · 5 | 6 | `rakun-messaging` | 05 · 11 (API) · 15 · 74 · 86 | — |
 | 91 | [`91-rakun-pulsar`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/91-rakun-pulsar/README.md) | low | 3 · 5 | 6 | `rakun-pulsar` | 05 · 13 · 15 · 74 · 79 · 83 · 86 | — |
 | 92 | [`92-rakun-rsocket`](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/03-rakun/92-rakun-rsocket/README.md) | low | 3 · 5 | 6 | `rakun-rsocket` | 07 · 15 · 20 · 74 · 86 | std 01 · 02 |
 

@@ -6,7 +6,7 @@ priority: |-
 repository: none of its own — each step runs in the front that owns its repository (144 B-27, 150 s24, 150 s45, 150 s55, 150 s68), with that front's worktree and Conformance step
 model: "haiku — coordination only: the order of the snapshot steps (`AGENTS.md` § Which model a thread runs on)"
 gate: standard (fronts.md § Gate); a moved block keeps its own `**Gate:**` additions.
-owns: the order of the snapshot steps; the evaluation in [`20-snap/README.md`](20-snap/context.md).
+owns: the order of the snapshot steps; the evaluation in [`20-snap/README.md`](../188-snap/context.md).
 depends-on: 135 s0 (done, 391).
 ---
 # Front 135 — snap: the second test layer, re-evaluated case by case (coordination)

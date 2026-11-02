@@ -10,7 +10,7 @@ graph, the target, what `emilia-test` is for, and the front → code ownership t
 
 ## Verdict
 
-Two members — front [95](../02-packaging/95-ecosystem-package-restructure/README.md)'s cut: one core
+Two members — front [95](../95-ecosystem-package-restructure/README.md)'s cut: one core
 package with the theme, preflight and utilities as files inside it, as Tailwind ships `theme.css`,
 `preflight.css` and `utilities.css` inside one `tailwindcss` package. A per-domain package would
 make core depend on it and it on core's `Token` — a cycle — and the payload variants must live in
@@ -102,8 +102,8 @@ No cycle: `emilia.bp` is imported by no sibling.
 its only state — the per-render stylesheet cell — is a `Map` on `globalThis` in commonJS and a
 process-dictionary list in erlang, behind one contract. Front 48's class name is the one output both
 halves of an application read: the server render (jhonstart
-[30](../04-jhonstart/30-jhonstart-streaming/README.md), erlang) writes it, the client bundle (onze
-[68](../06-onze/68-onze-client-bundle/README.md), js) recomputes it; contract 4's fixture
+[30](../30-jhonstart-streaming/README.md), erlang) writes it, the client bundle (onze
+[68](../68-onze-client-bundle/README.md), js) recomputes it; contract 4's fixture
 (`e_39b87d03`) asserts the same literal on both.
 
 ## What `emilia-test` is for
@@ -154,10 +154,10 @@ build failures, not values a helper can read; they belong in the compiler's suit
 | Neighbour | Front | What crosses | Direction |
 |---|---|---|---|
 | jhonstart | 48 | `styled(tokens, th)` returns the `#("class", …)` pair a builder's `attrs` takes; `cls(tokens, th)` the string a pre-bound `[class]={…}` hole takes (a hole may not contain a space); `html_attrs.bp` is the one cross-repo file | none at package level: jhonstart never imports emilia, emilia imports jhonstart nowhere |
-| jhonstart | [94](../04-jhonstart/94-jhonstart-element-surface/README.md) | the element constructors' `attrs` array the slot writes into; attribute order is class identity (contract 4 clause 5) | read-only |
-| jhonstart | [30](../04-jhonstart/30-jhonstart-streaming/README.md) | the `jhonstart-emilia` bridge implements jhonstart's asynchronous `RenderPlugin` by awaiting `flush() -> @Task<string>` / `flushWith(o)`: the head's `<style>` once, each streamed boundary's `<style>` inside its fill, and `payload()` answering `#("s", <the class names it flushed>)`; the client bundle never calls `flush()` (contract 6a, decisions 113 and 114). The bridge's test is the one that renders a page with emilia's classes and asserts the contract 4 literal | `jhonstart-emilia` → `emilia` |
-| onze | [69](../06-onze/69-onze-styling-pipeline/README.md) | registers the bridge's plugin at boot; the stylesheet records of the manifest | `onze` → `jhonstart-emilia` |
-| onze | [68](../06-onze/68-onze-client-bundle/README.md) | at build time the bundler calls `styleRule(tokens, th)` for every client `emilia(...)` call to fill its `styleMap`, and asserts the contract 4 literal; onze imports emilia directly (decisions 113, 116) | `onze` → `emilia` |
+| jhonstart | [94](../94-jhonstart-element-surface/README.md) | the element constructors' `attrs` array the slot writes into; attribute order is class identity (contract 4 clause 5) | read-only |
+| jhonstart | [30](../30-jhonstart-streaming/README.md) | the `jhonstart-emilia` bridge implements jhonstart's asynchronous `RenderPlugin` by awaiting `flush() -> @Task<string>` / `flushWith(o)`: the head's `<style>` once, each streamed boundary's `<style>` inside its fill, and `payload()` answering `#("s", <the class names it flushed>)`; the client bundle never calls `flush()` (contract 6a, decisions 113 and 114). The bridge's test is the one that renders a page with emilia's classes and asserts the contract 4 literal | `jhonstart-emilia` → `emilia` |
+| onze | [69](../69-onze-styling-pipeline/README.md) | registers the bridge's plugin at boot; the stylesheet records of the manifest | `onze` → `jhonstart-emilia` |
+| onze | [68](../68-onze-client-bundle/README.md) | at build time the bundler calls `styleRule(tokens, th)` for every client `emilia(...)` call to fill its `styleMap`, and asserts the contract 4 literal; onze imports emilia directly (decisions 113, 116) | `onze` → `emilia` |
 
 emilia never imports `jhonstart`, `rakun` or `onze`, dev-only included. Its class-name hash is the
 djb2 fold std's `hash.contentHash` implements (decision 116; the switch from emilia's own `hashHex`

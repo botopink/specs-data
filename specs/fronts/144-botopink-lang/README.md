@@ -334,10 +334,10 @@ Where each step is (its machine's folder holds its whole text).
 | B-79 | [2](../144-backends-tooling/README.md) | `botopink run` of a program with no `fn main`: one located error on every target and host (decision 517) |
 | B-80 | [2](../144-backends-tooling/README.md) | onze-cli's CSS accessors test red under `test-libs` on commonJS and erlang |
 | B-81 | [2](../144-backends-tooling/README.md) | rakun-data's `#[query]` test red under `test-libs` on erlang |
-| B-82 | [164](../144-backends-tooling/164-wasm-gc/README.md) | moved to front 164 wasm-gc, s1 |
-| B-83 | [164](../144-backends-tooling/164-wasm-gc/README.md) | moved to front 164 wasm-gc, s2 |
-| B-84 | [164](../144-backends-tooling/164-wasm-gc/README.md) | moved to front 164 wasm-gc, s3 |
-| B-85 | [164](../144-backends-tooling/164-wasm-gc/README.md) | moved to front 164 wasm-gc, s4 |
+| B-82 | [164](../164-wasm-gc/README.md) | moved to front 164 wasm-gc, s1 |
+| B-83 | [164](../164-wasm-gc/README.md) | moved to front 164 wasm-gc, s2 |
+| B-84 | [164](../164-wasm-gc/README.md) | moved to front 164 wasm-gc, s3 |
+| B-85 | [164](../164-wasm-gc/README.md) | moved to front 164 wasm-gc, s4 |
 | B-86 | [2](../144-backends-tooling/README.md) | the catalogue across packages (`@TypeInfo.all` reaching a dependency's declarations) and the lib-agnostic gate's list `rakun|query` (front 165 s4, mono-a) |
 | B-87 | [2](../144-backends-tooling/README.md) | erlang: a `var` reassigned inside a nested arm reaches a `defer` late (539) |
 | B-88 | [2](../144-backends-tooling/README.md) | a jump from a block or a `case` arm reaches its loop or generator on commonJS and erlang (541 (2)) |

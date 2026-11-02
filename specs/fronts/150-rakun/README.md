@@ -1013,7 +1013,7 @@ under (b) the core gains the extension point, `rakun-websocket` one registration
 green in `modules/rakun-cli`.
 
 Blast radius: manifest gains `rakun-client` (nothing depends on `rakun-cli`; update
-[`../modules.md`](04-rakun/modules.md) in the same commit); `beans`' output gains a column — `inspect_test.bp` re-records.
+[`../modules.md`](../206-rakun/modules.md) in the same commit); `beans`' output gains a column — `inspect_test.bp` re-records.
 
 ### 150 s21 — test utilities' rest (19 s2–s7)
 

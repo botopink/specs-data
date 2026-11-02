@@ -29,28 +29,28 @@ Level = distance from the root of the track's dependency graph (`Depends on` lin
 
 | # | Front | Priority | Level | Code | Depends on | Open |
 |---|---|---|---|---|---|---|
-| 54 | [emilia-theme](54-emilia-theme/README.md) | **critical** | 0 | `theme.bp`, `spacing.bp` | — | 1 |
-| 56 | [emilia-cascade-and-output](56-emilia-cascade-and-output/README.md) | high | 1 | `output.bp`; cells, entry points, `fullTheme`, `tokenToSheet` in `emilia.bp` | 54 | 1 |
+| 54 | [emilia-theme](../54-emilia-theme/README.md) | **critical** | 0 | `theme.bp`, `spacing.bp` | — | 1 |
+| 56 | [emilia-cascade-and-output](../56-emilia-cascade-and-output/README.md) | high | 1 | `output.bp`; cells, entry points, `fullTheme`, `tokenToSheet` in `emilia.bp` | 54 | 1 |
 | 33 | [emilia-color-palette](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/05-emilia/33-emilia-color-palette/README.md) | **critical** | 2 | banner blocks | 54 · 56 | — |
 | 34 | [emilia-modifiers](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/05-emilia/34-emilia-modifiers/README.md) | **critical** | 2 | banner blocks | 54 · 56 | — |
-| 35 | [emilia-spacing-sizing](35-emilia-spacing-sizing/README.md) | **critical** | 2 | banner blocks | 54 · 56 | — |
-| 55 | [emilia-preflight](55-emilia-preflight/README.md) | high | 2 | `preflight.bp` | 56 | — |
-| 57 | [emilia-escape-hatches](57-emilia-escape-hatches/README.md) | high | 2 | `arbitrary.bp` | 54 · 56 | — |
-| 58 | [emilia-container-queries](58-emilia-container-queries/README.md) | medium | 2 | `container.bp` | 54 · 56 | — |
-| 36 | [emilia-layout](36-emilia-layout/README.md) | high | 3 | banner blocks | 54 · 56 · 33 | — |
-| 37 | [emilia-grid](37-emilia-grid/README.md) | high | 3 | banner blocks | 54 · 56 | — |
-| 38 | [emilia-typography](38-emilia-typography/README.md) | high | 3 | banner blocks | 54 · 56 · 33 | — |
-| 39 | [emilia-backgrounds](39-emilia-backgrounds/README.md) | high | 3 | banner blocks | 33 · 54 · 56 | — |
-| 40 | [emilia-borders](40-emilia-borders/README.md) | high | 3 | banner blocks | 33 · 54 · 56 | — |
-| 41 | [emilia-effects](41-emilia-effects/README.md) | high | 3 | banner blocks | 33 · 34 | — |
-| 42 | [emilia-filters](42-emilia-filters/README.md) | medium | 3 | banner blocks | — (arm order after 33 · 34 · 35) | — |
-| 43 | [emilia-tables](43-emilia-tables/README.md) | low | 3 | banner blocks | 35 | — |
-| 44 | [emilia-transitions](44-emilia-transitions/README.md) | high | 3 | banner blocks | 34 | — |
-| 45 | [emilia-transforms](45-emilia-transforms/README.md) | medium | 3 | banner blocks | 44 | — |
-| 46 | [emilia-interactivity](46-emilia-interactivity/README.md) | medium | 3 | banner blocks | 33 | — |
-| 47 | [emilia-svg-accessibility](47-emilia-svg-accessibility/README.md) | low | 3 | banner blocks | 33 | — |
-| 59 | [emilia-custom-utilities-and-variants](59-emilia-custom-utilities-and-variants/README.md) | medium-high | 3 | `compose.bp`; `named` in `emilia.bp` | 34 · 56 | — |
-| 48 | [emilia-attributes](48-emilia-attributes/README.md) | high | 3 | `attributes.bp`; the slot fns in `emilia.bp`; `repository/jhonstart/modules/jhonstart/src/html_attrs.bp` (emilia-unaware) | [26](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/04-jhonstart/26-jhonstart-router/README.md) · 33–47 | 3 |
+| 35 | [emilia-spacing-sizing](../35-emilia-spacing-sizing/README.md) | **critical** | 2 | banner blocks | 54 · 56 | — |
+| 55 | [emilia-preflight](../55-emilia-preflight/README.md) | high | 2 | `preflight.bp` | 56 | — |
+| 57 | [emilia-escape-hatches](../57-emilia-escape-hatches/README.md) | high | 2 | `arbitrary.bp` | 54 · 56 | — |
+| 58 | [emilia-container-queries](../58-emilia-container-queries/README.md) | medium | 2 | `container.bp` | 54 · 56 | — |
+| 36 | [emilia-layout](../36-emilia-layout/README.md) | high | 3 | banner blocks | 54 · 56 · 33 | — |
+| 37 | [emilia-grid](../37-emilia-grid/README.md) | high | 3 | banner blocks | 54 · 56 | — |
+| 38 | [emilia-typography](../38-emilia-typography/README.md) | high | 3 | banner blocks | 54 · 56 · 33 | — |
+| 39 | [emilia-backgrounds](../39-emilia-backgrounds/README.md) | high | 3 | banner blocks | 33 · 54 · 56 | — |
+| 40 | [emilia-borders](../40-emilia-borders/README.md) | high | 3 | banner blocks | 33 · 54 · 56 | — |
+| 41 | [emilia-effects](../41-emilia-effects/README.md) | high | 3 | banner blocks | 33 · 34 | — |
+| 42 | [emilia-filters](../42-emilia-filters/README.md) | medium | 3 | banner blocks | — (arm order after 33 · 34 · 35) | — |
+| 43 | [emilia-tables](../43-emilia-tables/README.md) | low | 3 | banner blocks | 35 | — |
+| 44 | [emilia-transitions](../44-emilia-transitions/README.md) | high | 3 | banner blocks | 34 | — |
+| 45 | [emilia-transforms](../45-emilia-transforms/README.md) | medium | 3 | banner blocks | 44 | — |
+| 46 | [emilia-interactivity](../46-emilia-interactivity/README.md) | medium | 3 | banner blocks | 33 | — |
+| 47 | [emilia-svg-accessibility](../47-emilia-svg-accessibility/README.md) | low | 3 | banner blocks | 33 | — |
+| 59 | [emilia-custom-utilities-and-variants](../59-emilia-custom-utilities-and-variants/README.md) | medium-high | 3 | `compose.bp`; `named` in `emilia.bp` | 34 · 56 | — |
+| 48 | [emilia-attributes](../48-emilia-attributes/README.md) | high | 3 | `attributes.bp`; the slot fns in `emilia.bp`; `repository/jhonstart/modules/jhonstart/src/html_attrs.bp` (emilia-unaware) | [26](https://github.com/botopink/specs-data/blob/97d5e935aa113615000c0307071dce6258e1be71/specs/1.0.10-beta/04-jhonstart/26-jhonstart-router/README.md) · 33–47 | 3 |
 
 54 is the root because every value ladder resolves through `spacing(n)` and the theme; 56 comes next
 because every front emits through its rule model (`group-*`, `peer-*`, `space-*`, `divide-*`,
@@ -58,9 +58,9 @@ because every front emits through its rule model (`group-*`, `peer-*`, `space-*`
 
 Track D needs nothing from tracks A, B, C or E. Its contacts are outbound: front 48's
 `html_attrs.bp`, written into jhonstart's tree and emilia-unaware; the `jhonstart-emilia` bridge
-(jhonstart [30](../04-jhonstart/30-jhonstart-streaming/README.md)) reading `flush` / `flushWith`,
+(jhonstart [30](../30-jhonstart-streaming/README.md)) reading `flush` / `flushWith`,
 whose test is where a rendered page and emilia's class meet; and onze
-[68](../06-onze/68-onze-client-bundle/README.md) reading the contract 4 literal through `styleRule`.
+[68](../68-onze-client-bundle/README.md) reading the contract 4 literal through `styleRule`.
 emilia imports nobody and carries no dependency, dev-dependency included, on another library: every
 emilia example and test produces CSS and asserts the string, and an example that renders styled HTML
 is an onze example (decisions 113 and 114).

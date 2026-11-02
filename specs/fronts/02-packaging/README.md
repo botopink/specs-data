@@ -1,6 +1,6 @@
 ---
 milestone: 1.0.10-beta
-track: cross-cutting (A std · B rakun · C jhonstart · D emilia · E onze) — the packaging half of [`95-ecosystem-package-restructure/`](95-ecosystem-package-restructure/README.md), beside this file; the std/testing/asserts half is [`../01-std/`](../01-std/)
+track: cross-cutting (A std · B rakun · C jhonstart · D emilia · E onze) — the packaging half of [`95-ecosystem-package-restructure/`](../95-ecosystem-package-restructure/README.md), beside this file; the std/testing/asserts half is [`../01-std/`](../01-std/)
 priority: high — every library front of this milestone writes into a directory this front creates, and every `-test` submodule and example project is invisible to the gate until the discovery change here lands
 target: none of its own — a structural front; each submodule and example declares the target its library is assigned (`overview.md` § Which target runs what)
 depends-on: "`01-std` (the `onze` directory is free, `testing.asserts` and `testing.snapshots` exist)"
@@ -23,7 +23,7 @@ workspace rule of decisions 75 and 76, and hands each library its `modules.md` t
 
 The manifest model (step 1) holds in every tool. jhonstart, emilia, rakun and erika are workspaces
 with their core, `-test` member and example members (the member list per library is in
-[`95-ecosystem-package-restructure/`](95-ecosystem-package-restructure/README.md) § *Current
+[`95-ecosystem-package-restructure/`](../95-ecosystem-package-restructure/README.md) § *Current
 state*); `repository/onze` still holds the retired mocking library until the takeover (`../01-std`
 step 5). Open: step 2's `rakun-web` / `files` / `path` box, the onze `-test` member and the moved
 suites; step 3's example manifests, READMEs and `git` dependencies; step 4's helpers; the

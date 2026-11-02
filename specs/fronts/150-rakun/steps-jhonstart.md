@@ -166,7 +166,7 @@ Every fallback digest changes from 8 hex to 16.
 
 #### Step 6 — the spec examples and the eight READMEs (was `26-jhonstart-router` s6)
 
-[`examples/`](26-jhonstart-router/examples) corrected: `request-scope-example.bp` passes every untrusted value
+[`examples/`](../221-jhonstart-router/examples) corrected: `request-scope-example.bp` passes every untrusted value
 through `escape.html` / `escape.attribute`; `blog-post-page-example.bp` hands its two loaders to
 `async.runAll` as thunks; `streamed-blog-page-example.bp` follows step 3's answer
 (`examples/src/**/*.bpp` show the same pages as `.bpp`). Each `examples/<p>/README.md` names the
@@ -332,8 +332,8 @@ activates").
 
 #### Step 5 — the examples (was `67-jhonstart-forms` s5)
 
-[`examples/create-post-form-example.bp`](67-jhonstart-forms/examples/create-post-form-example.bp) and
-[`optimistic-like-example.bp`](67-jhonstart-forms/examples/optimistic-like-example.bp) are the shapes steps 1–3
+[`examples/create-post-form-example.bp`](../67-jhonstart-forms/examples/create-post-form-example.bp) and
+[`optimistic-like-example.bp`](../67-jhonstart-forms/examples/optimistic-like-example.bp) are the shapes steps 1–3
 assert (`examples/src/**/*.bpp` show them as `.bpp`); corrected here if the surface moves. Neither
 carries a `// LANGUAGE GAP` marker.
 

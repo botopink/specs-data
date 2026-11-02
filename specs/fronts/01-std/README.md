@@ -47,10 +47,10 @@ flag, no environment variable, no manifest key (decision 67). Mocking is `testin
 | [`test-snap.md`](test-snap.md) | the snapshot-test map for std itself |
 | [`examples/asserts-unit-example.bp`](examples/asserts-unit-example.bp) | Example 1 — `testing.asserts` alone |
 | [`examples/emilia-test-submodule-example.bp`](examples/emilia-test-submodule-example.bp) · [`examples/emilia-test-consumer-example.bp`](examples/emilia-test-consumer-example.bp) | Example 2 — an `emilia-test` submodule and the test file that consumes it with `@src()` |
-| [`01-std-lib-enablement/`](01-std-lib-enablement/README.md) · [`02-std-async-primitives/`](02-std-async-primitives/README.md) · [`03-std-content-hash/`](03-std-content-hash/README.md) | step 6 — the three std sub-fronts |
-| [`04-routing-lib/`](04-routing-lib/README.md) | step 8 — the bundled library `routing` (decision 115): the route matcher, the `k` / `z` / URL-rule codecs, the navigation vocabulary and the `:param` grammar (decision 116) |
-| [`05-actions-lib/`](05-actions-lib/README.md) · [`06-validation-lib/`](06-validation-lib/README.md) | step 9 — the bundled libraries `actions` (the server-action envelope, `state` grammar, JSON-RPC body, `refresh`) and `validation` (rakun-validation moved, its message lookup injected) — decision 116 |
-| [`01-std-lib-enablement/`](01-std-lib-enablement/README.md) Steps 11–14 | step 10 — std reads and writes JSON: `json.quote` / `unquote` / `array` / `object`, `escape.scriptJson`, the `Json` type and `json.decode` (decisions 116, 117) |
+| [`01-std-lib-enablement/`](../175-std-lib-enablement/README.md) · [`02-std-async-primitives/`](../176-std-async-primitives/README.md) · [`03-std-content-hash/`](../177-std-content-hash/README.md) | step 6 — the three std sub-fronts |
+| [`04-routing-lib/`](../178-routing-lib/README.md) | step 8 — the bundled library `routing` (decision 115): the route matcher, the `k` / `z` / URL-rule codecs, the navigation vocabulary and the `:param` grammar (decision 116) |
+| [`05-actions-lib/`](../179-actions-lib/README.md) · [`06-validation-lib/`](../180-validation-lib/README.md) | step 9 — the bundled libraries `actions` (the server-action envelope, `state` grammar, JSON-RPC body, `refresh`) and `validation` (rakun-validation moved, its message lookup injected) — decision 116 |
+| [`01-std-lib-enablement/`](../175-std-lib-enablement/README.md) Steps 11–14 | step 10 — std reads and writes JSON: `json.quote` / `unquote` / `array` / `object`, `escape.scriptJson`, the `Json` type and `json.decode` (decisions 116, 117) |
 
 ## Order of what is open
 
@@ -137,7 +137,7 @@ Specified in [`onze-migration.md`](onze-migration.md) § *The rename checklist*.
 the name `onze`); the old library's last commit is tagged in its own repository and the repository
 is archived on the remote, not vendored under `repository/_archived/` — a directory the build would
 otherwise scan. The maintainer's commands are in
-[`../02-packaging/95-ecosystem-package-restructure/README.md`](../02-packaging/95-ecosystem-package-restructure/README.md) step 2.
+[`../02-packaging/95-ecosystem-package-restructure/README.md`](../95-ecosystem-package-restructure/README.md) step 2.
 
 **Acceptance:**
 - [ ] `.gitmodules` has one `repository/onze` entry and it resolves to the orchestrator
@@ -175,7 +175,7 @@ root-does-not-import-`io/` check, and the import grammar of decision 107.
 `libs/routing/` beside `libs/std/` (decision 115): the route matcher, the `k` and `z` blob codecs,
 the URL rules, the navigation vocabulary and the `:param` grammar, pure and compiled for erlang and
 commonJS, resolved by `from "routing"` as `from "std"` is. Specified in
-[`04-routing-lib/README.md`](04-routing-lib/README.md).
+[`04-routing-lib/README.md`](../178-routing-lib/README.md).
 
 **Acceptance:**
 - [ ] the sub-front's own *Gate* holds
@@ -189,8 +189,8 @@ write — the `state` grammar and `ActionState`, the v1 envelope, the JSON-RPC b
 value — with no wire name built in; rakun front 24 and jhonstart front 67 import it.
 `libs/validation/` is rakun-validation moved: its message lookup is handed in (`setMessageSource`),
 it imports std only, and rakun, onze and application code import it by name. Specified in
-[`05-actions-lib/README.md`](05-actions-lib/README.md) and
-[`06-validation-lib/README.md`](06-validation-lib/README.md).
+[`05-actions-lib/README.md`](../179-actions-lib/README.md) and
+[`06-validation-lib/README.md`](../180-validation-lib/README.md).
 
 **Acceptance:**
 - [ ] each sub-front's own *Gate* holds

@@ -397,7 +397,7 @@ After the group's other steps have landed on `feat`; it holds back no front that
 
 #### Step 24 — typed comptime decorator arguments, `syntax decl: T`, `Field<T>` (decision 280) (was `01-checker` s24)
 
-The cases are [`examples/decorator-arguments-280.md`](01-checker/examples/decorator-arguments-280.md) — each
+The cases are [`examples/decorator-arguments-280.md`](../204-checker/examples/decorator-arguments-280.md) — each
 example a `run/` cell, its "não compila" lines `reject/` cells. Landed
 (botopink-lang; the library halves are separate changes, below).
 
@@ -482,7 +482,7 @@ second is deleted; `Type`'s namespace-type spelling (329), `compiler.Field<T>` a
 - [x] a field key at run time — removed by decision 599 (no use outside the compiler's cells): `Type.keys`, `Field.of`, `Field.all`, the five `field_key_*` / `type_keys_*` cells and `docs.md`'s paragraph go in B-140; the build-time `.field` argument (280 example 6) stays
 - [x] the four bare names (`partial`, `pick`, `omit`, `mergeRecords`) leave `tryResolveTypeManipulationCall`
       when `01-checker` step 28 keys its resolver on `Type`
-- [ ] [`examples/types.bp`](134-builtins-declared/examples/types.bp) — the whole `Type` surface, signatures and results —
+- [ ] [`examples/types.bp`](../134-builtins-declared/examples/types.bp) — the whole `Type` surface, signatures and results —
       compiles and passes on the four targets; its "does not compile" lines are `01-checker` step 28's
       `reject/` cells; `Type.merge` with a field on both sides is an error, `Type.required` drops every `?`
 - [ ] `docs.md` § Builtins generated from or checked against the declarations

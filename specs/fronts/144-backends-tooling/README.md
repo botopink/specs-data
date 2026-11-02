@@ -1823,7 +1823,7 @@ compiler defect is fixed here; a library's is a row of rakun's front (150) and t
 
 ### B-82 … B-85 — moved to front 164 wasm-gc (2026-10-14)
 
-The wasm-gc group is a front of its own in this machine’s folder, **run by this machine**: [`164-wasm-gc/README.md`](164-wasm-gc/README.md) — s1 (B-82,
+The wasm-gc group is a front of its own in this machine’s folder, **run by this machine**: [`164-wasm-gc/README.md`](../164-wasm-gc/README.md) — s1 (B-82,
 wasmtime), s2 (B-83, WasmGC codegen), s3 (B-84, std-wasm in botopink and `.wat`), s4 (Conformance). Nothing of it
 stays here; B-30 is closed as superseded by it.
 
