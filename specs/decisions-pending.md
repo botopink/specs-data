@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1089**.
+number, which is **1090**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -206,12 +206,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162wasm-b · wasm linear mode: should `typeDescriptors` gain decision 823's `is Async<unknown>` case, mirroring `gcTypeTests`, or is 823 GC-only by design?
-- **Measured.** `gcTypeTests` (`wat.zig`) has decision 823 (3)'s case for `isTaskTypeRef` (`is Async<unknown>` → `ref.test (ref $task)`); `typeDescriptors`, the linear-mode equivalent, has no such case — it was only ever wired for GC mode. So once a module falls back from `.gc` to `.linear` for any reason (see b162wasm-a), every `is Async<unknown>` anywhere in the program — including one reached only inside `std/context.bp`'s own hook-resolution code, not written in the entry module — refuses: "`is Async<unknown>`: the wasm backend has no run-time test for this type (no value of it carries a descriptor) — in another module's code this line reaches". Confirmed only reachable today through b162wasm-a's fallback; no other known path forces `.gc` → `.linear` for a module using `Async`'s `is` test.
-- **Options.** (a) add `isTaskTypeRef`'s case to `typeDescriptors` too, so `is Async<unknown>` keeps working even if a module falls back to linear for an unrelated reason. (b) decided intentionally GC-only (823 was written GC-only); leave it, since fixing b162wasm-a removes the only known path that reaches this.
-- **Recommendation.** (b) if b162wasm-a is answered (a) — cheap insurance either way, but not urgent on its own.
-- **Blocks.** Same as b162wasm-a: front 170 s7's 4 unit tests, recorded via `assertJsRefusedOnWasm` pending both, plus `codegen/tests/wat.zig`'s "needs ---- a use memo module stays WasmGC" (decision 771), recorded as an expected `ModuleDidNotCompile` pending both.
 
 #### b162wasm-c · wasm: a level-B (code-cache) build of the `closure_invariant` fixture's `crowded` consumer differs from its `--cold` build
 - **Measured.** Re-investigated with a full bisection of every one of B-162 P1's 14 commits: level_b.sh's wasm failure (crowded's output importing shelf@tools.pick/total under level B vs inlining them under --cold) reproduces identically at every one of them, including the earliest. Rebuilding the unmodified origin/feat tip fresh (a clean worktree, zig build, no code change) and running level_b.sh against that fresh binary reproduces the exact same two failures, byte-for-byte the same .wat diff. The earlier "confirmed absent on the unmodified feat tip" rested on the main checkout's pre-built botopink binary, whose mtime predates modules/compiler-core/src/codegen/wat.zig and modules/compiler-cli/src/cli/build.zig in that same checkout (confirmed by stat) — a stale binary, not current feat behaviour. Traced with temporary debug prints at wat.zig's cachedUnit check and at emitWat's call site: crowded's own merged linked.items list going into emitWat is byte-identical between --cold and the level-B build (same module names, same ASTs from collectLinks, which never consults the unit cache) in both this front's build and a fresh feat build — so the inline/import choice does not come from collectLinks/linked, it is intrinsic to how wasm's per-module unit emission (units_mode, isProgramUnit, decision 1008 (2)/(3)) interacts with a dependency's cache hit, and it is present on feat with none of this front's commits applied. This is not a regression of this front's wasm-port work; it is a latent, pre-existing defect in feat's own wasm unit-cache linking that a stale local binary was masking.
