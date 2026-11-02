@@ -99,15 +99,11 @@ yaml, markdown and dbcontext have none. Locally, in the meta checkout, every one
 - [x] the workflow fetches the dependency closure (each linked dependency's own `git` dependencies, the workspace
       members', the sibling path libraries') under `.botopinkbuild/deps/` and the gate reads it through
       `BOTOPINK_LIB_ROOTS`, which a cell's scratch copy also reads
-- [ ] the meta `scripts/gate.sh check` holds every library's `test.yml` dependency step and `BOTOPINK_LIB_ROOTS` to
-      one text (the cheap test of 478: the "not found" reds appear only on a runner with no sibling library)
 - [x] actions, css, http, log, routing, styled and validation: their workflow never fired (no check suite of GitHub
       Actions on any push, though enabled and active); turning Actions off and on in each made every push fire it
-- [ ] every library's workflow has at least one green run on `feat`, and its latest run green — read with `gh` (474).
-      Measured: actions, http, log, routing, css, snap and markdown green; rakun, query and validation have green runs
-      but their latest is red on the builtins group's spelling (rakun's and query's land with 165 s10 after B-136,
-      validation's B-138 migration is open); json and yaml carry the shared `test` workflow and a manifest with no source yet
 - [x] no row that cannot fail, no `continue-on-error` (gate-f); 163 s7 later makes each workflow call `scripts/gate.sh`
+- [ ] the last two boxes (the meta gate holding every library's dependency text to one; every library green on
+      `feat`) — moved to front 170 (conformance-complete) s2; see its Alias table
 
 ### 163 s6 — a language tour generated from `botopink-lang/conformance/` (after 144 B-29 step I)
 
