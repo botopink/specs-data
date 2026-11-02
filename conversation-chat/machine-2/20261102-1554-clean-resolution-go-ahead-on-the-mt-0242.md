@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Clean resolution — go ahead on the struct-field change
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
