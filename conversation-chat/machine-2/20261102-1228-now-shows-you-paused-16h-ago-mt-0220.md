@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: /now shows you paused 16h ago on an old CI proof — update `doing`, it's stale
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
