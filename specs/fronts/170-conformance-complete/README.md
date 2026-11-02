@@ -162,20 +162,28 @@ type-parameter field is lowered but no cell reaches it.
 **Impacted tests:** every wasm snapshot and `run/` cell; `test-libs` wasm column; `test-web`. **Consumer commits:** none.
 
 - [ ] wasm refuses a call of a generic type's method whose body needs its type parameters bound (900 (3)):
-      `d.display()` and `print(d)` of a `Dict<string, f64>` built in std, read in another module — "the wasm backend
-      cannot call the generic `Dict.display` here: nothing at this call binds the type parameters its body needs bound
-      (a type parameter's slot is not monomorphised)"; cell `generic_type_value_carries_shapes` (900) red on wasm alone
-      until this lands
+      `d.display()` and `print(d)` of a `Dict<string, f64>` built in std, read in another module — **superseded by
+      machine-2's refined finding (2026-11-02):** once B-203's masking fs.cwd wall is gone, the decisions-taken cell's
+      real wasm answer is B-204 (`std/collections`'s `Dict` boxes an i64 hash into a generic `unknown` slot, which
+      `.linear` mode has no way to represent — `.gc` mode's `box_i64` has no `.linear` counterpart), not the
+      `Dict.display` monomorphisation refusal this box originally named; cell `generic_type_value_carries_shapes`
+      (900) red on wasm alone until B-204 lands
 
-- [ ] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` — "the wasm
-      backend would narrow an `f64` value to an `i32` slot it does not fit" at the lambda; cell
-      `generic_method_own_parameter_takes_shape` red on wasm alone
+- [ ] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` —
+      **superseded by machine-2's refined finding (2026-11-02):** same as above — the real wasm answer, once B-203's
+      masking is gone, is B-204's i64-boxing gap (`Dict`'s own hash, not the `f64` return value this box originally
+      named); cell `generic_method_own_parameter_takes_shape` red on wasm alone until B-204 lands
 
 - [ ] wasm: packages loaded side by side (982's folded module, `compiler.load` of each case) break three cases that
       answer alone — `case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms`
       trap (`unreachable`) or are refused ("would narrow an f64 value to an i32 slot … in another module's code");
       commonJS, erlang and beam answer; repro: fold `conformance/modules/case` with B-157's codemod (`try --keep
-      <dir>`), then `botopink run --target wasm` in `<dir>`; the three stay cells until this lands
+      <dir>`), then `botopink run --target wasm` in `<dir>`; the three stay cells until this lands — **filed as
+      B-203** (machine-2, 2026-11-02): the module-wide compile wall this repro actually hits today (conformance-lib's
+      self-check scaffold statically naming `io.fs.writeText`, masking whatever these three cases answer) is a
+      distinct, wider bug than this box describes (67 of 298 decisions-taken `cases/`-shape modules affected, not
+      just `case`); whether these three specific cases still answer wrong once B-203 lands is unconfirmed — re-check
+      then, this box's own text stands until it does
 
 - [ ] wasm: a call to `failure.attemptTask` imported under an alias of its own (`import {failure.attemptTask as x}`)
       loses its `await`; through `import {failure as f}` it awaits (found building 990 piece 2); a cell on four
