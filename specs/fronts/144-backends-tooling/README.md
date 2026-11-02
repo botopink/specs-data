@@ -3645,3 +3645,21 @@ Distinct from item 3's originally-cataloged three-cell symptom (`case_arm_record
 - [ ] `conformance/modules/case` builds and runs on wasm, matching its snapshot, once that lands
 - [ ] every one of the 67 affected `cases/`-shape decisions-taken modules re-checked once this lands — their documented wasm symptoms (where 170 s7 or the decision text names one) re-confirmed or corrected, each a red of its own row if wrong
 - [ ] item 3's original three cells re-checked once this lands — if they now answer wrong at runtime rather than failing to compile, they get their own row
+
+### B-204 — wasm linear mode has no way to box an i64 into a generic/unknown slot (GC mode's box_i64 has no linear counterpart)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a representation design choice; the cell decides) · **After:** nothing
+
+Found resolving 985's and 900's real wasm symptom once B-203 stopped masking it (both decisions-taken cells, `generic_method_own_parameter_takes_shape-985` and `generic_type_value_carries_shapes-900`): once a self-checking module falls to `.linear` for any unrelated reason, both now fail wasm with `` the wasm backend would narrow this `i64` value to an `i32` slot it does not fit — in another module's code this line reaches ``, unlocated (`0:0`). Neither cell's own source names i64 (`Dict<string, i32/f64>`, `mapValues`/`fold`/`insert`/`delete`/`display` only) — the i64 comes from inside `std/collections`'s `Dict`, almost certainly its internal hash (`hash.contentHash` is i64).
+
+This refines 170 s7's documented symptom for 985 ("would narrow an f64 value to an i32 slot" — the return value) — real symptom is a different value (Dict's i64 hash) and a different refusal site, same mechanism.
+
+Root cause (`wat.zig`, the two `lossyConversion` refusal sites around lines 31094/31137, `lowerCoerced`): in `.linear` mode a generic/`unknown`-typed slot is a plain i32 word, with no boxing path for an i64 — `.gc` mode has exactly this (`box_i64`, one of the fixed leaf types), `.linear` has no counterpart. So any i64 value (Dict's hash here, but nothing ties this to Dict specifically) that needs to pass through a generic method's `unknown` slot in a `.linear`-mode module is refused.
+
+**Direction (the maintainer, 2026-11-02): box i64 generically, mirroring `.gc`'s `box_i64` — do not move Dict's hash off i64 for the linear path alone.** A Dict-specific workaround only fixes Dict and leaves every other i64-through-`unknown`-in-`.linear` case (not necessarily Dict's) to hit the identical wall again; a per-backend representation difference in shared std code is also a standing liability (same reasoning as not over-narrowing 1088's/1095's fixes to one call site). The fix belongs in `.linear`'s own value representation, as a `.linear` counterpart to `.gc`'s `box_i64` boxing.
+
+Unlocated (`0:0`) because the refusal fires inside generic/compiler-synthesized specialization code with no source location propagated — a diagnostics gap worth a small fix of its own alongside the main one, regardless of who lands it.
+
+- [ ] `.linear` mode gains an i64-boxing representation for a generic/`unknown` slot, mirroring `.gc`'s `box_i64` (not scoped to `Dict` or any one caller)
+- [ ] `generic_method_own_parameter_takes_shape-985` and `generic_type_value_carries_shapes-900` build and run on wasm once this lands (both currently blocked on this, independent of B-203/decision 1096)
+- [ ] the refusal located at a real source position instead of `0:0`, where that's cheap alongside the main fix
