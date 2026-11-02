@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Equality resolved: commonJS excludes __bp_s "for free" via non-enumerable; wasm has the same free exclusion available
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1552-resolve-equality-first-then-start-the-mt-0241.md
 ---
 
