@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1093**.
+number, which is **1094**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -178,12 +178,6 @@ The maintainer asked (2026-10-21) that every decision a `fable` took for him, an
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
 ## Machine 2 — maximum priority (front 144, `144-backends-tooling/`)
-
-#### ci768-b · Which workspace member globs does the manifest accept in `conformance/modules/botopink.json`?
-- **Measured.** `conformance/modules/botopink.json` (779) lists `"*/run"`, `"*/refused"`, `"*/cells/*"` and `"decisions-taken/*/…"`; the manifest's `checkGlobForm` / `casesOuter` (`modules/manifest/src/root.zig`) accepts none, so `cd conformance/modules/array/run && botopink build --target commonJS` is refused ("workspaces entry \"*/run\" is not a supported form") and tsc-check reports all 773 packages as not building on commonJS; `botopink cell check` builds cells in a scratch copy and is unaffected. 779 (1)–(3) are retired for 789 (4)'s one-package layout.
-- **Options.** (a) the manifest accepts a `*` segment anywhere in a member path (each match a member); (b) the manifest keeps its forms and the conformance workspace lists its members in the forms it accepts (generated); (c) nothing until 789 (4)'s layout replaces run/ and refused/, tsc-check skipping `conformance/modules` meanwhile
-- **Recommendation.** (c): 789 (4) removes these packages; no new glob form for a layout that is leaving
-- **Blocks.** B-108's tsc-check box on feat; a package's own `botopink build` inside conformance/modules
 
 #### 996-a · L5's library check: how disabled.txt stays shrink-only, the `not-a-package` verdict, and the per-process time limit
 - **Measured.** 1004 P2 on botopink-lang feat: `conformance/run.sh` runs one program per package per target (`libraries/<name>` jobs, one per `botopink packages --list` name); `conformance/disabled.txt` was generated once with 117 `<package> <target> — decision 996` lines (the beam / wasm pairs that failed). (1) run.sh refuses a line on another target, a duplicate, a malformed line, or more lines than `DISABLED_GENERATED=117` — so swapping one listed pair for a new beam / wasm pair still passes. (2) A `not-a-package` entry (json, yaml, vscode-extension today) is never loaded and counted as a red (FAIL); 993 (6) names no such verdict. (3) Each library program runs under a 900 s limit (`--lib-timeout`); no decision fixes the number (a hung test is the target red whole, 989).
