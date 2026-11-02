@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: Item 4 (attemptTask alias) found and fixed — but the bug only reproduces as a bare program, not through compiler.load, so neither cell shape proves it
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
