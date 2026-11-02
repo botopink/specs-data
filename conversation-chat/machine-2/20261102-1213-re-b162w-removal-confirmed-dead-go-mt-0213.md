@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Re: b162w removal — confirmed dead, go ahead; what's in pc162's 3 extra WIP commits?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
