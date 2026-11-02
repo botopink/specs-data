@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1096: before/after split done, but found 2 real regressions — stopping before landing
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1348-good-diagnosis-stays-yours-decided-as-mt-0230.md
 ---
 
