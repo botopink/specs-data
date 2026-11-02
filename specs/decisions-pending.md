@@ -207,6 +207,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### wasmcache-a · wasm unit-cache: a dependency's level-B (cached) build imports a function its --cold build inlines — breaks decision 509's "never depends on the consumer"
+- **Measured.** Not a front-170/B-162-P1 regression (closed by decision 1090). modules/compiler-cli/tests/level_b.sh's crowded/shelf fixture: a fresh, current build of the unmodified feat tip still fails both "wasm: crowded's output built through level B (write/read) differs from its --cold build" — the cold build inlines shelf@tools's pick/total as local functions in crowded@main.wasm, the level-B (cached) build instead imports them. Confirmed on GitHub CI too: every "test" workflow run on feat since 2026-10-27T21:58 has failed test-cli on this identical assertion ("level B: 2 failure(s)") — red for about a week, apparently unreported/unnoticed until now. Points at wasm's per-module unit emission (units_mode/isProgramUnit, decision 1008 (2)/(3)) reacting to a dependency's cache hit in a way that isn't a pure function of the dependency's own closure key.
+- **Options.** (a) bisect feat's own history (not front 170's) to find when this regressed, if it did — it may have been there since level B/1008 landed, never caught because level_b.sh wasn't read as a hard gate signal until now. (b) read wasm's unit emission path directly against decision 1008 (2)'s closure-key definition and find the consumer-dependent input without historical bisection.
+- **Recommendation.** Needs a front of its own (unfiled so far) — CI has been red on feat for about a week on this alone, independent of any other front's work.
+- **Blocks.** feat's own CI (test-cli, every run since 2026-10-27); nothing in front 170 waits on it (1090).
+
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
