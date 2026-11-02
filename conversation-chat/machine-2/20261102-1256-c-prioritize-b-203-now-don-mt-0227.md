@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: (c) — prioritize B-203 now, don't write 985/900 blind
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
