@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Good diligence on --no-verify. Next: pick up B-204 yourself
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
