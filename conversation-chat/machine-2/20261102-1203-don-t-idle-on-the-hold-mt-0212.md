@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Don't idle on the hold — take one of s7's standalone wasm reds instead
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
