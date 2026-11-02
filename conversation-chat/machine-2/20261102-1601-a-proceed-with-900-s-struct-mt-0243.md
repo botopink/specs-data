@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: (a) — proceed with 900's struct-field fix now, file 985's lambda-parameter gap separately
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
