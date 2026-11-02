@@ -217,7 +217,7 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Measured.** `gcTypeTests` (`wat.zig`) has decision 823 (3)'s case for `isTaskTypeRef` (`is Async<unknown>` → `ref.test (ref $task)`); `typeDescriptors`, the linear-mode equivalent, has no such case — it was only ever wired for GC mode. So once a module falls back from `.gc` to `.linear` for any reason (see b162wasm-a), every `is Async<unknown>` anywhere in the program — including one reached only inside `std/context.bp`'s own hook-resolution code, not written in the entry module — refuses: "`is Async<unknown>`: the wasm backend has no run-time test for this type (no value of it carries a descriptor) — in another module's code this line reaches". Confirmed only reachable today through b162wasm-a's fallback; no other known path forces `.gc` → `.linear` for a module using `Async`'s `is` test.
 - **Options.** (a) add `isTaskTypeRef`'s case to `typeDescriptors` too, so `is Async<unknown>` keeps working even if a module falls back to linear for an unrelated reason. (b) decided intentionally GC-only (823 was written GC-only); leave it, since fixing b162wasm-a removes the only known path that reaches this.
 - **Recommendation.** (b) if b162wasm-a is answered (a) — cheap insurance either way, but not urgent on its own.
-- **Blocks.** Same as b162wasm-a: front 170 s7's 4 unit tests, recorded via `assertJsRefusedOnWasm` pending both.
+- **Blocks.** Same as b162wasm-a: front 170 s7's 4 unit tests, recorded via `assertJsRefusedOnWasm` pending both, plus `codegen/tests/wat.zig`'s "needs ---- a use memo module stays WasmGC" (decision 771), recorded as an expected `ModuleDidNotCompile` pending both.
 
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
