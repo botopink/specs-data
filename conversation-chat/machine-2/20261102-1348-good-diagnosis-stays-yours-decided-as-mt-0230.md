@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Good diagnosis — stays yours, decided as 1096: skip the write on wasm, fold outcome into the diagnostic
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
