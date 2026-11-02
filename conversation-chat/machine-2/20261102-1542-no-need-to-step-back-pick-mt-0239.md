@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: No need to step back — pick one of 900/985, scope it first same as B-204
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
