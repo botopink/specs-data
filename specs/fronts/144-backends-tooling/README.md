@@ -3677,3 +3677,15 @@ The module is correctly refused either way — this is not a correctness bug, it
 
 - [ ] `emitWat`'s retry sequence prefers surfacing the first refusal it actually hit (the non-reached-only one, when it has a location) over a later retry's, when both ultimately refuse — or otherwise locates the reached-only retry's own refusal properly; either way, a user hitting this sees the real defect, not a retry artifact
 - [ ] a located repro (985's or 900's own case, loaded through a minimal self-checking wrapper) proves it: red on the parent (wrong/unlocated refusal surfaces), green after (the real, located one does)
+
+### B-207 — wasm GC: a for-loop's lambda parameter typed by a tuple of the record's own unbound type parameters doesn't compile (blocks a generic record's own methods, including display, from running in GC mode)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
+
+Found scoping 985 while building 900 (B-206's family — see that row for how the two were disentangled). `std/collections`'s `Dict<K, V>.display()` — `for self.pairs { p -> parts.push(shown(p._0) + ": " + shown(p._1)); }` — fails wasm's GC lowering with "a lambda parameter nothing types," at the for-loop's own `p: #(K, V)` parameter, the moment `gcDeclPrinter`'s unconditional "a generic record's display" guard is lifted (confirmed by commenting it out locally, reverted, no diff). `K` and `V` are unbound inside the record's own method body — a tuple built from two of the record's own type parameters is a shape the GC lowering's lambda-parameter type inference doesn't handle yet, independent of anything decision 900/985 are about (no shape field would help here — this is upstream of needing one).
+
+This blocks `Dict.display()` from running in GC mode at all today, hence `gcDeclPrinter`'s defensive refusal (B-206's row describes the mechanism; this row is the thing it's defending against). Likely blocks any other generic record's own method with the same shape — a `for`/`forEach` loop over `self`'s own data whose element type is a tuple (or plausibly any composite) built from the record's own unbound type parameters — not confirmed beyond `Dict.display()`'s own repro.
+
+- [ ] the GC lowering's lambda-parameter type inference handles a tuple of a record's own (unbound, inside its own method body) type parameters, the same way it already handles a tuple of concrete types
+- [ ] `Dict.display()` compiles and runs in GC mode (prerequisite for 985's cell, `generic_method_own_parameter_takes_shape`, once B-206's own shape-field work also lands — this row alone does not close that cell)
+- [ ] swept: whether another generic record's own method hits the same gap (a `for`/`forEach` over `self`'s own composite-of-type-parameters data), beyond `Dict.display()`
