@@ -185,9 +185,12 @@ type-parameter field is lowered but no cell reaches it.
       just `case`); whether these three specific cases still answer wrong once B-203 lands is unconfirmed — re-check
       then, this box's own text stands until it does
 
-- [ ] wasm: a call to `failure.attemptTask` imported under an alias of its own (`import {failure.attemptTask as x}`)
+- [x] wasm: a call to `failure.attemptTask` imported under an alias of its own (`import {failure.attemptTask as x}`)
       loses its `await`; through `import {failure as f}` it awaits (found building 990 piece 2); a cell on four
-      targets, red on wasm
+      targets, red on wasm — **landed** (machine-2, 2026-11-02): `calleeSymbol` (`codegen/wat.zig`) now resolves
+      the alias before its `fn_sigs`/`locals` lookup, the same as every other call site in the file. No cell: the
+      bug only reproduces as a bare top-level program, not through `compiler.load`'s folded `cases/` shape, and
+      the old `cells/` shape is no longer checked by anything — the gap is filed as its own row, B-205
 
 ### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539)
 
