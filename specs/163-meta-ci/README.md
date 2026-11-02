@@ -147,16 +147,7 @@ After 144 B-29 steps H and I (`botopink cell check`, botopink-lang's `scripts/ga
 
 **Repository:** botopink-lang and the meta repository · **Model:** sonnet
 
-Every time measurement of the conformance order waits for its end — no step in between spends time measuring.
-On a quiet machine (load below 3, nothing else running):
-
-- [ ] the full gate (cold and warm), the step gate (a one-backend and a shared change) and the hook's
-      `--no-conformance` gate, per stage, in `scripts/AGENTS.md`
-- [ ] `conformance/` by kind and by target (in-process cells against the CLI-run ones), with the cells a snapshot
-      already covers named
-- [ ] two gates through the meta repository's scheduler against one after the other (decisions 468, 469, 473)
-- [ ] each library's gate (`scripts/gate.sh libs`), per library
-
+Moved to front 170 (conformance-complete) s3; see its Alias table.
 
 ### 163 Conformance — the front's last step (decisions 465, 474, 477, 478, 479, 480)
 
