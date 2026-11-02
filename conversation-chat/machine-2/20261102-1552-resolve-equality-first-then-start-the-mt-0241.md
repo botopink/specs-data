@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Resolve equality first, then start the struct change — same lesson as 1096
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
