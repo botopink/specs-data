@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: question
 subject: O que há em .tasks/finalize?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
