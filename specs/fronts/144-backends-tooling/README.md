@@ -3616,3 +3616,23 @@ Decision 992 made `std/io/fs` and `conformance/lib` compile in wasm's GC lowerin
 
 Not a defect: a module that uses `io.fs` takes about 31 s to build on wasm, against 3 s on the other targets.
 
+### B-203 — wasm: a self-checking module's own content can force its whole module to linear fallback, re-exposing B-170's `io.fs` wall from the consumer side
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC/linear fallback decision; the cell decides) · **After:** nothing
+
+Found chasing 170 s7 item 3's repro (fold `conformance/modules/case`, `botopink run --target wasm`). B-170 fixed `conformance/lib`'s and `std/io/fs`'s own code so neither forces linear fallback any more — but decision 989's self-check scaffold (every self-checking module imports `conformance-lib`'s `candidate`/`observe`/`records`/`adapter`, which import `io.fs.writeText` for `deliver()`) is still gated on nothing in the *consumer* module needing linear fallback either. `conformance/modules/case` does: the whole module is refused outright on wasm — `` `.Wasm(std: "fs.cwd")` on `wasiCwd`: … which a module in linear memory cannot call — in another module's code this line reaches ``, at the `conformance-lib` import line — while `conformance/modules/array` (identical scaffold, 13 cases) compiles and runs clean.
+
+Isolated so far:
+- not the case count: reproduces loading just `case`'s first case alone (`case_alternatives_and_arrays`)
+- not the module's name: renaming `array`'s `botopink.json` to `"case"` and loading one of `array`'s own cases through the identical scaffold still compiles clean
+- not the scaffold alone: `array`'s own run (same self-check + `compiler.load` shape) is clean
+- `case_alternatives_and_arrays` compiles and runs clean on wasm as its own bare top-level program (no scaffold) — the trigger needs both the scaffold (or at least `compiler.load`) and this case's content together
+
+Best guess at the construct, unconfirmed: `case_alternatives_and_arrays`'s `[first, ..rest] -> "many"` (an array rest-spread pattern inside a `case` expression arm) — no obvious match to any of B-170's already-cataloged gaps (string ordering, `catch` with a binder, an `if` answering `null` or a value, a nested `if`/`else if` that appends, a `case` arm that assigns, `"${e}"` of an enum value), so likely a new one, but not pinned to the exact line.
+
+Distinct from item 3's originally-cataloged three-cell symptom (`case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms` — wrong runtime answers, not a compile refusal): right now the whole module never gets far enough to run any case, so that symptom can't currently be observed through this module at all.
+
+- [ ] the exact construct in `case_alternatives_and_arrays` (or elsewhere in `case`) that forces the module-wide linear fallback through `compiler.load` but not as a bare top-level program, pinned — likely a new GC gap beside B-170's list
+- [ ] the fallback decision, or the reachability check over the self-check scaffold's dead `io.fs` path (`wat.zig`'s `foreign_origin` refusal), stops treating a provably-dead call (one only reached on an actual snapshot mismatch) as compile-time reached; `conformance/modules/case` builds and runs on wasm, matching its snapshot
+- [ ] item 3's original three cells re-checked once this lands — if they now answer wrong at runtime rather than failing to compile, they get their own row
+
