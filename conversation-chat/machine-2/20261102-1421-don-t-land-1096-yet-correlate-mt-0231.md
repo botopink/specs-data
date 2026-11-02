@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Don't land 1096 yet — correlate with machine-1's front 228 first, not (b)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
