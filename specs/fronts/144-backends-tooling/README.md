@@ -3666,3 +3666,14 @@ Not sized or scoped here — flagging the gap for whoever owns conformance-shape
 
 - [ ] decide whether the suite needs a shape that runs a case as its own bare program (no `compiler.load`), distinct from both `cases/` (folded, loaded) and the frozen `cells/`
 - [ ] if yes, design it and give it a landing path (migration of nothing required — this is additive); if no, document why a bare-program-only defect is out of the suite's scope and how such a defect gets proven instead (a thread's own report plus the commit's evidence, as this one did)
+
+### B-206 — wasm's reached-only retry can surface a different, unlocated refusal than the module's real (first, located) one
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; low priority, diagnostics quality) · **After:** nothing
+
+Found chasing B-204 (retracted — see that row). `emitWat` tries `.gc`, then `.linear`; when both fail and the module has linked dependencies, it retries `.gc` with `reached_only`, then `.linear` with `reached_only`. For `generic_method_own_parameter_takes_shape-985` and `generic_type_value_carries_shapes-900`, loaded through the decisions-taken self-check wrapper: the first `.linear` attempt (not reached-only) refuses with the module's real, located defect (confirmed with `gc_debug`/`GCTRACE` tracing — e.g. 985's "the wasm backend would narrow an `f64` value to an `i32` slot it does not fit" at the lambda). The reached-only `.linear` retry that follows refuses too, but with a *different*, unlocated ("`0:0`") complaint about an unrelated `i64` value — not the same refusal, not the same location. The one surfaced to the user is the reached-only retry's, since it runs last.
+
+The module is correctly refused either way — this is not a correctness bug, it already cost real time once (B-204 was scoped against the wrong, unlocated symptom before the located one was found by tracing).
+
+- [ ] `emitWat`'s retry sequence prefers surfacing the first refusal it actually hit (the non-reached-only one, when it has a location) over a later retry's, when both ultimately refuse — or otherwise locates the reached-only retry's own refusal properly; either way, a user hitting this sees the real defect, not a retry artifact
+- [ ] a located repro (985's or 900's own case, loaded through a minimal self-checking wrapper) proves it: red on the parent (wrong/unlocated refusal surfaces), green after (the real, located one does)
