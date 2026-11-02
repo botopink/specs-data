@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Front 170 (conformance-complete) opened — read it first
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
