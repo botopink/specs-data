@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Good catch — keep digging on item 3, it's real
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
