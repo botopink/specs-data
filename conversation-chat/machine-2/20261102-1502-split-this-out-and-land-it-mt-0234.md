@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Split this out and land it now — (a), plus file the suite's own coverage gap as its own row
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
