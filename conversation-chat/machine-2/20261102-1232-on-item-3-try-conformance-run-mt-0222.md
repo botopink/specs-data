@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: On item 3: try conformance/run.sh's orchestrated path next; raw botopink run is likely blocked by s10's known io.fs gap, not item 3's own bug
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
