@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1090**.
+number, which is **1091**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -206,12 +206,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
-
-#### b162wasm-c · wasm: a level-B (code-cache) build of the `closure_invariant` fixture's `crowded` consumer differs from its `--cold` build
-- **Measured.** Re-investigated with a full bisection of every one of B-162 P1's 14 commits: level_b.sh's wasm failure (crowded's output importing shelf@tools.pick/total under level B vs inlining them under --cold) reproduces identically at every one of them, including the earliest. Rebuilding the unmodified origin/feat tip fresh (a clean worktree, zig build, no code change) and running level_b.sh against that fresh binary reproduces the exact same two failures, byte-for-byte the same .wat diff. The earlier "confirmed absent on the unmodified feat tip" rested on the main checkout's pre-built botopink binary, whose mtime predates modules/compiler-core/src/codegen/wat.zig and modules/compiler-cli/src/cli/build.zig in that same checkout (confirmed by stat) — a stale binary, not current feat behaviour. Traced with temporary debug prints at wat.zig's cachedUnit check and at emitWat's call site: crowded's own merged linked.items list going into emitWat is byte-identical between --cold and the level-B build (same module names, same ASTs from collectLinks, which never consults the unit cache) in both this front's build and a fresh feat build — so the inline/import choice does not come from collectLinks/linked, it is intrinsic to how wasm's per-module unit emission (units_mode, isProgramUnit, decision 1008 (2)/(3)) interacts with a dependency's cache hit, and it is present on feat with none of this front's commits applied. This is not a regression of this front's wasm-port work; it is a latent, pre-existing defect in feat's own wasm unit-cache linking that a stale local binary was masking.
-- **Options.** (a) file this as its own defect against the pre-existing wasm unit-cache/linking mechanism (decisions 509, 1008), independent of B-162 P1 and front 165's b162wasm-a/b, since it reproduces on feat with none of this front's commits applied; a fix belongs to whoever owns that mechanism, not to this wasm-port step. (b) rebuild every machine's cached main-checkout botopink binary now (zig build -Doptimize=ReleaseSafe at origin/feat) so this stops being invisible locally, and re-run zig build test-cli on a clean feat checkout to confirm it is red there too. (c) given it is not this front's regression, do not block B-162 P1's landing on fixing it; treat b162wasm-c as closed/retargeted here and track the underlying defect separately.
-- **Recommendation.** (b) first — confirm on a genuinely fresh feat build/CI run, since local staleness is now a demonstrated false signal here — then (a): open the underlying defect as its own item, not under this front and not under front 165's wasm-regression umbrella (those are this front's own commits' doing; this is not). There is nothing in B-162 P1's 14 commits to bisect-and-fix: the behaviour is identical with and without every one of them.
-- **Blocks.** Nothing of B-162 P1's own work once re-scoped — the wasm-port step's own fixes (front 170 s7, b162wasm-a/b) are unrelated and should land without waiting on this. More broadly, if confirmed on a fresh build: zig build test-cli / stage 7 of every gate (step or full, any front) that reaches this fixture, whenever the local botopink binary is actually current — worth an urgent separate check of whether CI (which always rebuilds) is currently red on this and simply unreported.
 
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
