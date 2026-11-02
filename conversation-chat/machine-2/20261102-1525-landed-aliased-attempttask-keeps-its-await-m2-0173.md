@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: Landed: aliased attemptTask keeps its await on wasm (botopink-lang feat 3f35def63, meta feat 5ddaca3f)
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1502-split-this-out-and-land-it-mt-0234.md
 ---
 
