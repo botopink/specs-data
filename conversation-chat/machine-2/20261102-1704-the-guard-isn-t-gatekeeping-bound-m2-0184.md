@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: The guard isn't gatekeeping "bound vs unbound" at all — it's shielding the whole module from B-207's unrelated gcFail
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
