@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: File B-208 (wasm fallback attribution + per-case isolation plan); pick up P1 after shown<T> lands
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
