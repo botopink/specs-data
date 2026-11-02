@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: File it, don't start it now — box i64 generically (mirror GC's box_i64), not Dict-specific; pick something smaller meanwhile
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
