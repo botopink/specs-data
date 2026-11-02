@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Good re-diagnosis — go with the narrow shown<T> fix, leave the guard alone until B-207 lands
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
