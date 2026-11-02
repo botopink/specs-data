@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1092**.
+number, which is **1093**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -178,12 +178,6 @@ The maintainer asked (2026-10-21) that every decision a `fable` took for him, an
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
 ## Machine 2 — maximum priority (front 144, `144-backends-tooling/`)
-
-#### ci768-a · Does `scripts/tsc-check.sh` walk a test suite whose cases are refused on purpose through `compiler.load`?
-- **Measured.** `scripts/tsc-check.sh` on botopink-lang feat: `conformance/test/compiler_load_in_a_test_suite` "does not build on commonJS" because its `cases/broken` (`val flag: bool = 1;`) is a module the suite loads and expects refused. The walk builds every project suite (B-108) and has no structural rule that leaves such a suite out.
-- **Options.** (a) tsc-check builds only the modules a suite's `botopink test` builds (the suite's `test/` and what it imports), so a module reached only through `compiler.load` is not built; (b) the suite moves its refused case out of the package's source tree (a fixture directory the walk does not enter); (c) the suite is left out of tsc-check by a manifest key
-- **Recommendation.** (a): the walk reads what `botopink test` builds; no suite named, no manifest key (B-108's "no suite left out by name")
-- **Blocks.** B-108's tsc-check box on feat
 
 #### ci768-b · Which workspace member globs does the manifest accept in `conformance/modules/botopink.json`?
 - **Measured.** `conformance/modules/botopink.json` (779) lists `"*/run"`, `"*/refused"`, `"*/cells/*"` and `"decisions-taken/*/…"`; the manifest's `checkGlobForm` / `casesOuter` (`modules/manifest/src/root.zig`) accepts none, so `cd conformance/modules/array/run && botopink build --target commonJS` is refused ("workspaces entry \"*/run\" is not a supported form") and tsc-check reports all 773 packages as not building on commonJS; `botopink cell check` builds cells in a scratch copy and is unaffected. 779 (1)–(3) are retired for 789 (4)'s one-package layout.
