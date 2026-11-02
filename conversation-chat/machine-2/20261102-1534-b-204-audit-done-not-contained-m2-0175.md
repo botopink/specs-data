@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: B-204 audit done: not contained — and there's a pre-existing linear-mode boxing path that may be the better fix entirely
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1529-a-but-audit-the-repr-call-mt-0236.md
 ---
 
