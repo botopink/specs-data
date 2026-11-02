@@ -277,7 +277,7 @@ Each resumes on `feat` once the cache group has landed, one commit at a time.
 
 ### 150 rakun
 
-- [ ] 150 s25 — three timing tests (`rakun-data` devtools watcher, `rakun` 503 over max-connections, `rakun-messaging` dlq) red under the gate's load, green alone: a controlled clock, never a real sleep · std's test clock source if missing (a gap row)
+- [ ] 150 s25 — moved to front 170 (conformance-complete) s13
 
 - [ ] rakun-messaging — one erlang test failed once in the pre-commit gate under load 26 (90 passed, 1 failed; the hook log did not name it) — not reproduced: 39 runs at c0e991c, 91 passed, 0 failed each, under load 21–74 (up to four copies of the suite side by side, rakun-websocket's beside them, CPU hogs) and once pinned to a third of one core; every runtime test ends in under 0.5 s against its 2–3 s bounds even starved, so no bound is near. Candidates left: the three fixed windows followed by a positive assertion (`ack: auto settles a Done once`, `ack: batch settles …`, 200 ms; `jms: a queue send reaches one of two …`, 300 ms) and the seven `build_test.bp` cells (a compiler run each, comptime `EVAL_TIMEOUT_MS` 10 s wall clock). The hook prints only the tail of a red member's log, so the next red names nothing either · the failing test's name (a red log kept whole)
 - [ ] 103 — the action secret from rakun-app's `#[config("rakun.actions")]` record, not `rkProp` · rakun 04 s7 (299; no `#[config]` record in rakun yet)
