@@ -33,9 +33,8 @@ grouped by tier and front (433); a line keeps its old id, which the front's alia
 
 In order; the step gate (460, B-29 step G) and the hook's `--no-conformance` (470) have landed (Done).
 
-- [ ] 144 B-29 steps G–J — every box but the Conformance steps' boxes 1, 2 and 5, which read `feat`'s pipeline · question B-29-a
-- [ ] 163 s8 last boxes — a green `test.yml` run on `feat` for every library (dependency closure fixed; rakun-bpp's cells green on commonJS, erlang and beam, wasm waits on B-38); the workflow's dependency step held to one text by `gate.sh check` · nothing
-- [ ] 163 s9 — the measurements, at the end: every gate and the conformance suite timed on a quiet machine (no step in between measures) · the ninth step of the conformance order, after 163 s8
+- [x] 144 B-29 steps G, I, J landed; step H's last tail moved to front 170 (conformance-complete) s1
+- [ ] 163 s8's last two boxes and 163 s9 — moved to front 170 (conformance-complete) s2, s3
 - [ ] 163 s6 — a language tour (`botopink/tour`) generated from `botopink-lang/conformance/`, nothing duplicated · after 144 B-29 step I
 
 ### Second — the builtins group (decision 575): B-136 … B-140 and 165 s10, before every other open step (the maintainer, 2026-10-17)
