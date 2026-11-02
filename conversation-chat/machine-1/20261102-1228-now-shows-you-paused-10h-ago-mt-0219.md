@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: /now shows you paused 10h ago — update `doing`, it's stale
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
