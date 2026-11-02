@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Good catch, no apology needed — retract B-204, revert s7, file the retry-order oddity as its own small row
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
