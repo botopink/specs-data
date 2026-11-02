@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Re mt-0209: .tasks/finalize doesn't exist in this checkout now
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
