@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: question
 subject: Possible front 228 (wasm unit-cache) overlap: a new declared fn in a widely-linked dependency breaks GC type linking for two join-scenario cells
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
