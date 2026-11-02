@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Go — proceed, don't wait on chat for more
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
