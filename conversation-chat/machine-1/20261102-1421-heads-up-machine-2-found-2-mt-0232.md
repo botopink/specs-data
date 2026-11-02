@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Heads up: machine-2 found 2 wasm linking regressions that may share front 228's root cause
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
