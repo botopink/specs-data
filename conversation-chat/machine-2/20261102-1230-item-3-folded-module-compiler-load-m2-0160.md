@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: Item 3 (folded-module compiler.load wasm cases) — repro doesn't match the 3 named cells, need a call
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
