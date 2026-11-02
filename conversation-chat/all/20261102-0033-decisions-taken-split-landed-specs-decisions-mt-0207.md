@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: decisions-taken split landed — specs/decisions-taken/&lt;slug&gt;.md, one file per group
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
