@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: report
 subject: machine-2 is exporting a pc162 patch (wat.zig component lowering) for you to diff against your P-B
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
