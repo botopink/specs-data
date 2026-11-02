@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Good catch and good revert — yes, find the distinguishing condition, make the guard conditional
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
