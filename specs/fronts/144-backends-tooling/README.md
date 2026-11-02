@@ -3663,3 +3663,20 @@ Unlocated (`0:0`) because the refusal fires inside generic/compiler-synthesized 
 - [ ] `.linear` mode gains an i64-boxing representation for a generic/`unknown` slot, mirroring `.gc`'s `box_i64` (not scoped to `Dict` or any one caller)
 - [ ] `generic_method_own_parameter_takes_shape-985` and `generic_type_value_carries_shapes-900` build and run on wasm once this lands (both currently blocked on this, independent of B-203/decision 1096)
 - [ ] the refusal located at a real source position instead of `0:0`, where that's cheap alongside the main fix
+
+### B-205 — the conformance suite's two cell shapes neither reach nor check a defect specific to a bare top-level program (vs. one loaded through compiler.load)
+
+**Repository:** botopink-lang (conformance suite shape, decisions 779/989's lineage) · **Model:** opus (a conformance-shape design choice; not a cell the thread decides) · **After:** nothing
+
+Found landing the `attemptTask`-alias wasm defect (`calleeSymbol` not resolving an import alias, fixed in the same commit as this row — see the commit itself, no cell): the identical repro, byte for byte, answers differently depending on how it reaches the backend.
+
+- As a bare top-level program (`botopink run --target wasm` in its own package, nothing loading it): wrong on the unfixed compiler, right on the fixed one. This is the shape that actually exercises the defect.
+- The exact same source, loaded via `compiler.load` as a case of a folded self-checking module (decision 989's `cases/` shape — tried under `attempt_task_form-494/cases/`, cold build, both compilers): answers right on *both* the unfixed and the fixed compiler. This shape does not reach the defect at all — not a false pass, a different code path entirely.
+- The old `cells/<case>/` shape would otherwise fit (decision 779: "a lone case that cannot share a package") — a bare program is exactly what it is — but per `conformance/AGENTS.md` it is "no longer checked by any command," converted away and frozen (`conformance/leftover-cases.txt`, decision 1011, shrink-only: no new line may be added).
+
+So today, a class of defect — anything sensitive to *how* a module is reached (bare vs. `compiler.load`'d, not necessarily this specific alias bug) — has no cell shape that both reaches it and is checked by `conformance/run.sh` or the gate. The suite's two live shapes (989's folded `cases/`, and the root package running a module "alone by its own path") both still go through loading machinery one way or another; neither is "just compile and run this one program, nothing else in the picture."
+
+Not sized or scoped here — flagging the gap for whoever owns conformance-shape decisions (779, 989 and its codemods) to judge whether a third shape (or an extension of one of the two live ones) is worth adding, and what it should look like. A thread should not design this inline while landing an unrelated fix.
+
+- [ ] decide whether the suite needs a shape that runs a case as its own bare program (no `compiler.load`), distinct from both `cases/` (folded, loaded) and the frozen `cells/`
+- [ ] if yes, design it and give it a landing path (migration of nothing required — this is additive); if no, document why a bare-program-only defect is out of the suite's scope and how such a defect gets proven instead (a thread's own report plus the commit's evidence, as this one did)
