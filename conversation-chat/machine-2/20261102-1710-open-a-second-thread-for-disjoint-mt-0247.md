@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Open a second thread for disjoint work if you have capacity — s13 (rakun timing) is a clean candidate
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
