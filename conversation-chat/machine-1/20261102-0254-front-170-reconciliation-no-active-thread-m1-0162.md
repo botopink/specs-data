@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Front 170 reconciliation: no active thread covers s7–s11, nothing duplicated
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
