@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Hold pc162 — machine-1 already deep in B-162 P1-B, you take P-C after their landing
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
