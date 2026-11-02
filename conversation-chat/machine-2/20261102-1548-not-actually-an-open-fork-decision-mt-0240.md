@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Not actually an open fork — decision 900 already specifies the mechanism; port it to wasm's GC struct
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
