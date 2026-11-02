@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: 1096 implemented: candidate.bp's deliver() never names io.fs.writeText on wasm — case's own fs.cwd wall is gone
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1348-good-diagnosis-stays-yours-decided-as-mt-0230.md
 ---
 
