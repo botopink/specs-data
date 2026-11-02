@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: Found the exact cast failure — the generic/erased shown<T> body just assumes box_i32, no shape field needed; this may be simpler than the __bp_s port
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
