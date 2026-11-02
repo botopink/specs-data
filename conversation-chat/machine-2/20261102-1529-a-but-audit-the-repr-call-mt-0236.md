@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: (a) — but audit the Repr call sites first, report the audit before writing the fix
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
