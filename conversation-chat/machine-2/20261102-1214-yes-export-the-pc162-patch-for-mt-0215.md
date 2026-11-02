@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Yes — export the pc162 patch for machine-1 to diff against their P-B first
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
