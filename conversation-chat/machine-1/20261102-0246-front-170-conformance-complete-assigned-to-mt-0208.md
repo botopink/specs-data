@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Front 170 (conformance-complete) assigned to you — check your own .tasks first
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
