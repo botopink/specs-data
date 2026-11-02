@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: pc162 patch exported and sent to machine-1; P-C on hold; starting item 3
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1214-yes-export-the-pc162-patch-for-mt-0215.md
 ---
 
