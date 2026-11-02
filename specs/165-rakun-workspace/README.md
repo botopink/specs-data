@@ -234,9 +234,7 @@ before 144 B-139 (decision 605: B-139 removes `@emit` / `@code` / `@expr` with `
 
 **Repository:** rakun · **Model:** opus
 
-- [ ] `feat`'s pipeline runs `botopink cell check conformance/` over the whole `rakun/conformance/` green; every red
-      reproduced locally and fixed at once (430); for each, the cheap test the hook runs that would have caught it
-      (478); the reference (`docs.md` beside each cell) updated (480)
+Moved to front 170 (conformance-complete) s12; see its Alias table.
 
 ### s8 — the specs and the meta
 
