@@ -502,10 +502,10 @@ val site = app(plugins: [styledSink()]);             // {app} from "rakun-bpp"; 
 
 ## 7 · Test and snapshot contract — owned by `snap` (391; `SourceLocation` std's), consumed by every `-test` submodule
 
-Specified by [`src-builtin.md`](../01-std/src-builtin.md),
-[`snapshots.md`](../01-std/snapshots.md),
-[`asserts-api.md`](../01-std/asserts-api.md), and the shape every library's
-`modules/<lib>-test/` exposes ([`02-packaging/README.md`](../02-packaging/README.md)).
+Specified by [`src-builtin.md`](../fronts/01-std/src-builtin.md),
+[`snapshots.md`](../fronts/01-std/snapshots.md),
+[`asserts-api.md`](../fronts/01-std/asserts-api.md), and the shape every library's
+`modules/<lib>-test/` exposes ([`02-packaging/README.md`](../fronts/02-packaging/README.md)).
 
 ```bp
 type SourceLocation(file: string, line: i32, column: i32, fnName: string)   // compiler.src(), comptime
