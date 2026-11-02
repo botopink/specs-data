@@ -78,23 +78,10 @@ gate: standard (fronts.md § Gate); the hook's gate for every commit, check 7 gr
 - [ ] the root `conformance/docs.md` gains one row naming `modules/decisions-taken/` (the ledger's index; 462 / 548); rakun's root manifest and `conformance/docs.md` the same (its tree stays grouped by package; the decision cells are the ledger's, not a package's feature)
 - [ ] check 7 (i) green on every batch; `AGENTS.md` of `conformance/` names the subtree
 - [x] `decision-cells.py compile` keeps each failing draft's error: the first diagnostic line per target printed under its `FAIL` line, the whole output with `--verbose`; a test in `decision-cells-test.py` (the maintainer, 2026-10-18: today a thread reruns each draft by hand to read the error)
+- [ ] s3's tail — decision 781's packing over `compiler.load` — moved to front 170 (conformance-complete) s4; see its Alias table
 
-### s4 — the flip: the cells run
-
-**Repository:** botopink-lang (`--lang`, the two compiler boxes, 144's rule 1 under 166-d), then one `--repo <repo>` / `--lang` per repository · **Model:** sonnet for the compiler boxes and `promote`; opus for the accepted answers · **After:** s3 whole in that repository; the gate solid — the group's end (B-140 landed, the cold gate with conformance green on machine 2, § The group's end).
-
-- [ ] compiler boxes, as 166-a and 166-c decide: `cell check`'s name rule for `decisions-taken/<slug>-<N>/` (511), `test-docs` reading the include form; a unit test each
-- [ ] per repository, `promote <repo>` in one commit (haiku): `main.bp` → `src/main.bp`, `botopink.json` (`name`, `"targets"` = the targets the decision names, else none — the workspace's), the `{main.bp}` lines → `[src/main.bp](src/main.bp)`, the workspace glob; then `botopink cell check conformance/modules/decisions-taken/` under `scripts/gate.sh exec`, every candidate read and accepted as the language's answer (opus, thread-rules § Cells) or the cell left red with its row filed; no cell narrowed or edited to pass (458)
-- [ ] check 7 (ii) switched on for that repository in the same landing — every code-bearing row has its cell, no exemption
-- [ ] the hook (`--no-conformance`) still green on each commit; `feat`'s pipeline with conformance read (477)
-
-### s5 — Conformance (decisions 459, 465, 477–480)
-
-**Repository:** each repository s4 promoted · **Model:** opus · **After:** s4 in every repository.
-
-- [ ] `feat`'s pipeline green in every repository with the decision cells in its `conformance/` — each red reproduced locally, fixed first (430) with 478's cheap test, or filed; every departure found by s3 and s4 listed with its row and its cell's state
-- [ ] the cells' answers audited against the ledger: a cell whose answer contradicts its decision's text is a red of the step; the reference (480): the root `conformance/docs.md` row, no text contradicting a cell
-- [ ] `scripts/decision-cells.py check` green on the meta with completeness on everywhere; `status.md` moves the front to Done; the gate's time with the cells is 163 s9's to measure, not this step's
+s4 (the flip: the cells run) and s5 (Conformance, this front's last step) moved to front 170 (conformance-complete)
+as s5 and s6; see its Alias table.
 
 ## Order
 
