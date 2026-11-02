@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Urgent: feat's GitHub CI has been red on test-cli since 2026-10-27, unreported — b162wasm-c's defect
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
