@@ -49,6 +49,16 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 - [ ] resolved per site through the expected type instead of a module-wide gap (named by 1058 (4))
 
+
+### s6 — GC type-index allocation depends on the link set
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing open · machine-2's (found building 1096)
+
+Adding one declared fn with a `.Wasm(body: …)` to a widely linked dependency (`conformance/lib/candidate.bp`) breaks two multi-module join cells at wasmtime instantiation: `type mismatch for export set:entries … expected (func (param structref)), found (func (param arrayref))` — `declared_dependency_modules_join_program-660`, `no_declaration_files_compiler_value-575`. A module's GC type indices shift with what else is linked, the same shape as front 228 (decision 509: a dependency's output depends on its closure alone) but a different mechanism (front 228 was function crossing; this is type numbering).
+
+- [ ] a module's GC type section and the indices its exports name are a function of its own closure, never of what else joins the program
+- [ ] the two join cells green with 1096's added fn in place; 1096 lands on top
+
 ## Collisions
 
 s1 and front 228 both edit `finishGc` and unit emission — 228 has landed, rebase on it. s2 and s4 share `gcDeclPrinter` / `gcGenericArg`'s region with 1099 — after it. s3 collides with nothing in flight.
