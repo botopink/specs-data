@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: The main session is the control thread; every task runs in a child thread
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
