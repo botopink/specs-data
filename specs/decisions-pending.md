@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1104**.
+number, which is **1105**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -184,20 +184,6 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 - **Options.** (1) (a) a frozen copy of the generated list (a committed hash or file) the gate compares against, so only deletions pass; (b) the structural rule as built. (2) (a) red, as built; (b) a verdict of its own, printed and not red. (3) (a) 900 s per process; (b) a bound per package read from the manifest; (c) another fixed number
 - **Recommendation.** (1) (a): 996 says the gate refuses any line not in the generated set, which the structure alone cannot prove; (2) (a): a package the checkout lists that cannot be loaded is a red, never a skip (67); (3) (a): one bound for every package, about twice the longest library run measured
 - **Blocks.** nothing now (L5 is landed as built). Deferred (the maintainer, 2026-10-27: "cria uma frente por último para ver isso, deixa para depois") to front 168 (`168-library-check-hardening/README`), opened last in the milestone, free; until it is answered the check stays as built.
-
-#### 229-a · Front 229 s2: what print(t) answers for a Task or a generator value — no target agrees today
-- **Measured.** On feat, `print(t)` where `t` is `async.delay(50, 42)` (`Async<i32>`), once pending and once after `await`, and `print(g)` for `g = gen1()` (`iter fn … -> Iter<i32> { yield 1; yield 2; }`), once before and once after one `.next()`:
-  
-  commonJS — pending: `Promise { <pending> }`; settled: `Promise { 42 }` (node's own Promise inspect text, changes with its state). Generator: `Object [Generator] {}`, the same text before and after `.next()` (node's own inspect, carries no state).
-  
-  erlang / beam — pending: `42`; settled: `42` (identical: both targets' async model has no observable pending moment for this case — the task's value prints through regardless of when it is asked). Generator: `{'__bp_gen',<0.83.0>}` before and after `.next()` (the process id in the tagged tuple, Erlang's default term print of the generator's own representation, not a deliberate text).
-  
-  wasm, static (today's `.linear` fallback, already broken, untouched by front 229 s2) — Task: the same wrong raw address both times (two different runs gave two different numbers — not even the task's value). Generator: `[1, 2]` on the first print, a wrong raw number on the second (after `g.next()`), `[2]` (the remaining items) on the third — inconsistent with itself.
-  
-  wasm, dynamic through `unknown` (front 229 s2's new code) — both panic by name: `"wasm cannot print a Task value dynamically yet"` / `"wasm cannot print a generator value dynamically yet"`, a stopgap, not a decided answer.
-- **Options.** (1) a fixed text of the language's own, independent of any target's native inspect — e.g. `Task(pending)` / `Task(42)` for a settled one, `Gen(...)` naming its remaining items or its state — built the same on all four targets (wasm's static gap would need its own fix alongside the dynamic one). (2) refuse printing a Task or a generator at all — a build-time refusal when the printed type is statically known (`Async<T>`, `Iter<T>` / `AsyncIter<T>`), the dynamic case's panic staying as the `unknown` slot's answer, never a fixed text. (3) adopt one target's native text as the language's (commonJS's `Promise { … }` / `Object [Generator] {}`) and build the other three to match it.
-- **Recommendation.** (2): erlang and beam's async model has no observable pending moment for a Task at all (measured above — pending and settled print the same), so a fixed `Task(pending)` / `Task(42)` convention would be faked on those two targets, not reported — the asymmetry is in the targets' own scheduling, not in a missing print path. (1) and (3) both commit to a text no target's current behavior earns on at least two of the four. Printing a Task or a generator is observing scheduling/implementation state, which is exactly the kind of thing front 229 elsewhere answers with a named refusal rather than invented text (B-207's own pattern: a shape with no real answer degrades by name, not by a guess) — refuse at build where the type is known, keep the dynamic panic as its `unknown` counterpart, and treat wasm's static gap (wrong raw value today) as closed by the same refusal, not by matching its own current wrong output.
-- **Blocks.** front 229 s2's "or refuse at build naming the slot" clause for $task/$gen — only the dynamic panic is landed so far; s3/s4 do not depend on this — proceeding to s3 while this is open, per the maintainer's mt-0287
 
 ## Blocking now — machine 1 and front 165 (2026-10-15)
 
