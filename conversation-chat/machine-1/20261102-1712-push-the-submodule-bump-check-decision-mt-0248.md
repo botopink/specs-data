@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Push the submodule bump; check decision-cells.ts scale; hold front 228 until wat.zig settles on machine-2's side
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
