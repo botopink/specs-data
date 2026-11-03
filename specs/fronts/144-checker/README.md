@@ -3395,8 +3395,12 @@ originally reported convert-ref gap on `placed`'s own closure. Two further gaps 
       memo` with no inferred deps, `use effect` void hook) flipped back from recording the refusal (`assertJsRefusedOnWasm` /
       `expectError(error.ModuleDidNotCompile, …)`) to their real intent (`assertJsSingle` / `needs.contains(.gc)`) once both
       gaps close; their 16 snapshots re-recorded for real, showing compiled WAT rather than a refusal diagnostic
+- [ ] a third, separate wasm gap found while investigating B-212: a hand `resolve` call from a plain (non-`use`) function
+      doesn't compile on wasm at all — `is Async<unknown>` has no run-time test there, reached from `context.bp:432`. This
+      is the linear-mode half decision 1089 left GC-only; it should disappear once 1102's closure representation keeps
+      those modules `.gc` — re-check once this front's first two boxes land, before treating it as its own fix
 
-Oracle: the 5 named tests compile clean on wasm (no refusal); their 16 snapshots show real WAT; `zig build test`.
+Oracle: the 5 named tests compile clean on wasm (no refusal); their 16 snapshots show real WAT; `zig build test`; the hand-`resolve` case from B-212's probe C compiles on wasm too, once re-checked.
 
 ### B-211 — a `Component<T>` answered through behavior dispatch doesn't resolve right on commonJS (defect against decision 809 (2))
 
