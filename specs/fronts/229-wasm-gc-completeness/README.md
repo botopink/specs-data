@@ -76,15 +76,15 @@ Adding one declared fn with a `.Wasm(body: …)` to a widely linked dependency (
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **After:** nothing open · found by machine-2 re-checking front 170 s7's B-203 box, 2026-11-03
 
-`conformance/modules/case` on `--target wasm` (origin/feat) fails whole. It is the same shape as s7:
-- `main` falls to `.linear` for one case's gap: "a call of std-wasm's `array.slice`, which has no GC marshal", at `cases/case_alternatives_and_arrays/src/main.bp:13:5` (the `[first, ..rest]` arm);
-- then a narrowing refusal with no location ("would narrow this `i64` value to an `i32` slot", `src/main.bp:0:0`) refuses the module;
-- the rest of the package's cases never run. Front 170 s7's three B-203 cases are among them.
+`conformance/modules/case` on `--target wasm` (origin/feat) failed whole: `main` fell to `.linear` for one case's gap, "a call of std-wasm's `array.slice`, which has no GC marshal", at `cases/case_alternatives_and_arrays/src/main.bp:13:5` (the `[first, ..rest]` arm).
 
-- [ ] `array.slice` (a rest pattern `..rest`) answered in GC form: a GC marshal at the std-wasm boundary, or the slice lowered in GC without the boundary, so `main` stays GC
-- [ ] the narrowing refusal that followed located, or gone with the first box (B-206's reading: the note and the diagnostic name the same attempt)
-- [ ] `conformance/modules/case` green on wasm, every case. Front 170 s7's box on `case_arm_record_named_like_a_variant`, `case_record_field_null` and `case_union_constructor_arms` is answered by this run; red on the parent
-
+- [x] the slice lowered in GC without the boundary:
+  - a list pattern's length test and each bound slot read the array with `array.len` / `array.get`;
+  - `..rest` is the array's own GC slice helper (`gcArrOp("slice", cls)`, the one `xs[a..b]` already uses), not std-wasm's linear `array.slice`;
+  - `case_alternatives_and_arrays` answers correctly with no `.linear` note;
+  - two of s1's stub tests, whose fixture this closed, were rewritten, and five wasm snapshots were re-recorded for the GC array operations.
+- [x] the narrowing refusal that followed this gap is gone with it
+- [ ] `conformance/modules/case` green on wasm, every case. One more case still refuses, already on origin/feat before this step: `case_arm_ending_in_for` / `case_arm_name_is_also_a_type`, an `i64` narrowed to an `i32` slot, on wasm only (machine-2, next). Front 170 s7's three B-203 cases answer when run alone
 
 ### s9 — `callKind` takes a call's kind from the checker's resolved declaration, never from a bare capitalised name
 
