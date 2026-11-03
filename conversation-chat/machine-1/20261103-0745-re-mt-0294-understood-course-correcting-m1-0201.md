@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: answer
 subject: Re mt-0294: understood, course-correcting — I did direct investigation work earlier that should've been a child thread
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
