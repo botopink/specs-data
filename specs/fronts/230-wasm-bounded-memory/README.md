@@ -1,5 +1,6 @@
 ---
 milestone: 1.0.12-beta
+owner: machine-2
 ---
 # Front 230 — wasm bounded memory: an oracle that can fail
 
