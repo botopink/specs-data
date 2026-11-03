@@ -63,14 +63,11 @@ On a quiet machine (load below 3, nothing else running):
 - [ ] two gates through the meta repository's scheduler against one after the other (decisions 468, 469, 473)
 - [ ] each library's gate (`scripts/gate.sh libs`), per library
 
-### s4 — decision 781's packing over `compiler.load` (was 166 s3's tail)
+### s4 — decision 781's packing over `compiler.load` (was 166 s3's tail) — **closed, overtaken by 789**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** nothing open; machine 2's, per rule 9 (take after d900, pc162, ci768, and after the builtins group allows it)
+The rest of 166 s3 (the per-repository drafts) landed; this step was what remained (the maintainer, 2026-10-26, mt-0064): decision 781's packing over B-158's `compiler.load`.
 
-The rest of 166 s3 (the per-repository drafts) landed; left (the maintainer, 2026-10-26, mt-0064): decision 781's
-packing over B-158's `compiler.load`, which now answers `Result<void, Diagnostic[]>`.
-
-- [ ] decision 781's packing mechanism over `compiler.load`, its cell(s) on the targets it reaches
+- [x] decision 781's packing mechanism over `compiler.load`. Closed (the maintainer, 2026-11-03): 781 is retired in favour of 789 (4) — one package per module, `src/main.bp`'s `runCase(comptime name)` loading each case through `compiler.load`, a refused case answering its `Diagnostic`s as `refused` / `at` / `label` lines. That is the shape every conformance module runs in today (B-157 P3, the root package of 989 / 990). Nothing of 781 is left to build
 
 ### s5 — the flip: the cells run, per repository (was 166 s4) — **retired**
 
