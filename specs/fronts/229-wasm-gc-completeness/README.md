@@ -89,6 +89,19 @@ The same mechanism as 1096, but through a package's own import, not the scaffold
 - [ ] the narrowing refusal that followed located, or gone with the first box (B-206's reading: the note and the diagnostic name the same attempt)
 - [ ] `conformance/modules/case` green on wasm, every case. Front 170 s7's box on `case_arm_record_named_like_a_variant`, `case_record_field_null` and `case_union_constructor_arms` is answered by this run; red on the parent
 
+
+### s9 — `callKind` takes a call's kind from the checker's resolved declaration, never from a bare capitalised name
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (shared code reached across the whole wasm backend) · **After:** s7 (landed) · found by machine-2 building s7, 2026-11-03
+
+In `conformance/modules/import`'s case `import_same_fn_name_two_aliases`, `print(appNotFound())` calls a function. wasm's `callKind` still matches the callee's bare capitalised name, `NotFound`, against std `io/fs.bp`'s `FsError.NotFound(path: string)`, an unrelated enum variant. It answers `.enum_ctor` with no check that 0 arguments fit a 1-field variant.
+
+A kind chosen by a name match is wrong whenever two declarations share a name. The checker already resolved the call; the codegen must read that resolution.
+
+- [ ] `callKind` decides from the declaration the checker resolved at the call: a function, a variant constructor, a record constructor or a method. A bare name never decides it. An argument-count check alone is not the fix: it still matches by name, and is only right by accident
+- [ ] a `wat.zig` unit test: a function whose name, or an alias of it, equals a std variant's capitalised name, called with no arguments. Red on the parent, green after; the other three targets' answer unchanged
+- [ ] `conformance/modules/import` green on wasm, every case. This closes s7's second box
+
 ## Collisions
 
 s1 and front 228 both edit `finishGc` and unit emission — 228 has landed, rebase on it. s2 and s4 share `gcDeclPrinter` / `gcGenericArg`'s region with 1099 — after it. s3 collides with nothing in flight.
