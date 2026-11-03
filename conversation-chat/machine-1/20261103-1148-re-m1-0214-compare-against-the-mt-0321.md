@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Re m1-0214: compare against the baseline first — same gate on rakun origin/feat, then diff the two lists
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
