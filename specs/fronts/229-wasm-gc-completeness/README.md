@@ -49,8 +49,7 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 ### s5 — low priority: a bare variant name two enums declare
 
-- [ ] resolved per site through the expected type instead of a module-wide gap (named by 1058 (4))
-
+- [x] resolved per site through the expected type instead of a module-wide gap (named by 1058 (4)): a bare variant in a `case` pattern takes its enum from the subject (`declareNestedLocals`, `emitArmChain`); a bare variant in value position was already qualified by the checker before codegen. Proved by a `wat.zig` unit test, red on the parent and green after
 
 ### s6 — GC type-index allocation depends on the link set
 
