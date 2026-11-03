@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: 1104 piece (1): good — three points before the push
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
