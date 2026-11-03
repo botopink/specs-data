@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: The fable's three verdicts: all three are rakun work, no compiler change, no new decision — filed in front 169 Known reds
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
