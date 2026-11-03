@@ -3397,3 +3397,20 @@ originally reported convert-ref gap on `placed`'s own closure. Two further gaps 
       gaps close; their 16 snapshots re-recorded for real, showing compiled WAT rather than a refusal diagnostic
 
 Oracle: the 5 named tests compile clean on wasm (no refusal); their 16 snapshots show real WAT; `zig build test`.
+
+### B-211 — a `Component<T>` answered through behavior dispatch doesn't resolve right on commonJS (defect against decision 809 (2))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro, the design is 809 (2)'s) · **After:** nothing; high priority — silently wrong output
+
+Found by the front-169 rakun port thread, behind 3 of rakun-style's 4 remaining `analysis_equivalence.sh` failures (`Sheet.add` → `item.toStyled()` → later `use all` in `render()`). Decision 809 (2): `Card(…)` answers a `Card`, a `Composable<Element>` and so a `Component<Element>` — a type's own `compose` method and a plain function that answers the same shape are meant to resolve identically. They don't: a `Component<T>` obtained through behavior/interface dispatch (`Styleable.toStyled()`) resolves with its fields `undefined` through `run`/`resolve`/`use all` on commonJS, while the identical component built by a plain (non-dispatch) function resolves correctly. Minimal repro (commonJS):
+
+```
+fn wrap(x: StyledProperty) -> Component<Styled> { return styledConstant(x.className, x.rules); }
+val s1 = await run(wrap(t));        // s1.className correct
+val s2 = await run(t.toStyled());   // s2.className undefined — same body, called via Styleable.toStyled()
+```
+
+- [ ] repro as a cell on four targets (the commonJS failure above is measured; wasm/erlang/beam not yet checked — confirm whether the same divergence exists there or is commonJS-only before assuming it's universal)
+- [ ] fix so a component answered through behavior dispatch resolves the same as one from a plain function, per 809 (2)
+
+Oracle: the cell, red on the parent, green after, four targets; rakun-style's remaining 3 `analysis_equivalence.sh` failures close with it.
