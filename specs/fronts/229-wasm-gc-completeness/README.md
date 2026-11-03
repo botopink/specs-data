@@ -24,10 +24,10 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** 1099 (same printer functions)
 
-- [ ] `__print_tagged_raw` / `gcUnkPrint` answer a `$closure` (`fn/<arity>`), a `$result` (payload through `$__unk_print_raw`), a `$task` and a `$gen` as commonJS prints them — or refuse at build naming the slot — never the chain's final `unreachable` (`val u: unknown = fn(x: i32) -> i32 { x }; print(u)`, `print(Box(value: Ok(1)))`, a union array holding a function)
-- [ ] `gcEqValues` compares a record or variant field typed `unknown` with `$__unk_eq` instead of falling the module back
-- [ ] an enum or variant value's own `display()` is dispatched in GC mode: `gcDeclPrinter`'s `variant == null` condition and the `$__tinfo` display slot's `t == .record` (today `Maybe.Some(value: 1)` instead of `Some(1)`, silently wrong, generic or not)
-- [ ] oracle: three cells red on the parent (a trap, a `lowered .linear` note, the wrong enum text), green after
+- [x] `__print_tagged_raw` / `gcUnkPrint` answer a `$closure` (`fn/<arity>`), a `$result` (payload through `$__unk_print_raw`, quoted when nested, decision 1021 (10)) as commonJS prints them; a `$task` / `$gen` panic by name instead — their static print is already its own, separate gap (falls to `.linear`, the wrong raw value), so there is no commonJS answer to match dynamically either
+- [x] `gcEqValues` compares a record or variant field typed `unknown` with `$__unk_eq` instead of falling the module back
+- [x] an enum or variant value's own `display()` is dispatched in GC mode: `gcDeclPrinter`'s `variant == null` condition and the `$__tinfo` display slot's `t == .record` removed
+- [x] oracle: proved by `wat.zig`'s own unit tests, not a conformance cell (none of the three sub-fixes carries a decision number of its own) — `"wat: gc ---- an enum's own display is dispatched statically and through unknown, generic or not"`, `"wat: gc ---- equality over a field typed unknown compares structurally, not a module-wide fallback"`, `"wat: gc ---- a closure and a @Result held unknown print as commonJS prints them"`, `"wat: gc ---- a Task or a generator held unknown panics by name"` — each red on the parent (a trap or the wrong text), green after; `zig build test` and `test-cli` full, `analysis_equivalence.sh` unchanged at its 21 known rakun failures
 
 ### s3 — GC forms for the remaining control shapes
 
