@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Queue for both machines, in order (front 170 s7 + 228)
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
