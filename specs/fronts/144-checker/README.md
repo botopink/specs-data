@@ -3432,3 +3432,25 @@ Found by the front-169 rakun port thread while implementing render.bp/streaming.
 - [x] no fix, no cell written: nothing is red on the parent to turn green. **For front 169**: render.bp/streaming.bp's deferred children (Fill, `__jhPushNode`/`__jhNodeAt`) resolve correctly by keeping the scope a `{ scope, key -> … }` node is handed *inside the providing body* (probe B's shape), not by pre-opening a cell externally and resolving over it later (probe A's shape, which the language correctly refuses to carry a provide across). The port is unblocked on this basis.
 
 Open for the maintainer: (1) confirm closing this as not-a-defect under 908/966(5)/968(2)-(3) with front 169 proceeding on probe B's shape; (2) whether to still write a cell documenting A (answers the default) vs. B (answers the provided value) on commonJS/erlang/beam — it would be green on the parent (not a red-to-green regression fix), and its expected answers rest on this reading of 908, so left for a decision rather than written unasked.
+
+### B-213 — a name contested between `std/compiler` and `std/json` surfaces only in a full package, where `crossModule.pickFor` is meant to be scoped per consumer module
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet first (mechanical shrink), then opus (the fix) · **After:** nothing; blocks rakun-bpp's RenderScope port landing (front 169)
+
+Found porting rakun-bpp off `RenderScope` (front 169): `botopink test`/`build` (the codegen pass, not `check`'s type-check-only path) refuses `render.bp` and `streaming.bp` with "`Json` is declared `pub` by `std/compiler` and by `std/json`, and this import does not say which." Real ambiguity detection (`crossModule.zig`'s `ImportDecl.leafSource`/`CrossModule.pickFor`), not a false positive — but it's meant to be scoped per consumer module's own `use` declarations, and no import-statement rewrite (splitting the import, leaf-importing specific members, `from "std/compiler"`/`from "std/json"` submodule paths — which additionally fail to bind names at all, differently broken from the bare form) fixes it. Three progressively larger standalone repros outside rakun (single file; a two-package dependency setup; matching `globals.bp`/`plugin.bp`'s exact shapes including a `plugin.Json as PayloadJson` alias) all compiled clean — whatever triggers it needs something about the real, full 91-module rakun-bpp package that doesn't show up in isolation. Confirmed not caused by the port's own diff (reverted experimental import changes back to the clean post-port state; the ambiguity persists either way).
+
+- [ ] shrink mechanically (a script, not judgment): delta-debug the real rakun-bpp package — remove modules, then imports, while the error stays — until a minimal repro is left
+- [ ] fix the real cause in `crossModule.zig`'s `pickFor`/`Contested` scoping, once the minimal repro exists
+- [ ] write the minimal repro as a cell
+
+Oracle: the cell, red on the parent, green after; `botopink test --target commonJS` (and the other targets it reaches) green on render.bp/streaming.bp once fixed.
+
+### B-214 — rakun-bpp: an optional binder in the HTML DSL has no subject hint inside a `{if (...) { text -> ... }}` form
+
+**Repository:** rakun (`--repo rakun`) · **Model:** sonnet · **After:** nothing; does not block front 169
+
+Pre-existing, unrelated to the RenderScope/`all<T>` port: `rakun-bpp/test/html/template_test.bp:154`'s `{if (label) { text -> <span>{text}</span> }}` fails `botopink check`. Confirmed independent of the port — reproduces identically on an untouched copy of the file, with no dependency on anything front 169 changed; it only surfaced once `render.bp` (which this test imports `renderNode`/`raw` from) compiled far enough to reach it.
+
+- [ ] locate and fix the optional-binder/subject-hint gap in the HTML-DSL form above
+
+Oracle: `rakun-bpp/test/html/template_test.bp` checks clean.
