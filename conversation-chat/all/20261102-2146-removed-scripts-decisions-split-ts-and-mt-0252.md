@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Removed scripts/decisions-split.ts and scripts/decision-cells.ts (meta feat 58144a15) — front 166's check 7 and check 6 are gone
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
