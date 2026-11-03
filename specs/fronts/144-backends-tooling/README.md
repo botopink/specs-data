@@ -3681,25 +3681,11 @@ Measured (machine-2, 2026-11-03): since decision 531 the returned diagnostic was
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; the fix's discipline is the file's own) · **After:** nothing · found by the fable on rakun-bpp's port (165)
 
-`reachedEnumRequires` (`commonJS.zig`) inserts a reached type's require at index 0 of the module's requires. The type is reached through a decorator's `compiler.setMeta(RouteSegment(seg))`, lowered to `DeclaredTypedMeta("routes@@RouteSegment", …)`, or through an enum method's type. Index 0 is ahead of the module's source-order imports. Decision 660's init list then has an entry that requires a package module first, and that module, while it is still loading, reaches back to a module that is also mid-load. A load-time destructure captures `undefined` there.
+`reachedEnumRequires` (`commonJS.zig`) inserted a reached type's require at index 0 of the module's requires, ahead of the module's source-order imports. The type is reached through a decorator's `compiler.setMeta(RouteSegment(seg))` or through an enum method's type. Decision 660's init list then re-entered a module that was still loading, and a load-time destructure captured `undefined`. In rakun-bpp's `client_app_test`, `segmentOf` threw `TypeError: segment is not a function`.
 
-The measured chain is rakun-bpp's `client_app_test`:
-- `require(routes)` is hoisted first, then `routes` → `element`;
-- `element` → `prelude`, through the init list, because `element` has `test` blocks;
-- `prelude` → `render`, for `raw`;
-- `render` destructures `{ segment }` from `routes`, which is still mid-load. `segmentOf` then throws `TypeError: segment is not a function`.
-
-With `element` required before `routes` it is clean. The source import graph is acyclic: the compiler draws the edge that closes the loop, and the wrong order. This predates the port: the hoist and the init list are both older than it, and the port changes no edge.
-
-- [ ] reached-type requires are emitted after the module's source-order import requires (the same discipline as the comment beside them), or bound lazily; an entry's init list never re-enters a module mid-load
-- [ ] cell, red on commonJS (green on erlang) on the parent, green after, in a package with these modules:
-  - `routes` imports `element`, and has a decorator doing `compiler.setMeta(Seg(s))`;
-  - `element` has one `test` block;
-  - `prelude` has a module-level effectful `val`, and imports `render.raw`;
-  - `render` does `import {routes.segment}` and exports `raw`;
-  - a test module imports `element` before `routes`, marks a fn with the decorator, and calls a `render` fn that calls `segment`.
-- [ ] rakun-bpp's 4 `client_app_test.bp` reds clear with it (they are listed under this row until then)
-
+- [x] reached-type requires are emitted after the module's source-order import requires (machine-1, 2026-11-03)
+- [x] the cell from the row's package shape, red on commonJS on the parent and green after
+- [ ] rakun-bpp's 4 `client_app_test.bp` reds confirmed clear in rakun-bpp's next run (machine-1's next rakun-bpp thread checks it)
 
 ### B-217 — a deferred component call is stamped over the creating body's cell, so a Suspense / boundary fill fails `scope-foreign` on erlang and beam — **refiled to rakun: not a compiler defect**
 
