@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: STOP duplicate: 1104 piece (2) is machine-1's (.tasks/d1104p2); machine-2 stops its piece-(2) child, keeps s6
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
