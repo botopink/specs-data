@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: Rebase conflict: machine-1's landed 229 s1 reimplements decision 1097's build note independently of my B-208 P1 — needs reconciling, not a guess
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
