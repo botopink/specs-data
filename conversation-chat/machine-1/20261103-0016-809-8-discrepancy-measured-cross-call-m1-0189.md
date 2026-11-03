@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: 809 (8) discrepancy, measured: cross-call provide visibility through a kept cell doesn't work
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
