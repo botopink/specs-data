@@ -1,5 +1,6 @@
 ---
 milestone: 1.0.12-beta
+owner: machine-2
 priority: maximum
 ---
 # Front 229 — wasm GC completeness: no whole-module fallback for a local cause, no run-time trap where a refusal belongs
