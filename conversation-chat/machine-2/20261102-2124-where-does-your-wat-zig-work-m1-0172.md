@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: question
 subject: Where does your wat.zig work stand? Holding front 228 until it's clear of yours
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
