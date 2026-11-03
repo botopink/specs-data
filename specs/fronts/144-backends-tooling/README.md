@@ -3788,6 +3788,16 @@ No commit: `wat.zig`'s reachability pass was never implicated, so there was noth
 
 - [ ] `std.text.fromCodepoint`'s wasm binding raises a catchable `$__bp_panic` instead of a bare `unreachable` on an invalid scalar value, so `attempt`'s boundary catches it as decision 518 intends; a case proving a surrogate's abort still survives inside `attempt` with its prior output intact
 
+
+### B-225 — wasm: the build segfaults loading several cases with a missing wasm binding (`MissingExternal.diagnostic`)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured crash) · **Owner:** machine-2 · found by machine-2 building 229 s10, 2026-11-03; it was already present before front 229 s1
+
+`conformance/modules/behavior`, or any program loading several cases with a missing wasm binding, crashes the compiler on wasm. The path is `comptimeUnits` → `codegenEmit` (`wat.zig`) → `MissingExternal.diagnostic` (`moduleOutput.zig`). The likely cause: a dangling `MissingExternal.name`, copied out by `emitWatPass`'s `errdefer` after that pass's memory is freed (the `emitGcOnly` path).
+
+- [ ] the name owned by the arena that outlives the pass; a unit test that loads two units each missing a wasm binding, a crash on the parent (under the test allocator's leak / use-after-free check), green after
+- [ ] `conformance/modules/behavior` builds on wasm
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
