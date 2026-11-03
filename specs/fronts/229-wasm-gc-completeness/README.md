@@ -94,13 +94,11 @@ The same mechanism as 1096, but through a package's own import, not the scaffold
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (shared code reached across the whole wasm backend) · **After:** s7 (landed) · found by machine-2 building s7, 2026-11-03
 
-In `conformance/modules/import`'s case `import_same_fn_name_two_aliases`, `print(appNotFound())` calls a function. wasm's `callKind` still matches the callee's bare capitalised name, `NotFound`, against std `io/fs.bp`'s `FsError.NotFound(path: string)`, an unrelated enum variant. It answers `.enum_ctor` with no check that 0 arguments fit a 1-field variant.
+In `conformance/modules/import`'s case `import_same_fn_name_two_aliases`, `print(appNotFound())` calls a function. wasm's `callKind` matched the callee's bare capitalised name, `NotFound`, against std `io/fs.bp`'s `FsError.NotFound(path: string)`, an unrelated enum variant, and answered `.enum_ctor`.
 
-A kind chosen by a name match is wrong whenever two declarations share a name. The checker already resolved the call; the codegen must read that resolution.
-
-- [ ] `callKind` decides from the declaration the checker resolved at the call: a function, a variant constructor, a record constructor or a method. A bare name never decides it. An argument-count check alone is not the fix: it still matches by name, and is only right by accident
-- [ ] a `wat.zig` unit test: a function whose name, or an alias of it, equals a std variant's capitalised name, called with no arguments. Red on the parent, green after; the other three targets' answer unchanged
-- [ ] `conformance/modules/import` green on wasm, every case. This closes s7's second box
+- [x] `callKind` no longer decides a kind by a bare name. A variant is `.enum_ctor` only through a receiver that names its enum. The checker refuses a bare variant in expression position (decision 587, `infer.refuseBareVariant`), so a receiverless call that type-checked resolved to a function, a local or a record. The checker's guarantee is what the codegen reads, and no side table is threaded through (the maintainer, 2026-11-03, accepting machine-2's reading)
+- [x] a `wat.zig` unit test: a 0-argument function named like a linked enum's payload variant is a plain call. Red on the parent, green after; the other three targets' answer unchanged
+- [x] `conformance/modules/import` green on wasm, every case. This closes s7's second box
 
 ## Collisions
 
