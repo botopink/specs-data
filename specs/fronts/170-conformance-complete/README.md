@@ -226,7 +226,10 @@ type-parameter field is lowered but no cell reaches it.
       the binding in scope at the `defer` (names bind there, only the value is read late — 539's amendment)
 - [x] a deferred statement that panics on an inline exit path inside an enclosing region runs once (`attempt` around
       a `return` with a panicking inner defer)
-- [ ] question 539-b's answer: a `defer` and the program's `needs`
+- [x] question 539-b's answer, decision 597: a function holding a `defer` adds `.exceptions` to the program's `needs`.
+      It already held on wasm (a function with a `defer` asks for exceptions itself, and 518 (2)'s reachability pass
+      carries that into the module's `needs`). What was missing was a guard: a `wat.zig` unit test for a bare `defer`
+      with no `attempt`, since the cross-target cell cannot observe wasm's own `needs`
 
 ### s9 — 537 and 541 on wasm (was 164 s2c)
 
