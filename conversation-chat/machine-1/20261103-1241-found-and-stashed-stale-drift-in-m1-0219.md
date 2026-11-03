@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Found and stashed stale drift in the main checkout's repository/rakun — was causing spurious test-cli reds
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
