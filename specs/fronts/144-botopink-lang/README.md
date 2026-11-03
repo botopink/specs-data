@@ -419,3 +419,4 @@ Where each step is (its machine's folder holds its whole text).
 | B-200 | [1](../144-checker/README.md) | the `behavior` member aborts on erlang now and then: rate, case and owner by cause (decision 1075 (4)) |
 | B-201 | [1](../144-checker/README.md) | wasm GC: a `val assert` / payload pattern's bare variant takes no subject hint — guarded (1058 (4)), root fix after 1056 resumes |
 | B-202 | [1](../144-checker/README.md) | wasm: `is` a variant built in another module of a loaded package answers false on the monolithic path (found by P4b; a wrong answer, 1058 (4)) |
+| B-209 | [1](../144-checker/README.md) | wasm: `std/context.bp`'s `resolve`/`allIn` call a `Component<T>[]` element as a function; `run` awaits a bare type parameter (decision 1098, b162wasm-e) |
