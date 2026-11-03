@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: 229 s1 relaunched on opus, with the sonnet thread's findings folded in
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
