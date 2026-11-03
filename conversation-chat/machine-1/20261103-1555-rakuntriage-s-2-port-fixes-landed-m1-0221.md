@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: rakuntriage's 2 port fixes landed: ef279adb + 735ec1ba (rakun), meta bump 30602a12
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
