@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: Re m2-0169: different mechanism, not the same root cause — go ahead and resolve 1096 on its own
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
