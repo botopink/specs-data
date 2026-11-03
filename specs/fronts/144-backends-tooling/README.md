@@ -3742,24 +3742,43 @@ A 25-field record construction gives an unlocated `TooManyOperands`. A 25-argume
 - [ ] beam lowers records and calls past 24 operands; a cell with a 25-field record and a 25-argument call, red on beam on the parent
 
 
-### B-223 — wasm: 18 conformance members trap on `unreachable` at run time with no `.linear` note in their build — **closed, false positive**
+### B-223 — wasm: 18 conformance members trap on `unreachable` at run time with no `.linear` note in their build — **closed as a stub, each one's own red case now listed below**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (triage first, a measured repro per case) · **Owner:** machine-2 · found by front 170 s7's P5-a measurement, 2026-11-03 · closed 2026-11-03
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (triage first, a measured repro per case) · **Owner:** machine-2 · found by front 170 s7's P5-a measurement, 2026-11-03 · stub ruled out 2026-11-03
 
 Each of these members builds in GC form with no `.linear` note, then traps `wasm 'unreachable' instruction executed` at run time:
 
 `any_type_absent-31`, `behavior_identity_by_module-831`, `clock_iso8601_millis_always-849`, `clock_rfc3339_domain-497`, `failure_kinds_exact_every_target-527`, `fetch_one_typed_surface-623`, `fs_walk_dangling_link_not_found-711`, `function_stage_propagated-376`, `function_value_prints-1051`, `hook_name_use_prefix_refused-926`, `import_alias_on_type_and_folder_namespace-110`, `result_is_checked_error-431`, `std_module_error_enum-486`, `string_from_codepoint-262`, `task_methods_withdrawn_async_block-523`, `variadic_last_parameter-267`, `wasm_clock_fs_refused-241`, `wasm_host_profiles_wasi_browser-334`.
 
 - [x] each member run alone on wasm: its case, the trapping function and whether it is a 229 s1 stub, one line each — done, full wasmtime backtrace per case (not the CLI's truncated one-line trap message)
-- [x] the stub cases fixed in reachability; the rest filed as their own rows with their case — zero were a 229 s1 stub; nothing to fix
+- [x] the stub cases fixed in reachability; the rest filed as their own rows with their case — zero were a 229 s1 stub; each member's own red case is listed below instead of being waved away as the measurement heuristic's false positive
 
-**Finding: none of the 18 is front 229 s1's stub.** `grep -rn "unreached here: " <each member's>/out/wasm/*.wat` is empty for all 18 — nothing is stubbed.
+**None of the 18 is front 229 s1's stub** — `grep -rn "unreached here: " <each member's>/out/wasm/*.wat` is empty for all 18. `_botopink_main` traps by decision 999's own design: a `main` answering `Error` prints `"failed: N red on wasm: …"` then an unconditional `unreachable` (a trap is the only way wasm signals non-zero exit to the embedding host). 1 of the 18 (`string_from_codepoint-262`) traps for a different, already-filed reason (B-224). The other 17 each have the following real red case(s) inside them:
 
-17 of the 18 are a false-positive match of the measurement heuristic, not a defect: `_botopink_main` traps by decision 999's own design (a `main` answering `Error` prints `"failed: " + <text>` via `__main_fail`, then an unconditional `unreachable`, since a trap is the only way wasm signals a non-zero exit to the embedding host). Every one of these 17 self-checking modules has its own pre-existing red wasm *case* inside it, so `main` correctly returns `Error(...)`, prints the diagnostic, and then traps — confirmed byte-for-byte for all 17 (the backtrace is exactly `_botopink_main` ← `p1_adapter`, nothing upstream). "GC form, no `.linear` note, wasm trap" matches this designed exit path identically to a silent stub trap; P5-a's script should tighten the signal — require either zero printed output before the trap, or a positive grep for the stub's own `"unreached here: "` marker, rather than inferring a stub from the trap's mere existence.
+| Module | Red case(s) | Symptom | Note |
+|---|---|---|---|
+| any_type_absent-31 | host_unknown_parameter | aborts instead of its 2 lines | |
+| behavior_identity_by_module-831 | behavior_identity_by_module | 5/6 `out` lines collapse to `other` × 5; behavior-by-module identity lost on wasm | |
+| clock_iso8601_millis_always-849 | clock_iso8601_millis_always | aborts instead of its 7 ISO-8601 lines | |
+| clock_rfc3339_domain-497 | clock_civil_past_rfc3339_aborts, clock_format_past_rfc3339_aborts, clock_offset_past_rfc3339_aborts | each expects `out before` + a caught abort with a specific stderr message; observed is a bare `abort`, losing the prior output and the message | |
+| clock_rfc3339_domain-497 | clock_rfc3339_domain | aborts instead of its 7 domain-boundary lines | |
+| failure_kinds_exact_every_target-527 | std_asserts_throws_over_attempt, std_failure_attempt_crash, std_failure_attempt_host | each aborts instead of its expected lines | |
+| fetch_one_typed_surface-623 | http_fetch_request | aborts instead of its 9 lines | |
+| fs_walk_dangling_link_not_found-711 | fs_error_variants | aborts instead of its 15 lines (incl. the dangling-link case the module is named for) | |
+| function_stage_propagated-376 | stage_comptime_block_in_run, stage_imported, stage_of_functions | each aborts instead of its expected lines | |
+| function_value_prints-1051 | function_value_prints | build refused: `std module \`context\` has no public \`RenderScope\`` — **confirmed also red on commonJS, identical refusal**; not wasm-only | likely the same decision-388 `RenderScope` → `Scope`/`run` migration already tracked at front 169's Known Reds (rakun-bpp's own port, m1-0216) — this conformance case's own `src/main.bp` looks simply unmigrated, not a new defect |
+| hook_name_use_prefix_refused-926 | hook_name_use_prefix_default_fn_refused, hook_name_use_prefix_method_refused, hook_name_use_prefix_refused | same `RenderScope` build refusal pre-empts the intended refusal, confirmed also red on commonJS | same root cause as function_value_prints-1051 above |
+| import_alias_on_type_and_folder_namespace-110 | import_std_folder_namespace | snapshot expects a clean build-time refusal (`std-unsupported-on-target: …clock.nowMillis…`); observed is now a bare runtime `abort` — builds now, traps instead of being refused | groups with variadic_last_parameter-267 and wasm_host_profiles_wasi_browser-334 below — same build-refusal-vs-runtime-trap boundary for a host fn with no `.Wasm()` binding, worth one investigation |
+| result_is_checked_error-431 | try_catch_host_raise_propagates | aborts instead of its 6 lines (B-223's own original example) | |
+| std_module_error_enum-486 | std_host_error_variants | aborts instead of its 19 lines | |
+| task_methods_withdrawn_async_block-523 | task_failure_rejects | wasm now uses the plain section (same as commonJS) expecting real output; observed is `abort` — erlang/beam already have their own accepted `on erlang`/`on beam` abort departures, unaffected | |
+| variadic_last_parameter-267 | variadic_parameter_host | snapshot expects a clean build refusal (`` `largest` has no implementation for the wasm backend ``); observed is now a bare runtime `abort` | same boundary issue as import_alias_on_type_and_folder_namespace-110 |
+| wasm_clock_fs_refused-241 | std_template_host_fns_across_modules | aborts instead of its 10 lines | |
+| wasm_host_profiles_wasi_browser-334 | wasm_host_from_manifest | snapshot expects a build refusal (`` `floorOf` has no implementation for the wasm backend ``); observed now **succeeds** (`out 2.0`) — opposite direction: the case may now be correct and the snapshot's departure stale, not broken output | same boundary area as the two rows above |
 
-1 of the 18 (`string_from_codepoint-262`) traps for a real but unrelated reason — filed as B-224 below, not fixed here.
+Not cross-checked against commonJS/erlang/beam except the two `RenderScope` rows (their build-time nature made cross-target breakage cheap to confirm); the rest are wasm-only departures from an otherwise-green case by construction (the plain section each falls back to is what the other three targets already pass). Not checked against any pending-page entry beyond this search. No case in `conformance/disabled.txt` or carrying a `// LANGUAGE GAP` marker.
 
-No commit: `wat.zig`'s reachability pass was never implicated, so there is nothing to land.
+No commit: `wat.zig`'s reachability pass was never implicated, so there was nothing to land for the stub question itself. The 17 reds above are unassigned — each needs its own triage/fix or a filed language-gap row; the three build-refusal-vs-runtime-trap rows look like one shared investigation.
 
 ### B-224 — wasm: `std.text.fromCodepoint`'s trap on an invalid scalar value escapes `std.failure.attempt`'s catch boundary uncaught
 
