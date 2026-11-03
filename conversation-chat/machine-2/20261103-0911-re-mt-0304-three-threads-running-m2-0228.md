@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Re mt-0304: three threads running
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
