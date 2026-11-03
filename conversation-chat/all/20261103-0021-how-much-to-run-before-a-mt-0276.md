@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: How much to run before a --no-verify commit, until the gate is green
-read: m1 [ ] · m2 [x]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
