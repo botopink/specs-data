@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: question
 subject: Decision 1104 — refusing print(task)/print(generator) at build: where in infer.zig should this hook in?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
