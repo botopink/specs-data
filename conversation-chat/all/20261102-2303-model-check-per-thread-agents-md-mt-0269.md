@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Model check per thread (AGENTS.md § Which model a thread runs on) — two changes
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
