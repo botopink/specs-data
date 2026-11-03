@@ -41,13 +41,16 @@ Old id | Step here
 
 **Repository:** every library repository with a `botopink.json` (a full worktree), and the meta repository · **Model:** sonnet · **After:** 163 s8's earlier boxes (landed, in front 163)
 
-State (2026-10-11): actions, http, log, routing, css, snap, markdown green; rakun, query and validation have green
-runs but their latest is red on the builtins group's spelling (rakun's and query's land with 165 s10 after B-136;
-validation's B-138 migration is open); json and yaml carry the shared `test` workflow and a manifest with no source yet.
+State (machine-2, 2026-11-03, read with `gh`):
+- green on `feat`: actions, http, routing, validation, css, snap, json, yaml and markdown;
+- `log` and `query`: red at the conformance stage, decision 1002 (c)'s known red until 996 / L5;
+- `rakun`: red at decision 1070's 1800 s gate bound, a new red filed in front 169 § Known reds.
 
-- [ ] the meta `scripts/gate.sh check` holds every library's `test.yml` dependency step and `BOTOPINK_LIB_ROOTS` to
-      one text (478's cheap test: the "not found" reds appear only on a runner with no sibling library)
-- [ ] every library's workflow has at least one green run on `feat`, and its latest run green — read with `gh` (474)
+- [x] the meta `scripts/gate.sh check` holds every library's `test.yml` dependency step and `BOTOPINK_LIB_ROOTS` to
+      one text (478's cheap test: the "not found" reds appear only on a runner with no sibling library) — check 6,
+      green locally and on the meta's CI
+- [ ] every library's workflow has at least one green run on `feat`, and its latest run green — read with `gh` (474).
+      Nine are; `log` and `query` wait on 996 / L5; `rakun` on front 169's 1800 s box
 
 ### s3 — the gate and the conformance order timed on a quiet machine (was 163 s9)
 
