@@ -28,13 +28,14 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 - [x] `gcEqValues` compares a record or variant field typed `unknown` with `$__unk_eq` instead of falling the module back
 - [x] an enum or variant value's own `display()` is dispatched in GC mode: `gcDeclPrinter`'s `variant == null` condition and the `$__tinfo` display slot's `t == .record` removed
 - [x] oracle: proved by `wat.zig`'s own unit tests, not a conformance cell (none of the three sub-fixes carries a decision number of its own) — `"wat: gc ---- an enum's own display is dispatched statically and through unknown, generic or not"`, `"wat: gc ---- equality over a field typed unknown compares structurally, not a module-wide fallback"`, `"wat: gc ---- a closure and a @Result held unknown print as commonJS prints them"`, `"wat: gc ---- a Task or a generator held unknown panics by name"` — each red on the parent (a trap or the wrong text), green after; `zig build test` and `test-cli` full, `analysis_equivalence.sh` unchanged at its 21 known rakun failures
+- [ ] decision 1104 (filed as pending 229-a, answered): a Task / generator's print is refused at build on all four targets where the type is statically known (directly or through a generic parameter), `print-task` / `print-generator`; through `unknown` the same named panic text replaces each target's own native inspect. The refusal lives in the checker (`infer.zig`, machine-1's lane) — last piece of s2, done after s3
 
 ### s3 — GC forms for the remaining control shapes
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** nothing open
 
-- [ ] `try … catch { }` (`lowerRegion`) in GC form — today a fallback, refused inside a state machine; `lowerThrow` builds `$result` with `struct.new`, never linear memory (today the module falls with the wrong attribution, "touchesMemory")
-- [ ] `spawn_all` over thunks answering scalars boxes the answers (`gcSpawnAllAnswers`)
+- [x] `try … catch { }` (`lowerRegion`) in GC form (`gcLowerRegion`) — a `$result` ref in the region's `err` local in place of the linear lowering's slot address; `gcTryPropagate`'s region branch, `gcBindResultErr` for the binder
+- [ ] `spawn_all` over thunks answering scalars boxes the answers (`gcSpawnAllAnswers`) — blocked on `bindAwaitedGeneric` resolving a generic parameter nested inside a declared parameter's type (`array<fn() -> Async<T>>`), found scoping this box (229-a's sibling finding); narrowed to that one function, lifting `gcSpawnAllAnswers`'s refusal in the same commit. `race<T>`'s own gap ("convert ref") is a separate row, out of scope here
 - [ ] `$box_bytes`, modelled on `$box_big` (1031 (2)), so `Bytes` can sit in an `unknown`, union or type-parameter slot; arms in `__unk_eq_ref` and `__print_tagged_raw`
 - [ ] oracle: the `lowered .linear` count shrinks for the cells holding these shapes; one cell per shape. The linear region lowering is P5's to delete
 
