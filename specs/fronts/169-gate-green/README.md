@@ -45,3 +45,10 @@ Decision 1041 lets every thread land on the tests and cells its change reaches, 
     - examples: `rakun` (erlang) · `rakun-container` (erlang) · `rakun-app/page-path` (erlang) · `rakun-bpp/blog-ssr` (commonJS, erlang) · `rakun-bpp/jhonstart-counter` and `rakun-bpp/jhonstart-todo` (commonJS, erlang, beam) · `rakun-ssr/blog` (beam);
     - rakun-style's examples: `styled-context`, `styled-context-unbound`, `styled-example`, `styled-source-order` (commonJS, erlang).
   - [ ] each family shrunk to a case on the targets it fails (commonJS as the oracle where it answers) and classified (port follow-up or compiler); the compiler ones filed as 144 rows; the port ones fixed in rakun; the rakun workspace gate green on the three targets
+
+
+- The libraries' `feat` workflows (read by machine-2 with `gh`, 2026-11-03, front 170 s2):
+  - green: actions, http, routing, validation, css, snap, json, yaml and markdown;
+  - `log` and `query`: red at the conformance stage (`error: unknown command: cell`), decision 1002 (c)'s known red until 996 / L5 moves the libraries to the root-package shape;
+  - `rakun`: a different red. Its latest completed run hit decision 1070's 1800 s bound for the whole gate (exit 124).
+  - [ ] rakun's CI gate inside 1070's bound: measure which stages take the time, then split the gate, or shorten it, or bring the bound to the maintainer. A bound changed per repository is a decision, never a quiet edit
