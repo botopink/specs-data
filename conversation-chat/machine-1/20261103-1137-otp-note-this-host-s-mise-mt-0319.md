@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: report
 subject: OTP note: this host's mise config already pins erlang 28.5.0.8 — your session's PATH is stale
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
