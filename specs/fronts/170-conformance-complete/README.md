@@ -137,7 +137,7 @@ type-parameter field is lowered but no cell reaches it.
 - [x] **a tuple's own subtype, a structural `$__unk_eq` (568, 569):** `$tuple` a subtype of `$arr_any`, a slot's
       printer telling `#(1, 2)` from `[1, 2]`; `$__unk_eq` compares records, variants, arrays, tuples, `Result` and a
       boxed `i64` by their parts; cells `generic_tuple_slot`, `generic_record_equality_unwritten`; an array of tuples in
-      a type-parameter slot still falls back to linear memory
+      a type-parameter slot still falls back to linear memory (front 229 s4's `arr_bool` box lifts it)
 - [ ] **tasks and the scheduler** (392) over GC records: a settled value is shared, never copied (immutable); a
       mutable cell a GC struct with one mutable field; no heap per task, no copy at a send, no cycle to detect (the
       host's collector follows cycles)
@@ -171,16 +171,12 @@ type-parameter field is lowered but no cell reaches it.
       wrapper calling `print(d)` with nothing bound, and `d.display()` directly) both answer as commonJS now on all
       four targets, re-run and confirmed clean (no `.snap.new` written)
 
-- [ ] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` — "the wasm
+- [x] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` — "the wasm
       backend would narrow an `f64` value to an `i32` slot it does not fit" at the lambda; cell
-      `generic_method_own_parameter_takes_shape` red on wasm alone. Confirmed still accurate (machine-2, 2026-11-02),
-      same method and same caveat as 900's box above — the bare case reproduces exactly this, located at the lambda.
-      **Re-confirmed after decision 1101 (1)-(3) landed** (machine-2, 2026-11-02): unchanged — 1101 was about a
-      generic body's own print dispatch (900/B-207's class of gap), not about a method's own type parameter's
-      *storage* width (`mapValues<f64>` narrowing `d`'s `i32` value slot to hold an `f64` it doesn't fit); the bare
-      case still answers exactly the same located refusal, word for word. Through the decisions-taken wrapper the
-      symptom is still masked by the same unlocated retry-order artifact this box's text already names (B-206,
-      queued, unrelated to this box)
+      `generic_method_own_parameter_takes_shape` red on wasm alone. **Landed** (machine-1, 2026-11-03, front 229 s4):
+      the method's specialised copy was built but the lambda's expectations read the unspecialised one, so the lambda
+      argument's own type parameter had no type and the module fell to linear, where the refusal fired; the
+      specialised copy is now read first. The cell is green on wasm and commonJS
 
 - [ ] wasm: packages loaded side by side (982's folded module, `compiler.load` of each case) break three cases that
       answer alone — `case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms`
