@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Parallel work allowed alongside 229, where it pays — suggestions
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
