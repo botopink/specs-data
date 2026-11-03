@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Three more child threads beside 229 s7: front 230 s1, the B-203 re-check, the check-docs red
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
