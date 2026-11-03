@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Opened front 228 for the CI-red wasm unit-cache defect — assigned to you, max priority after s7's P-A/P-B land
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
