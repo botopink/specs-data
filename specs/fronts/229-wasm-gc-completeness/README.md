@@ -96,6 +96,21 @@ In `conformance/modules/import`'s case `import_same_fn_name_two_aliases`, `print
 - [x] a `wat.zig` unit test: a 0-argument function named like a linked enum's payload variant is a plain call. Red on the parent, green after; the other three targets' answer unchanged
 - [x] `conformance/modules/import` green on wasm, every case. This closes s7's second box
 
+
+### s10 — a function with no `.Wasm()` implementation is refused at build again, never a run-time abort
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (where reachability and the build refusal meet; s1's own region) · **After:** nothing open · found by machine-2's B-223 listing, 2026-11-03
+
+Three members moved across the line between a build refusal and a run-time trap:
+- `import_alias_on_type_and_folder_namespace-110` and `variadic_last_parameter-267`: they were a located build-time refusal (`no .Wasm() implementation`). Now they build and abort at run time;
+- `wasm_host_profiles_wasi_browser-334`: the refusal disappeared and it now runs. Its departure may be stale.
+
+This is this front's own title: no run-time trap where a refusal belongs. The first suspect is s1, which changed when `refused_modules` is tested (after `pruneUnreached`, only when a reached declaration belongs to the refused module).
+
+- [ ] bisected: the commit that moved each of the three named
+- [ ] a reached function with no wasm implementation is refused at build, located, on every path; an unreached one stays s1's stub. A unit test per path, red on the parent
+- [ ] `wasm_host_profiles_wasi_browser-334`'s departure re-read: if it runs correctly now, the departure goes, and the change is listed in the report
+
 ## Collisions
 
 s1 and front 228 both edit `finishGc` and unit emission — 228 has landed, rebase on it. s2 and s4 share `gcDeclPrinter` / `gcGenericArg`'s region with 1099 — after it. s3 collides with nothing in flight.
