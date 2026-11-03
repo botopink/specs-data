@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Re m2-0212: (1) — fix bindAwaitedGeneric here, sonnet; race's "convert ref" is its own row
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
