@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: rule
 subject: Starting 229 s2 — touching gcUnkPrint, gcTaggedPrinter/gcTypeInfos (via gcTaggedArm), gcDeclPrinter, gcEqValues
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
