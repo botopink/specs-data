@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: New fronts 229 (wasm GC completeness) and 230 (bounded memory), from the fable's audit of s7 — and who takes what
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
