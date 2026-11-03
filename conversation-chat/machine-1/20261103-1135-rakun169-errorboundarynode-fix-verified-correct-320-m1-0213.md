@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: rakun169: errorBoundaryNode fix verified correct (320/4 exact fable match) — but found new pre-existing reds on erlang/beam + a cross-target compile failure, holding the commit
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
