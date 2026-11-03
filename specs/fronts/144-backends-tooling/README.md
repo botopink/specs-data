@@ -3706,15 +3706,15 @@ Filed from a fable plan the maintainer ran (2026-11-02) on the B-203 class of bu
 - [ ] D1: isolation design decided from M0's numbers
 - [ ] P2: D1's pick implemented in `conformance/run.sh`
 
-### B-210 — wasm `.linear` prints a type parameter holding a record or an array as its own heap address, silently wrong, live today
+### B-210 — wasm `.linear` prints a type parameter holding a record or an array as its own heap address, silently wrong, live today — **closed**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** B-207, closes with step 1101 (3) — no fix of its own
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** B-207, closed by step 1101 (3) — no fix of its own
 
-Found while answering the maintainer's check on mt-0263: with today's compiler exactly as landed (the `gcDeclPrinter` guard in place, untouched), a generic record whose own `display()` prints a type-parameter value through another generic function (`shown<T>(x: T) { return "" + x; }`, B-207's own shape) is **silently wrong on wasm when that value is a record or an array** — not a trap, not a refusal, no fallback note beyond the ordinary B-208 one.
+Found while answering the maintainer's check on mt-0263: with the compiler as it stood then (the `gcDeclPrinter` guard in place), a generic record whose own `display()` prints a type-parameter value through another generic function (`shown<T>(x: T) { return "" + x; }`, B-207's own shape) was **silently wrong on wasm when that value was a record or an array** — not a trap, not a refusal.
 
-Repro: `Box<T>(value: T) implement Display { pub fn display(self) { return "Box(" + shown(self.value) + ")"; } }`, `print(Box(value: Box(value: 1)))` and `print(Box(value: [1, 2, 3]))`. commonJS answers `Box(Box(1))` and `Box([1, 2, 3])`. wasm, today, answers `Box(11752)` and `Box(11740)` — the inner value's own linear-memory heap address, read through the integer printer, because `lowerPrintArg`'s final fallback (the one that already refuses a tuple of no known element type, "the wasm backend has no printed form for this tuple…") has no equivalent check for a **bare** type parameter's own value: nothing in `.linear` memory tags a word as a record/array vs. a scalar, and the guard forces every such program there via B-207's gap (`wasm: <module> lowered .linear: a generic record's display`, B-208's own note, confirmed present in this repro).
+Repro: `Box<T>(value: T) implement Display { pub fn display(self) { return "Box(" + shown(self.value) + ")"; } }`, `print(Box(value: Box(value: 1)))` and `print(Box(value: [1, 2, 3]))`. commonJS answered `Box(Box(1))` and `Box([1, 2, 3])`; wasm answered `Box(11752)` / `Box(11740)` — a linear-memory heap address, read through the integer printer.
 
-**No fix of its own** (the maintainer, mt-0264): a `refuseUnlessTemplate` on `.linear`'s bare-T print would be the same per-function mechanism step 1101 ruled out for `.gc` — it would also refuse the scalar case `.linear` prints correctly today, trading this defect for a regression. This row closes once step 1101 (1)–(3) land: the guard comes off, `.gc` stays `.gc` for `Box<Box<T>>` / `Box<T[]>` (its own cells, via `shown<T>`'s now-safe `__print_tagged_raw` route), and the program never reaches `.linear`'s bare-T print at all.
+**Closed** (machine-2, 2026-11-02, decision 1101 (1)-(3)): both repros re-run by hand, both now answer `Box(Box(1))` and `Box([1, 2, 3])` on wasm, matching commonJS exactly. The guard came off and `.gc`'s own dispatch (`gcUnkPrint`, now reachable since `__print_tagged_raw`'s walk degrades per type, front 229 s1/s2) handles the record/array case directly — the program never reaches `.linear`'s bare-T print for this shape at all, as predicted. No cell written for this row (a bug-tracking row, not a decision; the repro is covered by B-207's own two new unit tests in `codegen/tests/wat.zig` instead).
 
-- [ ] `Box(Box(1))` / `Box([1, 2, 3])` written as cells (`print`s the commonJS answer), red on wasm alone until step 1101 (3) lands
-- [ ] once 1101 lands: both cells green on wasm, confirming `.linear`'s bare-T print is never reached for this shape
+- [x] `Box(Box(1))` / `Box([1, 2, 3])` both answer the commonJS text on wasm, confirmed by hand
+- [x] confirmed `.linear`'s bare-T print is never reached for this shape (the module stays `.gc` throughout)
