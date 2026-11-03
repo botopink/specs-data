@@ -169,16 +169,12 @@ type-parameter field is lowered but no cell reaches it.
       argument's own type parameter had no type and the module fell to linear, where the refusal fired; the
       specialised copy is now read first. The cell is green on wasm and commonJS
 
-- [ ] wasm: packages loaded side by side (982's folded module, `compiler.load` of each case) break three cases that
-      answer alone — `case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms`
-      trap (`unreachable`) or are refused ("would narrow an f64 value to an i32 slot … in another module's code");
-      commonJS, erlang and beam answer; repro: fold `conformance/modules/case` with B-157's codemod (`try --keep
-      <dir>`), then `botopink run --target wasm` in `<dir>`; the three stay cells until this lands — **filed as
-      B-203** (machine-2, 2026-11-02): the module-wide compile wall this repro actually hits today (conformance-lib's
-      self-check scaffold statically naming `io.fs.writeText`, masking whatever these three cases answer) is a
-      distinct, wider bug than this box describes (67 of 298 decisions-taken `cases/`-shape modules affected, not
-      just `case`); whether these three specific cases still answer wrong once B-203 lands is unconfirmed — re-check
-      then, this box's own text stands until it does
+- [x] wasm: packages loaded side by side (982's folded module, `compiler.load` of each case) broke three cases that
+      answer alone — `case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms`.
+      **Answered** (machine-2, 2026-11-03, after front 229 s1 and 1096 landed): the three, loaded side by side with
+      only themselves in the package, answer their accepted snapshot on wasm (the method checked by corrupting one
+      expected line, which failed). The whole `case` package is still refused on wasm for another case's gap
+      (`case_alternatives_and_arrays`' `array.slice`), which is front 229 s8's
 
 - [x] wasm: a call to `failure.attemptTask` imported under an alias of its own (`import {failure.attemptTask as x}`)
       loses its `await`; through `import {failure as f}` it awaits (found building 990 piece 2); a cell on four
