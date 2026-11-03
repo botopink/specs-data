@@ -192,7 +192,7 @@ type-parameter field is lowered but no cell reaches it.
   - a `u64` in a tuple, `$box_u64 <: $box_i64`;
   - a generic field of a generic type;
   - a boxed variant.
-- [ ] **P5-d, type recovery** (sonnet): each "of no known type" / "nothing types" gap answered from the checker's types, across generators, lambda parameters, awaited tasks and empty literals. It also closes s9's "`failure.attempt` over an `i64`".
+- [x] **P5-d, type recovery** (sonnet): each "of no known type" / "nothing types" gap answered from the checker's types, across generators, lambda parameters, awaited tasks and empty literals. It also closes s9's "`failure.attempt` over an `i64`". **"an awaited task of a type parameter" landed** (machine-2, 2026-11-03, decision 1105): `bindAwaitedGeneric` reused `genericRetByFnArg`'s own substitution for a generic call's single thunk parameter (`attemptTask<T>(f: fn() -> Async<T>)`, never bound before), and `declareNestedLocals`'s early pre-pass now reads a `for`-loop element's own declared type the same way the real lowering does, so `gcFail`'s first-gap-wins side effect stops poisoning the whole module before the real pass runs. Re-measured on P5-a's own corpus (all 67 libraries, `lib_one`'s harness replicated, `disabled.txt` ignored — it never filters which pairs the harness runs): **41 → 0** across 41 of 67 libraries (each had hit it exactly once); no library's count increased. The other remaining P5-d gaps (generators, lambda parameters, empty literals, s9's `failure.attempt` over an `i64`) are still open.
 - [ ] **P5-e, control shapes** (sonnet): each a unit test:
   - an inlined lambda's endings;
   - defer arms;
@@ -222,7 +222,7 @@ type-parameter field is lowered but no cell reaches it.
 | 288 | 24 | a declaration of `…`, a module this backend refused *(cascading, not a root cause — fires once per module importing an already-refused one)* | `modules/decisions-taken/unreached_unlowerable_function_ignored-531` |
 | 87 | 40 | **convert ref** *(front 229 s7's box — landed)* | `modules/embed` — `cases/embed_field_read_other_module/src/main.bp:11:5` |
 | 73 | 25 | a tuple element of a value of no known tuple type | `libraries/validation` — `src/json.bp:187:13` |
-| 60 | 60 | an awaited task of a type parameter *(structural — fires once per package/harness awaiting a generic `Async<T>`)* | `modules/component` |
+| 60 | 60 | an awaited task of a type parameter *(structural — fires once per package/harness awaiting a generic `Async<T>`; **P5-d's own thunk-parameter case: landed, re-measured 41→0 across the libraries that hit it**)* | `modules/component` |
 | 47 | 24 | the GC module does not type-check: a number where a reference was taken | `modules/decisions-taken/comptime_reflection_types_at_runtime-1071` |
 | 43 | 42 | the GC module does not type-check: a value of another type | `modules/array` — `__panic_raise` in `cellOf` |
 | 28 | 26 | a binding over a condition that is no optional | `modules/decisions-taken/mixed_literals_infer_union-150` |
@@ -237,7 +237,7 @@ type-parameter field is lowered but no cell reaches it.
 | 2 | 2 | the wasm backend cannot resolve the call: no function/method/variant/function-value answers it | `libraries/snap` |
 | 2 | 2 | a payload of no declared type | `modules/lambda` |
 | 2 | 2 | a lambda parameter nothing types | `modules/decisions-taken/fn_tail_value-409` |
-| 2 | 2 | **a call of std-wasm's `array.slice`, which has no GC marshal** *(front 229 s8's box, in flight)* | `modules/case` — `cases/case_alternatives_and_arrays/src/main.bp:13:5` |
+| 2 | 2 | **a call of std-wasm's `array.slice`, which has no GC marshal** *(front 229 s8's box — landed)* | `modules/case` — `cases/case_alternatives_and_arrays/src/main.bp:13:5` |
 | 1 each | 1 each | 20 more singleton reasons (i64→unknown narrowing; no iterable-walk form; the await-resumed-twice note (392); no string/array-method lowering; optional-container/no-print-shape; optional-all-unit-enum; `is` over a run-time type token; `at` over no known array type; array-of-another-shape in a type-param slot; array-literal no element type; `spawn_all` over thunks of no known type; run-time type token; `next()` with no `YieldStep`; loop over no known array type; lambda param of a type with no repr; call through a function value of no known result; `defer` not lowered yet; unbound name) | — |
 
 Not blindly "unrelated" red: of the 75 module build/run failures and 31 library harness failures alongside this, 40+2 are cascading consequences of a sibling module's own `.linear` fallback (in scope for 1105), 18 are genuine runtime traps with no `.linear` note at all (pre-existing wasm runtime bugs, out of scope), and the rest are target-exclusion audits or unrelated refusals. Full raw data and methodology kept by the thread, not committed (scratch).
