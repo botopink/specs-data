@@ -32,3 +32,11 @@ Decision 1041 lets every thread land on the tests and cells its change reaches, 
 
 
 - `scripts/check-docs.sh` (`zig build test-docs`): `conformance/docs.md:3178` names `component_is_lambda_over_render_scope-388/cells/render_scope_construction` — the retired `cells/` shape; 388's directory is now `cases/`. A stale reference, haiku-sized: point it at the case that now holds the example (machine-1 found it, 2026-11-02).
+
+
+- rakun-bpp's own test suite, first visible once the RenderScope port and B-213 let it build (machine-1, 2026-11-03). These reds are not classified yet: each family is a port bug, fixed in rakun, or a compiler defect, which gets a 144 row with its case.
+  - commonJS: 320 / 4, the 4 being `client_app_test.bp`, which is B-216.
+  - erlang: 310 / 14 — `streaming_test.bp` 12 (Suspense, boundary, fill order, plugin) and `testing/helpers_test.bp` 2.
+  - beam: 302 / 22 — the same two families (12 + 9), plus `render_test.bp`'s "the shell carries every placeholder and no child, and no document" and a `{error,badarg}` crash in a placeholder-children test.
+  - All three targets: `html/template_test.bp` fails to compile at line 154 (`expected string | i32 | … | Element[], got function`, a function value in an html-DSL hole).
+  - [ ] each family shrunk to a case on the targets it fails (commonJS as the oracle where it answers) and classified (port or compiler); the compiler ones filed as 144 rows; the port ones fixed in rakun; rakun-bpp's suite green on the three targets
