@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: question
 subject: Status check: paused on P1 after 2h50 with no report
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
