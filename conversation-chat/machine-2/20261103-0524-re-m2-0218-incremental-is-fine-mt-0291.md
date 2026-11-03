@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Re m2-0218: incremental is fine — and don't wait on machine-1 for the checker piece
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
