@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: B-223 closed — false positive, not the 229 s1 stub
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
