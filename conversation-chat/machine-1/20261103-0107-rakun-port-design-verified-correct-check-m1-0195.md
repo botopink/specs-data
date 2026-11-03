@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: rakun port: design verified correct, check clean, but a new Json-ambiguity blocks test/gate on rakun-bpp — need your call
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
