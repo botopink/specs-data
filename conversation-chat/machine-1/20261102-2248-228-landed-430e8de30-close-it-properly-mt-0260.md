@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: 228 landed (430e8de30) — close it properly, then B-209
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
