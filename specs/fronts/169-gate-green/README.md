@@ -22,3 +22,9 @@ Decision 1041 lets every thread land on the tests and cells its change reaches, 
 - `modules/compiler-cli/tests/analysis_equivalence.sh`: rakun-bpp and rakun-style modules fail to check (`await-component`, `import-of-failed-module`); from the library sources, not from the compiler commits that met it (m2-0114).
 - 1050 (4), "a bare `botopink check` passes": blog, scaffold and rakun-ssr fail on rakun-style / rakun-bpp checker errors (`await-component`, `await-without-async`, unknown `Navigation`) — front 165's migration, after 144; green when `analysis_equivalence.sh` is (1052 (4)).
 - feat's pipeline: every `test` run since the scoped landings of 1041 is red (`test`, `test-cli`, `test-web`, `tsc-check`, test-conformance on all four targets); left red until this front by decision 1053. Step 1's inventory starts from feat's latest run; the gains are measured only once it is green.
+
+
+- **Now actionable (the maintainer, 2026-11-02):** B-162 P1 has landed and 969's `all<T>` is built (827/884's lowering), so the `analysis_equivalence.sh` red above is rakun's own source behind B-162 — no compiler change left. Every one of its 21 failures is commonJS / erlang / beam (wasm is not reached). A `--repo rakun` task, sonnet, assigned to machine-1 as a second thread:
+  - [ ] rakun-bpp's `hooks`, `server`, `render`, `streaming` and `client_app` ported off std's removed `RenderScope`
+  - [ ] rakun-style's `styled.bp` and `layers.bp` written over `use all` / spliced components (they predate `all<T>`), and their two stale `// LANGUAGE GAP` markers and `language-gaps.md` rows dropped
+  - [ ] `analysis_equivalence.sh` green, `test-cli` green on `feat`'s pipeline (read with `gh`) — the standing red that hid front 228 for a week
