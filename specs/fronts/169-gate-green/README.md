@@ -52,3 +52,22 @@ Decision 1041 lets every thread land on the tests and cells its change reaches, 
   - `log` and `query`: red at the conformance stage (`error: unknown command: cell`), decision 1002 (c)'s known red until 996 / L5 moves the libraries to the root-package shape;
   - `rakun`: a different red. Its latest completed run hit decision 1070's 1800 s bound for the whole gate (exit 124).
   - [ ] rakun's CI gate inside 1070's bound: measure which stages take the time, then split the gate, or shorten it, or bring the bound to the maintainer. A bound changed per repository is a decision, never a quiet edit
+
+
+- rakun follow-ups the fable read against the decisions (2026-11-03). Each is rakun work, with no compiler change and no new decision:
+  - [ ] **rakun-bpp's boundaries hold the component value** (was 144 B-217; 964 (2) 30-c / 30-d, 809 (7), 966 (5), 970 (3)):
+    - `Boundary.child: Component<Element>`, evaluated in the page body;
+    - `Fill(boundary, scope: myScope.detach())`;
+    - the fill runs `run(b.child, fill.scope)`;
+    - error and not-found boundaries take the value the same way, and `keptAt` / `boundTo` / `__jhPushBoundary` go.
+
+    Oracle: a `Suspense` fill reading a provided context on four targets, red on erlang and beam on the parent; `streaming_test`'s 12 and `helpers_test`'s 2 (erlang, beam) and `bridge_test:116` green.
+  - [ ] **`modules/rakun` off `RenderScope`** (165 s5; 809 (4) / (6), 825 (1), 966 (5), 967 (2), 968 (6)):
+    - `pub async fn boot() -> Async<void>`, and `main` writes `await rakun.boot();`, because a boot is a root;
+    - `mount` resolves `resolve(c, root, Place.key(m.name))` and awaits a task answer. It never uses `Place.none()`: every module would share one cell, and their hooks' slots would collide;
+    - `inject(name)` resolves by hand over its own cell with `Place.key(name)`.
+
+    Oracle: `examples/rakun`, `rakun-container`, `rakun-app/page-path` (erlang) and `rakun-websocket` (erlang, beam) green.
+  - [ ] **the decorator sites refused by 716 (1)** (165 s10 rows 234 / 236; 625 (1), 613, 842 (1) / (2)):
+    - the method-marker sites register through `compiler.init` with the declaration as code (625 (1)), and `rkRoutes` / `rkSchedules` / `rkJobs` and the string `addMember` go: `decorators.bp:263`, scheduling `markers.bp:139`, jobstore `markers.bp:114`, actuator `registration.bp:270`;
+    - a decorator that adds a member uses it from the value it built, never read back through `decl` (842 (1)), with `syntax decl: <Behavior>` only where the type writes `implement` (842 (2)): `config.bp:2067`, `entity.bp:334`, `transactional.bp:131`.
