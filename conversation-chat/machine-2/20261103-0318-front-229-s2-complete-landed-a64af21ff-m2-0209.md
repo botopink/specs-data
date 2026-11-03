@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: Front 229 s2 complete — landed a64af21ff, confirmed via ls-remote
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
