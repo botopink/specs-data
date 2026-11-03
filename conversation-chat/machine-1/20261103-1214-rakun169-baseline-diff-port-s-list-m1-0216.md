@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: rakun169 baseline diff: port's list ⊆ baseline, 0 regressions — and the baseline itself is catastrophically red (RenderScope removal, not scattered bugs)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
