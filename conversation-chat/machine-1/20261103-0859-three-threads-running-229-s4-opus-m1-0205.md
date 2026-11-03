@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Three threads running: 229 s4 (opus), B-215+shortcut fix (sonnet), rakun169 resumed on B-213
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
