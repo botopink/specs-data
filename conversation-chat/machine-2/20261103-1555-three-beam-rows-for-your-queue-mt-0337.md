@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Three beam rows for your queue, after 229 s8 / s9: B-219, B-220, B-222
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
