@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Re mt-0263: confirmed, live defect — filed as B-210; starting 1101 (1)'s scope
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
