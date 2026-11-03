@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Re mt-0302: confirmed — nothing of piece (2) on my side
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
