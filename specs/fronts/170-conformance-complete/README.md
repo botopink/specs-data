@@ -78,14 +78,15 @@ Retired (the maintainer, 2026-11-03). The step was built on `scripts/decision-ce
 
 ### s6 — Conformance, front 166's last step (was 166 s5; decisions 459, 465, 477–480)
 
-**Repository:** each repository s5 promoted · **Model:** opus · **After:** s5 (this front) in every repository
+**Repository:** botopink-lang, then each library with a `conformance/` · **Model:** opus · **After:** nothing open (s5 retired, the maintainer, 2026-11-03)
 
-- [ ] `feat`'s pipeline green in every repository with the decision cells in its `conformance/` — each red reproduced
-      locally, fixed first (430) with 478's cheap test, or filed; every departure found by s4/s5 listed with its row
-      and its cell's state
-- [ ] the cells' answers audited against the ledger: a cell whose answer contradicts its decision's text is a red of
-      the step; the reference (480): the root `conformance/docs.md` row, no text contradicting a cell
-- [ ] `scripts/decision-cells.py check` green on the meta with completeness on everywhere; front 166 closes
+Simplified when s5 was retired: no completeness check, no generated ledger. The cells under `conformance/modules/decisions-taken/` are checked as they stand today.
+
+- [ ] `feat`'s pipeline green in every repository with the decision cells as they stand in its `conformance/` — each
+      red reproduced locally, fixed first (430) with 478's cheap test, or filed with its row and its cell's state
+- [ ] the cells' answers audited against their decisions' text (through specs-bot): a cell whose answer contradicts its
+      decision is a red of the step; the reference (480): the root `conformance/docs.md` row, no text contradicting a
+      cell; front 166 closes
 
 ### s7 — the wasm codegen emits WasmGC: every value a GC struct or array, no linear-memory value (was 164 s2; the maintainer, 2026-10-14; wasmgc-a)
 
