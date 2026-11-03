@@ -73,8 +73,8 @@ The same mechanism as 1096, but through a package's own import, not the scaffold
 - a local GC gap must not move the whole module to linear;
 - the `.wat` leaf refusal is only reached because it did.
 
-- [ ] `convert ref` at `import_behavior_named_like_prelude`'s line 32 lowered in GC form (or degraded per function, s1's stub), so `main` stays GC
-- [ ] `conformance/modules/import` green on wasm, every case; red on the parent
+- [x] `convert ref` at `import_behavior_named_like_prelude`'s line 32 lowered in GC form, so `main` stays GC. The cause: the link step renamed the imported `ui.Field` behavior, because it collides with std `compiler`'s `Field` (1071 (1)), but `linkTypeRenames` forwarded the rename only for a record or an enum. `main`'s `f: Field` kept the bare name and read as the reflection record. The rename is now resolved through the same link key for a behavior too. A `wat.zig` unit test with two modules, red on the parent
+- [ ] `conformance/modules/import` green on wasm, every case; red on the parent. It waits on s9: one more case, `import_same_fn_name_two_aliases`, is lowered wrong
 
 ### s8 — std-wasm's `array.slice` marshalled in GC form, so `conformance/modules/case` stays GC
 
