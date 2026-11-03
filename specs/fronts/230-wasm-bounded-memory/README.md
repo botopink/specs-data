@@ -12,10 +12,10 @@ Opened by the maintainer, 2026-11-02, from the fable's audit of front 170 s7. s7
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (which knob, and whether B-205 — no cell shape for a bare top-level program — blocks it) · **After:** nothing open
 
-- [ ] a store limiter in `wat/runner.zig` / `wat/engine.zig` (wasmtime's store limiter) — confirm on the pinned wasmtime whether GC-heap growth goes through it; if it does not, say so and propose the measurement that replaces it
-- [ ] the cap reachable from a test, never a flag that changes a verdict (decision 67)
-- [ ] decision 544's draft promoted to cases, plus the three s7 programs (10M allocations, deep recursion, a request loop)
-- [ ] oracle: each program completes under a fixed cap at 10× the iterations the linear table traps at
+- [x] a store limiter in `wat/runner.zig` (wasmtime's store limiter). On the pinned wasmtime (v49.0.3, the DRC collector) it bounds GC-heap growth, not only linear memory. This was measured with a standalone C program against libwasmtime before building on it. The cap applies per memory (each linear memory and the GC heap separately), not as one total per store
+- [x] the cap reachable from a test, never a flag that changes a verdict (decision 67): `Options.memory_limit`, null by default, set in code only, reaches `wasmtime_store_limiter` through `Session.begin`. `botopink run --target wasm` stays unbounded, like the other targets' runtimes (the maintainer, 2026-11-03)
+- [x] decision 544's draft promoted to a self-checking module with four cases: the draft, `ten_million_allocations`, `deep_recursion_rounds` and `request_loop`. Green on all four targets. B-205 does not block it: the oracle runs the cases' source directly
+- [x] oracle (`codegen/tests/wat_memory.zig`): each case run as a bare program under a fixed 2 MiB cap completes at 10× the iterations the linear table traps at
 
 ### s2 — the measurement and the docs
 
