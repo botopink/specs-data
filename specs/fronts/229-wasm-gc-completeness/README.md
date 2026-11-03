@@ -97,19 +97,27 @@ In `conformance/modules/import`'s case `import_same_fn_name_two_aliases`, `print
 - [x] `conformance/modules/import` green on wasm, every case. This closes s7's second box
 
 
-### s10 — a function with no `.Wasm()` implementation is refused at build again, never a run-time abort
+### s10 — a function with no `.Wasm()` implementation is refused at build again, never a run-time abort — **no regression; the suite's adapter and three departures**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus (where reachability and the build refusal meet; s1's own region) · **After:** nothing open · found by machine-2's B-223 listing, 2026-11-03
+**Repository:** conformance (`conformance/lib/`, three snapshots) · **Model:** sonnet · **After:** nothing open · found by machine-2's B-223 listing, 2026-11-03
 
-Three members moved across the line between a build refusal and a run-time trap:
-- `import_alias_on_type_and_folder_namespace-110` and `variadic_last_parameter-267`: they were a located build-time refusal (`no .Wasm() implementation`). Now they build and abort at run time;
-- `wasm_host_profiles_wasi_browser-334`: the refusal disappeared and it now runs. Its departure may be stale.
+machine-2 bisected the three members across the commit before 229 s1 and the head of `feat`, and their answers were identical. There is no compiler regression. The refusal is intact: a loaded case's `run()` answers it as decision 989 (3) says. `codegen/loaded_targets.zig` never emits the case's functions:
+- `variadic_last_parameter-267`: `.Refused`, "`largest` has no implementation for the wasm backend";
+- `import_alias_on_type_and_folder_namespace-110`: `.Excluded`, because the case's manifest leaves wasm out;
+- `wasm_host_profiles_wasi_browser-334`: `Ok("2.0")`.
 
-This is this front's own title: no run-time trap where a refusal belongs. The first suspect is s1, which changed when `refused_modules` is tested (after `pruneUnreached`, only when a reached declaration belongs to the refused module).
+Each case run alone still refuses at build with its accepted text.
 
-- [ ] bisected: the commit that moved each of the three named
-- [ ] a reached function with no wasm implementation is refused at build, located, on every path; an unreached one stays s1's stub. A unit test per path, red on the parent
-- [ ] `wasm_host_profiles_wasi_browser-334`'s departure re-read: if it runs correctly now, the departure goes, and the change is listed in the report
+The defect is the suite's: `conformance/lib`'s adapter maps every `RunFailure` kind to a bare `abort`, so the `.Refused` / `.Excluded` answer is lost. The three `on wasm` departures were recorded as a build refusal, which 989 (3) moved into `run()`'s answer for a loaded package. They were never proved in-process.
+
+Ruled (the maintainer, 2026-11-03):
+- under 989 (3), a loaded case's target refusal is `run()`'s own answer;
+- under 334 (2), a loaded package is checked under the build's wasm host, never its own manifest's (load answers on the build's target and host);
+- a host profile is proved by a case run alone, and that is B-205's question.
+
+- [ ] `conformance/lib`'s adapter renders a `RunFailure` by its kind: `.Refused` as `refused <message>`, `.Excluded` as `excluded <message>`, the others as today. There is no `at` line, because `RunFailure` carries no location (989 (3) names the message only)
+- [ ] the `on wasm` departures of 110 and 267 re-recorded as those records; 334's `on wasm` answers `out 2.0` under the build's host, with a line in its `docs.md` that the browser profile is proved by the case run alone (B-205)
+- [ ] the three members green on wasm in-process
 
 ## Collisions
 
