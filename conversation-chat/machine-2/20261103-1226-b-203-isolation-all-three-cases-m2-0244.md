@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: B-203 isolation: all three cases green on wasm
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
