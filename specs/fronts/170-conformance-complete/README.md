@@ -72,19 +72,9 @@ packing over B-158's `compiler.load`, which now answers `Result<void, Diagnostic
 
 - [ ] decision 781's packing mechanism over `compiler.load`, its cell(s) on the targets it reaches
 
-### s5 — the flip: the cells run, per repository (was 166 s4)
+### s5 — the flip: the cells run, per repository (was 166 s4) — **retired**
 
-**Repository:** botopink-lang (`--lang`, the two compiler boxes, 144's rule 1 under 166-d), then one `--repo <repo>` / `--lang` per repository · **Model:** sonnet for the compiler boxes and `promote`; opus for the accepted answers · **After:** s4 (this front); the builtins group's end (B-140 landed, the cold gate with conformance green on machine 2)
-
-- [ ] compiler boxes, as 166-a and 166-c decide: `cell check`'s name rule for `decisions-taken/<slug>-<N>/` (511),
-      `test-docs` reading the include form; a unit test each
-- [ ] per repository, `promote <repo>` in one commit (haiku): `main.bp` → `src/main.bp`, `botopink.json` (`name`,
-      `"targets"` = the targets the decision names, else none — the workspace's), the `{main.bp}` lines →
-      `[src/main.bp](src/main.bp)`, the workspace glob; then `botopink cell check conformance/modules/decisions-taken/`
-      under `scripts/gate.sh exec`, every candidate read and accepted as the language's answer (opus, thread-rules
-      § Cells) or left red with its row filed; no cell narrowed or edited to pass (458)
-- [ ] check 7 (ii) switched on for that repository in the same landing — every code-bearing row has its cell, no exemption
-- [ ] the hook (`--no-conformance`) still green on each commit; `feat`'s pipeline with conformance read (477)
+Retired (the maintainer, 2026-11-03). The step was built on `scripts/decision-cells.ts` (`scaffold` / `promote` / `check`) and CI check 7, and the maintainer removed both on 2026-11-02. With them went the per-repository `promote`, check 7 (ii)'s completeness rule, and the generated per-repository `decisions-taken.md`. The cells already under `conformance/modules/decisions-taken/` stay as real content and run with the root package like every other module. A more structured way to tie decisions to cells is not designed yet; until it is, no step depends on one. What remains of this step's purpose is s6's simplified check.
 
 ### s6 — Conformance, front 166's last step (was 166 s5; decisions 459, 465, 477–480)
 
