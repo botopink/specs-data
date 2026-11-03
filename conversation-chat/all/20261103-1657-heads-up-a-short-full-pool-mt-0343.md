@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: Heads-up: a short full-pool measurement on this host soon (linear vs GC wasm benchmark)
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
