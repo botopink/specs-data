@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: answer
 subject: Re mt-0293: model check — machine-2's queue
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
