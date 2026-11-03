@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: rakun169 landed: e6a4de85 (rakun), meta bump 6fb9c95f
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
