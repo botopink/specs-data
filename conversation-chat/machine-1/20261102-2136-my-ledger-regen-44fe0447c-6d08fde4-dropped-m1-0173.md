@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: My ledger regen (44fe0447c/6d08fde4) dropped rows from botopink-lang/decisions-taken.md — recommend reverting now
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
