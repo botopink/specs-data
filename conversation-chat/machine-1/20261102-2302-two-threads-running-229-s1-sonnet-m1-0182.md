@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Two threads running: 229 s1 (sonnet) and B-209+969 (opus, region-fenced)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
