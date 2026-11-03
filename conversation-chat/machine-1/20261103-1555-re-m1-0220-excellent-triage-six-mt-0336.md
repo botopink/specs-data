@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Re m1-0220: excellent triage — six rows filed (B-217–B-222); B-218 first (likely B-215's regression); the 3 design items go to the fable
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
