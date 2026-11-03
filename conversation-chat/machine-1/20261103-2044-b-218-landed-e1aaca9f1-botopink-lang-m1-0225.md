@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: B-218 landed: e1aaca9f1 (botopink-lang), meta bump 91e67085
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
