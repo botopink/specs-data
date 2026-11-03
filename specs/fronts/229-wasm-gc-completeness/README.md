@@ -15,10 +15,10 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** front 228 (landed; it edits `finishGc` and units)
 
-- [ ] `finishGc` stubs any unreached, non-exported, memory-touching function — today only one in `gc_linked_fns` — so a module's own dead function no longer forces the whole module linear; the stub's `unreachable` carries the gap's text
-- [ ] `emitWatPass` tests `refused_modules` after `pruneUnreached`, and only when a reached declaration belongs to the refused module — an importer no longer falls to linear because a linked module has an unrelated refusal in a function it never calls (B-203 is one instance; 1096 may no longer be needed once this lands — re-check it)
-- [ ] attribution: `emit` records the first `.load` / `.store` in `.gc` mode with `stmt_loc` and the function; the `typecheck` gap carries `diag.func` / `what` outside `gc_debug`; `stdRepr(.void)` goes through `gcFail`; `emitStdCall`'s gap names the call site, not the std function; `gcShapeVt` and `vtOf`'s `else` stop recording a gap and lowering on with a dummy type. The 1097 note and the `gc_only` refusal print all of it
-- [ ] oracle: the count of `lowered .linear` notes over a full conformance run shrinks and never grows; a unit test that an unused own `throw`-in-`case` function leaves the module GC; B-203's 67 masked modules re-counted
+- [x] `finishGc` stubs any unreached, non-exported, memory-touching function — today only one in `gc_linked_fns` — so a module's own dead function no longer forces the whole module linear; the stub's `unreachable` carries the gap's text
+- [x] `emitWatPass` tests `refused_modules` after `pruneUnreached`, and only when a reached declaration belongs to the refused module — an importer no longer falls to linear because a linked module has an unrelated refusal in a function it never calls (B-203 is one instance; 1096 may no longer be needed once this lands — re-check it)
+- [x] attribution: `emit` records the first `.load` / `.store` in `.gc` mode with `stmt_loc` and the function; the `typecheck` gap carries `diag.func` / `what` outside `gc_debug`; `stdRepr(.void)` goes through `gcFail`; `emitStdCall`'s gap names the call site, not the std function; `gcShapeVt` and `vtOf`'s `else` stop recording a gap and lowering on with a dummy type. The 1097 note and the `gc_only` refusal print all of it
+- [x] oracle: the count of `lowered .linear` notes over a full conformance run shrinks and never grows; a unit test that an unused own `throw`-in-`case` function leaves the module GC; B-203's 67 masked modules re-counted
 
 ### s2 — printer and equality over the prelude's types; enum display
 
@@ -28,7 +28,7 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 - [x] `gcEqValues` compares a record or variant field typed `unknown` with `$__unk_eq` instead of falling the module back
 - [x] an enum or variant value's own `display()` is dispatched in GC mode: `gcDeclPrinter`'s `variant == null` condition and the `$__tinfo` display slot's `t == .record` removed
 - [x] oracle: proved by `wat.zig`'s own unit tests, not a conformance cell (none of the three sub-fixes carries a decision number of its own) — `"wat: gc ---- an enum's own display is dispatched statically and through unknown, generic or not"`, `"wat: gc ---- equality over a field typed unknown compares structurally, not a module-wide fallback"`, `"wat: gc ---- a closure and a @Result held unknown print as commonJS prints them"`, `"wat: gc ---- a Task or a generator held unknown panics by name"` — each red on the parent (a trap or the wrong text), green after; `zig build test` and `test-cli` full, `analysis_equivalence.sh` unchanged at its 21 known rakun failures
-- [ ] decision 1104 (filed as pending 229-a, answered): a Task / generator's print is refused at build on all four targets where the type is statically known (directly or through a generic parameter), `print-task` / `print-generator`; through `unknown` the same named panic text replaces each target's own native inspect. The refusal lives in the checker (`infer.zig`, machine-1's lane) — last piece of s2, done after s3
+- [ ] decision 1104 (filed as pending 229-a, answered): a Task / generator's print is refused at build on all four targets where the type is statically known (directly or through a generic parameter), `print-task` / `print-generator`; through `unknown` the same named panic text replaces each target's own native inspect. Piece (1), the checker's build refusal, has landed; piece (2), the named panic text through `unknown` on every target, is open (machine-1)
 
 ### s3 — GC forms for the remaining control shapes
 
@@ -43,9 +43,9 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a representation choice; it meets decision 568's tuple subtype) · **After:** 1099
 
-- [ ] decide: a fourth `Repr.Elem` (`arr_bool`) or boxing bool and nested arrays into `arr_any` on entry to an erased slot — then lift `gcGenericArg`'s print-shape refusals (a bool array, a nested array, a tuple holding a bool, `u64` or unit enum, a named word array into `Array<T>`)
-- [ ] oracle: `Box<bool[]>`, `Pair<#(bool, i32), string>` and `Box<i32[][]>` print as commonJS; front 170 s7's "an array of tuples in a type-parameter slot" closes with it
-- [ ] decision 985's wasm half: a method's own type parameter bound to `f64` (`d.mapValues({ v -> 2.0 })` on a `Dict<string, i32>`) is refused "would narrow an `f64` value to an `i32` slot" — the answered value's slot is sized by the receiver's `V`, not the method's `W`. Same region and owner as this step (generic slots' representation); closes front 170 s7's 985 box, cell `generic_method_own_parameter_takes_shape` green on wasm (moved here 2026-11-03: 1101 fixed the print path, not this)
+- [ ] decided (the fable, 2026-11-03, under 568 and 1031 (2), no new decision): a fourth `Repr.Elem` `arr_bool`, a GC subtype of `$arr_i32`, not boxing into `arr_any` — then lift `gcGenericArg`'s print-shape refusals (a bool array, a nested array, a tuple holding a bool or unit enum, a named word array into `Array<T>` through `gcArrBox`); a tuple holding a `u64` stays refused (its own row when it bites: `$box_u64 <: $box_i64`)
+- [ ] oracle: `Box<bool[]>`, `Pair<#(bool, i32), string>`, `Box<i32[][]>` and `Box<bool[][]>` print as commonJS, a named `i32[]` passed into `Array<T>` too, `Box([true]) == Box([true])` answers `true`, a `bool[]` through `filter` into `Box<T>` prints `[true]`; front 170 s7's "an array of tuples in a type-parameter slot" closes with it
+- [x] decision 985's wasm half: a method's own type parameter bound to `f64` (`d.mapValues({ v -> 2.0 })` on a `Dict<string, i32>`) is refused "would narrow an `f64` value to an `i32` slot" — the answered value's slot is sized by the receiver's `V`, not the method's `W`. Same region and owner as this step (generic slots' representation); closes front 170 s7's 985 box, cell `generic_method_own_parameter_takes_shape` green on wasm (moved here 2026-11-03: 1101 fixed the print path, not this)
 
 ### s5 — low priority: a bare variant name two enums declare
 
@@ -58,8 +58,8 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 Adding one declared fn with a `.Wasm(body: …)` to a widely linked dependency (`conformance/lib/candidate.bp`) breaks two multi-module join cells at wasmtime instantiation: `type mismatch for export set:entries … expected (func (param structref)), found (func (param arrayref))` — `declared_dependency_modules_join_program-660`, `no_declaration_files_compiler_value-575`. A module's GC type indices shift with what else is linked, the same shape as front 228 (decision 509: a dependency's output depends on its closure alone) but a different mechanism (front 228 was function crossing; this is type numbering).
 
-- [ ] a module's GC type section and the indices its exports name are a function of its own closure, never of what else joins the program
-- [ ] the two join cells green with 1096's added fn in place; 1096 lands on top
+- [x] a module's GC type section and the indices its exports name are a function of its own closure, never of what else joins the program
+- [ ] the two join cells green with 1096's added fn in place (green on four targets); 1096 lands on top — open
 
 ## Collisions
 
