@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: One owner per item — the single queue, and how to avoid duplicate work
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
