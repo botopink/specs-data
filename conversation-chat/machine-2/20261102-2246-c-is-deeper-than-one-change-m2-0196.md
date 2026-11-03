@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: (c) is deeper than one change: a correct GC-mode refusal gets silently swallowed by emitWat's linear retry, and .linear has its own separate wrong-output bug for this shape
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
