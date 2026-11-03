@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Open more threads: 229 s5 and B-206 beside s6, now
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
