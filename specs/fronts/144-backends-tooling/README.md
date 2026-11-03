@@ -3692,16 +3692,16 @@ This blocks `Dict.display()` from running in GC mode at all today, which is why 
 
 ### B-208 — wasm's `.gc`→`.linear` fallback names nothing that caused it; a fallback-attribution note and a per-case isolation plan
 
-**Repository:** botopink-lang (`--lang`) · **Model:** P1 sonnet (mechanical, rule already decided by step 1097); D1 opus (a real design choice, M0's numbers alone don't settle it) · **After:** B-207
+**Repository:** botopink-lang (`--lang`) · **Model:** M0 (measure, no code); D1 opus (a real design choice, M0's numbers alone don't settle it) · **After:** B-207
 
 Filed from a fable plan the maintainer ran (2026-11-02) on the B-203 class of bug — nothing names which construct or case forced a module's `.gc`→`.linear` fallback, which cost real debugging time landing B-203 and recurred investigating decision 900 (3)'s `shown<T>` fix. Four pieces, each landable on its own regardless of which (if any) isolation mechanism D1 picks later:
 
-- **P1 (decided, step 1097): build this regardless.** wasm emits a build note naming the first construct that forced a module to `.linear` — `"wasm: <module> lowered .linear: <feature> at <file>:<line>:<col>"` (for a loaded case, the case package's own path) — to the host build's stderr only, never folded into `adapter.buildOutput(loaded)` or any case's own answer: a fact about the build, always printed (67 — a verdict is never silently withheld), and must never move a single existing snapshot.
+- **P1 (decided, step 1097): build this regardless.** wasm emits a build note naming the first construct that forced a module to `.linear`, to the host build's stderr only, never folded into `adapter.buildOutput(loaded)` or any case's own answer: a fact about the build, always printed (67 — a verdict is never silently withheld), and must never move a single existing snapshot. **Delivered by front 229 s1** (machine-1, decision 1097's own build: `gc_failure`/`recordGcFailure`/`printLinearNote`), not by a same-shaped commit this front built independently the same day (never pushed, superseded, dropped — the maintainer, mt-0279/mt-0280: "today two of us built decision 1097 twice").
 - **M0 (measure, no code):** before deciding whether full per-case isolation (every case its own compiled unit + process, generated from the existing `cases/` tree, no commit growth) is worth building, measure per-case vs per-member build+run cost on all 4 targets (erlang especially — the CPU-heaviest) and how much idle tail the pool has today. Decision 989's old 3.3× rejection predates the `.bpr` sets optimization (1006 P3) and is stale evidence either way — not settled, to be measured fresh.
 - **D1:** the design decision from M0's numbers — full per-case spawning, or a hybrid (an opt-in "standalone" marker per case, promoted only where P1's note shows it's needed).
 - **P2:** implement whichever D1 picks in `conformance/run.sh` (per-case or per-marked-case spawner, deterministic `.new` merge by snapshot section order, not completion order).
 
-- [ ] P1: the stderr build note lands, naming the first `.gc`→`.linear` forcing construct, no snapshot moved
+- [x] P1: the stderr build note lands, naming the first `.gc`→`.linear` forcing construct, no snapshot moved — delivered by front 229 s1
 - [ ] M0: per-case vs per-member build+run cost measured on all 4 targets, pool idle tail measured
 - [ ] D1: isolation design decided from M0's numbers
 - [ ] P2: D1's pick implemented in `conformance/run.sh`
