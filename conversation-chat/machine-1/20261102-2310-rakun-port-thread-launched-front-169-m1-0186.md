@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Rakun port thread launched (front 169 Known reds) — second thread beside 229 s1
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
