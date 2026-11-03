@@ -3704,10 +3704,11 @@ The work moved to front 169 § Known reds, rakun-bpp's boundaries. `std`'s `stam
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; bisect first) · **Owner:** machine-1 · found by machine-1's rakun triage, 2026-11-03
 
-The provider writes the key `Th` and a reader in another package looks up `cxa@@Th`. This fails on all three targets; inside one package it answers. rakun-bpp's `styled_sheet_test` turned red 3 times after the port's baseline: commonJS 317 / 7 against 320 / 4. That makes it a likely regression from a landing after the port's measurement. The first suspect is B-215 ("context key carries package"): it changed `contextTypeKey` to carry the package, and the provider side may not use it.
+The provider wrote the key `Th` and a reader in another package looked it up as `cxa@@Th`, on all three targets. It was a regression from B-215, which made `contextTypeKey` carry the package of the module that writes `use provide` / `use context`, not the package that declares the type.
 
-- [ ] bisected: the commit that turned it red named
-- [ ] provider and reader take one key, the package-qualified one, on every target; a two-package cell red on the parent, green after; `styled_sheet_test` back to green
+- [x] bisected: B-215's commit turned it red; the one before answers the cross-package repro correctly on commonJS, erlang and beam
+- [x] a context's key carries the package that **declares** its value's type (379: a context's identity is its value's type). For an imported type that is its owner across a package boundary; for a sibling module of the same package, this package's own. `context_declared_twice_across_modules` keeps its refusal. A new case in `context_named_by_value_type-379` is red on the parent and green after
+- [ ] rakun-bpp's `styled_sheet_test` back to green, confirmed in rakun-bpp's next run
 
 ### B-219 — beam evaluates a list literal's elements right to left
 
