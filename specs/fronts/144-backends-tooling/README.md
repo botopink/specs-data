@@ -3742,18 +3742,32 @@ A 25-field record construction gives an unlocated `TooManyOperands`. A 25-argume
 - [ ] beam lowers records and calls past 24 operands; a cell with a 25-field record and a 25-argument call, red on beam on the parent
 
 
-### B-223 — wasm: 18 conformance members trap on `unreachable` at run time with no `.linear` note in their build
+### B-223 — wasm: 18 conformance members trap on `unreachable` at run time with no `.linear` note in their build — **closed, false positive**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (triage first, a measured repro per case) · **Owner:** machine-2 · found by front 170 s7's P5-a measurement, 2026-11-03
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (triage first, a measured repro per case) · **Owner:** machine-2 · found by front 170 s7's P5-a measurement, 2026-11-03 · closed 2026-11-03
 
 Each of these members builds in GC form with no `.linear` note, then traps `wasm 'unreachable' instruction executed` at run time:
 
 `any_type_absent-31`, `behavior_identity_by_module-831`, `clock_iso8601_millis_always-849`, `clock_rfc3339_domain-497`, `failure_kinds_exact_every_target-527`, `fetch_one_typed_surface-623`, `fs_walk_dangling_link_not_found-711`, `function_stage_propagated-376`, `function_value_prints-1051`, `hook_name_use_prefix_refused-926`, `import_alias_on_type_and_folder_namespace-110`, `result_is_checked_error-431`, `std_module_error_enum-486`, `string_from_codepoint-262`, `task_methods_withdrawn_async_block-523`, `variadic_last_parameter-267`, `wasm_clock_fs_refused-241`, `wasm_host_profiles_wasi_browser-334`.
 
-The first suspect is front 229 s1's stub: an unreached function is emitted as an `unreachable` that carries its gap's text. If reachability misses a call, the program runs into a stub. A trap whose function names a gap is that case, and the fix is the reachability, not the stub. Other traps are wasm runtime defects of their own.
+- [x] each member run alone on wasm: its case, the trapping function and whether it is a 229 s1 stub, one line each — done, full wasmtime backtrace per case (not the CLI's truncated one-line trap message)
+- [x] the stub cases fixed in reachability; the rest filed as their own rows with their case — zero were a 229 s1 stub; nothing to fix
 
-- [ ] each member run alone on wasm: its case, the trapping function and whether it is a 229 s1 stub, one line each
-- [ ] the stub cases fixed in reachability (a unit test that the called function is not stubbed); the rest filed as their own rows with their case
+**Finding: none of the 18 is front 229 s1's stub.** `grep -rn "unreached here: " <each member's>/out/wasm/*.wat` is empty for all 18 — nothing is stubbed.
+
+17 of the 18 are a false-positive match of the measurement heuristic, not a defect: `_botopink_main` traps by decision 999's own design (a `main` answering `Error` prints `"failed: " + <text>` via `__main_fail`, then an unconditional `unreachable`, since a trap is the only way wasm signals a non-zero exit to the embedding host). Every one of these 17 self-checking modules has its own pre-existing red wasm *case* inside it, so `main` correctly returns `Error(...)`, prints the diagnostic, and then traps — confirmed byte-for-byte for all 17 (the backtrace is exactly `_botopink_main` ← `p1_adapter`, nothing upstream). "GC form, no `.linear` note, wasm trap" matches this designed exit path identically to a silent stub trap; P5-a's script should tighten the signal — require either zero printed output before the trap, or a positive grep for the stub's own `"unreached here: "` marker, rather than inferring a stub from the trap's mere existence.
+
+1 of the 18 (`string_from_codepoint-262`) traps for a real but unrelated reason — filed as B-224 below, not fixed here.
+
+No commit: `wat.zig`'s reachability pass was never implicated, so there is nothing to land.
+
+### B-224 — wasm: `std.text.fromCodepoint`'s trap on an invalid scalar value escapes `std.failure.attempt`'s catch boundary uncaught
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** unassigned · found by B-223's triage, 2026-11-03
+
+`string_from_codepoint-262`'s case `string_from_codepoint_surrogate` documents (decision 262) that `string.fromCodepoint` of a lone surrogate (55296) aborts the wasm program with a raw trap, and that whatever was printed before stays printed. The case runs nested inside `std.failure.attempt`/`attemptOnWasm`, whose purpose is to catch a failure as a graceful `RunFailure{.Abort, …}` so the outer self-checking module keeps going. `attempt`'s catch is wasm exception handling (`try_table (catch $__bp_panic …)`, decision 518) and can only catch a *thrown* `$__bp_panic` — never a raw `unreachable` trap. Because `__wat_text_fromCodepoint` traps directly instead of raising a catchable panic, the trap escapes `attempt` and crashes the whole wasmtime instance, losing all output including the case's own "before" print (confirmed: zero stdout before the trap in the captured run) — decision 262's own "what was printed before stays printed" rule breaks under `attempt`.
+
+- [ ] `std.text.fromCodepoint`'s wasm binding raises a catchable `$__bp_panic` instead of a bare `unreachable` on an invalid scalar value, so `attempt`'s boundary catches it as decision 518 intends; a case proving a surrogate's abort still survives inside `attempt` with its prior output intact
 
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
