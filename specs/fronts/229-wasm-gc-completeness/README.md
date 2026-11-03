@@ -76,6 +76,19 @@ The same mechanism as 1096, but through a package's own import, not the scaffold
 - [ ] `convert ref` at `import_behavior_named_like_prelude`'s line 32 lowered in GC form (or degraded per function, s1's stub), so `main` stays GC
 - [ ] `conformance/modules/import` green on wasm, every case; red on the parent
 
+### s8 — std-wasm's `array.slice` marshalled in GC form, so `conformance/modules/case` stays GC
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **After:** nothing open · found by machine-2 re-checking front 170 s7's B-203 box, 2026-11-03
+
+`conformance/modules/case` on `--target wasm` (origin/feat) fails whole. It is the same shape as s7:
+- `main` falls to `.linear` for one case's gap: "a call of std-wasm's `array.slice`, which has no GC marshal", at `cases/case_alternatives_and_arrays/src/main.bp:13:5` (the `[first, ..rest]` arm);
+- then a narrowing refusal with no location ("would narrow this `i64` value to an `i32` slot", `src/main.bp:0:0`) refuses the module;
+- the rest of the package's cases never run. Front 170 s7's three B-203 cases are among them.
+
+- [ ] `array.slice` (a rest pattern `..rest`) answered in GC form: a GC marshal at the std-wasm boundary, or the slice lowered in GC without the boundary, so `main` stays GC
+- [ ] the narrowing refusal that followed located, or gone with the first box (B-206's reading: the note and the diagnostic name the same attempt)
+- [ ] `conformance/modules/case` green on wasm, every case. Front 170 s7's box on `case_arm_record_named_like_a_variant`, `case_record_field_null` and `case_union_constructor_arms` is answered by this run; red on the parent
+
 ## Collisions
 
 s1 and front 228 both edit `finishGc` and unit emission — 228 has landed, rebase on it. s2 and s4 share `gcDeclPrinter` / `gcGenericArg`'s region with 1099 — after it. s3 collides with nothing in flight.
