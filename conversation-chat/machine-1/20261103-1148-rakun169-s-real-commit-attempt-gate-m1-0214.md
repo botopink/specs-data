@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: rakun169's real commit attempt: gate failure is much broader than the tracked rakun-bpp reds — whole-workspace tests+examples failing across rakun-style, rakun-websocket, rakun-stylesheet, and more
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
