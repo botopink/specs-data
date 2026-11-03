@@ -3414,3 +3414,20 @@ val s2 = await run(t.toStyled());   // s2.className undefined — same body, cal
 - [ ] fix so a component answered through behavior dispatch resolves the same as one from a plain function, per 809 (2)
 
 Oracle: the cell, red on the parent, green after, four targets; rakun-style's remaining 3 `analysis_equivalence.sh` failures close with it.
+
+### B-212 — a kept cell doesn't carry a provide across separate `resolve` calls (defect against decision 809 (8))
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (scope semantics; 809 (8) is the spec, but which layer is wrong is a real question) · **After:** nothing; blocks rakun's render/streaming port (front 169)
+
+Found by the front-169 rakun port thread while implementing render.bp/streaming.bp's deferred-boundary design (Suspense/ErrorBoundary/NotFound) against decision 809 (8): "a kept `(child, scope)` keeps that child's cell." Measured with a standalone probe directly against `libs/std/src/context.bp` (no rakun-bpp code): pre-open a child's cell (`scope.childAt(key)`), resolve one component over it (a provider, `use provide(...)`), later resolve a *different* component over the same kept cell (a reader, `use context(...)`) expecting it to see what the provider wrote. In every variant tried (the same `(parent, key)` pair reused; the child cell passed directly as the next call's parent; a non-root parent to rule out a `parent == 0` special case in `openChild`), the reader gets the context's declared default, not the provided value — the write isn't visible through the kept cell.
+
+Sanity check ruling out a probe mistake: the ordinary single-component nested case (`use provide` then `use Reader()` inside the *same* component body) correctly answers the provided value — `use provide`/`use context` work exactly as documented for a normal nested `use`-chain. The gap is specifically the cross-call case: pre-open a cell, resolve something else over it later, expect visibility through the kept cell.
+
+Traced `openChild`/`provideIn`/`enter` by hand (`context.bp` ~290-320, 358-364, 469-475): the code as written predicts this should work (`childAt` snapshots the parent's current `cellFrames` at creation; `provideIn` mutates that cell's `cellFrames` in the shared store; a handle to the same `(store, cellId)` pair should see it later). Measured on commonJS only so far.
+
+- [ ] narrow with a cross-target run first (cheap, splits the cause): all four targets failing points at `context.bp`'s own `resolve`/`openChild` contract; commonJS alone points at the JS lowering, likely `Scope` value semantics or a copy across an `await`
+- [ ] also try a non-async repro, to see whether `await` matters
+- [ ] check against B-211 (`Component<T>` through behavior dispatch, fields `undefined` on commonJS) — both are commonJS scope/component lowering and might share a cause; if they do, one row and one fix
+- [ ] fix on opus, 809 (8) as the spec
+
+Oracle: the probe above as a cell, red on the parent, green after, on whichever targets it reaches; render.bp/streaming.bp's port (front 169) resumes once this lands.
