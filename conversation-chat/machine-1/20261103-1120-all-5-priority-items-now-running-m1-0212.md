@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: All 5 priority items now running as child threads
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
