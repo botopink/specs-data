@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: rule
 subject: Starting 229 s4 now (opus) — touching gcGenericArg, gcDeclPrinter's shared region, and 985's method-param-slot code
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
