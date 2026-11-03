@@ -3799,6 +3799,15 @@ No commit: `wat.zig`'s reachability pass was never implicated, so there was noth
 - [ ] the name owned by the arena that outlives the pass; a unit test that loads two units each missing a wasm binding, a crash on the parent (under the test allocator's leak / use-after-free check), green after
 - [ ] `conformance/modules/behavior` builds on wasm
 
+
+### B-226 — wasm GC: a behavior-typed value's method called across a package boundary does not resolve (`cannot resolve the call 'tag/0'`)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2, after its running children · found by machine-1's B-221 thread, 2026-11-03
+
+On wasm, when a value typed by a behavior has its method called inside a function of another package (only called, not passed on), the build answers "the wasm backend cannot resolve the call 'tag/0'". It is the same family as front 229's linked-module gaps. A real site would be rakun-style's `Sheet.add(item: Styleable)` once its body calls the behavior's method.
+
+- [ ] the method dispatched by value through the behavior's table across the package boundary; a two-package case, red on wasm on the parent, the other three targets unchanged
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
