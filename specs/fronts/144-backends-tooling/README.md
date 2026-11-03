@@ -3730,9 +3730,10 @@ On beam, a field read on a `SourceLocation` received from another package answer
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-1 · found by machine-1's rakun triage, 2026-11-03
 
-A method declared in another module, whose parameter is typed by a behavior, has that behavior's name resolved in the caller's module instead of the callee's. This happens on commonJS and erlang, and keeps rakun-style's `styled-example` red.
+A method declared in another module, whose parameter is typed by a behavior, had that behavior's name resolved in the caller's module instead of the callee's, on commonJS and erlang. It kept rakun-style's `styled-example` red.
 
-- [ ] the behavior resolved in the module that declares the method; a two-module cell red on the parent
+- [x] the behavior resolved in the module that declares the method; a two-module case red on the parent, green after (machine-1, 2026-11-03)
+- [ ] rakun-style's `styled-example` green, confirmed in the rakun workspace's next run
 
 ### B-222 — beam: more than 24 operands (a 25-field record, a 25-argument call)
 
