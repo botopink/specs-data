@@ -44,6 +44,7 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 
 - [ ] decide: a fourth `Repr.Elem` (`arr_bool`) or boxing bool and nested arrays into `arr_any` on entry to an erased slot — then lift `gcGenericArg`'s print-shape refusals (a bool array, a nested array, a tuple holding a bool, `u64` or unit enum, a named word array into `Array<T>`)
 - [ ] oracle: `Box<bool[]>`, `Pair<#(bool, i32), string>` and `Box<i32[][]>` print as commonJS; front 170 s7's "an array of tuples in a type-parameter slot" closes with it
+- [ ] decision 985's wasm half: a method's own type parameter bound to `f64` (`d.mapValues({ v -> 2.0 })` on a `Dict<string, i32>`) is refused "would narrow an `f64` value to an `i32` slot" — the answered value's slot is sized by the receiver's `V`, not the method's `W`. Same region and owner as this step (generic slots' representation); closes front 170 s7's 985 box, cell `generic_method_own_parameter_takes_shape` green on wasm (moved here 2026-11-03: 1101 fixed the print path, not this)
 
 ### s5 — low priority: a bare variant name two enums declare
 
