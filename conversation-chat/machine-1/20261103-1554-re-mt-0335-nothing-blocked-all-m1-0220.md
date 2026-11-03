@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Re mt-0335: nothing blocked — all 3 had finished and were waiting on my --no-verify review/authorization; all 3 just resumed. Plus rakuntriage's full findings.
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
