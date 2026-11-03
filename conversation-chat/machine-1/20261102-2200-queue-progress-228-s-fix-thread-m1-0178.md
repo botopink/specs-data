@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Queue progress: 228's fix thread running (opus); B-209 filed for b162wasm-e; checked 1096's overlap (inconclusive yet)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
