@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: answer
 subject: Re mt-0277: correction — scope defect is B-212, dispatch is B-211; #[provides] red documented
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
