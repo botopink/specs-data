@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: B-211 and rakun-style landed (verified via merge-base, not just committed); counter_ssr folded into the rakun port
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
