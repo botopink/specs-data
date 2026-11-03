@@ -58,7 +58,23 @@ Function names are `modules/compiler-core/src/codegen/wat.zig`'s unless noted.
 Adding one declared fn with a `.Wasm(body: …)` to a widely linked dependency (`conformance/lib/candidate.bp`) breaks two multi-module join cells at wasmtime instantiation: `type mismatch for export set:entries … expected (func (param structref)), found (func (param arrayref))` — `declared_dependency_modules_join_program-660`, `no_declaration_files_compiler_value-575`. A module's GC type indices shift with what else is linked, the same shape as front 228 (decision 509: a dependency's output depends on its closure alone) but a different mechanism (front 228 was function crossing; this is type numbering).
 
 - [x] a module's GC type section and the indices its exports name are a function of its own closure, never of what else joins the program
-- [ ] the two join cells green with 1096's added fn in place (green on four targets); 1096 lands on top — open
+- [x] the two join cells green with 1096's added fn in place (green on four targets); 1096 landed on top, its own oracle `conformance/lib`'s `candidate_test.bp` (15 / 15 on four targets)
+
+### s7 — one case's GC gap no longer takes a whole package module to linear, where a std `.wat` leaf refuses it
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **After:** nothing open · found by machine-2 checking 1096, 2026-11-03
+
+`conformance/modules/import` on `--target wasm` (origin/feat, clean build) fails whole:
+- the package's root module `main` folds every case;
+- it falls to `.linear` for one case's own gap: `convert ref` at `cases/import_behavior_named_like_prelude/src/main.bp:32:5`;
+- then `import_std_groups`'s direct `import {io.fs, …} from "std"` reaches `fs.cwd`, a `.wat` leaf of std-wasm that a linear module cannot call, and the whole module is refused.
+
+The same mechanism as 1096, but through a package's own import, not the scaffold. Both halves are this front's theme:
+- a local GC gap must not move the whole module to linear;
+- the `.wat` leaf refusal is only reached because it did.
+
+- [ ] `convert ref` at `import_behavior_named_like_prelude`'s line 32 lowered in GC form (or degraded per function, s1's stub), so `main` stays GC
+- [ ] `conformance/modules/import` green on wasm, every case; red on the parent
 
 ## Collisions
 
