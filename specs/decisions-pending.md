@@ -189,6 +189,12 @@ None open: every entry was answered by 899–955 (2026-10-21), decided by the fa
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
 
+#### b162wasm-e · wasm: a second, unrelated gap behind b162wasm-d's alias fix (resolve/allIn, run await of a type parameter)
+- **Measured.** With mt-0229's fix landed (gcReprOfType resolves a function-shaped alias to a closure), the originally reported convert-ref gap on placed's closure is gone. Compiling std's own public surface for wasm then hits two further gaps, neither a type-alias shape: std/context.bp's resolve, called from allIn, calls a Component<T>[] element as a function, and run awaits a value of a bare type parameter. Net effect unchanged: wasm still falls back to .linear and still refuses with the same "is Async<unknown>" diagnostic, so the 5 wasm-refusal tests and their snapshots stay exactly as recorded.
+- **Options.** (a) Open a new decision (b162wasm-e) scoping these two gaps as their own fix, separate from b162wasm-d, which closes as the narrow alias fix it was asked to be. (b) Re-scope b162wasm-d itself to also cover these two gaps before it is considered closed. (c) Leave both as known gaps the 5 tests keep documenting (assertJsRefusedOnWasm unchanged) until a later front reaches them.
+- **Recommendation.** (a): b162wasm-d's own fix is landed, correct, and scoped exactly to mt-0229's reading; the two new gaps are unrelated generic/array-element call shapes, not aliases, and naming them separately keeps each decision's Cell mapping to one real fix.
+- **Blocks.** Whether the 5 wasm-refusal tests in features.zig/wat.zig and their 16 snapshots can ever flip back to assertJsSingle / needs.contains(.gc) for this hook/memo path.
+
 ## Machine 1 — maximum priority (front 144, `144-checker/`)
 
 None open: every entry was answered by 899–955 (2026-10-21), decided by the fable at the maintainer's delegation and listed in § To review.
