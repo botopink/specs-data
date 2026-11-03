@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 1101 (1) scoping plan — gcTaggedPrinter per-type degradation; two open questions before I build it
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
