@@ -64,17 +64,13 @@ Adding one declared fn with a `.Wasm(body: …)` to a widely linked dependency (
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **After:** nothing open · found by machine-2 checking 1096, 2026-11-03
 
-`conformance/modules/import` on `--target wasm` (origin/feat, clean build) fails whole:
+`conformance/modules/import` on `--target wasm` (origin/feat, clean build) failed whole:
 - the package's root module `main` folds every case;
-- it falls to `.linear` for one case's own gap: `convert ref` at `cases/import_behavior_named_like_prelude/src/main.bp:32:5`;
-- then `import_std_groups`'s direct `import {io.fs, …} from "std"` reaches `fs.cwd`, a `.wat` leaf of std-wasm that a linear module cannot call, and the whole module is refused.
-
-The same mechanism as 1096, but through a package's own import, not the scaffold. Both halves are this front's theme:
-- a local GC gap must not move the whole module to linear;
-- the `.wat` leaf refusal is only reached because it did.
+- it fell to `.linear` for one case's own gap: `convert ref` at `cases/import_behavior_named_like_prelude/src/main.bp:32:5`;
+- then `import_std_groups`'s direct `import {io.fs, …} from "std"` reached `fs.cwd`, a `.wat` leaf of std-wasm that a linear module cannot call, and the whole module was refused.
 
 - [x] `convert ref` at `import_behavior_named_like_prelude`'s line 32 lowered in GC form, so `main` stays GC. The cause: the link step renamed the imported `ui.Field` behavior, because it collides with std `compiler`'s `Field` (1071 (1)), but `linkTypeRenames` forwarded the rename only for a record or an enum. `main`'s `f: Field` kept the bare name and read as the reflection record. The rename is now resolved through the same link key for a behavior too. A `wat.zig` unit test with two modules, red on the parent
-- [ ] `conformance/modules/import` green on wasm, every case; red on the parent. It waits on s9: one more case, `import_same_fn_name_two_aliases`, is lowered wrong
+- [x] `conformance/modules/import` green on wasm, every case, with s9's `callKind` fix
 
 ### s8 — std-wasm's `array.slice` marshalled in GC form, so `conformance/modules/case` stays GC
 
