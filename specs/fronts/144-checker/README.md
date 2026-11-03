@@ -3378,3 +3378,22 @@ Oracle: the cells; `zig build test`. A draft that a later 166 s3 lands names its
       second argument; a `type` value printed; `RecipeKey.all()` at run time, computed at build
 
 Oracle: the derived-type cells; `test-libs`.
+
+### B-209 — `std/context.bp`'s `resolve`/`allIn` call a `Component<T>[]` element as a function on wasm; `run` awaits a bare type parameter (decision 1098, b162wasm-e)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a representation/generic-await gap, not a mechanical patch) · **After:** nothing; independent of front 228
+
+b162wasm-d (mt-0229) widened `gcReprOfType` to resolve a function-shaped alias (`Composition<T>`) to a closure, closing the
+originally reported convert-ref gap on `placed`'s own closure. Two further gaps surface right behind it once that one clears
+— neither a type-alias shape, both already present before b162wasm-d, now just reachable once wasm gets past the first:
+
+- [ ] `std/context.bp`'s `resolve<T>`, called from `allIn`, calls a `Component<T>[]` element as a function on wasm — a
+      representation gap, not a `gcReprOfType` alias case; locate and fix
+- [ ] `std/context.bp`'s `run<T>` awaits a value of a bare type parameter on wasm — a separate generic-await limitation;
+      locate and fix
+- [ ] the 5 wasm-refusal tests in `codegen/tests/features.zig` and `codegen/tests/wat.zig` (object/tuple destructure, `use
+      memo` with no inferred deps, `use effect` void hook) flipped back from recording the refusal (`assertJsRefusedOnWasm` /
+      `expectError(error.ModuleDidNotCompile, …)`) to their real intent (`assertJsSingle` / `needs.contains(.gc)`) once both
+      gaps close; their 16 snapshots re-recorded for real, showing compiled WAT rather than a refusal diagnostic
+
+Oracle: the 5 named tests compile clean on wasm (no refusal); their 16 snapshots show real WAT; `zig build test`.
