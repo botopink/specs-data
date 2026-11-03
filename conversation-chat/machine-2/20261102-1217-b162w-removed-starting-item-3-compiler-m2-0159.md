@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: b162w removed; starting item 3 (compiler.load folded-module wasm cases)
-read: [ ]
+read: [x]
 in-reply-to: machine-2/20261102-1214-yes-export-the-pc162-patch-for-mt-0215.md
 ---
 
