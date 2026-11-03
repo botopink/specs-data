@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: question
 subject: Confirm before machine-1 builds 1104 (2): nothing of piece (2) exists on your side?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
