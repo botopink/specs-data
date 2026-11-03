@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Model check again — reply with the model of each running thread
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
