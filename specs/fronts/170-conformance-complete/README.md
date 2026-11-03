@@ -213,6 +213,35 @@ type-parameter field is lowered but no cell reaches it.
   - stays until s10: `memory`, `alloc`, the std marshal and `std_wasm_link`;
   - a program function that touches memory is a compiler bug.
 
+
+**P5-a's table** (machine-2, 2026-11-03): `zig build`, then every `conformance/modules/` workspace member (442, via its own root package, `.linear` notes go to stderr, grepped per member) and every `botopink packages --list` library (67, via `conformance/run.sh`'s own `lib_one` harness replicated in a scratch package per library, `BOTOPINK_LIB_ROOTS` unset so the walk-up resolves) — 509 members total, `--target wasm`, `rm -rf .botopinkbuild` first each time. 39 distinct reasons, 1040 raw occurrences, 186 distinct members hit at least one (119/442 modules, 67/67 libraries — every library hits the universal "an awaited task of a type parameter" harness note).
+
+| Total | Members | Reason | Example |
+|---|---|---|---|
+| 301 | 24 | an empty array literal of no known type | `modules/untyped` — `cases/untyped_array_float_push/src/main.bp:11:5` |
+| 288 | 24 | a declaration of `…`, a module this backend refused *(cascading, not a root cause — fires once per module importing an already-refused one)* | `modules/decisions-taken/unreached_unlowerable_function_ignored-531` |
+| 87 | 40 | **convert ref** *(front 229 s7's box — landed)* | `modules/embed` — `cases/embed_field_read_other_module/src/main.bp:11:5` |
+| 73 | 25 | a tuple element of a value of no known tuple type | `libraries/validation` — `src/json.bp:187:13` |
+| 60 | 60 | an awaited task of a type parameter *(structural — fires once per package/harness awaiting a generic `Async<T>`)* | `modules/component` |
+| 47 | 24 | the GC module does not type-check: a number where a reference was taken | `modules/decisions-taken/comptime_reflection_types_at_runtime-1071` |
+| 43 | 42 | the GC module does not type-check: a value of another type | `modules/array` — `__panic_raise` in `cellOf` |
+| 28 | 26 | a binding over a condition that is no optional | `modules/decisions-taken/mixed_literals_infer_union-150` |
+| 25 | 25 | a try over a Result of no known shape | `modules/decisions-taken/brace_without_arrow_is_block-525` |
+| 24 | 20 | a host-backed function with no wasm binding | `modules/behavior` — `panic` |
+| 10 | 10 | a bare variant name more than one enum declares | `modules/enum` |
+| 8 | 6 | an array whose elements disagree with its class | `modules/record` |
+| 6 | 6 | internString *(unfiled)* | `modules/fn` |
+| 6 | 6 | a field of a receiver of no known record | `modules/async` |
+| 4 | 4 | box_i32 | `modules/hof` |
+| 3 | 3 | a tuple element of no known type | `modules/optional` |
+| 2 | 2 | the wasm backend cannot resolve the call: no function/method/variant/function-value answers it | `libraries/snap` |
+| 2 | 2 | a payload of no declared type | `modules/lambda` |
+| 2 | 2 | a lambda parameter nothing types | `modules/decisions-taken/fn_tail_value-409` |
+| 2 | 2 | **a call of std-wasm's `array.slice`, which has no GC marshal** *(front 229 s8's box, in flight)* | `modules/case` — `cases/case_alternatives_and_arrays/src/main.bp:13:5` |
+| 1 each | 1 each | 20 more singleton reasons (i64→unknown narrowing; no iterable-walk form; the await-resumed-twice note (392); no string/array-method lowering; optional-container/no-print-shape; optional-all-unit-enum; `is` over a run-time type token; `at` over no known array type; array-of-another-shape in a type-param slot; array-literal no element type; `spawn_all` over thunks of no known type; run-time type token; `next()` with no `YieldStep`; loop over no known array type; lambda param of a type with no repr; call through a function value of no known result; `defer` not lowered yet; unbound name) | — |
+
+Not blindly "unrelated" red: of the 75 module build/run failures and 31 library harness failures alongside this, 40+2 are cascading consequences of a sibling module's own `.linear` fallback (in scope for 1105), 18 are genuine runtime traps with no `.linear` note at all (pre-existing wasm runtime bugs, out of scope), and the rest are target-exclusion audits or unrelated refusals. Full raw data and methodology kept by the thread, not committed (scratch).
+
 ### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s7 (this front, the same codegen)
