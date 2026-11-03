@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Good revert — check mt-0252 before front 228: decisions-split.ts/decision-cells.ts are deleted, not just broken
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
