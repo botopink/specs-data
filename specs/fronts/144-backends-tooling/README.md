@@ -3705,3 +3705,17 @@ Filed from a fable plan the maintainer ran (2026-11-02) on the B-203 class of bu
 - [ ] M0: per-case vs per-member build+run cost measured on all 4 targets, pool idle tail measured
 - [ ] D1: isolation design decided from M0's numbers
 - [ ] P2: D1's pick implemented in `conformance/run.sh`
+
+### B-210 — wasm `.linear` prints a type parameter holding a record or an array as its own heap address, silently wrong, live today
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet, once B-207's own fix (step 1101) lands first — this is the same gap, in `.linear` memory instead of `.gc` · **After:** B-207
+
+Found while answering the maintainer's check on mt-0263: with today's compiler exactly as landed (the `gcDeclPrinter` guard in place, untouched), a generic record whose own `display()` prints a type-parameter value through another generic function (`shown<T>(x: T) { return "" + x; }`, B-207's own shape) is **silently wrong on wasm when that value is a record or an array** — not a trap, not a refusal, no fallback note beyond the ordinary B-208 one.
+
+Repro: `Box<T>(value: T) implement Display { pub fn display(self) { return "Box(" + shown(self.value) + ")"; } }`, `print(Box(value: Box(value: 1)))` and `print(Box(value: [1, 2, 3]))`. commonJS answers `Box(Box(1))` and `Box([1, 2, 3])`. wasm, today, answers `Box(11752)` and `Box(11740)` — the inner value's own linear-memory heap address, read through the integer printer, because `lowerPrintArg`'s final fallback (the one that already refuses a tuple of no known element type, "the wasm backend has no printed form for this tuple…") has no equivalent check for a **bare** type parameter's own value: nothing in `.linear` memory tags a word as a record/array vs. a scalar, and the guard forces every such program there via B-207's gap (`wasm: <module> lowered .linear: a generic record's display`, B-208's own note, confirmed present in this repro).
+
+This is the live, reachable half of what B-207 (step 1101) is already fixing for `.gc`; `.linear`'s own fallback needs the matching refusal (`refuseUnlessTemplate`, mirroring the check already written for a tuple of no known shape) so that once B-207 lands and a record/array held by `T` is refused in `.gc` too, the `.linear` retry a refusal still reaches also refuses, located — instead of this.
+
+- [ ] `lowerPrintArg`'s `.linear`-mode fallback refuses a bare type-parameter value that isn't provably scalar/string, the same way it already refuses a tuple of no known element type
+- [ ] `Box(Box(1))` / `Box([1, 2, 3])` either print correctly or refuse, located — never answer a heap address
+- [ ] swept: whether another construct reaches this same fallback with a non-scalar type-parameter value, beyond `shown<T>`'s own shape
