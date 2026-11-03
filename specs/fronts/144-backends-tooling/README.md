@@ -3700,6 +3700,57 @@ With `element` required before `routes` it is clean. The source import graph is 
   - a test module imports `element` before `routes`, marks a fn with the decorator, and calls a `render` fn that calls `segment`.
 - [ ] rakun-bpp's 4 `client_app_test.bp` reds clear with it (they are listed under this row until then)
 
+
+### B-217 — a deferred component call is stamped over the creating body's cell, so a Suspense / boundary fill fails `scope-foreign` on erlang and beam
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (needs a ruling first: where a deferred call takes its place number, 821 (1) / (3) against 970 (3)) · **Owner:** machine-1 · found by machine-1's rakun triage, 2026-11-03
+
+`stamp` calls `countAt` on the render root's cell from the fill's own process. commonJS answers. erlang and beam answer `scope-foreign`, so a Suspense or boundary written in a page body never fills there. This is the root of rakun-bpp's `streaming_test` 12 reds and `helpers_test` 2 reds (erlang, beam), and of rakun-stylesheet's `bridge_test:116`. The repro is in machine-1's triage.
+
+- [ ] the ruling: which cell a deferred component call takes its place from (the creating body's, carried with the call, or the fill's own)
+- [ ] built on every target; a cell over a Suspense fill that reads a provided context, red on erlang and beam on the parent, green after
+
+### B-218 — a context provided in one package is read under another key in a second package (`Th` against `cxa@@Th`)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro; bisect first) · **Owner:** machine-1 · found by machine-1's rakun triage, 2026-11-03
+
+The provider writes the key `Th` and a reader in another package looks up `cxa@@Th`. This fails on all three targets; inside one package it answers. rakun-bpp's `styled_sheet_test` turned red 3 times after the port's baseline: commonJS 317 / 7 against 320 / 4. That makes it a likely regression from a landing after the port's measurement. The first suspect is B-215 ("context key carries package"): it changed `contextTypeKey` to carry the package, and the provider side may not use it.
+
+- [ ] bisected: the commit that turned it red named
+- [ ] provider and reader take one key, the package-qualified one, on every target; a two-package cell red on the parent, green after; `styled_sheet_test` back to green
+
+### B-219 — beam evaluates a list literal's elements right to left
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found by machine-1's rakun triage, 2026-11-03
+
+`[note(1), note(2), note(3)]` evaluates in the order 3, 2, 1 on beam; erlang and commonJS evaluate 1, 2, 3. This is the root of rakun-bpp `render_test`'s shell-order red on beam.
+
+- [ ] beam evaluates list-literal elements left to right, as written; a cell printing the evaluation order, red on beam on the parent
+
+### B-220 — beam: a `SourceLocation` passed to another package's function reads back as the whole record, not its field
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found by machine-1's rakun triage, 2026-11-03
+
+On beam, a field read on a `SourceLocation` received from another package answers the whole record. This is the root of every beam `badarg` in rakun-bpp `helpers_test`'s `assert*` snapshot helpers.
+
+- [ ] the field read answers the field on beam across packages; a two-package cell red on beam on the parent
+
+### B-221 — a foreign method's parameter typed by a behavior resolves that behavior in the caller's module
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-1 · found by machine-1's rakun triage, 2026-11-03
+
+A method declared in another module, whose parameter is typed by a behavior, has that behavior's name resolved in the caller's module instead of the callee's. This happens on commonJS and erlang, and keeps rakun-style's `styled-example` red.
+
+- [ ] the behavior resolved in the module that declares the method; a two-module cell red on the parent
+
+### B-222 — beam: more than 24 operands (a 25-field record, a 25-argument call)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found by machine-1's rakun triage, 2026-11-03
+
+A 25-field record construction gives an unlocated `TooManyOperands`. A 25-argument call inside `print(…)` is misreported as "print has no implementation for the beam backend". This is the root of rakun-ssr `blog`'s beam red.
+
+- [ ] beam lowers records and calls past 24 operands; a cell with a 25-field record and a 25-argument call, red on beam on the parent
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
