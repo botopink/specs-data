@@ -3454,3 +3454,16 @@ Pre-existing, unrelated to the RenderScope/`all<T>` port: `rakun-bpp/test/html/t
 - [ ] locate and fix the optional-binder/subject-hint gap in the HTML-DSL form above
 
 Oracle: `rakun-bpp/test/html/template_test.bp` checks clean.
+
+### B-215 — `context-declared-twice` refuses two packages' own same-named context type (defect, `contextTypeKey`)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (the fix is mechanical once the key is right; the design — a type's identity carries its package, decisions 603, 635, 170/337 — is already fixed) · **After:** B-211
+
+Confirmed by the fable's review of B-212's cell: `infer.zig`'s `contextTypeKey` (~line 23153) keys a `createContext` declaration on the bare type name alone (`d.named.name`, no package), and `noteContextDeclaration` looks that key up in a `contextDefaults` registry shared across every `compiler.load`d package — so two different packages' own, unrelated type both named e.g. `Theme` collide as `context-declared-twice`, even though decisions 603/635 (170/337: a module is its package plus its path) already settle that two same-named types of two packages are two separate identities, never one.
+
+Worked around in B-212's cell by using distinct type names per case (`Theme`/`Palette`/`Tone`) rather than the same name across cases — once this lands, that workaround should go back to reusing the same name.
+
+- [ ] `contextTypeKey` carries the type's package-qualified identity (the same one the backends emit, 603/635), not the bare name alone
+- [ ] cell: two loaded packages each declaring their own context over a type named identically (e.g. both `Theme`), both contexts accepted, each package's `use context` reading its own
+
+Oracle: the cell, red on the parent, green after.
