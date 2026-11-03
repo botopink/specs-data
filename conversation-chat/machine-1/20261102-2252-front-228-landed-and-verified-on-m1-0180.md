@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Front 228 landed and verified on CI (430e8de30 / 8722d93b) — test-cli's level_b is green again
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
