@@ -3751,6 +3751,20 @@ A 25-field record construction gives an unlocated `TooManyOperands`. A 25-argume
 
 - [ ] beam lowers records and calls past 24 operands; a cell with a 25-field record and a 25-argument call, red on beam on the parent
 
+
+### B-223 — wasm: 18 conformance members trap on `unreachable` at run time with no `.linear` note in their build
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (triage first, a measured repro per case) · **Owner:** machine-2 · found by front 170 s7's P5-a measurement, 2026-11-03
+
+Each of these members builds in GC form with no `.linear` note, then traps `wasm 'unreachable' instruction executed` at run time:
+
+`any_type_absent-31`, `behavior_identity_by_module-831`, `clock_iso8601_millis_always-849`, `clock_rfc3339_domain-497`, `failure_kinds_exact_every_target-527`, `fetch_one_typed_surface-623`, `fs_walk_dangling_link_not_found-711`, `function_stage_propagated-376`, `function_value_prints-1051`, `hook_name_use_prefix_refused-926`, `import_alias_on_type_and_folder_namespace-110`, `result_is_checked_error-431`, `std_module_error_enum-486`, `string_from_codepoint-262`, `task_methods_withdrawn_async_block-523`, `variadic_last_parameter-267`, `wasm_clock_fs_refused-241`, `wasm_host_profiles_wasi_browser-334`.
+
+The first suspect is front 229 s1's stub: an unreached function is emitted as an `unreachable` that carries its gap's text. If reachability misses a call, the program runs into a stub. A trap whose function names a gap is that case, and the fix is the reachability, not the stub. Other traps are wasm runtime defects of their own.
+
+- [ ] each member run alone on wasm: its case, the trapping function and whether it is a 229 s1 stub, one line each
+- [ ] the stub cases fixed in reachability (a unit test that the called function is not stubbed); the rest filed as their own rows with their case
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
