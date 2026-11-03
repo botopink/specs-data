@@ -124,7 +124,8 @@ a component is `scope_carry`'s `fn(unknown) -> unknown` lambda.
 
 Still on the linear lowering, lifted with P5: an array of tuples in a type-parameter slot; a `try` inside a generator
 whose item is no `Result`; a block or `case` value typed apart from its function (`{ yield 5; 6 }`); the refusal of a
-generic body reached with nothing bound, which the GC lowering answers as commonJS does (`Box(n)`). Writing a
+generic body reached with nothing bound, which the GC lowering answers as commonJS does (`Box(n)`) — **landed**
+(900 (3), B-207, B-210; machine-2, 2026-11-02, decision 1101 (1)-(3)). Writing a
 type-parameter field is lowered but no cell reaches it.
 
 - [ ] **the types:** one GC type per value shape — string (an `i8` array), array, tuple, record, enum and variant,
@@ -161,20 +162,25 @@ type-parameter field is lowered but no cell reaches it.
 
 **Impacted tests:** every wasm snapshot and `run/` cell; `test-libs` wasm column; `test-web`. **Consumer commits:** none.
 
-- [ ] wasm refuses a call of a generic type's method whose body needs its type parameters bound (900 (3)):
+- [x] wasm refuses a call of a generic type's method whose body needs its type parameters bound (900 (3)):
       `d.display()` and `print(d)` of a `Dict<string, f64>` built in std, read in another module — "the wasm backend
       cannot call the generic `Dict.display` here: nothing at this call binds the type parameters its body needs bound
       (a type parameter's slot is not monomorphised)"; cell `generic_type_value_carries_shapes` (900) red on wasm alone
-      until this lands. Confirmed still accurate (machine-2, 2026-11-02): running the cell's bare case directly (not
-      through the decisions-taken self-check wrapper) with `wat.zig`'s own `gc_debug`/`GCTRACE` tracing reproduces
-      this exact, located refusal. Through the wrapper the symptom is masked by B-203's `fs.cwd` wall and, once that
-      clears, by an unrelated unlocated retry-order artifact — neither changes what this box names; both are the
-      wrapper's problem, not this cell's
+      until this lands. **Landed** (machine-2, 2026-11-02, decision 1101 (1)-(3), after front 229 s1/s2 made
+      `__print_tagged_raw`'s walk degrade per type): the cell's bare case and the real `Dict<K,V>` repro (a generic
+      wrapper calling `print(d)` with nothing bound, and `d.display()` directly) both answer as commonJS now on all
+      four targets, re-run and confirmed clean (no `.snap.new` written)
 
 - [ ] wasm refuses a method's own type parameter bound to `f64` (985): `mapValues` from `i32` to `f64` — "the wasm
       backend would narrow an `f64` value to an `i32` slot it does not fit" at the lambda; cell
       `generic_method_own_parameter_takes_shape` red on wasm alone. Confirmed still accurate (machine-2, 2026-11-02),
-      same method and same caveat as 900's box above — the bare case reproduces exactly this, located at the lambda
+      same method and same caveat as 900's box above — the bare case reproduces exactly this, located at the lambda.
+      **Re-confirmed after decision 1101 (1)-(3) landed** (machine-2, 2026-11-02): unchanged — 1101 was about a
+      generic body's own print dispatch (900/B-207's class of gap), not about a method's own type parameter's
+      *storage* width (`mapValues<f64>` narrowing `d`'s `i32` value slot to hold an `f64` it doesn't fit); the bare
+      case still answers exactly the same located refusal, word for word. Through the decisions-taken wrapper the
+      symptom is still masked by the same unlocated retry-order artifact this box's text already names (B-206,
+      queued, unrelated to this box)
 
 - [ ] wasm: packages loaded side by side (982's folded module, `compiler.load` of each case) break three cases that
       answer alone — `case_arm_record_named_like_a_variant`, `case_record_field_null`, `case_union_constructor_arms`
