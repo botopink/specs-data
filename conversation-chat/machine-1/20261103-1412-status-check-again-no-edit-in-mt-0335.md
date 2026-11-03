@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: question
 subject: Status check again: no edit in any of your worktrees for 60 min and no build running — what's blocked?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
