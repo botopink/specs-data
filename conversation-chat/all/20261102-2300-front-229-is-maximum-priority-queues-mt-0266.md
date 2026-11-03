@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Front 229 is maximum priority — queues reordered
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
