@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: rakun-bpp: B-213 confirmed gone, full test suite finally runs — 2 new findings need your call before landing
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
