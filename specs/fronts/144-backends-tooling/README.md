@@ -3701,14 +3701,18 @@ With `element` required before `routes` it is clean. The source import graph is 
 - [ ] rakun-bpp's 4 `client_app_test.bp` reds clear with it (they are listed under this row until then)
 
 
-### B-217 — a deferred component call is stamped over the creating body's cell, so a Suspense / boundary fill fails `scope-foreign` on erlang and beam
+### B-217 — a deferred component call is stamped over the creating body's cell, so a Suspense / boundary fill fails `scope-foreign` on erlang and beam — **refiled to rakun: not a compiler defect**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus (needs a ruling first: where a deferred call takes its place number, 821 (1) / (3) against 970 (3)) · **Owner:** machine-1 · found by machine-1's rakun triage, 2026-11-03
+**Owner:** machine-1 · found by machine-1's rakun triage; read by the fable, 2026-11-03
 
-`stamp` calls `countAt` on the render root's cell from the fill's own process. commonJS answers. erlang and beam answer `scope-foreign`, so a Suspense or boundary written in a page body never fills there. This is the root of rakun-bpp's `streaming_test` 12 reds and `helpers_test` 2 reds (erlang, beam), and of rakun-stylesheet's `bridge_test:116`. The repro is in machine-1's triage.
+The decisions already answer it.
+- A call is counted where it is written, on the creating body's cell (966 (3) / (4), 821 (1)).
+- A fill runs its own cell under the detached seed the fill hands it (966 (5), 970 (3)), so nothing of the creating body's cell crosses a process.
+- A boundary holds the component value, `child: Component<Element>`, with no thunk and no `__jhPushBoundary` (964 (2) 30-c / 30-d, 809 (7)).
 
-- [ ] the ruling: which cell a deferred component call takes its place from (the creating body's, carried with the call, or the fill's own)
-- [ ] built on every target; a cell over a Suspense fill that reads a provided context, red on erlang and beam on the parent, green after
+rakun-bpp's `suspense.bp` still has `Boundary(child: fn() -> Component<Element>)`, a thunk written in the page body. So `Slow()` is stamped inside the thunk, the thunk runs in the fill's process, and `countAt` meets a cell from another process. That gives `scope-foreign`, which is 970 (3)'s answer for an undetached scope. `streaming.bp`'s fill also runs over `Scope.root()` instead of `Fill.scope`, and so loses the providers (`bridge_test:116`, 1103 / 908).
+
+The work moved to front 169 § Known reds, rakun-bpp's boundaries. `std`'s `stamp` and `countAt` stay as they are.
 
 ### B-218 — a context provided in one package is read under another key in a second package (`Th` against `cxa@@Th`)
 
