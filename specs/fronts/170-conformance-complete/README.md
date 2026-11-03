@@ -180,6 +180,36 @@ type-parameter field is lowered but no cell reaches it.
       bug only reproduces as a bare top-level program, not through `compiler.load`'s folded `cases/` shape, and
       the old `cells/` shape is no longer checked by anything — the gap is filed as its own row, B-205
 
+
+**P5, the linear lowering deleted — its pieces** (planned by the fable, 2026-11-03; decided by 1105). Each piece shrinks the count of `lowered .linear` notes, and none may grow it. Each one carries a `wat.zig` unit test per gap reason it removes, red on the parent.
+
+- [ ] **P5-a, measurement** (sonnet, machine-2): the `lowered .linear` notes counted over every conformance member and `libraries/`, on wasm (`botopink run --target wasm`, stderr grepped for `^wasm: .* lowered \.linear: `), and posted here as a table per reason. It is re-run after each piece.
+- [ ] **P5-b, the boundary** (sonnet, after 229 s8): `array.*` written as hand-written `.wat` leaves (1105 (2)); every other std-wasm export a GC module reaches given a marshallable type or listed for s10. Oracle: `conformance/modules/case` and `import` green on wasm, and no std-marshal gap left.
+- [ ] **P5-c, generic slots** (opus, after 229 s4): `gcGenericArg`'s remaining refusals and `gcEqValues`' composite payloads:
+  - a `u64` in a tuple, `$box_u64 <: $box_i64`;
+  - a generic field of a generic type;
+  - a boxed variant.
+- [ ] **P5-d, type recovery** (sonnet): each "of no known type" / "nothing types" gap answered from the checker's types, across generators, lambda parameters, awaited tasks and empty literals. It also closes s9's "`failure.attempt` over an `i64`".
+- [ ] **P5-e, control shapes** (sonnet): each a unit test:
+  - an inlined lambda's endings;
+  - defer arms;
+  - a `yield` naming an enclosing scope;
+  - destructuring;
+  - `is` over a tuple;
+  - an optional all-unit enum;
+  - the `convert ref` that remains after 229 s7.
+
+  It also closes s9's "a GC module with exceptions keeps the checked site in GC", which is likely stale: verify it.
+- [ ] **P5-f, helper groups** (sonnet): each prelude group with no GC form is given a GC twin or proven unreachable from GC.
+- [ ] **P5-g, typecheck gaps** (opus): every GC type-check diagnostic fixed at its lowering. rakun-stylesheet's module (s9's third box) is the oracle.
+- [ ] **P5-h, the deletion** (sonnet), only when P5-a reads zero, `libraries/` included:
+  - goes: `repr.Mode`, the `.linear` attempts and their notes, and the linear twins of the prelude;
+  - a gap is the one located refusal of 1105 (1), and an unreached gap a stub;
+  - comptime answers the same refusal (1105 (4));
+  - the wasm snapshot corpus is every module in GC (1105 (3));
+  - stays until s10: `memory`, `alloc`, the std marshal and `std_wasm_link`;
+  - a program function that touches memory is a compiler bug.
+
 ### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s7 (this front, the same codegen)
