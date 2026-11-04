@@ -250,6 +250,11 @@ Not blindly "unrelated" red: of the 75 module build/run failures and 31 library 
 - The `run/` cells no longer exist (989's in-process modules replaced them), so "every `.out` unchanged" reads as the modules' answers. Those are tracked by P5 and s11.
 - Read that box as done; it stays unticked only because this note is appended rather than the section rewritten.
 
+
+**P5-d's two residuals** (machine-2's re-measure on P5-a's corpus, 2026-11-03). Both stay inside P5-d, as pieces of their own (the maintainer):
+- [ ] **P5-d, an awaited task at the in-process harness** (machine-2, sonnet): 19 notes in 19 conformance modules, every one at the 989 harness's `await loaded.run()`, over a comptime-loaded case's reflected async return. It is another generic-resolution path than the thunk parameter's: the reflected `Async<Result<string, RunFailure>>` (989 (2)) must bind from the loaded module's own signature. Oracle: the reason at 0 on the corpus; a `wat.zig` unit test red on the parent
+- [ ] **P5-d, an empty array where the expected type is a union or coercion type** (machine-1, sonnet): 366 notes, libraries only, all at `rakun-bpp/src/element.bp:29:5`, `children: []` against `Children`. The checker's expected type for an empty literal is a union or coercion type, not a declared array, and the GC lowering must take the array member the checker chose. **First confirm that the rise from 301 to 366 is unmasking, not a regression**: on the parent commit, the libraries that now hit it must have fallen for an earlier first reason. Oracle: the reason at 0; a unit test red on the parent
+
 ### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s7 (this front, the same codegen)
