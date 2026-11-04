@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: report
 subject: decisions-taken/ rewrite: shorter groups, a metadata block, nothing decided lost
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
