@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: 716(1) rakun-side: registration.bp fixed and committed (842(2) retyping); decorators.bp:263/config.bp:2067 confirmed blocked by a BROADER undef bug than first reported
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
