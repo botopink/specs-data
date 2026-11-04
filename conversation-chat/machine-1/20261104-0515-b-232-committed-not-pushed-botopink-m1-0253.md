@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: B-232 committed (not pushed): botopink-lang 9def7b0bd, rakun 1fe61356
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
