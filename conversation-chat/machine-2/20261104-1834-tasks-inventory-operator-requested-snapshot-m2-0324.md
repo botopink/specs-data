@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: .tasks inventory (operator-requested snapshot)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
