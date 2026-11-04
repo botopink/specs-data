@@ -4098,7 +4098,7 @@ Previously thought closed by P5-f (170 s7), which fixed two different, unconditi
 
 - [ ] a new `gcChainedCall` mirroring `gcOptionalTypedMethod`'s shape, covering both the method-call and tuple-label-read shapes, recursive over nested nullable chains (the underlying `isOptionalChain`/`chainedCallKind`/`chainPayloadKind` machinery is already general); unit tests per shape, red on the parent, green after; the three named members clean
 
-### B-244 — wasm GC: a two-levels-deep generic-thunk await (a generic fn's thunk tail itself calling another generic fn) resolves to the inner fn's own unsubstituted type parameter
+### B-244 — wasm GC: a two-levels-deep generic-thunk await (a generic fn's thunk tail itself calling another generic fn) resolves to the inner fn's own unsubstituted type parameter — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (touches `fnArgReturn`/`genericRetByFnArg`'s general machinery, not a narrow call site) · **Owner:** machine-2 · found by front 170 s7's P5-a full re-measure, 2026-11-04, while fixing the "an awaited task of a type parameter" hits on `std_async_on_every_target-690`
 
@@ -4106,7 +4106,9 @@ That member's own `allOf` hit (an `array<Async<Result<T, E>>>` parameter) is fix
 
 This is two levels of generic substitution that need to compose (the outer thunk's own generic binding, then the inner call's), not a single call site forgetting a mode check.
 
-- [ ] `fnArgReturn`/`genericRetByFnArg` (or wherever the thunk-tail's answer type is read) substitutes the INNER generic call's own type arguments (resolved from ITS call site) before handing the answer type up to the outer thunk's own binding walk, so a thunk tail that is itself a generic call resolves to a concrete type, not the inner function's bare parameter name; unit test over `async.timeout`'s own shape (a thunk tail calling a different generic fn), red on the parent, green after; `std_async_on_every_target-690` clean
+- [x] `bindGenericCall` (`bindAwaitedGeneric`'s walk, generalised to also read a host-declared generic like `delay<T>`) plus a new `thunkTailTypeRef`, which `fnArgReturn` now reads a thunk's tail through: a tail whose own type is not yet concrete is bound by its own call's arguments before the outer call reads it. Works at any depth, not just two levels — a deeper nested thunk binds through `typeRefOf`'s own `genericRetByFnArg`, which reads each inner thunk the same way, so no new recursion code was needed past the one new function. Unit test (`async.timeout`'s own shape, plus a three-deep nesting), red on the parent, green after.
+
+**`std_async_on_every_target-690` is fixed for this shape but still falls back, on a separate, pre-existing gap found while verifying it: `await async.runAll([{ -> greet("a") }, …])` with a STRING answer falls back at `async.bp:231:5` (`runAll`'s own body, `await spawnAll(tasks)` — a host-declared `spawnAll` reached through a variable `tasks`, never bound); the `i32` version of the same call stays GC. Filed separately as B-245.**
 
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
