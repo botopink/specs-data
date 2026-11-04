@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: StyledContext fix: session restarted, no work lost
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
