@@ -4145,21 +4145,15 @@ B-245 fixed std's OWN internal `tasks` variable inside `runAll`'s body. A user's
 
 - [ ] find why `typeRefOf`/`emitLocalDecls`'s pre-pass doesn't know a local `val` holding an array of lambdas is `array<fn() -> Async<T>>` the same way it's known inside std's own `runAll` body (likely the same binding gap class as B-244/B-245, but at the USER call site rather than inside a std function — `genericRetByFnArg`/`bindGenericCall` reading a local declaration's own initializer type, not just a parameter's declared type); and separately, find why the EXISTING linear-mode print path for an array of task answers prints an address instead of the string when it falls back (this is the more urgent half — a silent wrong answer in shipped behavior, not merely a missing GC optimization). Cell: a program awaiting `runAll` over its own local array of string-answering thunks, red on the parent (wrong answer, not just a note), green after; the `i32` sibling unaffected
 
-### B-248 — print of `Bytes`/`Async<T>`/`AsyncIter<T>` disagrees with decision 1111 on three of four targets
+### B-248 — print of `Bytes`/`Async<T>`/`AsyncIter<T>` against decision 1111 — **closed, superseded by 1112**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (decision 1111 already fixes the answer; this is matching the codegen to it) · **Owner:** unassigned · found by P5-g (front 170 s7), 2026-11-04
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** closed, machine-1
 
-Decision 1111 fixes what these three types print, on all four targets, inside a record too, and that printing one never awaits it and never traps: `Bytes` prints as a list (`[104, 105]`), `Async<T>` prints `<task>`, `AsyncIter<T>` prints `<iter>`.
+Decision 1111 (this row's original basis) was reversed by 1112: decisions 1104, 520 and 530 stand as written instead. Under those: `print` of a static `Async<T>`/`Iter<T>`/`AsyncIter<T>` refuses at build; one reached through `unknown` panics; `bytes` does not widen to `unknown` and a `bytes` template hole stays refused.
 
-Measured against a record holding all three fields, four targets:
-- wasm (GC): `Bytes` prints as a quoted string (not a list); `Async<T>` traps instead of printing `<task>`.
-- erlang: `Bytes` prints `"hi"` (a quoted string, not a list).
-- commonJS: `Bytes` prints `Uint8Array(2) [ 104, 105 ]` (not the plain list decision 1111 names).
-- `AsyncIter<T>`'s exact behavior on erlang/commonJS wasn't separately confirmed by the finding thread — check it too.
+Checked against 1104/520/530 directly, on all four targets, both positions (a static print's build refusal, and a generic-erasure print's dynamic panic): all four targets already answer 1104's text identically in both positions — confirmed empirically, wasm's panic text is in fact the one erlang's and commonJS's own copies were written to match word-for-word. No defect found; nothing left to fix. A cell proving this is landed: `conformance/modules/decisions-taken/print_task_and_generator_opaque-1104/`.
 
-None of the three targets' current answers match decision 1111. Each is its own defect against the decision, not three correct-but-different answers.
-
-- [ ] a cell: a record holding a `Bytes`, an `Async<T>` and an `AsyncIter<T>` field, printed on all four targets, each answering per decision 1111; red on every target until fixed, including wasm's print-then-trap on `Async<T>`
+A real, separate defect surfaced while checking this and is filed on its own: wasm's `print` of a record streams each field's text to stdout as it's computed, so a panic partway through leaves a partial prefix on stdout (`Holder(t: ` before the trap) — the other three targets build the complete text before writing anything, so the same program gives two different outputs. See B-253.
 
 ### B-249 — a prototype `#[managed]`'s generated `new()` fails "expected &lt;Type&gt;, got function" over a field resolved by `context.rkResolve` — rakun only
 
