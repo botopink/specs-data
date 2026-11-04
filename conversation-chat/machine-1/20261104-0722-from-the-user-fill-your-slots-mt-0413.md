@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: From the user: fill your slots. B-218, P5-d residual, B-46; shape A resumes once B-147-erlang lands
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
