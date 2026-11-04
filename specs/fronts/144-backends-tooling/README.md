@@ -4076,6 +4076,16 @@ No component involved. `async fn main() -> Async<void> { await make(10); }`, whe
 
 - [ ] the minimal repro (above) turned into its own cell, red on the parent; root-caused in `renderBody`'s tail-conversion path and fixed, green after
 
+### B-242 — a workspace member skips a held dependency's module no earlier member wrote (decision 1015 (4)) — **closed**
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus · **Found by:** front 170 s6
+
+A member handed `--workspace-out` writes only the modules of a dependency its own program reaches — std's above all — and then the package's key file `.<pkg>.key`. A later member that found the key skipped the whole package and ran without the modules only it reaches: `Cannot find module './std@context'` on commonJS, `std@failure.erl: no such file or directory` on erlang. The conformance root's members run side by side over one folder, so about 100–140 modules per target went red on `feat`'s pipeline, the count depending on which member wrote std's key first; order-dependent, reproduced with two members run one after the other.
+
+- [x] `workspace_out.Once.skips(pkg, path)`: a module of a package held under its key is left as the folder holds it only when that module's file is there; a module no earlier member reached is written by the first that does. The key's meaning is unchanged (the files that are there are current); concurrent writers still rename the same bytes
+- [x] 478's cheap test: `modules/compiler-cli/tests/workspace_out.sh` runs a member reaching `std@hash` after one that does not, over std's key, on commonJS and erlang — red on the parent, green after (test-cli, which the hook runs)
+- [x] measured: the root package on commonJS went from 169 failed modules to 63; what remains is the 1065 (1) roster's reds, 1011's shape reds and rows of their own
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
