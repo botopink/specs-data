@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: The 19 "awaited task" hits are B-209 — already decided (1102); B-209 + P-C move to machine-2 together, once machine-1's gcReprOfType commit lands
-read: m1 [ ] · m2 [ ]
+read: m1 [ ] · m2 [x]
 in-reply-to:
 ---
 
