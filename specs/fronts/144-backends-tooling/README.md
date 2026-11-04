@@ -4135,6 +4135,14 @@ A GC tuple literal written with `null` for a `?i32`/`?string` slot, inside an ar
 
 - [ ] find where a GC tuple literal boxes a `null` scalar slot when it is constructed inside an array literal returned from a function (likely the array/tuple construction path treats the `?i32`/`?string` element's `null` as its zero value rather than a real absent marker) and fix the construction, not just the read; a cell exercising a returned array of tuples with a mix of present and absent optional slots, read back both directly and through `?.`, red on the parent, green after
 
+### B-247 — wasm: a user's own local thunk-array variable passed to async.runAll falls back AND the linear lowering prints heap addresses instead of strings
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a wrong-answer defect, not just a fallback; the linear lowering's own existing array-of-tasks print path needs the fix, not a new GC path) · **Owner:** machine-2 · found verifying B-245, 2026-11-04
+
+B-245 fixed std's OWN internal `tasks` variable inside `runAll`'s body. A user's own equivalent — `val ts = [{ -> greet("a") }, …]; await async.runAll(ts);`, written in the user's own program rather than inside std — still falls back on wasm. Worse than a safe fallback: the LINEAR lowering itself then prints raw heap addresses for the string answers (`runAll 12924,12988`) instead of the real strings (`runAll a!,b!`). The `i32` version of the same shape falls back too but prints the correct values (`[2, 4]`) — the wrong-answer part is specific to a non-scalar (string/reference) task answer passed through a user-level local variable.
+
+- [ ] find why `typeRefOf`/`emitLocalDecls`'s pre-pass doesn't know a local `val` holding an array of lambdas is `array<fn() -> Async<T>>` the same way it's known inside std's own `runAll` body (likely the same binding gap class as B-244/B-245, but at the USER call site rather than inside a std function — `genericRetByFnArg`/`bindGenericCall` reading a local declaration's own initializer type, not just a parameter's declared type); and separately, find why the EXISTING linear-mode print path for an array of task answers prints an address instead of the string when it falls back (this is the more urgent half — a silent wrong answer in shipped behavior, not merely a missing GC optimization). Cell: a program awaiting `runAll` over its own local array of string-answering thunks, red on the parent (wrong answer, not just a note), green after; the `i32` sibling unaffected
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
