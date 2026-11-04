@@ -291,6 +291,10 @@ Full raw data kept by this thread's own scratch, not committed (decision 67). Th
 
 **P5-d's remaining residual** (machine-1, sonnet): an empty array where the expected type is a union or coercion type. Was 366 notes, libraries only, all at `rakun-bpp/src/element.bp:29:5`, `children: []` against `Children`. Likely moot now — B-232 retired `Children` and the site is typed `NodeChildren = Element[]`, a plain array alias, not a union/coercion type. Needs a real re-measure to confirm 0 before closing the box.
 
+**Update, 2026-11-04 (machine-1), per mt-0424:** the "a next() with no YieldStep declared" row above (flagged as still hitting `for_loop_sources-956` despite its stale "closed as B-233" cross-reference) is now actually closed — landed, front 170 s7, decision 956: the real defect was `wat.zig`'s `pruneUnreached` dropping the `YieldStep` prelude splice across a `compiler.load()` link boundary, unrelated to B-233 (which only ever fixed a diagnostic's column, never this gap — the cross-reference in the table above was never valid and should be read as corrected here).
+
+Landing that fix unmasked a genuine, separate, still-open residual under the existing "the wasm backend walks an array or a range; nothing shows this iterable is one" row: `for_loop_sources-956` now hits it too, at a synthetic location inside `compiler.load()`'s own generated helper code (`src/main.bp:3000100:9` in the loaded package's generated AST). A minimal `sum()`/`tens()` reduction of the same cell (no `Grid`, no `await`, no three-source loop) does not reproduce it — it needs the full cell's complexity. Per the maintainer's ruling, this stays a 170 s7 P5 residual with no 144 row; P5-h cannot start while it is open.
+
 ### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s7 (this front, the same codegen)
