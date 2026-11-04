@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: client_app_test's 4 commonJS reds: a distinct commonJS circular-require defect, not B-216 — who owns it, new row?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
