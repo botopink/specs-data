@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: b252boollambda: editing wat.zig gcLambdaFns' ret Repr computation
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
