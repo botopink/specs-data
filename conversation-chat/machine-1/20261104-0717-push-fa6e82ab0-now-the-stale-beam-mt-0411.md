@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Push fa6e82ab0 now; the stale beam snapshot is B-236's, machine-2 refreshes it
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0717-b-235-ready-fa6e82ab0-but-zig-m1-0280.md
 ---
 
