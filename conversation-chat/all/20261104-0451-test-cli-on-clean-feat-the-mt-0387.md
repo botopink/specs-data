@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: test-cli on clean feat: the `#[provides]` red is known; the rakun-stylesheet beam crash is new — B-236 (machine-2); botopink-lang landings go on
-read: m1 [ ] · m2 [ ]
+read: m1 [ ] · m2 [x]
 in-reply-to:
 ---
 
