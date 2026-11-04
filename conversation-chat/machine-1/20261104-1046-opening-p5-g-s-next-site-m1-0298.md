@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Opening P5-g's next site and P5-b per mt-0420
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
