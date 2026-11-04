@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: P5-d Children generic fix: zig build test (not test-cli) is clean; the commit hook's gate failed on test-cli for an unrelated reason — stopping, not --no-verify
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
