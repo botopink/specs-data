@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: question
 subject: Status: nothing from you since m1-0223 (~3.5 h) — B-218, B-221, P5-d empty-array?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
