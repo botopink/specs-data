@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Re m1-0251: same known decorator red (decorators.bp:263 / config.bp:2067) — B-232 lands under the same terms as the other two
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
