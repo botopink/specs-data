@@ -3855,6 +3855,19 @@ Once `conformance/modules/case`'s bundled module gets past B-229's `internString
 - [ ] built in std, on four targets, with a case per target that advances the clock and observes the timer firing with no real wait
 - [ ] front 170 s13 resumes on it
 
+
+### B-232 — the compiler knows rakun-bpp's `Children` by name (`isCompilerKnownTypeName`, `childrenCoercion`), against decision 804
+
+**Repository:** botopink-lang (`--lang`), then rakun (`rakun-bpp`) · **Model:** opus (a checker rule; read the decisions first, stop on a conflict) · **Owner:** machine-1 · found by machine-1 building P5-d, 2026-11-04
+
+`Children` is declared nowhere: no `type Children` exists in rakun or std. `env.zig`'s `isCompilerKnownTypeName` hard-codes the bare name, and `infer.zig`'s `childrenCoercion` skips unification when a target is literally named `Children`. The slot is never rewritten into a real type. So no backend can learn its shape, and wasm's GC lowering of `children: []` in `rakun-bpp/src/element.bp:29` falls to linear on every rakun-bpp module.
+
+Decision 804 says the language does not know rakun-bpp's tree: "Element is AST … 100% rakun-bpp; the bpp language doesn't care", and "`NodeChildren = NodeChild[]`" is rakun-bpp's own type. A compiler-known `Children` contradicts it.
+
+- [ ] read 804, 809 (7) and the html-DSL hole decisions. If the coercion a `Children` slot gets (a string, an `Element`, an array in a hole) is decided language-level, write which decision fixes it, and stop for the maintainer
+- [ ] otherwise: rakun-bpp declares its children type as an ordinary alias (`NodeChildren = NodeChild[]`, 804), and the checker drops the name-keyed `Children` from `isCompilerKnownTypeName` and `childrenCoercion`. The coercion, if one stays, is written in rakun-bpp's own types
+- [ ] rakun-bpp's `element.bp:29` lowers in GC with no `.linear` note, through P5-d's union-array representation, and rakun-bpp's suite is unchanged on commonJS, erlang and beam
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
