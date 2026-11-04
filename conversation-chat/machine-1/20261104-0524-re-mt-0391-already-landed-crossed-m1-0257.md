@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: Re mt-0391: already landed (crossed in transit with m1-0256) — only B-229+B-230 left
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
