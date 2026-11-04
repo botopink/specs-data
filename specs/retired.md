@@ -304,6 +304,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | commonJS's mirrored subfolders; `out/erl/`; commonJS and wasm output at `out/`'s root; the separate tsc-check stage | flat `<pkg>@<path>` files in `out/commonJS/`, `out/erlang/`, `out/beam/`, `out/wasm/`; one `tsc` folded into the commonJS row | 1013, 1015, 1023 | 2026-10-27 |
 | `--jobs` on `build` / `run --target`; the 900 s per-member timeout default; a per-case time bound | the spawner (run.sh, gate.sh, CI) decides parallelism; `--timeout <s>` bounds the whole command, only when passed | 1066, 1067, 1068, 1070 | 2026-10-27 |
 | import aliases (`@/…`, the manifest's `alias`, rakun-ssr's `loadAliases`, `rakun-cli create --import-alias`); an unknown manifest key silently accepted | real module paths only; every unknown manifest key refused, located (`manifest-unknown-field`) | 1048, 1050 | 2026-10-27 |
+| `scripts/decisions-split.ts` (the per-repository `decisions-taken.md` generator), `scripts/decision-cells.ts` (`scaffold` / `compile` / `promote` / `check`), CI checks 6 and 7 | nothing yet; the generated files and the decision cells stay as content | 1107 (overtakes 482) | 2026-11-02 |
 
 ## Decision rows replaced, reversed or overtaken
 
