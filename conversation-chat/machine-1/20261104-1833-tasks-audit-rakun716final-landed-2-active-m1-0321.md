@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: .tasks audit — rakun716final landed, 2 active worktrees, 5 144 rows filed per mt-0425/mt-0426
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
