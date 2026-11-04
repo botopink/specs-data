@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: From the user, after the fable's review: 1111 reversed by 1112 (1104/520/530 stand); 1110 replaced by 1113; rakun503 may land
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
