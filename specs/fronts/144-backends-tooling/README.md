@@ -4098,6 +4098,16 @@ Previously thought closed by P5-f (170 s7), which fixed two different, unconditi
 
 - [ ] a new `gcChainedCall` mirroring `gcOptionalTypedMethod`'s shape, covering both the method-call and tuple-label-read shapes, recursive over nested nullable chains (the underlying `isOptionalChain`/`chainedCallKind`/`chainPayloadKind` machinery is already general); unit tests per shape, red on the parent, green after; the three named members clean
 
+### B-244 — wasm GC: a two-levels-deep generic-thunk await (a generic fn's thunk tail itself calling another generic fn) resolves to the inner fn's own unsubstituted type parameter
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (touches `fnArgReturn`/`genericRetByFnArg`'s general machinery, not a narrow call site) · **Owner:** machine-2 · found by front 170 s7's P5-a full re-measure, 2026-11-04, while fixing the "an awaited task of a type parameter" hits on `std_async_on_every_target-690`
+
+That member's own `allOf` hit (an `array<Async<Result<T, E>>>` parameter) is fixed, landed alongside this row's own filing. The SAME member still has a separate, deeper gap: `async.timeout({ -> async.delay(1, "x") }, ms)` — a zero-param thunk whose tail is itself a call to a *different* generic function (`delay<T>`). The thunk's answer type resolves through `fnArgReturn`/`typeRefOf` to `delay`'s own UNSUBSTITUTED `T` (a dangling type-parameter name, never resolved to the call's actual argument type), not a concrete type — so `timeout`'s own `T` binds to garbage and the module falls to `.linear`.
+
+This is two levels of generic substitution that need to compose (the outer thunk's own generic binding, then the inner call's), not a single call site forgetting a mode check.
+
+- [ ] `fnArgReturn`/`genericRetByFnArg` (or wherever the thunk-tail's answer type is read) substitutes the INNER generic call's own type arguments (resolved from ITS call site) before handing the answer type up to the outer thunk's own binding walk, so a thunk tail that is itself a generic call resolves to a concrete type, not the inner function's bare parameter name; unit test over `async.timeout`'s own shape (a thunk tail calling a different generic fn), red on the parent, green after; `std_async_on_every_target-690` clean
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
