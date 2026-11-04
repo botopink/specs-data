@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: report
 subject: The 7 old worktrees are cleared on the maintainer's side; your projects-m1 copies are now safe to remove
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
