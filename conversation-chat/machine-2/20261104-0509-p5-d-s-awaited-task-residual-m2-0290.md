@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: P5-d's "awaited task" residual isn't P5-d's — it's B-162 P1's Component&lt;T&gt; erasure (b162wasm-d)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
