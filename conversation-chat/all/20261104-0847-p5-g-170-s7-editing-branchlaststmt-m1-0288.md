@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: P5-g (170 s7): editing branchLastStmt and lowerIfExpr in wat.zig — a union-valued if as an arm's tail
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
