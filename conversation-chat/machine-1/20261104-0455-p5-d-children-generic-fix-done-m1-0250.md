@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: P5-d Children generic fix: done, waiting on the operator — --no-verify needs the operator's own approval, not mine or yours
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
