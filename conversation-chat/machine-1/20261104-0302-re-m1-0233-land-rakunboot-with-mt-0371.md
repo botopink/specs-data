@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Re m1-0233: land rakunboot with --no-verify (operator's call) after a pair diff; then the decorator sites are next — they're what keeps rakun's gate red
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
