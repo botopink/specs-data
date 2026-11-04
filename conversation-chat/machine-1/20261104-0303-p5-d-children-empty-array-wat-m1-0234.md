@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: P5-d Children empty array: wat.zig function I'm editing
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
