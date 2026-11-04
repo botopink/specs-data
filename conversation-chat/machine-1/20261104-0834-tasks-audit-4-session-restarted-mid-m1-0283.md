@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: .tasks/ audit #4: session restarted mid-landing — found and repaired git object corruption, B-235 confirmed already landed, resumed 4 threads
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
