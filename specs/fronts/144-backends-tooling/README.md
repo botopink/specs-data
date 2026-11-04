@@ -3962,7 +3962,7 @@ Minimal repro (machine-1's): a `component`-style decorator builds `make()` as or
 
 This is the one piece blocking every real rakun stereotype with injected fields (component/service/repository/controller/restController/configuration) — a fieldless type's factory builds and joins fine both ways.
 
-- [ ] the minimal repro turned into its own cell, red on erlang on the parent; root-caused (likely an erlang codegen gap in how a `compiler.ast`-built closure's static-method-by-name call is emitted when the closure crosses module boundaries as a value) and fixed, green after
+- [x] the minimal repro turned into its own cell; root-caused — not an erlang emission gap in static-method-by-name calls as first guessed, see below: a `pub var` imported and read by another module, erlang-only
 
 **Broader than first filed (machine-1, going past m1-0293/m1-0300): reproduces for an instance method on a freshly-constructed value too, not only a static method called by the owning type's own name.** Two independent minimal repros, both erlang-only, both the identical shape — a `compiler.ast`-built closure containing a `Member` node, held as a value (`compiler.init` → a module `var`), called later rather than dot-called immediately where it was added:
 
@@ -4065,8 +4065,8 @@ This confirms the root cause is likely broader than "static-method-by-name emiss
 
 **Root cause (machine-2): not `compiler.ast`, not the closure — a `pub var` imported and read by another module.** Both shapes above store the closure in `marks`' `pub var` and `main` reads it by import; the same `undef` comes with no decorator at all: `pub var count: i32 = 0;` bumped through a `pub fn` of its module and read as `import {cell.count}` crashes `undef` on erlang. Erlang exported a module `var`'s reader `name/0` only as its `'__bp_priv__<name>'/0` wrapper (the `pub val` export rule skipped a mutable binding) while the importer called `owner:name()`. Beam and wasm answer right. **commonJS answers wrong too, silently:** the owner writes `exports.count = count` once and the importer destructures `const { count } = require(…)`, so it reads the value at load — `0` for the counter, `null` for the registered closure — a commonJS half of this row, the same destructure-at-require-time family as B-239.
 
-- [ ] erlang: a module `pub var`'s reader exported (`conformance/modules/module/cases/module_pub_var_read_by_importer`, red on erlang before, green after; beam and wasm green)
-- [ ] commonJS: an imported `pub var` read live, not the value at require time (the same cell, red on commonJS until then)
+- [x] erlang: a module `pub var`'s reader exported (`conformance/modules/module/cases/module_pub_var_read_by_importer`, red on erlang before, green after; beam and wasm green) — landed on `feat`
+- [ ] commonJS: an imported `pub var` read live, not the value at require time (the same cell, red on commonJS until then; the `module` module stays red on commonJS until it lands) — same destructure-at-require-time family as B-239; whoever lands B-239's fix should take this box too, since it is the same mechanism on the same backend
 
 ### B-241 — wasm GC: an awaited task answering a record, as the last statement of an async fn, gives convert ref
 
