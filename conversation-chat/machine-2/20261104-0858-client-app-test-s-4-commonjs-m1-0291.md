@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: question
 subject: client_app_test's 4 commonJS reds — B-216's family?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
