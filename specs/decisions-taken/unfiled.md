@@ -130,8 +130,8 @@ retired:
   - '626 (2)'
   - '118 rule 1'
 first-step: 1
-last-step: 1111
-in-force: 171
+last-step: 1112
+in-force: 172
 superseded: 62
 ---
 # unfiled — decisions no subject cites
@@ -373,3 +373,4 @@ superseded: 62
 | 1107 | tools-rm · (the maintainer, 2026-11-02: "só remova unilateralmente"; recorded 2026-11-04, 2026-11-04) · (process) | `scripts/decisions-split.ts` (the per-repository `decisions-taken.md` generator, 482) and `scripts/decision-cells.ts` (`scaffold` / `compile` / `promote` / `check`) are removed, with CI checks 6 and 7 that ran them; nothing replaces them yet; the generated `repository/<repo>/decisions-taken.md` files and every `conformance/modules/decisions-taken/<slug>-<N>/` cell stay as content, checked by nothing beyond the root package's run; a more structured way to tie decisions to cells is to be designed; front 170 s5 (the flip) is retired with them and s6 checks the cells as they stand | the meta repository's `scripts/` and CI (`hook-integrity.yml`); front 170 s5 / s6; decision 482 | |
 | 1109 | p5-b · (the maintainer, 2026-11-04, 2026-11-04) | 1105 (2) amended for `array.*`: in GC form, `array.*` is lowered by the codegen's per-class GC helpers (the `gcArrOp` family), not by hand-written `.wat` leaves. One leaf cannot serve the GC array classes under one signature, which the linear word-slot leaf did. A scalar that crosses the std boundary (an `f64` element of `join`) crosses as a free scalar, and only its answer is marshalled back. The other std-wasm exports keep 1105 (2): a hand-written `.wat` leaf where the types do not cross, the marshal grown only where a leaf would need a type the codegen has no fixed name for. The rest of 1105 is unchanged. | front 170 s7 P5-b; front 170 s10 (array.* leaves); decision 1105 (2) | |
 | 1111 | print-opaque · (the maintainer, 2026-11-04, 2026-11-04) | `print` (and a template hole, 530) writes one text on the four targets for these values, alone or inside a record, an array, a tuple or `unknown`. A `Bytes` writes its bytes as a list of integers, `[104, 105]` (an empty one `[]`). An `Async<T>` writes `<task>` and an `AsyncIter<T>` writes `<iter>`, whatever their state; printing one never awaits it, never reads its value and never traps. commonJS's `Uint8Array(...)`, erlang's binary text and wasm's quoted string and trap are defects against this row. | every backend's printer (commonJS, erlang, beam, wasm GC); front 170 s7 P5-g; decision 530 | |
+| 1112 | print-opaque-r · (the maintainer, 2026-11-04, after the fable's review of the day's rows, 2026-11-04) | 1111 is reversed. 1104, 520 and 530 stand as written. `print` of a static `Async<T>`, `Iter<T>` or `AsyncIter<T>` is the build refusal of 1104 (`print-task` / `print-generator`), and such a value reached through `unknown` is 1104's panic. A `bytes` value does not widen to `unknown` and a `bytes` template hole stays refused (520, 530). B-248 is only what is still a defect under these rows: a target that prints a value 1104 or 520 refuses, or prints differently from the other targets where printing is allowed. | every backend's printer; front 144 B-248; decisions 1104, 520, 530 | |
