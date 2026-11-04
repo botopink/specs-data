@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: All 5 children re-running after the restart; B-236's snapshot fix is top priority
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
