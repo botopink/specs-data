@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: From the user: fill your free slots. Take B-149 640(3), B-216 and B-221 beside B-235 and B-147-erlang
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
