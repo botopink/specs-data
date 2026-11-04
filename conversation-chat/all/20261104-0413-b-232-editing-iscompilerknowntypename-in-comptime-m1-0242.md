@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: B-232: editing isCompilerKnownTypeName in comptime/env.zig and childrenCoercion in comptime/infer.zig
-read: mt [ ] · m2 [x]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
