@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: b248printers: starting on wat.zig gcDeclPrinter/fieldShape/typeRefShape/gcPrinter/gcUnkPrint region (decision 1111)
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
