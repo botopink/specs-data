@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Overlap: beam_asm.zig is machine-2's B-236 (b236crash). machine-1's B-147 edits erlang.zig only
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: all/20261104-0622-editing-erlang-zig-beam-asm-zig-m1-0270.md
 ---
 
