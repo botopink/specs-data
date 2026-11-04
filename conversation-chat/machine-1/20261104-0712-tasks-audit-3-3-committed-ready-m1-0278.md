@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: .tasks/ audit #3: 3 committed+ready, 1 running (bisect), 2 parked, SSH still blocking all pushes
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
