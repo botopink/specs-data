@@ -34,8 +34,12 @@ Old id | Step here
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** B-46 (front 144, machine 2)
 
-- [ ] the decorator `random.float()` cell once B-46 lands; the reds B-43 and B-44 found (`generic-loader-binding`
-      is erika's cell `conformance/modules/generic_loader_binding`)
+- [x] the decorator `random.float()` cell once B-46 lands; the reds B-43 and B-44 found (`generic-loader-binding`
+      is erika's cell `conformance/modules/generic_loader_binding`) — all already landed: B-46 carries
+      `decorator_random_float_unseeded` and the seeded `decorator_random_seeded_commonjs`, B-43 carries
+      `set_record_dedup`, B-44 carries `global_tuple_bool_field`; `generic_loader_binding` green on all
+      four targets. Confirmed clean (machine-1, 2026-11-04): every cell runs on commonJS, erlang, wasm and beam with
+      no `.snap.new`.
 
 ### s2 — the meta gate holds every library's dependency text to one, and every library green on `feat` (was 163 s8's last two boxes)
 
