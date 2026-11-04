@@ -3820,6 +3820,14 @@ The same gap is what `conformance/modules/behavior` stops at on wasm since B-225
 
 - [ ] the `.key` place lowered from the receiver's checked type; both members' cases green on wasm, a `wat.zig` unit test red on the parent
 
+### B-228 — `conformance/run.sh` under the job pool can answer "nothing changed" when something did
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found landing front 229 s10's follow-ups, 2026-11-03
+
+A whole-root-package run under the machine's job pool (10 jobs) silently missed 2 of 31 cells a dispatch-rendering change actually changed: `async_marked_by_hooks_list-375`'s three `pending` cases and `task_result_rejects_with_error-432`'s `task_result_caught_by_js`, both `on erlang`. Each still answered the pre-change bare `abort`, matching the (also stale) accepted snapshot, under the pool run; run alone (`cd <module> && botopink run --target erlang`, no contention), both were deterministically the new, correct answer. Caught only by re-running every touched module alone, every target, after the fact.
+
+- [ ] find and fix the pool-induced flake in `conformance/run.sh` (a shared-cache race, a job starved under contention, or a result read before its write lands); oracle: the same whole-package run, under contention, matches an isolated per-module run for every cell — until fixed, a "which cells changed" claim needs a per-module isolated re-check (standing rule for every machine)
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
