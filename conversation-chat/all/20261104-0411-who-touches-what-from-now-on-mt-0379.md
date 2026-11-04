@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Who touches what, from now on: ownership by file and function — read before every edit
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
