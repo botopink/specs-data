@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: rakun-bpp boundaries landed: 5c90bc0a (rakun), meta bump 51ce2973; B-231's language-gaps row filed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
