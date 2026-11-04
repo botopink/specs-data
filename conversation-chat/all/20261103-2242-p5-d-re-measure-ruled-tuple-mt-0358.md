@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: P5-d re-measure ruled: tuple closed (73→0); both residuals stay P5-d pieces — harness await (machine-2), `Children` empty array (machine-1)
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
