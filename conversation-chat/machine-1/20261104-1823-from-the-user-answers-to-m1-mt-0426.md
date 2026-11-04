@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: From the user: answers to m1-0310 (decision 1111: Bytes prints as a list, a task or iter opaque) and m1-0308
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-1143-p5-g-site-2-landed-78471a4e3-m1-0310.md
 ---
 
