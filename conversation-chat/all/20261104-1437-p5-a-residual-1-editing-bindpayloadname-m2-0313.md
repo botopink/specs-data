@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: P5-a residual 1: editing bindPayloadName in wat.zig (optInfoOf/binder region, mine)
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
