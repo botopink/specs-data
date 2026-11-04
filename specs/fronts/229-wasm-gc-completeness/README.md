@@ -100,25 +100,18 @@ In `conformance/modules/import`'s case `import_same_fn_name_two_aliases`, `print
 
 ### s10 — a function with no `.Wasm()` implementation is refused at build again, never a run-time abort — **no regression; the suite's adapter and three departures**
 
-**Repository:** conformance (`conformance/lib/`, three snapshots) · **Model:** sonnet · **After:** nothing open · found by machine-2's B-223 listing, 2026-11-03
+**Repository:** conformance (`conformance/lib/`, the snapshots) · **Model:** sonnet · **After:** nothing open · found by machine-2's B-223 listing, 2026-11-03
 
-machine-2 bisected the three members across the commit before 229 s1 and the head of `feat`, and their answers were identical. There is no compiler regression. The refusal is intact: a loaded case's `run()` answers it as decision 989 (3) says. `codegen/loaded_targets.zig` never emits the case's functions:
-- `variadic_last_parameter-267`: `.Refused`, "`largest` has no implementation for the wasm backend";
-- `import_alias_on_type_and_folder_namespace-110`: `.Excluded`, because the case's manifest leaves wasm out;
-- `wasm_host_profiles_wasi_browser-334`: `Ok("2.0")`.
-
-Each case run alone still refuses at build with its accepted text.
-
-The defect is the suite's: `conformance/lib`'s adapter maps every `RunFailure` kind to a bare `abort`, so the `.Refused` / `.Excluded` answer is lost. The three `on wasm` departures were recorded as a build refusal, which 989 (3) moved into `run()`'s answer for a loaded package. They were never proved in-process.
+machine-2 bisected the three members across the commit before 229 s1 and the head of `feat`, and their answers were identical. There is no compiler regression. A loaded case's target refusal is its `run()`'s own answer (989 (3)), and the suite's adapter had flattened every `RunFailure` kind into a bare `abort`.
 
 Ruled (the maintainer, 2026-11-03):
 - under 989 (3), a loaded case's target refusal is `run()`'s own answer;
-- under 334 (2), a loaded package is checked under the build's wasm host, never its own manifest's (load answers on the build's target and host);
+- under 334 (2), a loaded package is checked under the build's wasm host, never its own manifest's;
 - a host profile is proved by a case run alone, and that is B-205's question.
 
-- [ ] `conformance/lib`'s adapter renders a `RunFailure` by its kind: `.Refused` as `refused <message>`, `.Excluded` as `excluded <message>`, the others as today. There is no `at` line, because `RunFailure` carries no location (989 (3) names the message only)
-- [ ] the `on wasm` departures of 110 and 267 re-recorded as those records; 334's `on wasm` answers `out 2.0` under the build's host, with a line in its `docs.md` that the browser profile is proved by the case run alone (B-205)
-- [ ] the three members green on wasm in-process
+- [x] `conformance/lib`'s adapter renders a `RunFailure` by its kind: `.Refused` as `refused <message>`, `.Excluded` as `excluded <message>` (two record kinds), the others as before. There is no `at` line, because `RunFailure` carries no location. Every case of the root package goes through that dispatch, not only the three
+- [x] the departures re-recorded: 110 and 267 as those records, 334's `on wasm` as `out 2.0` under the build's host with the B-205 note in its `docs.md`. The whole root package was re-run on all four targets: 31 cells in 15 modules changed, each a target refusal that had collapsed into `abort`. Each touched module was then re-run alone on every target, because a run under the pool missed 2 of the 31 on its first pass
+- [x] the three members green on wasm in-process
 
 ## Collisions
 
