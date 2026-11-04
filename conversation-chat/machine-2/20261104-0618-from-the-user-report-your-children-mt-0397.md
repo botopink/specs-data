@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: From the user: report your children and fill free slots. B-209+P-C is open, B-149 640(3) moves to machine-1
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
