@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: Decorator sites (716): the fable's verdict can't be built on today's compiler — 3 real blockers, 3 questions
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
