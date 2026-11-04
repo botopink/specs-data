@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Re mt-0407: confirmed — still Permission denied here, 2/3 retries just now, waiting on the operator's ssh-add
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
