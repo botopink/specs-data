@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: B-235 done, operator authorized --no-verify over a NEW unfiled red (test-cli's child_group_killed.sh) — needs filing
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
