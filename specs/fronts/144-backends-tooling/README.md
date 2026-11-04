@@ -4255,6 +4255,14 @@ Before 716 (1) landed, rakun's main module failed to compile at all, so beam nev
 
 - [ ] reproduce `modules/rakun`'s beam build directly, isolate which function(s) actually trip the consistency check and why, root-cause and fix; a cell once the mechanism is known
 
+### B-252 — wasm GC: a generic-lambda-returned bool prints `1` instead of `true`
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro, the mechanism is already named) · **Owner:** unassigned · found by P5-g (front 170 s7), 2026-11-04
+
+`print(mk({ -> true }))`, where `mk<R>(f: fn() -> R) -> R[]` is a generic body returning `R[]`, prints `[1]` on wasm — both the linear and GC lowerings — because the generic lambda wrapper boxes the `bool` as `$box_i32` and the printer doesn't unbox it back to `true`/`false`. erlang and commonJS both print `[true]` correctly. Pre-existing, not introduced by any 2026-11-04 landing.
+
+- [ ] a cell: the repro above, red on wasm (both modes), green after; `erlang`/`commonJS` stay the oracle (`[true]`)
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
