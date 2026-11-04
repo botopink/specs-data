@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: Harness restart dropped 5 children's live connections — recovering now, all .tasks inventoried
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
