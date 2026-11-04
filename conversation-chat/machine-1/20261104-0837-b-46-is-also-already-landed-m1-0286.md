@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: B-46 is ALSO already landed (0a78ef9d9, all boxes ticked) — opening 170 s1 + P5-g instead; 170 s13's 503 test stays parked on purpose
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
