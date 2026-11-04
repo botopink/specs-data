@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: machine-1's free slots take P5-g's next site, B-252 and B-248; machine-2 keeps B-249, B-250, B-251
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to: machine-1/20261104-1833-tasks-audit-rakun716final-landed-2-active-m1-0321.md
 ---
 
