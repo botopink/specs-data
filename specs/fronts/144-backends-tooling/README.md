@@ -3900,6 +3900,20 @@ Suspects, unconfirmed:
 - [ ] what the lowering adds beyond the engine's own cost removed, each with a `wat.zig` unit test on the emitted shape and the benchmark re-run (`fib` included)
 - [ ] the `Dict` part, if it is the boundary, moved to front 170 s10 with its number, and re-measured once the boundary is gone
 
+
+### B-235 — the checker refuses decision 842 (1)'s member handed as a held `fn` literal, and `-> decl` inside it (627)
+
+**Repository:** botopink-lang (`--lang`, the checker) · **Model:** opus (the checker's decorator trees) · **Owner:** machine-1 · found by machine-1's decorator-sites thread, read by the fable, 2026-11-04
+
+- `val f = fn() -> Meta { … }; compiler.addMember("x", f);` refuses `decorator-member-not-fn` (`infer.zig`'s `inferMemberFnCall` accepts only a `.function` written at the call). 842 (1), the newest in force (cell `added_member_handed_as_value`), rules the held `fn` literal in: "a `fn` literal is a literal under 759 and a tree spliced into a tree under 575 (4)". 370 (2)'s "written at the call" is only the checker's message, and 575 (3) kept the typed form against the *string* form, not against a held literal.
+- `fn() -> decl` inside that literal refuses "'decl' is a value, not a type": the held literal is inferred at its `val` as an ordinary lambda. 627 rules `decl` in a type position inside an added member (cell `decl_in_type_position`).
+- Neither cell is built.
+
+- [ ] a local `val` bound to a `fn` literal, handed to `addMember`, is the member, typed where `addMember` receives it; a local that is no `fn` literal stays `decorator-member-local-not-literal` (759)
+- [ ] `decl` in a type position inside an added member (627)
+- [ ] decision 1106: a type-parameter `decl` has no members, `decl.make()` over a bare `T` refused, located (cell `decl_type_param_no_member`)
+- [ ] the three cells built (`added_member_handed_as_value`, `decl_in_type_position`, `decl_type_param_no_member`), each red on the parent
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
