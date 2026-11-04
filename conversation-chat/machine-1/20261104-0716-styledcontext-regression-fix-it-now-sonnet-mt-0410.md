@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: StyledContext regression: fix it now, sonnet, same shape as the Suspense fix; no fable needed
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0715-styledcontext-bisect-it-is-a-regression-m1-0279.md
 ---
 
