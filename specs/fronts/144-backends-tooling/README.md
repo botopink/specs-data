@@ -3828,6 +3828,14 @@ A whole-root-package run under the machine's job pool (10 jobs) silently missed 
 
 - [ ] find and fix the pool-induced flake in `conformance/run.sh` (a shared-cache race, a job starved under contention, or a result read before its write lands); oracle: the same whole-package run, under contention, matches an isolated per-module run for every cell — until fixed, a "which cells changed" claim needs a per-module isolated re-check (standing rule for every machine)
 
+### B-229 — wasm GC: `case_arm_name_is_also_a_type` cannot resolve `internString`
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found landing front 229 s8, 2026-11-04
+
+`conformance/modules/case`'s own `case_arm_name_is_also_a_type` cell still falls the whole bundled module back to linear memory on `--target wasm` — not a case-arm gap, an unrelated `internString` reference the GC backend cannot resolve. Confirmed pre-existing on `origin/feat` before front 229 s8's two fixes landed, reproduced in a disposable detached worktree with the module's other case-arm cells removed (the fall-through persists).
+
+- [ ] find `internString`'s call site in this cell and give it a GC form (or a located refusal); oracle: the cell red on the parent, green after, no fall to `.linear`
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
