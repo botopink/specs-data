@@ -300,6 +300,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | One full cell per case, `<module>/cases/<case>/` (765); `<module>/run/` and `<module>/refused/` (779) | one package per module, `src/cases/<case>/mod.bp` loaded or called by `main.bp`, one `main.snap`; `cells/<case>/` for a case that cannot share one; `scripts/pack-cells.py` | 765, 779, 789 (4), 796 | 2026-10-19; `cell new` still writes a 765 case, which `pack-cells.py apply` packs |
 | A scratch location named in a spec (`.tasks/<name>` paths, `` `/tmp/` ``, a task branch, a worktree by name) | what remains and what blocks it | 484, `scripts/scratch-refs.py` | |
 | `botopink cell check` (the CLI command); the spawning `conformance/check/` program and `proof.sh` | the in-process check: each module's `main` loads its cases with `compiler.load`, compares with `main.snap` and writes `.new`; one `runCase("<c>")` per case | 989, 990, 1002 (2) | 2026-10-27 |
+| `botopink run <file>.bpr` (the named-file form) | `botopink run [--target <t>]` in the package; the `.bpr` internal under `.botopinkbuild/runtime/<pkg>/` | 1009 | 2026-10-27 |
 
 ## Decision rows replaced, reversed or overtaken
 
