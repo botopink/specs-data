@@ -121,6 +121,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | `std-decorator-leaf-import` | a leaf import annotates by name | 881 | 2026-10-21 |
 | `compiler.init` of an expanded function as a program-start init, anywhere (788 (2)) | only in a top-level block | 808 | 2026-10-21 |
 | `compiler.variants` as 576 (3) wrote it | `compiler.Variant[]` | 848 | 2026-10-21 |
+| 833 (3)'s refusal at `emit` of a loaded package refused or excluded on a target | the loaded `run()`'s own answer: `RunFailureKind.Refused` (the refusal's text) or `.Excluded` (the case's manifest leaves the target out); a build refusing `load-excluded-target-compiles` otherwise | 989 (3), 1000 | 2026-10-26 |
 
 ## `syntax`, `comptime`, templates and code
 
