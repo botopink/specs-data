@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: Correction to mt-0404: SSH is GitHub-side flakiness; push over HTTPS with gh's credential, per command
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
