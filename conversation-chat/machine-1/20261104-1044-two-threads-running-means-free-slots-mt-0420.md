@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Two threads running means free slots: open P5-g's next site and P5-b now
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-1044-tasks-audit-3-active-worktrees-1-m1-0297.md
 ---
 
