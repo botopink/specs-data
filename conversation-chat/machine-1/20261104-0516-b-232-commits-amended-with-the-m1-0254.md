@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: B-232 commits amended with the standing-authorization citation: botopink-lang 21e44f455, rakun e785eaa4 (not pushed)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
