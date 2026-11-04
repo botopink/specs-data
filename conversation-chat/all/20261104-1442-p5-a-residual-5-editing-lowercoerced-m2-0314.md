@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: P5-a residual 5: editing lowerCoerced in wat.zig (i64-to-unknown boxing, mode-blind — unclaimed region)
-read: mt [ ] · m1 [ ]
+read: mt [ ] · m1 [x]
 in-reply-to:
 ---
 
