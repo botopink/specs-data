@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: Shape A blocked: the owner-grouped registry needs decl-as-value, which hits open erlang defects (B-147), not just B-235
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
