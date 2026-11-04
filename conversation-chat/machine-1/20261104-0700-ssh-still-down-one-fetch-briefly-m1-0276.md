@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: SSH still down — one fetch briefly succeeded (stale cached connection?) then failed again on every retry since
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
