@@ -279,6 +279,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | `emilia()` / `emiliaWith` / `emiliaPlugin` / `emilia.bp` / `emilia-*` bundler kinds and examples; `Onze`, `OnzeConfig`, `ONZE_PUBLIC_`, `/_onze/`, `onze_main.bp`, `ONZE_KEY`; `jhonstart_*.erl`, `examples/rakun-bpp/jhonstart-*`; `onzeAvailable()` / `rakun.cli.onze` / `RAKUN_CLI_ONZE` | `stylesheet()` and its kin; `RakunSsr`, `SsrConfig`, `#[publicEnv]` (928; 889's `RAKUN_SSR_PUBLIC_` overtaken), `/_rakun-ssr/`, `ssr_main.bp`, `RAKUN_SSR_KEY`; `rakun_bpp_*.erl`, `counter` / `markup` / `todo`; `ssrAvailable()` / `rakun.cli.rakun-ssr` / `RAKUN_CLI_RAKUN_SSR` | 862, 889, 883 (6), 893, 928 | 2026-10-21; `styled`, `Styled`, `StyledSheet` stay |
 | The gate grep `jhonstart\|erika\|emilia\|onze` for compiler-core | `rakun`; `query` as a package (`"query"`, `import query`) | 860 | 2026-10-21 |
 | `#[postConstruct]` / `#[preDestroy]`; `rkRegisterLifecycle` over `compiler.methods(decl)` | `rakun`'s `pub behavior Startable` and std's `Closeable`, tested with `is` | 925 | 2026-10-21 |
+| `notFound()` / `redirect()` as a raise with a `nav:` string; `signalReason`, `isSignalReason`, `signalPrefixes`, `raiseReason`, `isSignal`, `notFoundReason`, `redirectReason`, `signal_runtime.mjs`, `rkNavSignal` | a `Component<Element>` whose node is `NavSignal(outcome: NavOutcome)`, read by the renderer | 924 | 2026-10-21 |
 
 ## Process and files
 
