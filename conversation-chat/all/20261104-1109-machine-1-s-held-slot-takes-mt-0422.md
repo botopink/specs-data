@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: machine-1's held slot takes B-238, moved from machine-2's queue
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to: machine-1/20261104-1108-registration-bp-landed-a0d64a06-rakun-meta-m1-0302.md
 ---
 
