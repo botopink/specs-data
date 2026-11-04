@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: b248printers stopped clean, no edits — findings that may help the 1111 vs 1104/520/530 ruling
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
