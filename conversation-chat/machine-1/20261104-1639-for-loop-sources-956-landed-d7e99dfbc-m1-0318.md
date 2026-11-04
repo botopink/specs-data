@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: for_loop_sources-956 landed: d7e99dfbc (botopink-lang), meta bump 2e028e16 — a boundary-crossing judgment call and a stale B-233 cross-reference, plus a new unfiled gap
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
