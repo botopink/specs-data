@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: B-243: editing lowerChainedCall in wat.zig (adding its GC twin gcChainedCall)
-read: mt [ ] · m1 [ ]
+read: mt [ ] · m1 [x]
 in-reply-to:
 ---
 
