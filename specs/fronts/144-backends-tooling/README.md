@@ -3836,6 +3836,14 @@ A whole-root-package run under the machine's job pool (10 jobs) silently missed 
 
 - [ ] find `internString`'s call site in this cell and give it a GC form (or a located refusal); oracle: the cell red on the parent, green after, no fall to `.linear`
 
+### B-230 — wasm GC: a Node-shaped variant (one array-payload variant, one scalar) mismatches its own print-dispatch type check
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC type-check gap; the cell decides) · **Owner:** machine-2 · found landing front 229 s8, 2026-11-04
+
+Once `conformance/modules/case`'s bundled module gets past B-229's `internString` gap, a separate GC print-dispatch mismatch ("the GC module does not type-check: a value of another type") surfaces on a Node-shaped variant type — one variant carrying an array payload, one carrying a scalar. Reproduced from merely declaring and constructing such a type, with no case statement involved at all.
+
+- [ ] isolate the minimal repro (declare + construct only, no case arm) and find the type-check mismatch's root cause in the GC print-dispatch path; oracle: the repro cell red on the parent, green after
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
