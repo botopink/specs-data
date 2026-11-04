@@ -3952,6 +3952,18 @@ Two shapes could each independently fix it: the commonJS codegen's placement of 
 
 - [ ] a minimal two-module commonJS cycle in a `botopink test` file, red on the parent, reproducing the reentrant-require ordering; fixed by either matching the injected-require placement or making the destructure-at-require-time binding live; green after
 
+### B-240 — erlang: a compiler.ast-built closure calling a static method by name, held as a value and called from another module, crashes undef
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a representation/codegen gap in closure-value calls; the cell decides) · **Owner:** machine-2 · found by machine-1 going past B-147/B-235/B-149's own fixes (m1-0293), 2026-11-04
+
+Distinct from B-147 (which was about `decl` itself held as a value): here a `compiler.ast`-built tree — `Call(callee: Member(target: Name(owner), member: "make"), args: [])` — calling a static method by name, type-checks and runs correctly when called DIRECTLY as another member (`Widget.viaAst()`, erlang and commonJS both answer right). But the moment the identical closure is held as a value (`val make = fn() -> decl { return compiler.ast(callMake); }`), handed to `compiler.init`, stored in a module `var`, and called later from a DIFFERENT module (decision 842 (1)'s own shape, exactly what a field-injecting stereotype's real `make()` needs) — it compiles clean and crashes at run time, `crash: undef`, erlang only.
+
+Minimal repro (machine-1's): a `component`-style decorator builds `make()` as ordinary text (unchanged, still works), then builds a SECOND value via `compiler.ast(Call(callee: Member(target: Name(owner), member: "make"), args: []))`, hands it to `compiler.init`, stores it in a module `var`, and calls it from `main` in a different module.
+
+This is the one piece blocking every real rakun stereotype with injected fields (component/service/repository/controller/restController/configuration) — a fieldless type's factory builds and joins fine both ways.
+
+- [ ] the minimal repro turned into its own cell, red on erlang on the parent; root-caused (likely an erlang codegen gap in how a `compiler.ast`-built closure's static-method-by-name call is emitted when the closure crosses module boundaries as a value) and fixed, green after
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
