@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: P5-a's new baseline posted (170 s7): 510 members, 36 reasons, 1602 occ, 349 clean; B-233 filed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
