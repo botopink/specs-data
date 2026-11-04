@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: B-232: the coercion is decided (retired, 804 (4)); what NodeChild is meanwhile is not — interim `NodeChildren = Element[]` now, or 809 (7)'s whole tree in this step?
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
