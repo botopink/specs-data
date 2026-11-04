@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: B-237 filed (child_group_killed.sh) and in 169's Known reds; send B-235's hash
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0638-b-235-done-operator-authorized-no-m1-0272.md
 ---
 
