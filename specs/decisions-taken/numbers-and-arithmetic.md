@@ -43,8 +43,8 @@ binds:
 retired:
   - '`I32`, `I64` (per-width contracts)'
 first-step: 176
-last-step: 1110
-in-force: 9
+last-step: 1113
+in-force: 10
 superseded: 0
 ---
 # numbers-and-arithmetic — literals, widths, overflow, `bigint`, `Decimal`
@@ -59,7 +59,7 @@ superseded: 0
 
 (4) `Dict.bump` — 340, 534.
 
-Steps: 176, 215, 247, 264, 319, 332, 340, 444, 472, 496, 500, 501, 527, 533, 534, 547, 641, 675, 1110
+Steps: 176, 215, 247, 264, 319, 332, 340, 444, 472, 496, 500, 501, 527, 533, 534, 547, 641, 675, 1110, 1113
 Binds: 02/97 · 01-checker · 01-checker (lexer, checker) · backends · 02-erlang · 03-beam · 04-js · `04-js` step 9 · `01-checker` step 18 · `02/97` step 13 · `02-erlang`, `03-beam` (the shared cells) · `01-compiler/139` · `02/97` step 15 · `03-bundled-libs/125` · the 13 files with a `case` over `Json` · `01-compiler/17-beam-memory` step 1 · std's `Dict` · `1-botopink-lang/144` B-00e · 441 · `1-botopink-lang/144` B-24 · 264 · 319 · `1-botopink-lang/144` B-24, B-27 · `2-libraries/151` s1 · 332 · `1-botopink-lang/144` · `machine-2/144` B-41, B-07 · 01-checker (literal typing); decision 247; front 170 s6 (cell numeric_literal_suffixes)
 
 ## Record
@@ -75,3 +75,4 @@ Binds: 02/97 · 01-checker · 01-checker (lexer, checker) · backends · 02-erla
 | 501 | 139-a | (a), as built: a `bigint`'s type stays static — it does not widen to `unknown` (`bigint-widened`), `is` neither tests for one nor tests a value holding one (`bigint-type-test`), a `comptime` computing one is `comptime-bigint`; `print`'s variadic `unknown` takes one and a union holding one stays legal; (b) or (c) may widen it later, when a program needs it | `1-botopink-lang/144` B-24 · 332 | bigint_type_stays_static |
 | 534 | B-26-a | (a): `Dict.bump(key, by)` exists for an integer `V` alone (340); on a `Dict` whose `V` is not an integer type the call is refused, located; `bump` is a plain `Dict` method (17-c); on a module `var`, `d = d.bump(k, 1)` is an `x = f(x)` and so atomic on the BEAM (17-c (ii)); wasm's `8976.0` is the separately filed defect | `1-botopink-lang/144` | dict_bump_integer_values_only |
 | 1110 | ck3-int · (the maintainer, 2026-11-04, 2026-11-04) | 247's "a literal without suffix never changes type to fit" is about the float types and about an integer literal standing for a float: `val f: f32 = 1.5` and `val x: f64 = 1` stay errors. An integer literal without suffix takes the expected integer type when its value fits that type, as in Kotlin (247's model): `val k: i64 = 1` and the pattern `1` against a `u8` are accepted. A value that does not fit (`val b: u8 = 300`) is a located error at the literal. 215 stands. | 01-checker (literal typing); decision 247; front 170 s6 (cell numeric_literal_suffixes) | |
+| 1113 | ck3-int-b · (the maintainer, 2026-11-04, after the fable's review of the day's rows, 2026-11-04) | Amends 247 and replaces 1110. 247's "a literal without suffix never changes type to fit" holds for the float types and for an integer literal standing for a float (`val f: f32 = 1.5`, `val x: f64 = 1` stay errors). An unsuffixed integer literal takes the integer type its position expects, in every position with a known integer type: a `val` / `var` annotation, a pattern, an argument, a return, an array element, a field, an operator's other operand. It does so only when its value fits that type. A negated literal `-n` fits only when the negated value fits (`-1` against `u8` is refused). A literal that does not fit is a located error at the literal, the same text as `integer_suffix_out_of_range`'s. With no expected type, a literal is 247's default `i32`, and a value past `i32` is a located error (write a suffix, `3000000000l`). 215 stands. Cell: cases under `numeric_literal_suffixes-247` for an unsuffixed literal that fits (`i64`, `u8`) and one that does not (`u8 = 300`, `-1` against `u8`, an `i32`-overflowing literal with no expected type). | 01-checker (literal typing); decision 247; front 170 s6 (cell numeric_literal_suffixes) | numeric_literal_suffixes |
