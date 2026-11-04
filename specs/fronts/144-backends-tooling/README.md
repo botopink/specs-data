@@ -4123,6 +4123,14 @@ After B-244's fix, `async.timeout({ -> async.delay(1, "x") }, ms)` no longer fal
 
 - [ ] find where `spawnAll`'s call binds its `T` (likely `bindAwaitedGeneric`/`bindGenericCall`'s array-of-thunks branch, or wherever `tasks`'s own declared/inferred type is read instead of the call's literal argument) and make it read the variable's own element type the same way a direct array literal argument is read; unit test over `runAll`'s own string-task shape, red on the parent, green after; `std_async_on_every_target-690` fully clean on wasm
 
+### B-246 — wasm GC: a tuple literal's null ?i32/?string slot, inside an array a function returns, stores a boxed 0 instead of null
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC tuple-literal construction defect, wrong answers possible, not just a fallback) · **Owner:** machine-2 · found by B-243's own testing, 2026-11-04, not in any of its three fixed members
+
+A GC tuple literal written with `null` for a `?i32`/`?string` slot, inside an array that a function returns (`return [#(0, null, null), …]`), stores a boxed `0` for that slot instead of null. Reading it back prints `0`, or traps with a cast failure — reproducible through a plain field read (`r.c`, no `?.` at all), e.g. in a `for` loop. Before B-243's fix, a program reading such a slot through `?.` fell back to the linear lowering, which ALSO answered wrong (`0` instead of the real value) — so this is not a new regression from B-243, it predates it and was simply masked by the fallback's own wrongness in the one shape anyone had tested through `?.`.
+
+- [ ] find where a GC tuple literal boxes a `null` scalar slot when it is constructed inside an array literal returned from a function (likely the array/tuple construction path treats the `?i32`/`?string` element's `null` as its zero value rather than a real absent marker) and fix the construction, not just the read; a cell exercising a returned array of tuples with a mix of present and absent optional slots, read back both directly and through `?.`, red on the parent, green after
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
