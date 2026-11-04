@@ -72,6 +72,51 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | 626 (2)'s structural reading of `syntax decl: B` | `implement` written (716 (1)) | 842 | 2026-10-21 |
 | A decorator reading an added member through `decl` | the member held as a value | 797, 842 | 2026-10-21 |
 | A lambda's parameter count fixed by its expected type | an untyped lambda may omit trailing parameters | 888 | 2026-10-21 |
+| `effect-await-without-task`, `yield-without-generator`, `use-without-context-effect` | `await-without-async`, `yield-without-iter`, `use-without-component` (no alias) | 573 | 2026-11-04, found by the record rewrite |
+| `component-lambda-not-lowered` | — (deleted): a `component` lambda compiles and runs as a `component fn` on every target | 574 | 2026-11-04, found by the record rewrite |
+| `conformance/docs.md`'s equivalence `iter { x -> b }` ≡ `{ x -> iter loop { b; break; } }` | — (dropped): a marked lambda's body is a function body; the lowering is the compiler's own | 584 (2) | 2026-11-04, found by the record rewrite |
+| `async fn f()` with no return type | refused `marker-type-mismatch`, 'write `-> Async<…>`' | 584 (3) | 2026-11-04, found by the record rewrite |
+| `context-getcontext-anchor-violation` | — (removed): 354 (4)'s build check at the `use` naming the context | 354 (4) | 2026-11-04, found by the record rewrite |
+| `component-value-to-generic` (a component value handed to generic code refused at build) | — (removed) once 388's lowering landed: `itens.map(Card)` answers lambdas | 388 (1), (6) | 2026-11-04, found by the record rewrite |
+| a component call rendered in a component body (`inferComponentCall`, 104, 118, 128) | a call answers `Component<R>` wherever written; the tree or `use c` resolves it | 791 (1) | 2026-11-04, found by the record rewrite |
+| `#[key(k)]` outside every function body | refused `key-outside-body`; keyed where the list is run, `use all(views.map({ v -> #[key(v.id)] v }))` | 960 | 2026-11-04, found by the record rewrite |
+| `use context(StyledSheet)` (352's read by type) | `use context(StyledContext)` | 352 (via 722) | 2026-11-04, found by the record rewrite |
+| `loop (xs) { x -> … }`, `loop (cond)`, `loop await` | `for xs { x -> … }`, `while (cond)`, `for await s { x -> … }` | 105, 956 | 2026-11-04, found by the record rewrite |
+| `removedKeywordWhile` (the refusal of `while`); `for` as an idle lexer keyword | — (removed): `while` and `for` are keywords | 105 | 2026-11-04, found by the record rewrite |
+| `break v` making a loop worth `[v]`; `yield` in a plain `fn` feeding "the loop's array" | — (removed): nothing evaluates to `[v]`; `yield` in a plain `fn` is refused; collecting is `xs.map(…)` / `filter(…)` or a `var` | 105 | 2026-11-04, found by the record rewrite |
+| `#[@generator] loop`, `#[@resultGenerator] loop`, `#[@futureGenerator] loop` (the annotated loop as a generator) | the `iter` / `async iter` forms of body-markers-async-and-iter (118, 123, 125) | 105 | 2026-11-04, found by the record rewrite |
+| `try-await-operand` | — (removed): `await` and `try` are prefix operators, `catch` the lowest infix | 537, 865 | 2026-11-04, found by the record rewrite |
+| `refuseBeyondJsSafeInteger` | — (removed): an integer literal past its type's range is refused by the checker on every target | 319 | 2026-11-04, found by the record rewrite |
+| `fn-expr-typed`, `reject/fn_expr_typed` | — (removed): the typed function expression `fn(x: T, …) -> R { … }` is legal in every position | 408 | 2026-11-04, found by the record rewrite |
+| 950's `for-parenthesised` refusal and its formatter rewrite | — (do not exist): the formatter keeps `for`'s parentheses as written | 956 (4) | 2026-11-04, found by the record rewrite |
+| `refuseUnimplementedDeclares`'s exemption for a `declare fn` whose first parameter is the declaration handle | `declare-without-implementation` for every bodyless `declare fn`; a marker is `pub fn page(syntax decl: unknown) -> void {}` | 604 | 2026-11-04, found by the record rewrite |
+| `*` on a namespace import item (`collections*`) | refused `notAnExtension`; each extension activated by name (`collections: {ArraySets*}`) | 107 (5) | 2026-11-04, found by the record rewrite |
+| the `import-alias-on-type` refusal | `as` binds a type leaf like any other (`import {collections.Dict as D} from "std"`) | 110 (1) | 2026-11-04, found by the record rewrite |
+| `import {io} from "std"` (a folder imported as a namespace, 110 (2)) and the `comptime/std_namespace.zig` rewrite | refused, located, naming the leaf `import {io.fs} from "std"` (`folder_import_refused`), landing with B-69 | 919 (4) | 2026-11-04, found by the record rewrite |
+| `module-var-holds-task` | `module-var-holds-async` | 905 | 2026-11-04, found by the record rewrite |
+| a host spelling as a method of a primitive (`"abc".toUpperCase()`); the backend aliases `primNodeAliasIn`, wasm's `toUpperCase` / `toLowerCase` rows of `primCallRes` / `lowerStringMethod` | the declared method alone (`toUpper`), else `unknown-primitive-method` with a near-name hint | 136 | 2026-11-04, found by the record rewrite |
+| an unmarked `fn load() -> Async<i32> { return 1 }` (the bare value returned from a `-> Async<T>` / `-> Component<R>` body) | `async fn` / `component fn`, or `return Async.resolve(1)`; refused as a type mismatch | 570 | 2026-11-04, found by the record rewrite |
+| `default fn` on a behavior member without `self` | `fn` — a static of the behavior (bodied) or a required static each implementor provides (bodiless); `default-on-static` | 628 | 2026-11-04, found by the record rewrite |
+| 416 (1)'s component / hook split by `R implements Renderable` | every `Component<R>` is one thing | 804 (3) | 2026-11-04, found by the record rewrite |
+| 593 (2)'s lowering of the type form into `(props) => (scope) => …` (a record `Card__Self` and a `component fn Card`) | the type and its `compose` declared as such | 809 (2) | 2026-11-04, found by the record rewrite |
+| `Component<Component<T>>` as a body's answer | a body answering a component resolves it before returning | 809 (4) | 2026-11-04, found by the record rewrite |
+| `rewriteRecordUpdate`'s name-only source restriction | any expression as the source of `..`, evaluated once | 864 (2) | 2026-11-04, found by the record rewrite |
+| `..props: R` beside a variadic; a default on a record parameter | refused `record-param-variadic`, `record-param-default` | 864 (4) | 2026-11-04, found by the record rewrite |
+| a `comptime fn` form | a function whose every parameter is `comptime`, expanded at the call (139) | 788 | 2026-11-04, found by the record rewrite |
+| a type parameter bound by the return type alone (`fn get<T>(self: Registry) -> ?T`) | `T` in a parameter's type or the token `comptime t: type<T>`; refused `type-parameter-unbound` | 668 | 2026-11-04, found by the record rewrite |
+| a run-time write, a foreign package's write, or a host handle / `Async` in flight in a `comptime var` | refused `comptime-var-written-at-run`, `comptime-var-foreign-write`, `comptime-var-not-writable` | 807 (2), (3), (5) | 2026-11-04, found by the record rewrite |
+| `x is Some(v)` (`is` carrying a pattern) | `case`, the only construct that binds; refused `is-variant-binding` | 25 | 2026-11-04, found by the record rewrite |
+| one range spelling `..` in a pattern (decisions 20 and 36) | `...` inclusive in a pattern, `..` exclusive in a slice; `pattern-range-exclusive` recommends `1...9` | 53 | 2026-11-04, found by the record rewrite |
+| `type-empty-field-list`; the brace-only record (`type X {}`, `type X { fn … }`, a bare `type X`, `type {}`) | `type X()` legal; the brace-only form `type-without-field-list` with fix-it `type Name()` | 138 | 2026-11-04, found by the record rewrite |
+| a `fn` in an enum section body | refused `section-body-method`, naming the enum's own method list | 151 | 2026-11-04, found by the record rewrite |
+| a signed numeric leaf (`.__N12`, `Rotate { 12, -12 }`, unary `-` on an enum path) | a `Neg { … }` sub-section, `.Rotate.Neg.__12` | 314 | 2026-11-04, found by the record rewrite |
+| `Type()` (constructing a type with no field list) and a `self: Self` function in its body | refused: a namespace type has no value; its functions are associated | 329 | 2026-11-04, found by the record rewrite |
+| 207's `inline-type-outside-parameter` on a record field | the field admitted, `Bp__<Owner>__<field>`; a return, a `val` annotation, a behavior member and a variant payload stay refused | 832 (1), (5) | 2026-11-04, found by the record rewrite |
+| a `-> noreturn` body that can complete | refused at its name, `noreturn-falls-through` | 929 (2) | 2026-11-04, found by the record rewrite |
+| an exhausted condition loop printing the loop's variable group (`3`, erlang), the atom `ok` (beam) or `0` (wasm) | `null` on every backend (decision 8 §10) | 52 | 2026-11-04, found by the record rewrite |
+| `contextInfoFromReturn` unwrapping through `@Future<T>` to find a context owner (89); a wrapper effect activating hooks on its own (90) | no unwrap: only the `use`-granting return activates `use`; one flag `inContextFn == annotated` | 104 | 2026-11-04, found by the record rewrite |
+| `@Generator`, `@ResultGenerator`, `@FutureGenerator`, `@Iterator<T, E>`; the annotations `#[@result]`, `#[@futureGenerator]` (with the four already listed) | `effect-type-removed` / `iterator-error-param-removed` / `effect-annotation-removed`, each with a fix-it; no compatibility mode | 127 | 2026-11-04, found by the record rewrite |
+| the load-directory prefix on a source location's `file` (994 L3) | `file` package-relative always; the load directory in the new field `root` (`""` in the top-level package) | 1003 | 2026-11-04, found by the record rewrite |
 
 ## The `compiler` module and builtins
 
@@ -123,6 +168,26 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | `compiler.init` of an expanded function as a program-start init, anywhere (788 (2)) | only in a top-level block | 808 | 2026-10-21 |
 | `compiler.variants` as 576 (3) wrote it | `compiler.Variant[]` | 848 | 2026-10-21 |
 | 833 (3)'s refusal at `emit` of a loaded package refused or excluded on a target | the loaded `run()`'s own answer: `RunFailureKind.Refused` (the refusal's text) or `.Excluded` (the case's manifest leaves the target out); a build refusing `load-excluded-target-compiles` otherwise | 989 (3), 1000 | 2026-10-26 |
+| `@embedFile(comptime path: @Expr<string>) -> string`, `@embedBytes(comptime path: @Expr<string>) -> Bytes` (346) | `compiler.embed(comptime path: string) -> Link`, opened through `Asset(link).open()` | 342, 607 | 2026-11-04, found by the record rewrite |
+| `@embedFile` / `@embedBytes` (342, 346) | `compiler.embed(comptime path: string) -> Link` (519's `@embed(…) -> Asset`, respelt by 607) | 519, 607 | 2026-11-04, found by the record rewrite |
+| `parser/expr_params.zig`, `comptime/expr_param.zig` | `syntax_params.zig` / `syntax_param.zig` | 616 | 2026-11-04, found by the record rewrite |
+| the cells `compile_executor_*`, `compile_init_order_modules`, `compile_output_outside_decorator` | `init_executor_*`, `init_order_modules`, `init_output_outside_decorator` | 615 | 2026-11-04, found by the record rewrite |
+| `Type.Field<T>` / `Type.Info<T>` | `compiler.Field<T>` / `compiler.Info<T>` (`import {compiler.Field} from "std";`) | 630 | 2026-11-04, found by the record rewrite |
+| `import {compiler.Type} from "std"` (624's placement of `Type` inside `compiler.bp`) | `import {types.Type} from "std"`, `Type` in `types.bp` | 624, 630 | 2026-11-04, found by the record rewrite |
+| the `decorator-wrap-*` refusals; the `decorator_wrap*` / `*_wrap_with` cells | nothing — removed with `compiler.wrapWith` | 714 | 2026-11-04, found by the record rewrite |
+| `decorator_type_names_decorators`, `decorator_same_identity`, `decorator_same_member`, the `decorator_argument_decorator_*` cells; `compiler.Decorator` imported by cells | rewritten over `compiler.same` or removed | 666 | 2026-11-04, found by the record rewrite |
+| the `typeinfo_all_*` / `*_catalogue*` cells (87) | registry cells, or removed | 665 | 2026-11-04, found by the record rewrite |
+| `typeinfo-meta-expr-elsewhere` | a meta field's names resolve where the annotation wrote them | 385 | 2026-11-04, found by the record rewrite |
+| `hasDefault: bool` | `f.defaultValue != null` | 598 | 2026-11-04, found by the record rewrite |
+| `@module()`, `@trap()`, `@field`, `@TypeOf`, `@makeRecord` with `RecordField`, `@RecordKeys`, `@comptimeError`, `@compilerError` | — (removed, no use anywhere); `compiler.fail` for the two error builtins | 575 (8) | 2026-11-04, found by the record rewrite |
+| the backends' inline lowering of `Result`'s methods (`inferResultOptionMethod`, `comptime/builtins.zig`'s `methods` rows) | std's `case` bodies in `primitives.bp` | 609 | 2026-11-04, found by the record rewrite |
+| `compiler.initAsync`, a valued executor | `compiler.init({ async -> … })`; `compiler.init` answers `void` (`init-executor-value`) | 998 (1), (3) | 2026-11-04, found by the record rewrite |
+| `calledFrom` (the `Diagnostic` frames field) | `` `from` `` — `` pub type Diagnostic(…, `from`: string[]) ``, read `` d.`from` `` | 991 | 2026-11-04, found by the record rewrite |
+| `BOTOPINK_COMPTIME_UNITS` | the `.comptime` stage always runs; refusals recorded in `out/wasm-comptime/refused.txt` until C4 | 1058 (3) | 2026-11-04, found by the record rewrite |
+| `persistent_wat.interrupt()` | `runner.interrupt()`, `running()` asking the runner | 1059 (6) | 2026-11-04, found by the record rewrite |
+| `FieldEntry`; `pub type Field = __Decl__Field`; `printedSoFar` | the public `compiler.Field`, `Method`, `Variant`, `Param`, `DeclAnnotation`, `DeclKind`; `__cap_end()` | 1071 (1), (2) | 2026-11-04, found by the record rewrite |
+| `meta` on `Method`; compiler.bp's private `Stage` copy | a method's meta kept by the codec inside `Decl`; the prelude's `pub type Stage { Build, Run, Any }` | 1075 (1), (2) | 2026-11-04, found by the record rewrite |
+| the `Compiler` doc's sentence "the body goes on" after `compiler.fail` | `compiler.fail` aborts the body; cell `compiler_fail_aborts_body` | 1094 | 2026-11-04, found by the record rewrite |
 
 ## `syntax`, `comptime`, templates and code
 
@@ -173,6 +238,18 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | `implement Component<R>` | refused `implement-component-not-composable` | 828 (1) | 2026-10-21 |
 | The `Children` cell `modules/children/` | `children_array_walk` under 804's module | 857 | 2026-10-21 |
 | a method on a type-parameter `decl` in a decorator tree (`<T>(syntax decl: T)` + `decl.make()`), left unchecked | the checker's refusal, located at the call; a member read only through a declared type the tree is checked against (716 (2)) or from the value the decorator built (842 (1)) | 1106 | 2026-11-04 |
+| `derived_types.zig`'s `derivedFrom` / `derivedPartial`; a derived type as a nominal type with a lineage (600) | an inline type named by its `val`, `compiler.buildTypeInline(fields)`; a spread typed by structure | 629 | 2026-11-04, found by the record rewrite |
+| `rule.text()` (an argument's source text spliced into a string output) | typed meta or a typed member; `expr-param-method` | 370 (3) | 2026-11-04, found by the record rewrite |
+| 375 (1)'s "what the checker cannot follow" clause; the answer's `subtreeAsync` | a call through a function value or a method marks nothing; no build-time subtree mark | 725 | 2026-11-04, found by the record rewrite |
+| the compiler-side bodies of `Type.*` (keyed on the std declaration) | bodies written in botopink over `compiler.fields` / `compiler.buildTypeInline` | 307, 599 (3) | 2026-11-04, found by the record rewrite |
+| the cells `field_key_runtime`, `field_key_case_missing`, `field_key_unknown_field`, `type_keys_outside_val`, `field_key_under_annotation`; `recipe.get(key)` | the build-time key `.field` in a decorator's argument | 599 (1), 308 | 2026-11-04, found by the record rewrite |
+| `isClosedDefault`, the derived-type refusal of a non-closed default, `imported_field_default_not_derived` | a default travels with the field and resolves where it was written; `derived_type_default_travels` | 671 | 2026-11-04, found by the record rewrite |
+| a `-> anytype` call anywhere but a module-level `val`'s initializer | refused `anytype-outside-type-val` | 670 | 2026-11-04, found by the record rewrite |
+| a code-returning body applied as an annotation `#[f]` (its `return` stripped) | refused `syntax-fn-code-at-annotation`, naming `f(e)` | 962, 976 (2), 986 (3) | 2026-11-04, found by the record rewrite |
+| a template reading the expected type (`q.expected()`) | `compiler.note(message)`; what a template builds is decided by its text | 426 (4) | 2026-11-04, found by the record rewrite |
+| the padded expansion (`q.build(pad + code)` in `query.bp` / `html.bp`) and its `// LANGUAGE GAP` markers | locations keyed by (expansion id, offset) | 429 | 2026-11-04, found by the record rewrite |
+| `Call(fn: …)` (625 (2)'s sample) | `Call(callee: …, args: …)` — `fn` is reserved and a field needs an identifier | 751 | 2026-11-04, found by the record rewrite |
+| a cell's outside renderer helper `render(c, scope)` (388, 574, 584, 791's seven cells) | children resolved inside the providing body: `use c`, or `c(scope, Place.none())` / `resolve(c, scope, key)` in a `{ scope -> … }` lambda | 908 | 2026-11-04, found by the record rewrite |
 
 ## Host functions and targets
 
@@ -202,6 +279,26 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | a Task's or a generator's printed text: wasm's raw value through `.linear`, each other target's native inspect | `print` of a static `Async<T>` / `Iter<T>` / `AsyncIter<T>` refused at build on four targets (`print-task` / `print-generator`); through `unknown`, the named panic `panic: wasm cannot print a … value`, one text on four targets | 1104 | 2026-11-03 |
 | a whole-module fallback when one declared type has no GC printer; the interim build refusal of a `T` holding a record or an array (`template_traps` on `shown<T>`) | `gcTaggedPrinter` degrades per declared type, that type's arm alone a located refusal; `gcUnkScalarPrint` falls through to `__print_tagged_raw`; the `gcDeclPrinter` guard comes out | 1101 (overtakes 1099, 1100) | 2026-11-02 |
 | `Component<T>` as an eager `T` on wasm, with `resolve` / `allIn` / `run` special-cased | a closure `fn(scope, key) -> T`, one representation `gcReprOfType`, `eagerTypeRef` and `reprOf` agree on, as on every other target | 1102 | 2026-11-02 |
+| `'__bp_erl_eval'/2` (a template evaluated from Erlang source at run time) | every template lowered by `comptime/runtime/beam/lower.zig`; a refused template a build error at its call site | 141 | 2026-11-04, found by the record rewrite |
+| A2's declaration qualifier `<module>__t__<decl>` (lowercased) and option A's `RESERVED` list with its `bp@` prefix (`bp@math`, `bp@dict`, `bp@queue`) | `<package>@<path>@@<Decl>`, the declaration's case kept; the package name as it is | 109 (1)–(3) | 2026-11-04, found by the record rewrite |
+| `bp_std@math@@PI` (a `bp_` prefix on the package) | `std@math@@PI` — the `botopink.json` `name` unprefixed | 109 | 2026-11-04, found by the record rewrite |
+| the commonJS departures `string_trim_keeps_nbsp`, `string_lower_final_sigma` | the cells answering std-wasm's text on every target | 521 | 2026-11-04, found by the record rewrite |
+| `external-body-not-a-fn`, `external-source-empty`, `external-all-bodies` — `body:` not a private bodied fn of the module; a source with neither `template` nor a cell; an annotation whose every source is a `body:` | a bodied `fn` (every target the botopink body), or the per-target split | 610 | 2026-11-04, found by the record rewrite |
+| a second unlabelled argument in an `Implementation` cell (`.Erlang("…", reverseBody)`, `.Erlang("…", true)`) | `body: …`, `inline: …`, `result: …` by label; `external-field-unlabelled` | 621 | 2026-11-04, found by the record rewrite |
+| `$self` (a host template marker) | `$0` on a method; refused `template-self-marker` | 795 | 2026-11-04, found by the record rewrite |
+| `inline: true` on a type method's `.Erlang(…)` cell (lem-b as built); cell `external_method_local` | refused at the annotation, located; cell `external_method_inline_refused` | 918 (3) | 2026-11-04, found by the record rewrite |
+| a `wasi:`/`op:`/`std:` cell naming nothing refused on `--target wasm` only | refused at the annotation on every target | 516 | 2026-11-04, found by the record rewrite |
+| the erlang emitter's comment path (`%% field assignment is not directly supported in Erlang.`) | dead code — the checker refuses the assignment | 37 (2) | 2026-11-04, found by the record rewrite |
+| `Object.freeze` as the immutability mechanism | the checker's refusal; freeze an opt-in guard at the interop boundary only | 37 | 2026-11-04, found by the record rewrite |
+| a raw `crash: badarith` for a float division by zero on erlang and beam | `panic: division by zero: / on f64 at <file>:<line>:<col>` | 675 | 2026-11-04, found by the record rewrite |
+| `str_slice`, `mem_eq` in `wat_prelude` | std-wasm's `text.slice` and its search helpers | 455 | 2026-11-04, found by the record rewrite |
+| a generated `.wat` leaf | `gen-unicode` writes data and `.bp` only; every `.wat` leaf is hand-written | 559 | 2026-11-04, found by the record rewrite |
+| the `--typescript` flag and the manifest's `typings` field | a `.d.ts` always emitted beside each commonJS `.js` | 1013 (1) | 2026-11-04, found by the record rewrite |
+| beam-to-wasm, `comptime/runtime/wat/**`, the comptime prelude, `etf.zig`, the term library, `std@__heap`; `erl_parse.zig` / `etf.zig` / `term.zig` under `comptime/runtime/` | deleted at C4 (the evaluators' switch); the three BEAM-target readers moved to `codegen/beam/` | 1035 (6), 1038 (1) | 2026-11-04, found by the record rewrite |
+| `run_module` (the page's single-module linking) | `run_units` with one unit | 1069 (4) | 2026-11-04, found by the record rewrite |
+| `get_<x>` / `set_<x>` (a val's wasm accessors) | `val:<x>` / `set:<x>` under the `<class>:<name>` convention | 1080 | 2026-11-04, found by the record rewrite |
+| `stdWasmSymbol`'s implicit match-by-name table; the `body:` a `std:` cell replaces (`contentHashBody`) | an explicit `std:` cell per std declaration | 440 (3) | 2026-11-04, found by the record rewrite |
+| `bp_wat_rt.wasm` and its build step | one wasm runtime (434) | 450 (3) | 2026-11-04, found by the record rewrite |
 
 ## std
 
@@ -226,6 +323,25 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | `Bytes.toUtf8`'s error text | `bytes.toUtf8: not valid UTF-8` | 873 | 2026-10-21 |
 | `log`'s leaf form `import {errorDigest, Logger} from "log"` | per declaring module | 763 | 2026-10-21 |
 | 721's "index out of bounds" raise | none: the read answers `null` | 777 | 2026-10-21 |
+| `pub fn open(self: Asset) -> File` (no `Result`, the build having proved the file exists) | `open(self: Self) -> Result<File, FsError>` | 538, 607 (2) | 2026-11-04, found by the record rewrite |
+| `close()` on a `Scope` that is no root | fails `scope-not-root` at run time; only `Scope.root()`'s and `scope.detach()`'s answer close | 896 | 2026-11-04, found by the record rewrite |
+| one place met twice in one render of one parent (`div([h, h])`, a doubled `use h`) | fails `place-duplicate` at run time; write the call twice or key them | 958, 966 (6) | 2026-11-04, found by the record rewrite |
+| `rakun-ssr/src/config.bp`'s own `isString(v: Json)` and `types.bp`'s import of it | `Json.isString(self: Self) -> bool` (`v.isString()`) | 941 | 2026-11-04, found by the record rewrite |
+| the free `regex.matches(pattern, input)` | `Regex.compile(pattern)` answering `Result`, then `r.matches(input)` | 918 (4) | 2026-11-04, found by the record rewrite |
+| `assertAlias` (rakun-ssr's helper) | — (goes with 218) | 390 (4) | 2026-11-04, found by the record rewrite |
+| `libs/std/src/unicode_tables.bp` (the flat private sibling) and a consumer's `import {unicode_tables} from "std"` | `libs/std/src/internal/unicode_tables.bp` after 144 B-75; any import of std's `internal/` refused (`std_internal_import_refused`) | 913 | 2026-11-04, found by the record rewrite |
+| jhonstart's `__jhTryValue` / `__jhTryTask` (414's renderer); `testing.asserts`' `tryCatch` | `attempt` from `failure.bp` | 431 (3) | 2026-11-04, found by the record rewrite |
+| `time`, `clock` (root modules) | `io/clock.bp` | 106 | 2026-11-04, found by the record rewrite |
+| `random`, `crypto.randomBytes` at the root | `io/random.bp` | 106 | 2026-11-04, found by the record rewrite |
+| `path.absolutePath` | `io/fs.bp`'s `absolutePath` | 106 | 2026-11-04, found by the record rewrite |
+| `io.process.start` answering `Error(Unsupported)` at run time off commonJS (B-161 as built) | a located `std-unsupported-on-target` refusal at the call on erlang, beam and wasm | 906 | 2026-11-04, found by the record rewrite |
+| erlang's `string:length/1` / `string:slice/3` (grapheme clusters) in std's templates | codepoint counting on every target | 320, 169, 240 | 2026-11-04, found by the record rewrite |
+| a host cell for `json.decode`'s numeral conversion | `numeralValue` in botopink, correctly rounded | 142 | 2026-11-04, found by the record rewrite |
+| `codePointsOf`, `textsOf`, `codepointText` in compiler.bp; 1038 (3)'s comptime "index out of range" | `chars()`, `charCodeAt`, `string.fromCodepoint`; `xs[i]` out of range answers null in comptime as in a program | 1060 (1), (3) | 2026-11-04, found by the record rewrite |
+| rakun's JSON writers `jsonString` / `jsonStrings` / `jsonPairs` / `jsonTriples`, the two `jsonEscape`s, `config.bp`'s hand scanner | std's `json.quote`, `json.unquote`, `json.arrayOf`, `json.object`, `json.decode` | 116 (1) | 2026-11-04, found by the record rewrite |
+| rakun's `request_context` codec; jhonstart's `decodePairs` / `encodePairs` | std `encoding` (`percentEncode`, `percentDecode`, `formParse`, `formStringify`) | 116 (2) | 2026-11-04, found by the record rewrite |
+| emilia's `hashHex` | std's `hash.contentHash` | 116 (5) | 2026-11-04, found by the record rewrite |
+| jhonstart's private `payloadEscape` | std `escape.scriptJson` | 116 (6) | 2026-11-04, found by the record rewrite |
 
 ## Libraries and repositories
 
@@ -285,6 +401,63 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | the `RAKUN_SSR_PUBLIC_` prefix, `isPublicEnvName`, `publicEnvPrefix` | `#[publicEnv] pub val apiUrl = env.read("API_URL");` | 928 | 2026-10-21 |
 | `Query<T>`'s LINQ-named public methods (`where`, `select`, `selectMany`, `orderByDescending`, `toList`), `query.of(xs)` | private lowering targets; ``query @`select …` `` or std's `filter` / `map` / `flatMap` / `unique` | 914 | 2026-10-21 |
 | the seven unbuilt example projects of the 1.0.10 list | `modules/README.md` § Examples lists the directories on disk | 935 | 2026-10-21 |
+| `jhonstart:redirect:<url>` (the redirect reason) | `nav:redirect:<url>` of `contracts.md § 5b` | 115 (2) as amended by 116 | 2026-11-04, found by the record rewrite |
+| the `rakun-validation` boundary member | the bundled library `validation` | 115 (1) as amended by 116 | 2026-11-04, found by the record rewrite |
+| the orchestrator (onze) translating `notFound` / `redirect` before the first chunk; `rakun.navigation.allowedHosts` for a late redirect | the render library's own translation and target check — relative through `matchPath`, absolute only when listed in `allowedRedirects` | 115 (1), (2) as amended by 117 | 2026-11-04, found by the record rewrite |
+| `rakun-session`'s `session_cookie` last-wins on a duplicated cookie name | first wins, everywhere (RFC 6265 § 5.4) | 181 | 2026-11-04, found by the record rewrite |
+| rakun-logging's `errorDigest`, rakun-web's `problem_digest` cell, the render library's `digestOf` | `log`'s `errorDigest(module, errorClass, message, topFrames)` | 194 | 2026-11-04, found by the record rewrite |
+| `types.bp`'s `appFileKinds()` and `classifyAppFile()` (rakun-ssr) | `routing`'s `conventions.fileKinds` / `conventions.classify` | 323 | 2026-11-04, found by the record rewrite |
+| rakun's five cookie readers (`decodeComponent`, `cookieValue`, `cookieFromHeader`, `cookieFrom`, `sessionIdOf`); `03r-e` | `http`'s one reader (`cookie.parse` / `get`), a malformed chunk absent; `03r-e` lapses | 915 | 2026-11-04, found by the record rewrite |
+| `fileSink` raising on a failed host call (106-c) | `Error` of `log`'s own error enum | 921 | 2026-11-04, found by the record rewrite |
+| `#[bpp.html]` / `#[bpp.htmlPrelude]` bound to `jhonstart` (`"bpp": "jhonstart"`, `from "jhonstart"`) | `"bpp": "rakun-bpp"`, `from "rakun-bpp"` (724's rename; already listed as the jhonstart → rakun-bpp rename) | 198, 200, 270, 275 | 2026-11-04, found by the record rewrite |
+| `<style>` in markup (except `<style #[isInline]>`) | the `--- style ---` section | 338 (8) via the lead | 2026-11-04, found by the record rewrite |
+| a prelude module declaring one `#[bpp.htmlPrelude]` marker `val` (270's shape) | marked items where they are declared (589) | 270 (amended by 589) | 2026-11-04, found by the record rewrite |
+| rakun-ssr's `build.bp` compiling every `erl/*.erl` on each build | `botopink build` materialises the dependencies' cached `.beam`; `compileBeam` runs `erlc` only over `.erl` with no `.beam` beside them | 767 | 2026-11-04, found by the record rewrite |
+| `#[check]` on a field | `#[refine(rule)]`, a field marker; `#[check]` on a field refused naming `#[refine]` | 406 (2) | 2026-11-04, found by the record rewrite |
+| the `Name.Http` type and the inferred return of rakun-restclient's generated client | a static `http` added to the behavior, `fn() -> decl`; `Api.http()` answers an `Api` | 627 | 2026-11-04, found by the record rewrite |
+| `rakun-routing` (a rakun workspace member), `rakun-validation` | the libraries `routing` and `validation` (115, 116) | 114 (1) | 2026-11-04, found by the record rewrite |
+| `LayoutProps`, `rkAppRegisterPage` over `Element` (in rakun) | rakun-bpp's UI conventions; rakun holds an opaque `PageRenderer` per route | 114 (4) | 2026-11-04, found by the record rewrite |
+| `setPageRender`, `RenderedPage` | `ChunkWriter`, `PageRenderer`, `page(pattern, render)` | 114 (5) | 2026-11-04, found by the record rewrite |
+| `__onze_action`, `X-Onze-Action` | `__bp_action`, `X-Bp-Action` (rakun-ssr's defaults; neither library spells a name) | 114 (7) | 2026-11-04, found by the record rewrite |
+| the `rakun_request_context` host binding, the `fillRequest` seam | `RequestData` handed to `renderStream` | 114 (8) | 2026-11-04, found by the record rewrite |
+| rakun's page-level `redirect` / `notFound`, `boundaryFor` and every page-signal path of front 63 | signals handled inside rakun-bpp; rakun's `notFound` / `redirect` / `permanentRedirect` / `redirectWithStatus` stay for server actions and route handlers | 117 (1) | 2026-11-04, found by the record rewrite |
+| `@utility`, `@theme` in a `styled` literal; `#[isGlobal]`, `#[defineVars]`; `<style>` in markup (but `<style #[isInline]>`) | a `val` or function names a component; `:global(…)`; run-time holes as CSS variables; the `.bpp` style section | 338 (2), (4), (7), (8) | 2026-11-04, found by the record rewrite |
+| a `path` dependency to a sibling workspace member | `{ "workspace": true }`, the only sibling form; the `path` is a located error | 75 | 2026-11-04, found by the record rewrite |
+| `#[isGlobal]`, `#[defineVars]` (style-section directives) | `:global(…)` and run-time holes in the style section (338) | 278 (dir-5) | 2026-11-04, found by the record rewrite |
+| a `slot="fallback"` child of an island | the annotation's argument, `#[serverDefer(fallback: …)]` / `#[clientOnly(fallback: …)]` | 287 | 2026-11-04, found by the record rewrite |
+| the string link / script instructions left after 278 (a hand-written reload / history attribute; `<Script>`'s strategy as `Hydrate`) | `<a #[reload]>`, `<a #[history(.Replace)]>` lowered to `data-rakun-reload` / `data-rakun-history`; `strategy={.LazyOnload}` of `ScriptStrategy` | 292 | 2026-11-04, found by the record rewrite |
+| `#(string, string)[]` attribute pairs in the native builders; a custom element or an unlisted SVG tag in markup; an event attribute (`onClick`) | typed props records (`GlobalAttrs`, `AriaAttrs`, each element's own, `Type.merge`); `el(…)` keeps the pairs; the tag refused at the tag; `onClick` refused at its name until typed events | 351 (4), (5) | 2026-11-04, found by the record rewrite |
+| the `(children, attrs:)` native builder form | `pub fn a(props: AnchorProps) -> Element`, one builder per tag | 362 | 2026-11-04, found by the record rewrite |
+| a server twin of a browser-only cell (`sidecars/jhonstart_link.erl`'s `linkStatus`, `sidecars/jhonstart_island.erl`) | — (removed): reached only through a `#[clientOnly]` hook; a `Link`'s pending state is `data-rakun-pending` | 363 (1), (3), (4) | 2026-11-04, found by the record rewrite |
+| the per-name `registerStarter`; the page as a thunk `{ -> Page() }`; `__jhPushBoundary` (a `Suspense` registered with the render); `payload()` answering `array<#(string, Json)>` | `registerRouteStarters(pattern, load)` over `globals.starters`; `compose(chain, Page())`; the `Suspense(Boundary(id, fallback, child))` node; `Async<?#(string, Json)>`, `[]` → `null` | 964 (1), (2) | 2026-11-04, found by the record rewrite |
+| rakun-bpp's `globals()` function (three flat browser globals) | one `pub val globals` with the fields `globals.payload`, `globals.fill`, `globals.signal` | 140 (3) | 2026-11-04, found by the record rewrite |
+| `src/prelude.bp` with `pub val prelude = bpp.Prelude()` (361 (2)'s marker `val`) | `#[bpp.htmlPrelude]` on each `pub` item where it is declared, outside `src/internal/` | 589, 592 (9) | 2026-11-04, found by the record rewrite |
+| a member's `targets` list equal to its workspace's (95-b as built) | omitted; a member writes `targets` only to narrow (512 (3)); no `targets` is the intersection (770) | 919 (3) | 2026-11-04, found by the record rewrite |
+| `islandKeyEnv` (a key renaming the island key) | the environment variable `RAKUN_SSR_KEY` alone | 271 | 2026-11-04, found by the record rewrite |
+| `responseStatus` / `responseHeader` as plain calls | `use response()`'s `res.status(…)` / `res.header(…)` | 291 | 2026-11-04, found by the record rewrite |
+| `pageData(route, schema)` | `use pageData<T>()` | 293 | 2026-11-04, found by the record rewrite |
+| `navigation.bp`'s `-> i32` (rakun-app's status from the signal) | rakun-app answers the status rakun-bpp's render wrote (130) | 924 (3) | 2026-11-04, found by the record rewrite |
+| rakun-data's old `#[query]`, its `<m>Sql()` members, `rkRegisterQuery` | `#[repository]` on a `behavior` with `#[query @`…`]` / `#[nativeQuery("…")]` methods; `Users.Sql(ctx)`, `Users.of(ctx)` | 313 | 2026-11-04, found by the record rewrite |
+| `run(sql, params: Array<string>)` on `QueryContext` | `runMany<T>` / `runOne<T>` taking `QueryParam[]` | 427 (1) | 2026-11-04, found by the record rewrite |
+| `count(f)` on a non-optional field; `select *` with `group by`; `order by` / `limit` on an ungrouped aggregate | refused (`count(*)` named; `limit has nothing to cut`) | 428 | 2026-11-04, found by the record rewrite |
+| hot-loading / a module swap as a form of `rakun-ssr dev` (50-b's (b), (c); 50-d, 50-e, 50-f) | `build` then `start` looped over a file watcher; a restart on every change | 766 | 2026-11-04, found by the record rewrite |
+| `env-non-public` keyed on an unprefixed name | `env-non-public` for an `env.read` in a `#[client]` component that is not a `#[publicEnv]` `val` | 928 (1) | 2026-11-04, found by the record rewrite |
+| `parseMetrics` / `gradientOf` reading a malformed integer as `0` | `Result<FontMetrics, string>` with `Error("<family> <weight>: line <n>: \"9x0\" is not an integer")`; `gradientOf`'s not-a-gradient value | 942 | 2026-11-04, found by the record rewrite |
+| a second start path beside the release's `bin/rakun-ssr` | `start` runs `bin/rakun-ssr` when the release exists, else spawns the node — one path | 965 (4) | 2026-11-04, found by the record rewrite |
+| `#[configurationProperties]` | `#[config("<prefix>")]` | 299, 952 (3) | 2026-11-04, found by the record rewrite |
+| `rkPropInt("12abc") == 12` (03r-b, a lenient number read) | a malformed number stops the boot naming the file, the line and the expected type | 299 | 2026-11-04, found by the record rewrite |
+| 117 (8)'s "every rakun manifest is `["erlang"]`" (03r-a) | every framework package restricts its own `"targets"`; a member repeating the workspace's whole set drops the key | 952 (1), 762, 512 (3) | 2026-11-04, found by the record rewrite |
+| `rakun.rsocket.server.transport` compared as a string (`transport == "websocket"`) | `enum Transport { Tcp, Tls, WebSocket }` read through 299's typed config; `rkRegisterTransport(t, mount)` | 939 (1) | 2026-11-04, found by the record rewrite |
+| `Astro.slots.render(name, args)`; `slot="…"` as text | `<Slot name=… />`, `#[slot("…")]`, `use hasSlot` | 360 (6) | 2026-11-04, found by the record rewrite |
+| the hand-written proxies `<Type>Tx`, `<Type>Sec` | `#[transactional]`, `#[secured(…)]`, `#[retryable(…)]`, `#[useCache]` as wrappers | 318 (7) | 2026-11-04, found by the record rewrite |
+| `#("--…", "…")` pairs and `""`-as-clear in a theme | `entry(ns, name, value)`, `clear(ns, name)`, `clearNs(ns)`, `clearAll()` | 300 | 2026-11-04, found by the record rewrite |
+| `class={emilia(tokens)}` and the `fn xTokens() -> Token[]` helpers in templates | the tag annotation `#[stylesheet(…)]`; a run-time choice picks among annotated branches | 301 | 2026-11-04, found by the record rewrite |
+| `fullTheme()` / `fullOptions()` as a second theme | `defaultTheme()` (the whole Tailwind theme) or `baseTheme()` | 358 | 2026-11-04, found by the record rewrite |
+| rakun-stylesheet's own `Rule` / `Sheet` model and codec (`encodeSheet`) | `css`'s sheet model and `Sheet.render()` (338 (3)) | 367, 368 | 2026-11-04, found by the record rewrite |
+| `#[schema]` | `#[validated]` | 306 | 2026-11-04, found by the record rewrite |
+| the `union2…5` / `tuple2…5` families; a loose value checked ad hoc | a declared type; the `constraints.v*` predicates | 306 | 2026-11-04, found by the record rewrite |
+| the `jhonstart:` navigation-reason prefixes | the neutral `nav:` prefix (itself retired by 924) | 116 (1) | 2026-11-04, found by the record rewrite |
+| rakun-web's middleware matcher and the CORS preflight's `routeMatches` (two more path grammars) | `routing`'s module `pattern` (`parsePattern`, `matchPattern`, `patternProblem`) | 116 (7) | 2026-11-04, found by the record rewrite |
 
 ## Process and files
 
@@ -313,6 +486,35 @@ tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude nam
 | import aliases (`@/…`, the manifest's `alias`, rakun-ssr's `loadAliases`, `rakun-cli create --import-alias`); an unknown manifest key silently accepted | real module paths only; every unknown manifest key refused, located (`manifest-unknown-field`) | 1048, 1050 | 2026-10-27 |
 | `scripts/decisions-split.ts` (the per-repository `decisions-taken.md` generator), `scripts/decision-cells.ts` (`scaffold` / `compile` / `promote` / `check`), CI checks 6 and 7 | nothing yet; the generated files and the decision cells stay as content | 1107 (overtakes 482) | 2026-11-02 |
 | compiler-core's content-keyed runtime-output cache (`RUN LOG` hits); `scripts/check-docs.sh`'s result store | every `erl` / `node` run runs on every check | 922 (3)–(4), 510 | 2026-10-21 |
+| escript's exit status `127` for a crashed `botopink run --target erlang` | `erl`'s status, a crash `1` | 56 | 2026-11-04, found by the record rewrite |
+| `escript out/main.erl` (what `botopink run --target erlang` ran) | `erl -noshell -pa <one directory> -s main _botopink_main` | 6 | 2026-11-04, found by the record rewrite |
+| `tests/language/` (the old language suite), botopink-lang's `docs.md` / `docs/`; the `run/`, `reject/` and `modules/` shapes | `repository/botopink-lang/conformance/` (`docs.md`, `modules/<cell>/{botopink.json, docs.md, src/, snapshot/output/, snapshot/targets/}`), one shape | 466 (1), 457 (2), 462 (3) | 2026-11-04, found by the record rewrite |
+| `<!-- example: <cell> -->` markers (461 (2), 463 (2)) and rakun's `{src/main.bp}` brace link (548 (3)) | an ordinary Markdown relative link, `[src/main.bp](src/main.bp)`, `test-docs` reading the link form | 650 | 2026-11-04, found by the record rewrite |
+| `botopink-lib-test` (the binary and its release / install / bpmp entries), `modules/lib-test-runner/`, `scripts/test-libs.sh`; a spawned `botopink test` per library | the in-process program at botopink-lang `scripts/test-libs/` over `compiler.load(package: …)` and `Module.test()` | 993 (7) | 2026-11-04, found by the record rewrite |
+| `doc_quotes` | `botopink packages --check-docs` | 993 (7) | 2026-11-04, found by the record rewrite |
+| the per-case `.snap` (`snapshot/output/<module>.snap` per case) and `botopink-cell 1` for a module | one `snapshot/main.snap` per module, `== <case>` sections, a departure as `== <case> on <t>` (`botopink-cell 2`) | 989 (5) | 2026-11-04, found by the record rewrite |
+| a `pending` verdict for a decision cell's draft | the tree's shape: `draft/main.bp` or `src/main.bp`, never both, never neither | 649 | 2026-11-04, found by the record rewrite |
+| cell snapshots written `error: <code>: …` | `error[<code>]: <message>`, one printer for parse and checker refusals | 557 | 2026-11-04, found by the record rewrite |
+| the one-gate-per-machine lock (`scripts/AGENTS.md` § Gate lock); botopink-lang's gate lock | the machine-wide job pool in the meta `scripts/gate.sh` (already in retired-forms as the one-gate-at-a-time lock) | 468 (5), 469 (2) | 2026-11-04, found by the record rewrite |
+| `HOST_BINDING_MARK`'s text match in `lib-test-runner/src/runner.zig` | the refusal id `host-binding-missing`, matched by id | 920 (3) | 2026-11-04, found by the record rewrite |
+| 468 / 469's pool sizing `min(cpus, MemAvailable / 768 MiB) / 2` and their strict first-come admission | `max(1, min(cpus / 2, (MemAvailable − 2 GiB) / 768 MiB))` (674); one small-gate pass ahead of full-pool waiters (717) | 674, 717 | 2026-11-04, found by the record rewrite |
+| `SymbolKind.Function` for a type's methods | `SymbolKind.Method` | 7 | 2026-11-04, found by the record rewrite |
+| the extension recognising a `test "…"` block by its symbol kind (every `Method` a test) | by its parent in the symbol tree: a child of the file, where a method is a child of a type | 7 | 2026-11-04, found by the record rewrite |
+| `01-std/07-std-json-writers` (the front directory) | steps of `01-std/01-std-lib-enablement` | 117 (5) | 2026-11-04, found by the record rewrite |
+| `build.zig`'s `bundled_packages`, `libs/AGENTS.md`'s table, `format-check.sh`'s `TREES`; 115–117's "compiled into the binary" | repositories, ordinary dependencies | 326 | 2026-11-04, found by the record rewrite |
+| a hand-written JSON Schema walker in `release_test.bp` | 399's vendored validator (`test/tools/check-schema.js`) over the checked-in CycloneDX 1.5 schema | 936 | 2026-11-04, found by the record rewrite |
+| the comptime renderer's `id` field (`"id": 0` in every snapshot) | — (removed) | 19 | 2026-11-04, found by the record rewrite |
+| the codemod `botopink migrate effects`, `// TODO(migrate-effects)`, `parser.effect_migration`, `infer.effect_migration_files`, `comptime.setEffectMigration`, the `ExprTypeLog` hook | — (removed): migration by hand, from the three located errors | 131 | 2026-11-04, found by the record rewrite |
+| the `candidate <path>` print of a conformance run (the `.new` candidate printed on wasm) | `.new` written through `io.fs` on all four targets | 992 (4) | 2026-11-04, found by the record rewrite |
+| `modules/lib-test-runner/`, `scripts/test-libs.sh` and the lib-test binary; then `scripts/test-libs/` and the `test-libs` gate stage | the in-process library check inside `conformance/`, one `test-conformance` stage (`conformance/disabled.txt` shrink-only for the migration) | 994 (L5), 995, 996 | 2026-11-04, found by the record rewrite |
+| the cells `case_on_disk_not_run_refused`, `case_call_without_directory_refused` (1011 (4)); a decisions-taken directory as the only Cell value | `conformance/run.sh --self-test` fixtures; a Cell column may name a cell slug, `tests/<name>.sh` or `conformance/run.sh --self-test`, set after the row lands | 1012, 1022 | 2026-11-04, found by the record rewrite |
+| `backend_exec.sh`'s `wasmtime --invoke main` check; the wasmtime CLI installed by CI | a zig test of the runner (`codegen/wat/runner.zig`); the pinned CLI only in the job running `wasm_pack_runs_standalone` | 1034 (1), 1079 (2) | 2026-11-04, found by the record rewrite |
+| the `COMPTIME WAT` snapshot sections (46) | dropped; `COMPTIME REPLY` stays, comptime units snapshotted by the program's generator | 1038 (5) | 2026-11-04, found by the record rewrite |
+| `BOTOPINK_TARGET_REPORT`; the `botopink-target:` stderr line | run.sh's file-system stamp; `target runs: <t> built N, reused M` | 1043 (1), (3) | 2026-11-04, found by the record rewrite |
+| `flat_output_one_name_scheme-1015/`; the `wasm_units_precompiled_once` directory; 1050's program cell while `compiler.load` differs | `tests/flat_output_names.sh`; `tests/wasm_runner.sh`; `tests/import_alias_refused.sh` until the loader fix | 1054 (1), (2), 1064 (3) | 2026-11-04, found by the record rewrite |
+| `main.wat` as a written file name | `<pkg>@main.wasm`; `<module>.wat` only as the harness's module label | 1065 (2), 1079 (1) | 2026-11-04, found by the record rewrite |
+| `BOTOPINK_GATE_TIMEOUT`; the 1800 s per compiler run in `runner-standalone.sh` | one `--timeout 1800` (or `setsid timeout -k 5 1800`) over the gate's whole run | 1070 | 2026-11-04, found by the record rewrite |
+| a program without `fn main` running (wasi's `no exported instance named wasi:cli/run`, an exit 0, a raw `error:undef`) | the CLI's located refusal before running, one message on every target and host | 517 | 2026-11-04, found by the record rewrite |
 
 ## Decision rows replaced, reversed or overtaken
 
@@ -381,6 +583,7 @@ The record keeps these rows as one line (or as the reason they lost force); read
 | 207's `BpInline__` | 832 | 207, 892 | 2026-10-21 |
 | 626 (2) | 842 | 626, 892 | 2026-10-21 |
 | 118 rule 1 | 852 | 118, 892 | 2026-10-21 |
+| 911 (a hole's raise example written as `raising "x"` / `quote @`…``) | 977 (the example respelt `html @`<p>${10 / zero}</p>``) | 977 | 2026-11-04, found by the record rewrite |
 
 ## How to use this page
 
