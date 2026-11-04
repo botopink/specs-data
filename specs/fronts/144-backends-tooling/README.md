@@ -4247,6 +4247,14 @@ Original site: `test/testing/mocks_pairing_test.bp:48:3` (`#[service]`), "unboun
 
 - [ ] the repro above turned into a cell, red on the parent, root-caused and fixed: a behavior name resolves the same way a record/enum type name does when passed as a `type<T>` argument
 
+### B-251 — beam: "Internal consistency check failed" in config.bp/autoconfig_registry functions, once rakun's main module reaches beam
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a beam backend defect, location and mechanism not yet found) · **Owner:** unassigned · found landing rakun's 716 (1) decorator-sites fix, 2026-11-04
+
+Before 716 (1) landed, rakun's main module failed to compile at all, so beam never reached these functions. After, `modules/rakun`'s own beam build hits "Internal consistency check failed" inside functions nobody touched in the 716 (1) landing: `config:loadedOf`, `config:parseJson`, `autoconfig_registry:manifestDependencies`, and others in the same family. Not caused by the 716 (1) commits (which touched only decorators.bp, config.bp, context.bp, autoconfig.bp's decorator-executor bodies, never these functions) — it is a pre-existing beam codegen defect that was simply unreachable until now.
+
+- [ ] reproduce `modules/rakun`'s beam build directly, isolate which function(s) actually trip the consistency check and why, root-cause and fix; a cell once the mechanism is known
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
