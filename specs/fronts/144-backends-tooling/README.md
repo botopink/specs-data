@@ -3735,14 +3735,13 @@ A method declared in another module, whose parameter is typed by a behavior, had
 - [x] the behavior resolved in the module that declares the method; a two-module case red on the parent, green after (machine-1, 2026-11-03)
 - [ ] rakun-style's `styled-example` green, confirmed in the rakun workspace's next run
 
-### B-222 — beam: more than 24 operands (a 25-field record, a 25-argument call)
+### B-222 — beam: more than 24 operands (a 25-field record, a 25-argument call) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found by machine-1's rakun triage, 2026-11-03
 
 A 25-field record construction gives an unlocated `TooManyOperands`. A 25-argument call inside `print(…)` is misreported as "print has no implementation for the beam backend". This is the root of rakun-ssr `blog`'s beam red.
 
-- [ ] beam lowers records and calls past 24 operands; a cell with a 25-field record and a 25-argument call, red on beam on the parent
-
+- [x] beam lowers records and calls past 24 operands; a cell with a 25-field record and a 25-argument call, red on beam on the parent. Fixed (machine-2, 2026-11-04): `max_staged` is a fixed-size scratch buffer, not a BEAM limit — raised from 24 to 255. `lowerHostCall`'s own `TooManyOperands` check now runs before `missing_external` is set, so a call this wide reports its real error instead of "`print` has no implementation for the beam backend". A `beam.zig` unit test building both shapes in one program, red on the parent and green after
 
 ### B-223 — wasm: 18 conformance members trap on `unreachable` at run time with no `.linear` note in their build — **closed as a stub, each one's own red case now listed below**
 
