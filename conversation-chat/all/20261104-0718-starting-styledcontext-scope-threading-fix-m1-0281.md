@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: starting StyledContext scope-threading fix
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
