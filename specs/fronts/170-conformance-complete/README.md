@@ -99,6 +99,8 @@ Simplified when s5 was retired: no completeness check, no generated ledger. The 
 - [ ] **Comment drift, no answer at fault:** `compiler_annotation_labelled_arguments-305`'s cases still name the cell `fn: <name>` (610 renamed it `body:`; the answers already say `body:`); `any_type_absent-31`'s `any_type_removed` says its refusal names `unknown`, and the answer does not
 - [ ] **Not yet audited:** the other 289 `cases/`-shaped modules, the 73 `cells/`-shaped ones (no runner reads them), the 184 drafts, and each library draft's `docs.md` against its decision
 
+R2 landed on `feat`.
+
 ### s7 — the wasm codegen emits WasmGC: every value a GC struct or array, no linear-memory value (was 164 s2; the maintainer, 2026-10-14; wasmgc-a)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus · **After:** front 164's s1 (landed: the engines run WasmGC; wasm3 did not)
