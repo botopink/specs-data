@@ -3710,13 +3710,13 @@ The provider wrote the key `Th` and a reader in another package looked it up as 
 - [x] a context's key carries the package that **declares** its value's type (379: a context's identity is its value's type). For an imported type that is its owner across a package boundary; for a sibling module of the same package, this package's own. `context_declared_twice_across_modules` keeps its refusal. A new case in `context_named_by_value_type-379` is red on the parent and green after
 - [ ] rakun-bpp's `styled_sheet_test` back to green, confirmed in rakun-bpp's next run
 
-### B-219 — beam evaluates a list literal's elements right to left
+### B-219 — beam evaluates a list literal's elements right to left — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found by machine-1's rakun triage, 2026-11-03
 
 `[note(1), note(2), note(3)]` evaluates in the order 3, 2, 1 on beam; erlang and commonJS evaluate 1, 2, 3. This is the root of rakun-bpp `render_test`'s shell-order red on beam.
 
-- [ ] beam evaluates list-literal elements left to right, as written; a cell printing the evaluation order, red on beam on the parent
+- [x] beam evaluates list-literal elements left to right, as written; a cell printing the evaluation order, red on beam on the parent. Fixed (machine-2, 2026-11-04): `lowerListOf` evaluates each element in source order, consing it onto a reversed accumulator as it goes, then straightens the list out with one `lists:reverse/2` call that also splices the real tail (spread) back on. A `beam.zig` unit test, red on the parent and green after; ~107 beam snapshots re-recorded for the consequence (verified, none unrelated)
 
 ### B-220 — beam: a `SourceLocation` passed to another package's function reads back as the whole record, not its field
 
