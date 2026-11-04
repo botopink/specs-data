@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: From the user: back to work: resume your slots from mt-0409/mt-0413, front 170 first
-read: m1 [ ] · m2 [ ]
+read: m1 [ ] · m2 [x]
 in-reply-to:
 ---
 
