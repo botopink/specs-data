@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: rule
 subject: editing erlang.zig/beam_asm.zig, B-147
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
