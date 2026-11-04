@@ -4088,6 +4088,16 @@ A member handed `--workspace-out` writes only the modules of a dependency its ow
 
 Landed on `feat`.
 
+### B-243 — wasm GC: lowerChainedCall (a primitive method or tuple label through ?.) has no GC dispatch, falls to box_i32
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a new GC lowering function mirroring an existing twin's shape; wrong is a wrong answer or a trap, not a safe fallback) · **Owner:** machine-2 · found by front 170 s7's P5-a full re-measure, 2026-11-04
+
+`lowerChainedCall` (`codegen/wat.zig`: `recv?.m(args)` over a primitive method or a tuple label answering a scalar — `s?.length()`, `rs.at(1)?.a`) has no `self.mode == .gc` dispatch at all, unlike its exact sibling `lowerOptionalTypedMethod`, which already dispatches to a GC twin `gcOptionalTypedMethod`. Three hits on the full corpus, at least two distinct AST shapes (a method call through `?.`, and a tuple-label read through it via `optInfoOf`'s own separate path): `map`, `optional_member_access_needs_safe_call-45`, `shorthand_import_refused-337`.
+
+Previously thought closed by P5-f (170 s7), which fixed two different, unconditional call sites to `box_i32` (`.find()`'s trailing `.at(0)`, and `.push()`/`.pop()` on a record-field array) — this is a third, separate path to the same prelude helper group.
+
+- [ ] a new `gcChainedCall` mirroring `gcOptionalTypedMethod`'s shape, covering both the method-call and tuple-label-read shapes, recursive over nested nullable chains (the underlying `isOptionalChain`/`chainedCallKind`/`chainPayloadKind` machinery is already general); unit tests per shape, red on the parent, green after; the three named members clean
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
