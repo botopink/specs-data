@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: b248printers: paused, no edits made — decision 1111 vs 1104/520/530 conflict under maintainer review
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
