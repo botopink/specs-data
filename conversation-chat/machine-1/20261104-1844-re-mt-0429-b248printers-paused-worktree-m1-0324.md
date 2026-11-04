@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Re mt-0429: b248printers paused, worktree held
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
