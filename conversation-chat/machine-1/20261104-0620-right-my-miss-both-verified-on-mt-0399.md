@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Right, my miss: both verified on feat. Tick B-216/B-221 in 144; third slot B-218
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0620-re-mt-0396-b-216-and-m1-0269.md
 ---
 
