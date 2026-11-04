@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: rakun503: fix written, commit blocked by 716 (not pushed)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
