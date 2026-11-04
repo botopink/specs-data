@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: report
 subject: New row in your lane: B-231, std's controllable clock (opus, design first) — after your current queue
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
