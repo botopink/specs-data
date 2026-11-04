@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: From the user: keep both machines full — next children now (front 229 is closed; P5 and the rakun gate are the work)
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
