@@ -4062,6 +4062,12 @@ pub fn main() -> void {
 
 This confirms the root cause is likely broader than "static-method-by-name emission," and blocks both rakun shapes it was filed for: 165 s10's method-marker route/bean registrations (decorators.bp:263/349/427) and 842 (1)'s held-check pattern (config.bp:2067) — both still red; registration.bp's own row (actuator_api/registration.bp:270) needed no `compiler.ast` at all and is fixed by a cross-decorator behavior retyping instead (842 (2)).
 
+
+**Root cause (machine-2): not `compiler.ast`, not the closure — a `pub var` imported and read by another module.** Both shapes above store the closure in `marks`' `pub var` and `main` reads it by import; the same `undef` comes with no decorator at all: `pub var count: i32 = 0;` bumped through a `pub fn` of its module and read as `import {cell.count}` crashes `undef` on erlang. Erlang exported a module `var`'s reader `name/0` only as its `'__bp_priv__<name>'/0` wrapper (the `pub val` export rule skipped a mutable binding) while the importer called `owner:name()`. Beam and wasm answer right. **commonJS answers wrong too, silently:** the owner writes `exports.count = count` once and the importer destructures `const { count } = require(…)`, so it reads the value at load — `0` for the counter, `null` for the registered closure — a commonJS half of this row, the same destructure-at-require-time family as B-239.
+
+- [ ] erlang: a module `pub var`'s reader exported (`conformance/modules/module/cases/module_pub_var_read_by_importer`, red on erlang before, green after; beam and wasm green)
+- [ ] commonJS: an imported `pub var` read live, not the value at require time (the same cell, red on commonJS until then)
+
 ### B-241 — wasm GC: an awaited task answering a record, as the last statement of an async fn, gives convert ref
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2 · found landing B-209/P-C (front 170 s7), 2026-11-04
