@@ -4110,6 +4110,14 @@ This is two levels of generic substitution that need to compose (the outer thunk
 
 **`std_async_on_every_target-690` is fixed for this shape but still falls back, on a separate, pre-existing gap found while verifying it: `await async.runAll([{ -> greet("a") }, …])` with a STRING answer falls back at `async.bp:231:5` (`runAll`'s own body, `await spawnAll(tasks)` — a host-declared `spawnAll` reached through a variable `tasks`, never bound); the `i32` version of the same call stays GC. Filed separately as B-245.**
 
+### B-245 — wasm GC: async.runAll's await spawnAll(tasks), with a string task answer, falls back — a host-declared generic reached through a variable, not bound
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (another generic-binding gap in the same family as B-244, same functions) · **Owner:** machine-2 · found by B-244's own fix while verifying `std_async_on_every_target-690`, 2026-11-04
+
+After B-244's fix, `async.timeout({ -> async.delay(1, "x") }, ms)` no longer falls back, but the same conformance member still shows one more hit at `src/async.bp:231:5` — `runAll`'s own body, `await spawnAll(tasks)`. `spawnAll` is a host-declared generic (`declare fn spawnAll<T>(…)`), reached through a local variable `tasks` rather than written directly at the call site, and its `T` never binds. The `i32`-task version of the same call (elsewhere in the member) stays GC — only the `string`-task version (`await async.runAll([{ -> greet("a") }, …])`, a thunk literally returning a string) falls back, so the gap is specific to how the thunk array's own element type is read when `spawnAll`'s own generic parameter is bound through an intermediate variable rather than the call expression's own argument.
+
+- [ ] find where `spawnAll`'s call binds its `T` (likely `bindAwaitedGeneric`/`bindGenericCall`'s array-of-thunks branch, or wherever `tasks`'s own declared/inferred type is read instead of the call's literal argument) and make it read the variable's own element type the same way a direct array literal argument is read; unit test over `runAll`'s own string-task shape, red on the parent, green after; `std_async_on_every_target-690` fully clean on wasm
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
