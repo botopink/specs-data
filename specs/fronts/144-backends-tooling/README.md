@@ -3930,6 +3930,18 @@ Building rakun-stylesheet's `alpha` and `bg-color` cells for beam segfaults insi
 - [ ] the two cases reach the timeout and the group kill again, on a quiet machine and under the pool; `test-cli` green. **Waits on decision 1035's C4** (machine-1) by design, not an open investigation
 - [x] if the stack exhaustion is itself a defect (a loop lowered as recursion), its own cell, red on the parent — **not a defect**: every loop shape measured overflows within single-digit seconds regardless of how it's written (confirmed with a `while`, an assignment loop, and a hand-written tail-recursive function); this is the current comptime-on-wasm architecture's own known limit (`persistent_wat.zig`'s `AGENTS.md`), not something a cell could prove wrong today
 
+### B-238 — wasm GC: three generic-equality/read defects found by P5-c, not fixed
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (representation/generic-dispatch gaps; the cell decides) · **Owner:** unassigned · found by P5-c (front 170 s7), 2026-11-04
+
+Three distinct defects, each confirmed with a minimal repro while landing P5-c's generic-slot fix, none fixed there (outside `gcGenericArg`/`gcEqValues`'s own clean reach):
+
+- a written generic constructor and a bare one of the same declaration compare unequal on GC wasm: `val a: Two<i32> = Two.Pair(p: #(1, 2)); a == Two.Pair(p: #(1, 2))` answers `false`, folding to "two different types are never equal" (decision 210) — the written `Two<i32>` and the bare constructor are treated as different types when they are not.
+- `arr[0]?.v` over an array of generic records falls to linear memory ("does not type-check … `__arr_at_opt_any`") and prints a garbage number instead of the field's real value. Reproduces on origin/feat too (pre-existing, not a regression).
+- the linear lowering answers `false` for `Box(value: #(big)) == Box(value: #(big))` with `big: u64` — a tuple field holding a `u64` compares unequal to itself.
+
+- [ ] each repro turned into its own cell, red on the parent, and root-caused/fixed per its own mechanism (likely three separate fixes, not one)
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
