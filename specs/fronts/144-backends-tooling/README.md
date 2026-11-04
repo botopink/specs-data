@@ -3964,6 +3964,104 @@ This is the one piece blocking every real rakun stereotype with injected fields 
 
 - [ ] the minimal repro turned into its own cell, red on erlang on the parent; root-caused (likely an erlang codegen gap in how a `compiler.ast`-built closure's static-method-by-name call is emitted when the closure crosses module boundaries as a value) and fixed, green after
 
+**Broader than first filed (machine-1, going past m1-0293/m1-0300): reproduces for an instance method on a freshly-constructed value too, not only a static method called by the owning type's own name.** Two independent minimal repros, both erlang-only, both the identical shape — a `compiler.ast`-built closure containing a `Member` node, held as a value (`compiler.init` → a module `var`), called later rather than dot-called immediately where it was added:
+
+Shape 1 — static method by name (`Member(Name(owner), "make")`), matching the original report:
+
+`marks.bp`:
+```
+import {compiler, compiler.Call, compiler.Name, compiler.Member} from "std";
+
+pub var registered: ?fn() -> string = null;
+
+pub fn registerCheck(f: fn() -> string) -> void {
+    registered = f;
+}
+
+pub fn component(syntax decl: unknown) -> void {
+    val owner = compiler.name(decl)!;
+    compiler.addMember(
+        "pub fn make() -> " + owner + " { return " + owner + "(n: 42); }",
+    );
+    compiler.addMember(
+        "pub fn check() -> string { return \"checked:\" + " + owner + ".make().n.toString(); }",
+    );
+    compiler.init({ ->
+        registerCheck({ -> compiler.ast(Call(callee: Member(target: Name(owner), member: "check"), args: [])) });
+    });
+}
+```
+
+`main.bp`:
+```
+pub mod marks;
+import {marks.component, marks.registered};
+import {io.terminal.print} from "std";
+
+#[component]
+pub type Widget(n: i32) {
+}
+
+pub fn main() -> void {
+    val f = registered;
+    if (f != null) {
+        print(f());
+    }
+}
+```
+
+`botopink run --target erlang`: `crash: undef`. Calling `Widget.check()` directly (dot-call) answers `checked:42` correctly on erlang and commonJS both — only the held-value path crashes.
+
+Shape 2 — an instance method on a value the SAME tree just constructed (`Member(aCallNode, "validate")`, no static-method-by-name at all):
+
+`marks.bp`:
+```
+import {compiler, compiler.Call, compiler.Name, compiler.Member, compiler.Arg, compiler.Lit} from "std";
+
+pub var registeredCheck: ?fn() -> string = null;
+
+pub fn registerCheck(f: fn() -> string) -> void {
+    registeredCheck = f;
+}
+
+pub fn configurationProperties(syntax decl: unknown, comptime prefix: string) -> void {
+    val declName = compiler.name(decl)!;
+    val constructCall = Call(callee: Name(declName), args: [Arg(name: "port", value: Lit(7))]);
+    val callValidate = Call(callee: Member(target: constructCall, member: "validate"), args: []);
+    val check = fn() -> string {
+        return compiler.ast(callValidate);
+    };
+    compiler.addMember("check", check);
+    compiler.init({ -> registerCheck(check); });
+}
+```
+
+`main.bp`:
+```
+pub mod marks;
+import {marks.configurationProperties, marks.registeredCheck};
+import {io.terminal.print} from "std";
+
+#[configurationProperties("db")]
+pub type DbConfig(port: i32) {
+    pub fn validate(self: Self) -> string {
+        return "port=" + self.port.toString();
+    }
+}
+
+pub fn main() -> void {
+    print("direct: " + DbConfig.check());
+    val f = registeredCheck;
+    if (f != null) {
+        print("registry: " + f());
+    }
+}
+```
+
+`botopink run --target erlang`: `direct: port=7` prints first (the dot-call, `DbConfig.check()`, runs fine), then `crash: undef` for the held value retrieved from `registeredCheck`. Same shape as shape 1, but the `Member` here targets a fresh `Call` result (an instance method on a constructed value), not a type name — ruling out "static dispatch by name" as the specific cause; it looks like the general case is any `compiler.ast`-built `Member` call inside a closure that crosses from "added, dot-called where it's defined" to "held and invoked elsewhere."
+
+This confirms the root cause is likely broader than "static-method-by-name emission," and blocks both rakun shapes it was filed for: 165 s10's method-marker route/bean registrations (decorators.bp:263/349/427) and 842 (1)'s held-check pattern (config.bp:2067) — both still red; registration.bp's own row (actuator_api/registration.bp:270) needed no `compiler.ast` at all and is fixed by a cross-decorator behavior retyping instead (842 (2)).
+
 ### B-241 — wasm GC: an awaited task answering a record, as the last statement of an async fn, gives convert ref
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2 · found landing B-209/P-C (front 170 s7), 2026-11-04
