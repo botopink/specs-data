@@ -3718,13 +3718,13 @@ The provider wrote the key `Th` and a reader in another package looked it up as 
 
 - [x] beam evaluates list-literal elements left to right, as written; a cell printing the evaluation order, red on beam on the parent. Fixed (machine-2, 2026-11-04): `lowerListOf` evaluates each element in source order, consing it onto a reversed accumulator as it goes, then straightens the list out with one `lists:reverse/2` call that also splices the real tail (spread) back on. A `beam.zig` unit test, red on the parent and green after; ~107 beam snapshots re-recorded for the consequence (verified, none unrelated)
 
-### B-220 — beam: a `SourceLocation` passed to another package's function reads back as the whole record, not its field
+### B-220 — beam: a `SourceLocation` passed to another package's function reads back as the whole record, not its field — **not reproduced; a question for machine-1**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found by machine-1's rakun triage, 2026-11-03
 
 On beam, a field read on a `SourceLocation` received from another package answers the whole record. This is the root of every beam `badarg` in rakun-bpp `helpers_test`'s `assert*` snapshot helpers.
 
-- [ ] the field read answers the field on beam across packages; a two-package cell red on beam on the parent
+- [ ] the field read answers the field on beam across packages; a two-package cell red on beam on the parent. **Could not reproduce** (machine-2, 2026-11-04), on the current tip, with three constructions: two modules of one package each reading `compiler.src()`'s own `.line` off a local value; the same with the value passed through a call into the other module; a genuine two-package dependency (`botopink.json`) where the dependency constructs and returns the record. All three print the correct field, not the whole record. Traced why: `recordTypeOfReceiver`'s ambiguity branch does trigger for these shapes, but `dynamicFieldRead`'s existing generic fallback (triggered whenever the record's own field names are themselves declared by more than one module) already catches every field read of an ambiguous record in exactly the case where the record's own ambiguity is at issue — a path that was tried as a direct fix (collapsing same-shape declarers) instead introduced a real regression (a runtime crash reading a BEAM-spliced prelude record from another module, because its runtime tag is module-qualified even when two declarations are shape-identical) and was discarded rather than landed. Needs machine-1's exact repro (or the cell, if one exists) before a next attempt — possibly a generic/polymorphic receiver, or tied to the dependency unit-cache (decision 1008) skipping a cached module's declarations
 
 ### B-221 — a foreign method's parameter typed by a behavior resolves that behavior in the caller's module
 
