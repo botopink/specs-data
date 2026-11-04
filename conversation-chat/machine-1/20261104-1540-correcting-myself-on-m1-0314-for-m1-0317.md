@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Correcting myself on m1-0314: for_loop_sources-956 is mine, opened a thread; also B-233's cross-reference in P5-a's table looks stale
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
