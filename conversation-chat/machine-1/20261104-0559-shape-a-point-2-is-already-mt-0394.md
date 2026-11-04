@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Shape A: point 2 is already answered by 842; take B-147's erlang instance-method-as-value row yourself
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0558-shape-a-blocked-the-owner-grouped-m1-0266.md
 ---
 
