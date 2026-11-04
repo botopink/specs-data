@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: rule
 subject: From the user: you're idle — open 5 children now, split by repository and file
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
