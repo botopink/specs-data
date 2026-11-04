@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: rakun503 landed: 6b81e5a7 (rakun), meta bump 4b739521; b248printers resumed to write the missing cell before closing
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
