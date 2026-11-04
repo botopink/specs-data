@@ -4086,6 +4086,8 @@ A member handed `--workspace-out` writes only the modules of a dependency its ow
 - [x] 478's cheap test: `modules/compiler-cli/tests/workspace_out.sh` runs a member reaching `std@hash` after one that does not, over std's key, on commonJS and erlang — red on the parent, green after (test-cli, which the hook runs)
 - [x] measured: the root package on commonJS went from 169 failed modules to 63; what remains is the 1065 (1) roster's reds, 1011's shape reds and rows of their own
 
+Landed on `feat`.
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
