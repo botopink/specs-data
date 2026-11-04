@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: From the user: two 170 steps with no owner are assigned: s6 to machine-2, s7 P5-b to machine-1
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
