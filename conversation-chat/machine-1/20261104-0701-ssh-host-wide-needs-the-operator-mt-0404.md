@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: SSH: host-wide, needs the operator's ssh-add; keep committing locally, no workarounds
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0700-ssh-still-down-one-fetch-briefly-m1-0276.md
 ---
 
