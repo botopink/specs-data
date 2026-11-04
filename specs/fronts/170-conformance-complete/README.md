@@ -192,7 +192,7 @@ type-parameter field is lowered but no cell reaches it.
   - a `u64` in a tuple, `$box_u64 <: $box_i64`;
   - a generic field of a generic type;
   - a boxed variant.
-- [x] **P5-d, type recovery** (sonnet): each "of no known type" / "nothing types" gap answered from the checker's types, across generators, lambda parameters, awaited tasks and empty literals. It also closes s9's "`failure.attempt` over an `i64`". **"an awaited task of a type parameter" landed** (machine-2, 2026-11-03, decision 1105): `bindAwaitedGeneric` reused `genericRetByFnArg`'s own substitution for a generic call's single thunk parameter (`attemptTask<T>(f: fn() -> Async<T>)`, never bound before), and `declareNestedLocals`'s early pre-pass now reads a `for`-loop element's own declared type the same way the real lowering does, so `gcFail`'s first-gap-wins side effect stops poisoning the whole module before the real pass runs. Re-measured on P5-a's own corpus (all 67 libraries, `lib_one`'s harness replicated, `disabled.txt` ignored — it never filters which pairs the harness runs): **41 → 0** across 41 of 67 libraries (each had hit it exactly once); no library's count increased. The other remaining P5-d gaps (generators, lambda parameters, empty literals, s9's `failure.attempt` over an `i64`) are still open.
+- [x] **P5-d, type recovery** (sonnet): each "of no known type" / "nothing types" gap answered from the checker's types, across generators, lambda parameters, awaited tasks and empty literals. It also closes s9's "`failure.attempt` over an `i64`". **"an awaited task of a type parameter" (piece 1) landed** (machine-2, 2026-11-03, decision 1105): `bindAwaitedGeneric` reused `genericRetByFnArg`'s own substitution for a generic call's single thunk parameter (`attemptTask<T>(f: fn() -> Async<T>)`, never bound before), and `declareNestedLocals`'s early pre-pass now reads a `for`-loop element's own declared type the same way the real lowering does, so `gcFail`'s first-gap-wins side effect stops poisoning the whole module before the real pass runs. **"an empty array literal of no known type" and "a tuple element of a value of no known tuple type" (pieces 2/3) landed** (machine-1, decision 1105): a GC-gap site now reads the checker's own declared type instead of falling to the deleted linear lowering. Re-measured on the full P5-a corpus (510 members — one more conformance module landed since P5-a's own 509; `disabled.txt` ignored, same methodology): "a tuple element of a value of no known tuple type" **73/25 → 0/0**, fully closed. "an awaited task of a type parameter" **60/60 → 19/19**, all 19 left in conformance modules (0 libraries), every one at the same site — the decision-989 harness's own `await loaded.run()` over a comptime-loaded case's reflected async return, a different generic-resolution path than piece 1's thunk-parameter shape, which doesn't reach it. "an empty array literal of no known type" **301/24 → 366/28**, now library-only (0 modules), every hit the same site (`rakun-bpp/src/element.bp:29:5`'s `children: []` against the builtin `Children` union/coercion type, not a plain declared array type) — the count rising rather than falling is very likely first-gap-wins unmasking (these libraries plausibly already fell to `.linear` under a different, now-fixed reason, and this is the newly-exposed first one), not a regression, though this isn't directly confirmed. Whether either residual is its own row, or folds into a later P5-d piece, is raised in chat for the maintainer, not decided here. The other remaining P5-d gaps (generators, lambda parameters, s9's `failure.attempt` over an `i64`) are still open.
 - [ ] **P5-e, control shapes** (sonnet): each a unit test:
   - an inlined lambda's endings;
   - defer arms;
@@ -200,7 +200,8 @@ type-parameter field is lowered but no cell reaches it.
   - destructuring;
   - `is` over a tuple;
   - an optional all-unit enum;
-  - the `convert ref` that remains after 229 s7.
+  - the `convert ref` that remains after 229 s7;
+  - "a binding over a condition that is no optional" (229 s8's last box, in flight).
 
   It also closes s9's "a GC module with exceptions keeps the checked site in GC", which is likely stale: verify it.
 - [ ] **P5-f, helper groups** (sonnet): each prelude group with no GC form is given a GC twin or proven unreachable from GC.
@@ -218,14 +219,14 @@ type-parameter field is lowered but no cell reaches it.
 
 | Total | Members | Reason | Example |
 |---|---|---|---|
-| 301 | 24 | an empty array literal of no known type | `modules/untyped` — `cases/untyped_array_float_push/src/main.bp:11:5` |
+| 301 → 366 | 24 → 28 | an empty array literal of no known type *(P5-d pieces 2/3 landed — re-measured: 0 left in modules, 28 in libraries, every one the same `rakun-bpp/src/element.bp:29:5` union/coercion-type site; residual, raised in chat, not yet filed)* | `modules/untyped` — `cases/untyped_array_float_push/src/main.bp:11:5` (pre-fix example; the residual is library-only) |
 | 288 | 24 | a declaration of `…`, a module this backend refused *(cascading, not a root cause — fires once per module importing an already-refused one)* | `modules/decisions-taken/unreached_unlowerable_function_ignored-531` |
 | 87 | 40 | **convert ref** *(front 229 s7's box — landed)* | `modules/embed` — `cases/embed_field_read_other_module/src/main.bp:11:5` |
-| 73 | 25 | a tuple element of a value of no known tuple type | `libraries/validation` — `src/json.bp:187:13` |
-| 60 | 60 | an awaited task of a type parameter *(structural — fires once per package/harness awaiting a generic `Async<T>`; **P5-d's own thunk-parameter case: landed, re-measured 41→0 across the libraries that hit it**)* | `modules/component` |
+| 73 → 0 | 25 → 0 | a tuple element of a value of no known tuple type *(P5-d piece 3 landed — fully closed, re-measured on the full corpus)* | `libraries/validation` — `src/json.bp:187:13` |
+| 60 → 19 | 60 → 19 | an awaited task of a type parameter *(P5-d piece 1, the thunk-parameter shape, landed; re-measured on the full corpus — the 19 left are all conformance modules, the decision-989 harness's own `await loaded.run()` over a reflected async return, a different generic-resolution path piece 1 doesn't reach; residual, raised in chat, not yet filed)* | `modules/component` |
 | 47 | 24 | the GC module does not type-check: a number where a reference was taken | `modules/decisions-taken/comptime_reflection_types_at_runtime-1071` |
 | 43 | 42 | the GC module does not type-check: a value of another type | `modules/array` — `__panic_raise` in `cellOf` |
-| 28 | 26 | a binding over a condition that is no optional | `modules/decisions-taken/mixed_literals_infer_union-150` |
+| 28 | 26 | a binding over a condition that is no optional *(229 s8's last box / P5-e's first piece, in flight)* | `modules/decisions-taken/mixed_literals_infer_union-150` |
 | 25 | 25 | a try over a Result of no known shape | `modules/decisions-taken/brace_without_arrow_is_block-525` |
 | 24 | 20 | a host-backed function with no wasm binding | `modules/behavior` — `panic` |
 | 10 | 10 | a bare variant name more than one enum declares | `modules/enum` |
@@ -238,7 +239,7 @@ type-parameter field is lowered but no cell reaches it.
 | 2 | 2 | a payload of no declared type | `modules/lambda` |
 | 2 | 2 | a lambda parameter nothing types | `modules/decisions-taken/fn_tail_value-409` |
 | 2 | 2 | **a call of std-wasm's `array.slice`, which has no GC marshal** *(front 229 s8's box — landed)* | `modules/case` — `cases/case_alternatives_and_arrays/src/main.bp:13:5` |
-| 1 each | 1 each | 20 more singleton reasons (i64→unknown narrowing; no iterable-walk form; the await-resumed-twice note (392); no string/array-method lowering; optional-container/no-print-shape; optional-all-unit-enum; `is` over a run-time type token; `at` over no known array type; array-of-another-shape in a type-param slot; array-literal no element type; `spawn_all` over thunks of no known type; run-time type token; `next()` with no `YieldStep`; loop over no known array type; lambda param of a type with no repr; call through a function value of no known result; `defer` not lowered yet; unbound name) | — |
+| 1 each | 1 each | 20 more singleton reasons (i64→unknown narrowing — **landed, front 229 s8's last box's own i64-cell piece**; no iterable-walk form; the await-resumed-twice note (392); no string/array-method lowering; optional-container/no-print-shape; optional-all-unit-enum; `is` over a run-time type token; `at` over no known array type; array-of-another-shape in a type-param slot; array-literal no element type; `spawn_all` over thunks of no known type; run-time type token; `next()` with no `YieldStep`; loop over no known array type; lambda param of a type with no repr; call through a function value of no known result; `defer` not lowered yet; unbound name) | — |
 
 Not blindly "unrelated" red: of the 75 module build/run failures and 31 library harness failures alongside this, 40+2 are cascading consequences of a sibling module's own `.linear` fallback (in scope for 1105), 18 are genuine runtime traps with no `.linear` note at all (pre-existing wasm runtime bugs, out of scope), and the rest are target-exclusion audits or unrelated refusals. Full raw data and methodology kept by the thread, not committed (scratch).
 
