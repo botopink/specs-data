@@ -4159,6 +4159,46 @@ None of the three targets' current answers match decision 1111. Each is its own 
 
 - [ ] a cell: a record holding a `Bytes`, an `Async<T>` and an `AsyncIter<T>` field, printed on all four targets, each answering per decision 1111; red on every target until fixed, including wasm's print-then-trap on `Async<T>`
 
+### B-249 — a prototype `#[managed]`'s generated `new()` fails "expected &lt;Type&gt;, got function" over a field resolved by `context.rkResolve` — rakun only
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a real-vs-text-generated code mismatch; the cause isn't located yet) · **Owner:** unassigned · found landing rakun's 716 (1) decorator-sites fix (842 (1)'s held-value rewrite), 2026-11-04
+
+No standalone repro outside rakun exists — a look-alike `#[managed]`-shaped decorator that adds `new()` from text, with and without the init executors and a second decorator adding `make()`, checks clean both ways. The bug only reproduces through a test file inside `modules/rakun` using rakun's real `context.managed`. Confirmed NOT caused by the 716 (1) landing's held-`compiler.ast` change: it still fails with both `compiler.ast(callNew)` executors replaced by `{ -> 0 }`.
+
+Minimal repro, `modules/rakun/test/zz_probe_test.bp`, checked with `botopink check` in `modules/rakun`:
+
+```
+import {runtime.rkScan, runtime.rkSingleton, runtime.rkEnter, runtime.rkDone};
+import {context.managed, context.scope, context.rkResolve, context.rkRegisterBean, context.rkRequestScoped};
+
+pub type ProbeRepo() {
+}
+
+#[managed]
+#[scope("prototype")]
+pub type ProbeMachine(
+    repo: ProbeRepo,
+) {
+}
+```
+
+Error:
+```
+error: type mismatch: expected ProbeRepo, got function
+ --> test/zz_probe_test.bp:7:3
+  |
+7 | #[managed]
+  |   ^
+  |
+  = called from src/context.bp:917:18
+```
+
+`src/context.bp:917` is `managed`'s `compiler.addMember("pub fn new() -> " + declName + " { return " + declName + "(" + args.join(", ") + "); }")`, each field's argument `rkResolve(<FieldType>, "<FieldType>")`. Remove the field and the check is clean. Write the equivalent `pub fn new()` by hand with no `#[managed]` and the check is clean too — so the generated text itself, reached only through the real decorator pipeline, produces a function value where a `ProbeRepo` is expected.
+
+Original site: `test/context_test.bp:719:3`, "expected OrderRepository, got function", called from `src/context.bp:917:18`.
+
+- [ ] a cell reproducing the shape above (a prototype-scoped `#[managed]` type with a field resolved by `rkResolve`), red on the parent, root-caused and fixed
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
