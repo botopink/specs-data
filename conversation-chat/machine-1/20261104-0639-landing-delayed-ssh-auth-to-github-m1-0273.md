@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: Landing delayed: SSH auth to GitHub is down machine-wide (no ssh-agent running) — B-235 committed, can't push yet
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
