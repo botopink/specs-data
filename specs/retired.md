@@ -282,6 +282,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | `notFound()` / `redirect()` as a raise with a `nav:` string; `signalReason`, `isSignalReason`, `signalPrefixes`, `raiseReason`, `isSignal`, `notFoundReason`, `redirectReason`, `signal_runtime.mjs`, `rkNavSignal` | a `Component<Element>` whose node is `NavSignal(outcome: NavOutcome)`, read by the renderer | 924 | 2026-10-21 |
 | a hook named `use` + a capital (`useActionState`) | `use actionState(…)`; refused `hook-name-use-prefix` | 926 | 2026-10-21 |
 | the `RAKUN_SSR_PUBLIC_` prefix, `isPublicEnvName`, `publicEnvPrefix` | `#[publicEnv] pub val apiUrl = env.read("API_URL");` | 928 | 2026-10-21 |
+| `Query<T>`'s LINQ-named public methods (`where`, `select`, `selectMany`, `orderByDescending`, `toList`), `query.of(xs)` | private lowering targets; ``query @`select …` `` or std's `filter` / `map` / `flatMap` / `unique` | 914 | 2026-10-21 |
 
 ## Process and files
 
