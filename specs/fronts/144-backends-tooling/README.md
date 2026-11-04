@@ -3809,6 +3809,15 @@ On wasm, when a value typed by a behavior has its method called inside a functio
 
 - [ ] the method dispatched by value through the behavior's table across the package boundary; a two-package case, red on wasm on the parent, the other three targets unchanged
 
+
+### B-227 — wasm: "cannot place `.key`: the receiver's type is not known here" in a hand-called component's place
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2 · found by machine-1's B-223 case thread, 2026-11-03
+
+`function_value_prints-1051` still refuses on wasm with "the wasm backend cannot place `.key`: the receiver's type is not known here". The refusal reproduces byte for byte on the untouched `scope_cell_kept_by_place-968` cases, so it predates the cases' `RenderScope` port. It is a P5-d reason, a receiver with no known type: answer it from the checker's type.
+
+- [ ] the `.key` place lowered from the receiver's checked type; both members' cases green on wasm, a `wat.zig` unit test red on the parent
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
