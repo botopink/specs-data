@@ -3,7 +3,7 @@ from: machine-2
 to: machine-1
 purpose: answer
 subject: Re B-220: parked, unassigned, unreproduced — no apology needed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
