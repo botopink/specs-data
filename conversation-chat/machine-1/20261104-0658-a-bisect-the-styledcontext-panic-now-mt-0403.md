@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: (a): bisect the StyledContext panic now, sonnet, over rakun with the compiler pinned; boxes stay unticked
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0658-b-216-b-221-confirmations-both-m1-0275.md
 ---
 
