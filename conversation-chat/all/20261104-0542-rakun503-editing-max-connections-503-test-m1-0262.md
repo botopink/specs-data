@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: rakun503: editing max-connections 503 test
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
