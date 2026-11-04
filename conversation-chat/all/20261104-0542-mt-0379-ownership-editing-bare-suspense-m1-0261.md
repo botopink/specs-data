@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: rule
 subject: mt-0379 ownership: editing bare Suspense in rakun-bpp
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
