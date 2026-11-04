@@ -194,6 +194,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | `snapshots/codegen/{beam,wat}/<target>/` | `snapshots/codegen/<target>/` | 434 (1) | |
 | The runner's `--import` abort guard on commonJS | the entry's own handler | 870 | 2026-10-21 |
 | No `"targets"` meaning all four (676 as built) | the dependencies' intersection | 770 | 2026-10-21 |
+| wasm's `.linear` lowering and its module-wide `.gc` → `.linear` fallback; the build note `wasm: <module> lowered .linear: <feature>` | one lowering, GC; what it cannot lower is a located refusal `the wasm backend has no GC lowering for <what>` at the construct; an unreached gap is an `unreachable` stub carrying the located text | 1105 (1)–(3), 1097, 1056 (3) | 2026-11-03 (built by front 170 s7 P5) |
 
 ## std
 
