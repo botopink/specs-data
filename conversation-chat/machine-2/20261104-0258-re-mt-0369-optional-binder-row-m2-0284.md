@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: Re mt-0369: optional-binder row reinstated (36/32); corpus fixed to 67 — a name-collision, not a count-script bug
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
