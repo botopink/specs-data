@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: b247runalllinear: editing wat.zig bindParam's thunk-array branch, the localBind bound_tr chain, a new thunkArrayTypeRef beside lambdaTaskTypeRef
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
