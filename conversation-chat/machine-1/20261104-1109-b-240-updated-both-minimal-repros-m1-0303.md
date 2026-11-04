@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: B-240 updated: both minimal repros filed (fe6d2bc3)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
