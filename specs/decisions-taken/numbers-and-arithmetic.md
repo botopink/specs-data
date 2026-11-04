@@ -35,6 +35,7 @@ binds:
   - '`1-botopink-lang/144` B-24, B-27'
   - '`2-libraries/151` s1'
   - '01-checker (lexer, checker)'
+  - '01-checker (literal typing); decision 247; front 170 s6 (cell numeric_literal_suffixes)'
   - '02-erlang'
   - '02/97'
   - '03-beam'
@@ -42,8 +43,8 @@ binds:
 retired:
   - '`I32`, `I64` (per-width contracts)'
 first-step: 176
-last-step: 534
-in-force: 8
+last-step: 1110
+in-force: 9
 superseded: 0
 ---
 # numbers-and-arithmetic — literals, widths, overflow, `bigint`, `Decimal`
@@ -58,8 +59,8 @@ superseded: 0
 
 (4) `Dict.bump` — 340, 534.
 
-Steps: 176, 215, 247, 264, 319, 332, 340, 444, 472, 496, 500, 501, 527, 533, 534, 547, 641, 675
-Binds: 02/97 · 01-checker · 01-checker (lexer, checker) · backends · 02-erlang · 03-beam · 04-js · `04-js` step 9 · `01-checker` step 18 · `02/97` step 13 · `02-erlang`, `03-beam` (the shared cells) · `01-compiler/139` · `02/97` step 15 · `03-bundled-libs/125` · the 13 files with a `case` over `Json` · `01-compiler/17-beam-memory` step 1 · std's `Dict` · `1-botopink-lang/144` B-00e · 441 · `1-botopink-lang/144` B-24 · 264 · 319 · `1-botopink-lang/144` B-24, B-27 · `2-libraries/151` s1 · 332 · `1-botopink-lang/144` · `machine-2/144` B-41, B-07
+Steps: 176, 215, 247, 264, 319, 332, 340, 444, 472, 496, 500, 501, 527, 533, 534, 547, 641, 675, 1110
+Binds: 02/97 · 01-checker · 01-checker (lexer, checker) · backends · 02-erlang · 03-beam · 04-js · `04-js` step 9 · `01-checker` step 18 · `02/97` step 13 · `02-erlang`, `03-beam` (the shared cells) · `01-compiler/139` · `02/97` step 15 · `03-bundled-libs/125` · the 13 files with a `case` over `Json` · `01-compiler/17-beam-memory` step 1 · std's `Dict` · `1-botopink-lang/144` B-00e · 441 · `1-botopink-lang/144` B-24 · 264 · 319 · `1-botopink-lang/144` B-24, B-27 · `2-libraries/151` s1 · 332 · `1-botopink-lang/144` · `machine-2/144` B-41, B-07 · 01-checker (literal typing); decision 247; front 170 s6 (cell numeric_literal_suffixes)
 
 ## Record
 
@@ -73,3 +74,4 @@ Binds: 02/97 · 01-checker · 01-checker (lexer, checker) · backends · 02-erla
 | 500 | 97-s15-a | (a) 142 s1 first (144 B-27, then 151 s1): `json` leaves std whole; 97 s15's `Json` half (`Int` / `BigInt` / `Dec` replacing the removed `Num`, the consumers' arms) lands in the json repository (151); its `Decimal` half stays in std (144 B-24); each consumer is touched once | `1-botopink-lang/144` B-24, B-27 · `2-libraries/151` s1 | json_numbers_in_json_library |
 | 501 | 139-a | (a), as built: a `bigint`'s type stays static — it does not widen to `unknown` (`bigint-widened`), `is` neither tests for one nor tests a value holding one (`bigint-type-test`), a `comptime` computing one is `comptime-bigint`; `print`'s variadic `unknown` takes one and a union holding one stays legal; (b) or (c) may widen it later, when a program needs it | `1-botopink-lang/144` B-24 · 332 | bigint_type_stays_static |
 | 534 | B-26-a | (a): `Dict.bump(key, by)` exists for an integer `V` alone (340); on a `Dict` whose `V` is not an integer type the call is refused, located; `bump` is a plain `Dict` method (17-c); on a module `var`, `d = d.bump(k, 1)` is an `x = f(x)` and so atomic on the BEAM (17-c (ii)); wasm's `8976.0` is the separately filed defect | `1-botopink-lang/144` | dict_bump_integer_values_only |
+| 1110 | ck3-int · (the maintainer, 2026-11-04, 2026-11-04) | 247's "a literal without suffix never changes type to fit" is about the float types and about an integer literal standing for a float: `val f: f32 = 1.5` and `val x: f64 = 1` stay errors. An integer literal without suffix takes the expected integer type when its value fits that type, as in Kotlin (247's model): `val k: i64 = 1` and the pattern `1` against a `u8` are accepted. A value that does not fit (`val b: u8 = 300`) is a located error at the literal. 215 stands. | 01-checker (literal typing); decision 247; front 170 s6 (cell numeric_literal_suffixes) | |
