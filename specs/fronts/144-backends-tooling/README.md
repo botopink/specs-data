@@ -3911,14 +3911,14 @@ Suspects, unconfirmed:
 - [ ] the three cells built (`added_member_handed_as_value`, `decl_in_type_position`, `decl_type_param_no_member`), each red on the parent
 
 
-### B-236 — beam: the compiler crashes (stack overflow, "recursive panic") building rakun-stylesheet's `alpha` / `bg-color` cells
+### B-236 — beam: the compiler crashes (stack overflow, "recursive panic") building rakun-stylesheet's `alpha` / `bg-color` cells — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured crash) · **Owner:** machine-2 · found by machine-1 in `test-cli`'s `analysis_equivalence.sh`, 2026-11-04, on a clean origin/feat with OTP 28
 
 Building rakun-stylesheet's `alpha` and `bg-color` cells for beam segfaults inside the compiler: `zig_probe_stack` (`stack_probe.zig`), "aborting due to recursive panic". A crash in the compiler is a red of its own, whatever the program: the build must answer a result or a located refusal. Most likely an unbounded recursion in beam lowering over a deep expression.
 
-- [ ] the recursion found (a debug build's trace) and bounded, made iterative or depth-limited; a unit test with the cells' shape, a crash on the parent, green after
-- [ ] the two cells build on beam
+- [x] the recursion found (a debug build's trace) and bounded, made iterative or depth-limited; a unit test with the cells' shape, a crash on the parent, green after. Found (machine-2, 2026-11-04, confirmed by a Debug-build gdb backtrace): a chained `recv.append(a).append(b).append(c)…` staged one link at a time, each link's receiver itself an `.append()` call — one native Zig stack frame per link through `stageCall → stageOperands → lowerExprIntoX0 → lowerCall → emitPrimMethod → emitPrimInline → primAppendList`, unbounded in the chain's length (a library's palette-table builder, one `.append()` per colour family, ~25 links, blew the stack). Fixed: a new `appendChainLink` walks the whole chain with an explicit loop (gated by the same checks `lowerCall` already applies, so anything ambiguous falls back to the old single-link path unchanged); `primAppendList` now stages the whole chain as one call, concatenating with a single `lists:append/1` over a materialised list of lists — native recursion stays at a fixed depth regardless of chain length. A `beam.zig` unit test (a 50-link chain, below a separate unrelated recursion threshold in the checker's own `infer.zig`, confirmed by gdb to be the identical crash shape at longer chains), red on the parent, green after
+- [x] the two cells build on beam. Confirmed: both cells build and run clean on Debug and ReleaseSafe, matching their accepted `snapshot/output/main.snap` byte for byte
 
 ### B-237 — test-cli: `child_group_killed.sh`'s two build-timeout cases answer "wasmtime: call stack exhausted" instead of reaching the timeout
 
