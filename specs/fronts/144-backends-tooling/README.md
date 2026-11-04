@@ -3964,6 +3964,14 @@ This is the one piece blocking every real rakun stereotype with injected fields 
 
 - [ ] the minimal repro turned into its own cell, red on erlang on the parent; root-caused (likely an erlang codegen gap in how a `compiler.ast`-built closure's static-method-by-name call is emitted when the closure crosses module boundaries as a value) and fixed, green after
 
+### B-241 — wasm GC: an awaited task answering a record, as the last statement of an async fn -&gt; Async&lt;void&gt;, gives convert ref
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2 · found landing B-209/P-C (front 170 s7), 2026-11-04
+
+No component involved. `async fn main() -> Async<void> { await make(10); }`, where `make` answers a task of a record, reproduces: `renderBody`'s own tail conversion gives `convert ref` when the awaited value answers a record and the enclosing function's own return is `void`. Confirmed still red on origin/feat with B-209/P-C's own fix applied (not caused by it, not fixed by it). Blocked three conformance members on components incidentally (`use`, `body_marker_whole_return_type-553`, `prelude_is_primitives-606`), none a regression — all three hit this exact shape, not a component-specific one.
+
+- [ ] the minimal repro (above) turned into its own cell, red on the parent; root-caused in `renderBody`'s tail-conversion path and fixed, green after
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
