@@ -3862,18 +3862,15 @@ Once `conformance/modules/case`'s bundled module gets past B-229's `internString
 
 - [ ] find why this one `gcFail`/diagnostic call computes a column this way and fix it to report the real column (or omit one if none applies); oracle: the cell's located column matches the source, or is a column this backend's convention actually uses
 
-### B-232 — the compiler knows rakun-bpp's `Children` by name (`isCompilerKnownTypeName`, `childrenCoercion`), against decision 804
+### B-232 — the compiler knows rakun-bpp's `Children` by name (`isCompilerKnownTypeName`, `childrenCoercion`), against decision 804 — **closed**
 
 **Repository:** botopink-lang (`--lang`), then rakun (`rakun-bpp`) · **Model:** opus (a checker rule; read the decisions first, stop on a conflict) · **Owner:** machine-1 · found by machine-1 building P5-d, 2026-11-04
 
-`Children` is declared nowhere: no `type Children` exists in rakun or std. `env.zig`'s `isCompilerKnownTypeName` hard-codes the bare name, and `infer.zig`'s `childrenCoercion` skips unification when a target is literally named `Children`. The slot is never rewritten into a real type. So no backend can learn its shape, and wasm's GC lowering of `children: []` in `rakun-bpp/src/element.bp:29` falls to linear on every rakun-bpp module.
+`Children` was declared nowhere: `env.zig`'s `isCompilerKnownTypeName` hard-coded the bare name and `infer.zig`'s `childrenCoercion` skipped unification for a target literally named `Children`. So no backend could learn its shape, and wasm's GC lowering of `children: []` in `rakun-bpp/src/element.bp:29` fell to linear on every rakun-bpp module.
 
-Decision 804 says the language does not know rakun-bpp's tree: "Element is AST … 100% rakun-bpp; the bpp language doesn't care", and "`NodeChildren = NodeChild[]`" is rakun-bpp's own type. A compiler-known `Children` contradicts it.
-
-- [ ] read 804, 809 (7) and the html-DSL hole decisions. If the coercion a `Children` slot gets (a string, an `Element`, an array in a hole) is decided language-level, write which decision fixes it, and stop for the maintainer
-- [ ] otherwise: rakun-bpp declares its children type as an ordinary alias (`NodeChildren = NodeChild[]`, 804), and the checker drops the name-keyed `Children` from `isCompilerKnownTypeName` and `childrenCoercion`. The coercion, if one stays, is written in rakun-bpp's own types
-- [ ] rakun-bpp's `element.bp:29` lowers in GC with no `.linear` note, through P5-d's union-array representation, and rakun-bpp's suite is unchanged on commonJS, erlang and beam
-
+- [x] read 804, 809 (7) and the html-DSL hole decisions: no decision keeps the coercion at the language level. 804 (4) retires "the compiler-known `Children` and its coercions", 809 (7) restates it, and 857 (2) makes `Children` an unknown name. The html holes are rakun-bpp's own `Node` (191, 223)
+- [x] the checker drops the name-keyed `Children` from `isCompilerKnownTypeName` and `childrenCoercion`. rakun-bpp declares `pub type NodeChildren = Element[];`, an interim spelling until 809 (7) makes a child `Component<Element>` (the library's own choice, the maintainer, 2026-11-04). The G4 test that asserted the retired coercion is removed
+- [x] rakun-bpp's `element.bp:29` lowers in GC with no `.linear` note, through P5-d's union-array representation; rakun-bpp's suite is unchanged on commonJS, erlang and beam
 
 ### B-234 — wasm GC is slower than the old linear lowering on small-record allocation (4×) and on `Dict` (5×)
 
