@@ -4261,6 +4261,28 @@ Independently confirmed by rakun503 (machine-1, 2026-11-04): the BEAM loader rej
 
 - [ ] a cell: the repro above, red on wasm (both modes), green after; `erlang`/`commonJS` stay the oracle (`[true]`)
 
+### B-253 — wasm: a panicking `print` leaks the record's already-rendered prefix to stdout, the other three targets write nothing
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (the fix shape is already named by the maintainer) · **Owner:** unassigned · found closing B-248 (front 144), 2026-11-04
+
+Decision 530: one text on the four targets. This program gives two:
+
+```
+type Holder(t: Async<i32>, it: AsyncIter<i32>, b: bytes)
+async fn mk() -> Async<i32> { return 1; }
+async iter fn mkIter() -> AsyncIter<i32> { yield 1; }
+pub async fn main() -> Async<void> {
+    val h = Holder(t: mk(), it: mkIter(), b: bytes.fromUtf8("hi"));
+    print(h);
+}
+```
+
+On wasm, `print(h)` writes the partial text `Holder(t: ` to stdout (via `print_str_raw`, streamed field by field as `gcDeclPrinter` computes them) BEFORE panicking on the `t` field per decision 1104 ("wasm cannot print a Task value dynamically yet"). Erlang, commonJS and beam write nothing to stdout before their own panic on the same program — each builds the complete rendered text first, then writes it, so a panic partway through never reaches the terminal.
+
+The maintainer's framing: "wasm's print builds the whole text before writing, as the others do."
+
+- [ ] `gcDeclPrinter` (and any sibling record/value printer that streams field text as it computes it) buffers the full rendered text and writes it in one call, matching the other three targets' atomicity; a cell: the `Holder` program above, red on wasm (asserting nothing reaches stdout before the panic), green after
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
