@@ -271,7 +271,7 @@ Full raw data (per-member stderr, the aggregation script, the full table) kept b
 
 (The second residual, "an awaited task at the in-process harness," is B-209's — see B-162 P1's own box above, not a P5-d piece.)
 
-### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539)
+### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s7 (this front, the same codegen)
 
