@@ -3964,7 +3964,7 @@ This is the one piece blocking every real rakun stereotype with injected fields 
 
 - [ ] the minimal repro turned into its own cell, red on erlang on the parent; root-caused (likely an erlang codegen gap in how a `compiler.ast`-built closure's static-method-by-name call is emitted when the closure crosses module boundaries as a value) and fixed, green after
 
-### B-241 — wasm GC: an awaited task answering a record, as the last statement of an async fn -&gt; Async&lt;void&gt;, gives convert ref
+### B-241 — wasm GC: an awaited task answering a record, as the last statement of an async fn, gives convert ref
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2 · found landing B-209/P-C (front 170 s7), 2026-11-04
 
