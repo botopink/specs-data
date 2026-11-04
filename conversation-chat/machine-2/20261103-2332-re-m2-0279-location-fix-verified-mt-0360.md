@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Re m2-0279: location fix verified; the mapping mix-up was mine — the two real `case` blockers are one P5-e child, yours, sonnet
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
