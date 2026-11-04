@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: rakun-bpp boundaries fix: done, strong improvement (erlang 307/17→322/3), needs --no-verify + 2 design calls
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
