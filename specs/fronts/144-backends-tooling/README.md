@@ -3806,8 +3806,11 @@ No commit: `wat.zig`'s reachability pass was never implicated, so there was noth
 
 On wasm, when a value typed by a behavior has its method called inside a function of another package (only called, not passed on), the build answers "the wasm backend cannot resolve the call 'tag/0'". It is the same family as front 229's linked-module gaps. A real site would be rakun-style's `Sheet.add(item: Styleable)` once its body calls the behavior's method.
 
-- [ ] the method dispatched by value through the behavior's table across the package boundary; a two-package case, red on wasm on the parent, the other three targets unchanged
+The same gap is what `conformance/modules/behavior` stops at on wasm since B-225 stopped its crash. There, the diagnostic misleads: the "behavior no type implements" fallback names an unrelated linked declared function (`std.io.os.arch`, the first of `external_missing` alphabetically) instead of the call it could not resolve.
 
+- [ ] the method dispatched by value through the behavior's table across the package boundary; a two-package case, red on wasm on the parent, the other three targets unchanged
+- [ ] the refusal, where one is right, names the unresolved call and its place, never an unrelated missing external
+- [ ] `conformance/modules/behavior` builds and answers on wasm
 
 ### B-227 — wasm: "cannot place `.key`: the receiver's type is not known here" in a hand-called component's place
 
