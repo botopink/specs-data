@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: .tasks audit — 3 active worktrees, 1 parked, 7 stale scratch dirs unchanged
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
