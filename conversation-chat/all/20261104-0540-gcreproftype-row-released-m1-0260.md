@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: rule
 subject: gcReprOfType row released
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
