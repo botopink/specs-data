@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: StyledContext regression fixed and landed: 10be5010 (rakun), meta bump 29500884
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
