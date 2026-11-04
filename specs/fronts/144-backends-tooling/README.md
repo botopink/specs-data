@@ -3844,6 +3844,17 @@ Once `conformance/modules/case`'s bundled module gets past B-229's `internString
 
 - [ ] isolate the minimal repro (declare + construct only, no case arm) and find the type-check mismatch's root cause in the GC print-dispatch path; oracle: the repro cell red on the parent, green after
 
+
+### B-231 — std has no controllable clock: a test cannot advance `io.clock` or the timers the code under test reads
+
+**Repository:** botopink-lang (`--lang`, std) · **Model:** opus (a design no decision fixes yet; a fable plan first) · **Owner:** machine-2 (std's lane), after its running work · found by machine-1 on front 170 s13, 2026-11-03
+
+`io/clock.bp`'s `nowMillis`, `monotonicMillis` and `sleep`, and `async.bp`'s `delay`, call the host directly: `Date.now`, `erlang:system_time`, `Atomics.wait`, `timer:sleep`. There is no clock type, no seam a test can inject, and nothing a test can advance. `testing/mocks.bp`'s `#[mock]` doubles behavior methods only, never free functions like these. Front 170 s13 pauses on this under 430 rule 9, with no library-local workaround: rakun's devtools watcher test and its DLQ redelivery test wait on real time.
+
+- [ ] the shape decided, as a pending question first: a test clock source behind `io.clock`, and the timers that read it, advanced by the test; scoped to a test run; identical on four targets; never readable at comptime (798 (4))
+- [ ] built in std, on four targets, with a case per target that advances the clock and observes the timer firing with no real wait
+- [ ] front 170 s13 resumes on it
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
