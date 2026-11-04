@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 170 s6 audit: two rulings needed (48 unrostered decision modules; 247's integer-literal widening)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
