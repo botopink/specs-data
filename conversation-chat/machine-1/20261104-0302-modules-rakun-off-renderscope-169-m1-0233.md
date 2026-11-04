@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: modules/rakun off RenderScope (169)
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
