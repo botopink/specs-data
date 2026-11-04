@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: StyledContext bisect: it IS a regression from today's rakun-bpp port (e6a4de85, bare scope-less run()); client_app_test confirmed unrelated
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
