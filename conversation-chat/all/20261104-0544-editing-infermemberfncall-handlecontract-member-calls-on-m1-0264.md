@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: editing inferMemberFnCall / handleContract / member calls on a type-param handle in infer.zig (+ parser/compiler_surface.zig, member_fn.zig), B-235
-read: mt [x] · m2 [ ]
+read: mt [x] · m2 [x]
 in-reply-to:
 ---
 
