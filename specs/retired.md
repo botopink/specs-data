@@ -1,11 +1,12 @@
 # Retired — what was discontinued and what replaced it
 
 This page lists every form the language, the compiler, std, the libraries and the process have retired, with the form
-that replaced each, so that nobody writes or reads an old form as current. It is derived from
-[`decisions-taken.md`](decisions-taken.md) (the rules in force) and [`decisions-taken-steps.md`](decisions-taken-steps.md)
-(the record), and every row cites the decisions it comes from; where the two differ, the later decision wins and this page
-follows it. A form listed here appears legitimately only in a history sentence, in a decision's own text, in a codemod's
-rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude name, for example).
+that replaced each, so that nobody writes or reads an old form as current. It is derived from the record,
+[`decisions-taken/`](decisions-taken/README.md) (one file per group: its rules in force, then its `## Record` table), and
+every row cites the decisions it comes from; where two decisions differ, the later one wins and this page follows it. Each
+group's metadata block lists, under `retired`, the rows of this page its decisions produced. A form listed here appears
+legitimately only when named as retired — in a decision's own text that retires it, in a codemod's rule, or in a cell that
+tests its refusal (`prelude_name_with_sigil` refuses an `@`-prefixed prelude name, for example); a decision never uses it as current.
 
 ## Language spellings
 
