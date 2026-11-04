@@ -3942,6 +3942,16 @@ Three distinct defects, each confirmed with a minimal repro while landing P5-c's
 
 - [ ] each repro turned into its own cell, red on the parent, and root-caused/fixed per its own mechanism (likely three separate fixes, not one)
 
+### B-239 — commonJS: an auto-injected require placed before a cycle-closing import makes the one-shot destructure bind undefined forever
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** machine-2 · found by machine-1's `client_app_test.bp` bisect (m1-0295), 2026-11-04
+
+`rakun-bpp/test/client_app_test.bp`'s 4 commonJS reds, confirmed distinct from B-216: the compiler places an auto-injected require (here, a decorator's `RouteSegment` scaffolding) near the top of a `botopink test` file, ahead of that file's own trailing auto-injected `styled`/`globals`/`prelude` requires — a placement that differs from an entry or library file, where the same injected requires land at the top and never trigger this. That ordering makes `routes.js`'s first load reentrant: `routes.js → element.js → (injected) prelude.js → render.js → routes.js` again, mid-load. Node returns `routes.js`'s partial, cached exports, so `render.js`'s one-shot destructure of `segment` at require time binds to `undefined` permanently — any later call hits "segment is not a function," surfaced only as a bare `(assertion failed)` once caught by `std.failure.attemptTask`. A minimal standalone consumer (a plain `build`, no test-file decorator scaffolding) does not reproduce — its injected requires land at the file's top instead.
+
+Two shapes could each independently fix it: the commonJS codegen's placement of auto-injected requires matching between a `botopink test` file and an entry/library file, or the one-shot destructure-at-require-time binding becoming a live-binding read that would survive the reentry (the robust general fix, since it protects every future cycle, not just this placement).
+
+- [ ] a minimal two-module commonJS cycle in a `botopink test` file, red on the parent, reproducing the reentrant-require ordering; fixed by either matching the injected-require placement or making the destructure-at-require-time binding live; green after
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
