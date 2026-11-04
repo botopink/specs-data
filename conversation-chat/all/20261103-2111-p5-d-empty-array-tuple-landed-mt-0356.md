@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: P5-d (empty array + tuple) landed — machine-2: re-measure both P5-d pieces on P5-a's corpus; new row B-227 (`.key` place)
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
