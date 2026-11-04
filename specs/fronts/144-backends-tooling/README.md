@@ -3874,6 +3874,32 @@ Decision 804 says the language does not know rakun-bpp's tree: "Element is AST �
 - [ ] otherwise: rakun-bpp declares its children type as an ordinary alias (`NodeChildren = NodeChild[]`, 804), and the checker drops the name-keyed `Children` from `isCompilerKnownTypeName` and `childrenCoercion`. The coercion, if one stays, is written in rakun-bpp's own types
 - [ ] rakun-bpp's `element.bp:29` lowers in GC with no `.linear` note, through P5-d's union-array representation, and rakun-bpp's suite is unchanged on commonJS, erlang and beam
 
+
+### B-234 — wasm GC is slower than the old linear lowering on small-record allocation (4×) and on `Dict` (5×)
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (measure first, then a fix per cause) · **Owner:** machine-2, after P5-g · found by the maintainer's local benchmark, 2026-11-04
+
+Same six programs, each built by the last pre-GC compiler (2026-10-14, all values in linear memory) and by `feat`'s compiler (WasmGC). wasmtime 49.0.3, the median of 5 runs, full pool held. Every program answered identically on both compilers.
+
+| Program | Linear | GC | GC / linear |
+|---|---|---|---|
+| array, 20k pushes | 0.332 s | 0.101 s | 0.30 |
+| map / filter / fold, 10k | 0.089 s | 0.031 s | 0.35 |
+| strings, 5000 concatenations | 0.022 s | 0.009 s | 0.41 |
+| fib(35) | 0.109 s | 0.140 s | 1.28 |
+| records, 1M small allocations | 0.022 s | 0.088 s | **4.0** |
+| `Dict`, 2000 insert / at | 0.037 s | 0.193 s | **5.2** |
+
+Memory under GC stays near 20 MiB; linear reached 783 MiB, and trapped in `__alloc` past about 50k pushes. Front 230 measures this at scale. The two regressions are what this row is about.
+
+Suspects, unconfirmed:
+- **records:** the linear allocator only bumped a pointer and never freed, so a GC `struct.new` per record costs more. Look for per-allocation overhead the lowering adds on top of `struct.new`: boxing, an extra wrapper struct, a type check.
+- **`Dict`:** every call goes through the std-wasm boundary and marshals its values (230 s2 counts 47 marshalling functions). s10 deletes that boundary.
+
+- [ ] profile both programs (wasmtime's profiler, or an instruction count of the emitted `.wat` per operation) and name the cost: lowering overhead, boundary marshalling, or the engine's own GC
+- [ ] what the lowering adds beyond the engine's own cost removed, each with a `wat.zig` unit test on the emitted shape and the benchmark re-run (`fib` included)
+- [ ] the `Dict` part, if it is the boundary, moved to front 170 s10 with its number, and re-measured once the boundary is gone
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
