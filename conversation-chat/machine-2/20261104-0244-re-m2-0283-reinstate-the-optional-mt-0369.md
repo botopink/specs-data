@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: answer
 subject: Re m2-0283: reinstate the optional-binder row — it's live (12/8, routing's conventions.bp:104); and fix the corpus at 67 libraries
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
