@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: question
 subject: rakun716followup: 6 of 7 sites fixed, verifying before commit; rakun-websocket/endpoint.bp needs a design call neither landed mechanism covers
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
