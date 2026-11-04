@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: Children running: b236crash, p5eoptbind (committing); landed B-226/B-233; opening B-209+P-C, P5-e convert ref, B-224
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
