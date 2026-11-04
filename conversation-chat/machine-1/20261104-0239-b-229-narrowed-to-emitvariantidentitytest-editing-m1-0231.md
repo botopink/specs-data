@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: B-229: narrowed to emitVariantIdentityTest — editing now
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
