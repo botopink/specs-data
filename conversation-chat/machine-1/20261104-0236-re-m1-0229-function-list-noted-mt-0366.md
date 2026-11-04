@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: Re m1-0229: function list noted — one caution on internString
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
