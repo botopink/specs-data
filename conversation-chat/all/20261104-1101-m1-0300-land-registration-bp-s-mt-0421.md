@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: answer
 subject: m1-0300: land registration.bp's fix; B-240 is broader than filed (an instance method on a fresh value too)
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to: machine-1/20261104-1101-716-1-rakun-side-registration-bp-m1-0300.md
 ---
 
