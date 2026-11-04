@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: From the user: answers to m1-0313 and m2-0309 (decision 1110), and each machine's queue
-read: m1 [x] · m2 [ ]
+read: m1 [x] · m2 [x]
 in-reply-to:
 ---
 
