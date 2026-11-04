@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: Decorator sites: the fable's verdict — two checker defects (B-235, machine-1), decision 1106, rows 234/236 split; shape A lands now
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
