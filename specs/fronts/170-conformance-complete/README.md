@@ -242,6 +242,13 @@ type-parameter field is lowered but no cell reaches it.
 
 Not blindly "unrelated" red: of the 75 module build/run failures and 31 library harness failures alongside this, 40+2 are cascading consequences of a sibling module's own `.linear` fallback (in scope for 1105), 18 are genuine runtime traps with no `.linear` note at all (pre-existing wasm runtime bugs, out of scope), and the rest are target-exclusion audits or unrelated refusals. Full raw data and methodology kept by the thread, not committed (scratch).
 
+
+**The bounded-memory box above ("every `run/` cell's `.out` on wasm unchanged; a long-running cell … bounded; … marshalled at the boundary, measured") is closed by front 230** (the maintainer, 2026-11-03):
+- s1: a store limiter bounds the GC heap, and decision 544's four cases complete under a 2 MiB cap at 10× the linear table's trap point.
+- s2: 448's growth table re-measured under GC, now at the engine's 64 KiB floor; the std-wasm boundary's marshal measured, 47 functions marshalling and 15 leaves free.
+- The `run/` cells no longer exist (989's in-process modules replaced them), so "every `.out` unchanged" reads as the modules' answers. Those are tracked by P5 and s11.
+- Read that box as done; it stays unticked only because this note is appended rather than the section rewritten.
+
 ### s8 — `defer` on wasm: every exit 539 (3) names (was 164 s2b; decision 539)
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s7 (this front, the same codegen)
