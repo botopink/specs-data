@@ -3920,6 +3920,16 @@ Building rakun-stylesheet's `alpha` and `bg-color` cells for beam segfaults insi
 - [ ] the recursion found (a debug build's trace) and bounded, made iterative or depth-limited; a unit test with the cells' shape, a crash on the parent, green after
 - [ ] the two cells build on beam
 
+### B-237 — test-cli: `child_group_killed.sh`'s two build-timeout cases answer "wasmtime: call stack exhausted" instead of reaching the timeout
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **After:** nothing · found by machine-1 committing B-235, 2026-11-04
+
+`modules/compiler-cli/tests/child_group_killed.sh`, part of `zig build test-cli` and so of the commit hook, fails its two build-timeout cases. The build is meant to run until the timeout fires and its child group is killed (decision 1061 (1)). Instead the comptime on wasm stops first with `wasmtime: call stack exhausted`, so the test never sees the timeout. The failure is identical on a clean, unmodified `origin/feat`, so it is not from B-235. It is listed in front 169 § Known reds until this row lands.
+
+- [ ] the cause read: the test's endless build recurses rather than loops on the wasm comptime, or the comptime's stack limit dropped. Bisect it if it was green before
+- [ ] the two cases reach the timeout and the group kill again, on a quiet machine and under the pool; `test-cli` green
+- [ ] if the stack exhaustion is itself a defect (a loop lowered as recursion), its own cell, red on the parent
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
