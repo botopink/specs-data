@@ -21,6 +21,6 @@ Opened by the maintainer, 2026-11-02, from the fable's audit of front 170 s7. s7
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **After:** s1
 
-- [ ] `codegen/wat/AGENTS.md` § How far a program grows without collection re-measured under GC, decision 448's table replaced
-- [ ] the std-wasm boundary's marshalled values measured (front 170 s7 box: "values crossing into it marshalled at the boundary, measured") — until s10 deletes the boundary
-- [ ] front 170 s7's bounded-memory box closes with this front
+- [x] `codegen/wat/AGENTS.md` § How far a program grows without collection re-measured under GC, and decision 448's table replaced. All five of 448's shapes now stop at the engine's own 64 KiB instantiation floor, from 104× to 2685× less than the linear table. Two new permanent oracle cases in `tests/wat_memory.zig`, for the `@Async` loop and the page render: 448 named both shapes, but no case covered them
+- [x] the std-wasm boundary's marshalled values measured: 47 std-wasm functions marshal on every call from a GC module, and 15 `.wat` leaves cross with no cost. Each call's instruction cost is derived from `wat_prelude.zig`'s conversion helpers. The section is marked as a stopgap: it is removed, not re-measured, when s10 deletes the boundary
+- [x] front 170 s7's bounded-memory box closes with this front
