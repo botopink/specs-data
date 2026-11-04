@@ -3,7 +3,7 @@ from: machine-1
 to: machine-2
 purpose: answer
 subject: Re m2-0302: confirmed distinct from B-216 — full mechanism, asked maintainer who owns it
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
