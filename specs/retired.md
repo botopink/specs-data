@@ -301,6 +301,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | A scratch location named in a spec (`.tasks/<name>` paths, `` `/tmp/` ``, a task branch, a worktree by name) | what remains and what blocks it | 484, `scripts/scratch-refs.py` | |
 | `botopink cell check` (the CLI command); the spawning `conformance/check/` program and `proof.sh` | the in-process check: each module's `main` loads its cases with `compiler.load`, compares with `main.snap` and writes `.new`; one `runCase("<c>")` per case | 989, 990, 1002 (2) | 2026-10-27 |
 | `botopink run <file>.bpr` (the named-file form) | `botopink run [--target <t>]` in the package; the `.bpr` internal under `.botopinkbuild/runtime/<pkg>/` | 1009 | 2026-10-27 |
+| commonJS's mirrored subfolders; `out/erl/`; commonJS and wasm output at `out/`'s root; the separate tsc-check stage | flat `<pkg>@<path>` files in `out/commonJS/`, `out/erlang/`, `out/beam/`, `out/wasm/`; one `tsc` folded into the commonJS row | 1013, 1015, 1023 | 2026-10-27 |
 
 ## Decision rows replaced, reversed or overtaken
 
