@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: P5-b closed, scoped differently than the row's literal wording: 738356445 (botopink-lang), meta bump dbf8d838
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
