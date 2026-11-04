@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: client_app_test's commonJS reds fixed and landed: d6c20de6 (rakun), meta bump 0ae9e7c5→11d2fd81
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
