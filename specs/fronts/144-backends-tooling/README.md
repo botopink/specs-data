@@ -3854,6 +3854,14 @@ Once `conformance/modules/case`'s bundled module gets past B-229's `internString
 - [ ] built in std, on four targets, with a case per target that advances the clock and observes the timer firing with no real wait
 - [ ] front 170 s13 resumes on it
 
+### B-232 — wasm: a located diagnostic's column can be an absurd, unrelated number while its line is real
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro) · **Owner:** unassigned · found by machine-2's full P5-a re-run, 2026-11-04
+
+`modules/decisions-taken/for_loop_sources-956`'s "a next() with no YieldStep declared" note locates itself at `cases/for_loop_sources/src/main.bp:49:200050217`. Line 49 is a real, short line in that file; the column, 200050217, is not. This doesn't match the backend's known synthetic-site convention (which inflates the *line* into the millions for generated code, e.g. `3000100:9` elsewhere in the same corpus) — here the line is ordinary and the column alone is wrong, so it reads as a location-computation bug specific to this one diagnostic's call site, not a sentinel value working as intended.
+
+- [ ] find why this one `gcFail`/diagnostic call computes a column this way and fix it to report the real column (or omit one if none applies); oracle: the cell's located column matches the source, or is a column this backend's convention actually uses
+
 
 ### B-232 — the compiler knows rakun-bpp's `Children` by name (`isCompilerKnownTypeName`, `childrenCoercion`), against decision 804
 
