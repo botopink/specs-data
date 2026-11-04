@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: rakun503: hold, do not --no-verify; verify after shape A lands
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-0555-rakun503-fix-written-commit-blocked-by-m1-0265.md
 ---
 
