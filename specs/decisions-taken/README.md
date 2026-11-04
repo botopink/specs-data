@@ -1,6 +1,6 @@
 # Decisions taken
 
-The record. **The next free number is 1111.**
+The record. **The next free number is 1112.**
 
 ## Groups
 

@@ -130,8 +130,8 @@ retired:
   - '626 (2)'
   - '118 rule 1'
 first-step: 1
-last-step: 1109
-in-force: 170
+last-step: 1111
+in-force: 171
 superseded: 62
 ---
 # unfiled — decisions no subject cites
@@ -372,3 +372,4 @@ superseded: 62
 | 1106 | 716-t · (the maintainer, 2026-11-04, 2026-11-04) | In a decorator tree a `decl` typed by a type parameter (`<T>(syntax decl: T)`) has no members, as `syntax decl: unknown` has none (716 (1)): `decl.make()` over a bare `T` is the checker's refusal, located at the call, never a fresh result type left unchecked; the parameter only hands `decl` on to another parameter typed by the same `T`; a member is read only through a declared type the tree is checked against (716 (2)) or from the value the decorator itself built (842 (1)); a bound on `T` is not a rule today | machine-1/144 (the checker's decorator trees); 165 s10 rows 234 / 236 (rakun's decorator sites) | decl_type_param_no_member |
 | 1107 | tools-rm · (the maintainer, 2026-11-02: "só remova unilateralmente"; recorded 2026-11-04, 2026-11-04) · (process) | `scripts/decisions-split.ts` (the per-repository `decisions-taken.md` generator, 482) and `scripts/decision-cells.ts` (`scaffold` / `compile` / `promote` / `check`) are removed, with CI checks 6 and 7 that ran them; nothing replaces them yet; the generated `repository/<repo>/decisions-taken.md` files and every `conformance/modules/decisions-taken/<slug>-<N>/` cell stay as content, checked by nothing beyond the root package's run; a more structured way to tie decisions to cells is to be designed; front 170 s5 (the flip) is retired with them and s6 checks the cells as they stand | the meta repository's `scripts/` and CI (`hook-integrity.yml`); front 170 s5 / s6; decision 482 | |
 | 1109 | p5-b · (the maintainer, 2026-11-04, 2026-11-04) | 1105 (2) amended for `array.*`: in GC form, `array.*` is lowered by the codegen's per-class GC helpers (the `gcArrOp` family), not by hand-written `.wat` leaves. One leaf cannot serve the GC array classes under one signature, which the linear word-slot leaf did. A scalar that crosses the std boundary (an `f64` element of `join`) crosses as a free scalar, and only its answer is marshalled back. The other std-wasm exports keep 1105 (2): a hand-written `.wat` leaf where the types do not cross, the marshal grown only where a leaf would need a type the codegen has no fixed name for. The rest of 1105 is unchanged. | front 170 s7 P5-b; front 170 s10 (array.* leaves); decision 1105 (2) | |
+| 1111 | print-opaque · (the maintainer, 2026-11-04, 2026-11-04) | `print` (and a template hole, 530) writes one text on the four targets for these values, alone or inside a record, an array, a tuple or `unknown`. A `Bytes` writes its bytes as a list of integers, `[104, 105]` (an empty one `[]`). An `Async<T>` writes `<task>` and an `AsyncIter<T>` writes `<iter>`, whatever their state; printing one never awaits it, never reads its value and never traps. commonJS's `Uint8Array(...)`, erlang's binary text and wasm's quoted string and trap are defects against this row. | every backend's printer (commonJS, erlang, beam, wasm GC); front 170 s7 P5-g; decision 530 | |
