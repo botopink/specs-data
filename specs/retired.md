@@ -197,6 +197,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | wasm's `.linear` lowering and its module-wide `.gc` → `.linear` fallback; the build note `wasm: <module> lowered .linear: <feature>` | one lowering, GC; what it cannot lower is a located refusal `the wasm backend has no GC lowering for <what>` at the construct; an unreached gap is an `unreachable` stub carrying the located text | 1105 (1)–(3), 1097, 1056 (3) | 2026-11-03 (built by front 170 s7 P5) |
 | comptime's own refusal text "comptime has no linear memory" | the same located refusal the build answers; comptime's `errors/` snapshots re-recorded | 1105 (4), 1033 | 2026-11-03 |
 | a Task's or a generator's printed text: wasm's raw value through `.linear`, each other target's native inspect | `print` of a static `Async<T>` / `Iter<T>` / `AsyncIter<T>` refused at build on four targets (`print-task` / `print-generator`); through `unknown`, the named panic `panic: wasm cannot print a … value`, one text on four targets | 1104 | 2026-11-03 |
+| a whole-module fallback when one declared type has no GC printer; the interim build refusal of a `T` holding a record or an array (`template_traps` on `shown<T>`) | `gcTaggedPrinter` degrades per declared type, that type's arm alone a located refusal; `gcUnkScalarPrint` falls through to `__print_tagged_raw`; the `gcDeclPrinter` guard comes out | 1101 (overtakes 1099, 1100) | 2026-11-02 |
 
 ## std
 
