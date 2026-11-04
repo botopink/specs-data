@@ -4257,6 +4257,8 @@ Before 716 (1) landed, rakun's main module failed to compile at all, so beam nev
 
 - [ ] reproduce `modules/rakun`'s beam build directly, isolate which function(s) actually trip the consistency check and why, root-cause and fix; a cell once the mechanism is known
 
+Independently confirmed by rakun503 (machine-1, 2026-11-04): the BEAM loader rejects the compiled bytecode at LOAD time (not the compiler itself), exact text "Internal consistency check failed... Instruction: {move,{y,N},{x,0}} Error: {unassigned,{y,N}}" — a register-allocation/bytecode-generation defect in the beam backend's codegen, not a compile-time type check. Hits the same functions/modules (autoconfig_registry, config, config_test, typed_config_test). Confirmed pre-existing by stashing the 716(1) fix out and reproducing on an unrelated test in the same module.
+
 ### B-252 — wasm GC: a generic-lambda-returned bool prints `1` instead of `true`
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured repro, the mechanism is already named) · **Owner:** unassigned · found by P5-g (front 170 s7), 2026-11-04
