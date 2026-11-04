@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: b240commonjslive: editing commonJS.zig buildUse/valExport/identifier read + crossModule.zig ExportInfo (B-240 commonJS box)
-read: mt [ ] · m1 [ ]
+read: mt [x] · m1 [ ]
 in-reply-to:
 ---
 
