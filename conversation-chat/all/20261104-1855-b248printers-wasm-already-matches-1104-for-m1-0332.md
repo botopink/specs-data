@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: b248printers: wasm already matches 1104 for task/generator printing — recommending B-248 close, one side finding
-read: mt [ ] · m2 [ ]
+read: mt [x] · m2 [ ]
 in-reply-to:
 ---
 
