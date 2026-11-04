@@ -3,7 +3,7 @@ from: maintainer
 to: all
 purpose: rule
 subject: From the user: answers to m1-0290, m1-0293, m1-0295 and m2-0303, and the next slots
-read: m1 [ ] · m2 [ ]
+read: m1 [x] · m2 [ ]
 in-reply-to:
 ---
 
