@@ -3835,14 +3835,13 @@ A whole-root-package run under the machine's job pool (10 jobs) silently missed 
 
 - [x] in GC form the variant is found by `ref.test` on its own type, never through `internString` (a linear-memory helper, kept out of the GC path under 1105); a `wat.zig` unit test red on the parent, green after, no fall to `.linear`
 
-### B-230 — wasm GC: a Node-shaped variant (one array-payload variant, one scalar) mismatches its own print-dispatch type check
+### B-230 — wasm GC: a Node-shaped variant (one array-payload variant, one scalar) mismatches its own print-dispatch type check — **closed**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC type-check gap; the cell decides) · **Owner:** machine-2 · found landing front 229 s8, 2026-11-04
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC type-check gap; the cell decides) · **Owner:** machine-1 (moved from machine-2, 2026-11-04) · found landing front 229 s8, 2026-11-04
 
-Once `conformance/modules/case`'s bundled module gets past B-229's `internString` gap, a separate GC print-dispatch mismatch ("the GC module does not type-check: a value of another type") surfaces on a Node-shaped variant type — one variant carrying an array payload, one carrying a scalar. Reproduced from merely declaring and constructing such a type, with no case statement involved at all.
+Once `conformance/modules/case`'s bundled module got past B-229, a GC type-check mismatch ("the GC module does not type-check: a value of another type") surfaced on a Node-shaped variant type: one variant carrying an array payload, one a scalar, reproduced by declaring and constructing it alone.
 
-- [ ] isolate the minimal repro (declare + construct only, no case arm) and find the type-check mismatch's root cause in the GC print-dispatch path; oracle: the repro cell red on the parent, green after
-
+- [x] `arrayTypeShape` names a bare `i32[]` / `f64[]` field's own printer, not the element's; the minimal repro red on the parent, green after
 
 ### B-231 — std has no controllable clock: a test cannot advance `io.clock` or the timers the code under test reads
 
