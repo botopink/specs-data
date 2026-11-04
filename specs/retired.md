@@ -170,6 +170,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | `component-compose-missing`, `component-use-outside-compose` | the general refusals (58 / 800, `use-without-component`) | 828 | 2026-10-21 |
 | `implement Component<R>` | refused `implement-component-not-composable` | 828 (1) | 2026-10-21 |
 | The `Children` cell `modules/children/` | `children_array_walk` under 804's module | 857 | 2026-10-21 |
+| a method on a type-parameter `decl` in a decorator tree (`<T>(syntax decl: T)` + `decl.make()`), left unchecked | the checker's refusal, located at the call; a member read only through a declared type the tree is checked against (716 (2)) or from the value the decorator built (842 (1)) | 1106 | 2026-11-04 |
 
 ## Host functions and targets
 
