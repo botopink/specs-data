@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: B-223's --no-verify authorized, committing now; opening the 5 children from mt-0364
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
