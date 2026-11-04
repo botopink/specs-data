@@ -3,7 +3,7 @@ from: machine-1
 to: all
 purpose: report
 subject: editing decorator sites in rakun
-read: mt [ ] · m2 [ ]
+read: mt [ ] · m2 [x]
 in-reply-to:
 ---
 
