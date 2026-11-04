@@ -4155,9 +4155,9 @@ Checked against 1104/520/530 directly, on all four targets, both positions (a st
 
 A real, separate defect surfaced while checking this and is filed on its own: wasm's `print` of a record streams each field's text to stdout as it's computed, so a panic partway through leaves a partial prefix on stdout (`Holder(t: ` before the trap) — the other three targets build the complete text before writing anything, so the same program gives two different outputs. See B-253.
 
-### B-249 — a prototype `#[managed]`'s generated `new()` fails "expected &lt;Type&gt;, got function" over a field resolved by `context.rkResolve` — rakun only
+### B-249 — a prototype `#[managed]`'s generated `new()` fails "expected &lt;Type&gt;, got function" over a field resolved by `context.rkResolve` — rakun only — **closed**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** opus (a real-vs-text-generated code mismatch; the cause isn't located yet) · **Owner:** unassigned · found landing rakun's 716 (1) decorator-sites fix (842 (1)'s held-value rewrite), 2026-11-04
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a real-vs-text-generated code mismatch; the cause isn't located yet) · **Owner:** machine-2 · found landing rakun's 716 (1) decorator-sites fix (842 (1)'s held-value rewrite), 2026-11-04
 
 No standalone repro outside rakun exists — a look-alike `#[managed]`-shaped decorator that adds `new()` from text, with and without the init executors and a second decorator adding `make()`, checks clean both ways. The bug only reproduces through a test file inside `modules/rakun` using rakun's real `context.managed`. Confirmed NOT caused by the 716 (1) landing's held-`compiler.ast` change: it still fails with both `compiler.ast(callNew)` executors replaced by `{ -> 0 }`.
 
@@ -4193,7 +4193,11 @@ error: type mismatch: expected ProbeRepo, got function
 
 Original site: `test/context_test.bp:719:3`, "expected OrderRepository, got function", called from `src/context.bp:917:18`.
 
-- [ ] a cell reproducing the shape above (a prototype-scoped `#[managed]` type with a field resolved by `rkResolve`), red on the parent, root-caused and fixed
+**Root cause: a decorator-written member's hygiene alias (decision 669) carried no declaration.** `compiler.addMember`'s text, written by a decorator defined in ANOTHER module, has its free names renamed to hygiene aliases (`rkResolve` → `__bp_tpl_<module>__rkResolve`), bound by the re-analysis with the function's type only (`written_names.bindRecorded`). The checker decides whether an argument to a `type<T>` parameter is a type by finding the callee's own declaration by name (`tokenCallee`/`typeTokenCalleeParams`, reading `fnDecls`/`importedFnDecls`), which held nothing under the alias — so `ProbeRepo` (the first argument) was typed as its own constructor function, and `rkResolve`'s `T` bound to `function`. The same call written by hand passes because its callee comes in through an import item, which DOES fill `importedFnDecls`.
+
+- [x] a new `bindRecordedFnDecls` (`comptime.zig`) runs right after `written_names.bindRecorded` and binds each value alias's declaration the same way an import item does — its parameters, its `importedFnDecls` entry, and its expanded/copied-per-type entries. Reproduced through a real rakun path dependency (no edit to rakun's own checkout) and standalone (the decorator in a different module from a `type<T>` function, no rakun needed); both check clean after. Cell `decorator_code_resolves_in_decorator_module-669/cases/decorator_member_passes_type_to_its_module` and a comptime unit test, both red on the parent, green after.
+
+**Not this row's, found along the way, not fixed:** on wasm, a generic `type<T>` function whose body does `v is t` cannot be called at all ("a type parameter's slot is not monomorphised") — true for the hand-written equivalent too, so unrelated to this defect; and `written_names.bindValue`'s three other call sites (`expand_call`, `token_import`, `infer.zig:11831`) still bind no declaration under their own aliases — untouched, not part of this bug's repro.
 
 ### B-250 — a behavior name passed as a `type&lt;T&gt;` argument is refused "unbound variable"
 
