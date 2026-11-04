@@ -3827,13 +3827,13 @@ A whole-root-package run under the machine's job pool (10 jobs) silently missed 
 
 - [ ] find and fix the pool-induced flake in `conformance/run.sh` (a shared-cache race, a job starved under contention, or a result read before its write lands); oracle: the same whole-package run, under contention, matches an isolated per-module run for every cell — until fixed, a "which cells changed" claim needs a per-module isolated re-check (standing rule for every machine)
 
-### B-229 — wasm GC: `case_arm_name_is_also_a_type` cannot resolve `internString`
+### B-229 — wasm GC: `case_arm_name_is_also_a_type` cannot resolve `internString` — **closed**
 
-**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-2 · found landing front 229 s8, 2026-11-04
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet · **Owner:** machine-1 (moved from machine-2, 2026-11-04) · found landing front 229 s8, 2026-11-04
 
-`conformance/modules/case`'s own `case_arm_name_is_also_a_type` cell still falls the whole bundled module back to linear memory on `--target wasm` — not a case-arm gap, an unrelated `internString` reference the GC backend cannot resolve. Confirmed pre-existing on `origin/feat` before front 229 s8's two fixes landed, reproduced in a disposable detached worktree with the module's other case-arm cells removed (the fall-through persists).
+`conformance/modules/case`'s `case_arm_name_is_also_a_type` cell fell the whole bundled module back to linear memory on wasm: an arm whose name collides with a type reached the linear-only `internString`.
 
-- [ ] find `internString`'s call site in this cell and give it a GC form (or a located refusal); oracle: the cell red on the parent, green after, no fall to `.linear`
+- [x] in GC form the variant is found by `ref.test` on its own type, never through `internString` (a linear-memory helper, kept out of the GC path under 1105); a `wat.zig` unit test red on the parent, green after, no fall to `.linear`
 
 ### B-230 — wasm GC: a Node-shaped variant (one array-payload variant, one scalar) mismatches its own print-dispatch type check
 
