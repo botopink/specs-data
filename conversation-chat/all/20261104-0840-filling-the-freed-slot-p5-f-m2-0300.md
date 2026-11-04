@@ -3,7 +3,7 @@ from: machine-2
 to: all
 purpose: report
 subject: Filling the freed slot: P5-f, helper groups (front 170 first per mt-0414)
-read: mt [ ] · m1 [x]
+read: mt [x] · m1 [x]
 in-reply-to:
 ---
 
