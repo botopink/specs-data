@@ -4088,15 +4088,20 @@ A member handed `--workspace-out` writes only the modules of a dependency its ow
 
 Landed on `feat`.
 
-### B-243 — wasm GC: lowerChainedCall (a primitive method or tuple label through ?.) has no GC dispatch, falls to box_i32
+### B-243 — wasm GC: lowerChainedCall (a primitive method or tuple label through ?.) has no GC dispatch, falls to box_i32 — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a new GC lowering function mirroring an existing twin's shape; wrong is a wrong answer or a trap, not a safe fallback) · **Owner:** machine-2 · found by front 170 s7's P5-a full re-measure, 2026-11-04
 
 `lowerChainedCall` (`codegen/wat.zig`: `recv?.m(args)` over a primitive method or a tuple label answering a scalar — `s?.length()`, `rs.at(1)?.a`) has no `self.mode == .gc` dispatch at all, unlike its exact sibling `lowerOptionalTypedMethod`, which already dispatches to a GC twin `gcOptionalTypedMethod`. Three hits on the full corpus, at least two distinct AST shapes (a method call through `?.`, and a tuple-label read through it via `optInfoOf`'s own separate path): `map`, `optional_member_access_needs_safe_call-45`, `shorthand_import_refused-337`.
 
-Previously thought closed by P5-f (170 s7), which fixed two different, unconditional call sites to `box_i32` (`.find()`'s trailing `.at(0)`, and `.push()`/`.pop()` on a record-field array) — this is a third, separate path to the same prelude helper group.
+Previously thought closed by P5-f (170 s7), which fixed two different, unconditional call sites to `box_i32` (`.find()`'s trailing `.at(0)`, and `.push()`/`.pop()` on a record-field array) — this is a third, separate path to the same prelude helper group. Two distinct sources, not one: `lowerChainedCall` itself (the method-call shape, `map`/`optional_record_carrier`), and a tuple label read through `?.` (`rs.at(i)?.a`, decision 45's `?._N`), which always took the linear `lowerOptionalField` regardless of mode and was never even recognised as a chain by `chainPayloadKind` — an absent element's `.length()` answered `8` (a wrong answer, not a safe fallback) on every lowering before this fix, linear included.
 
-- [ ] a new `gcChainedCall` mirroring `gcOptionalTypedMethod`'s shape, covering both the method-call and tuple-label-read shapes, recursive over nested nullable chains (the underlying `isOptionalChain`/`chainedCallKind`/`chainPayloadKind` machinery is already general); unit tests per shape, red on the parent, green after; the three named members clean
+- [x] `gcChainedCall` (`lowerChainedCall`'s GC twin, `gcOptionalTypedMethod`'s shape): evaluates the receiver once, tests null, unboxes/reads the payload, runs `lowerPrimMethod`, boxes a scalar answer; `at`/`first` of an array or a string's `at` pass their own optional answer through instead of double-boxing; `?.pop()`/`?.find()` keep the old path deliberately (`pop` would shorten a copy; `find`'s GC answer type is a separate question). Recursive over nested chains through `lowerCoerced`.
+- [x] `gcOptionalTupleGet` (`t?._N`: the slot or null, a GC tuple's slot already holding the element as its optional carries it) and `chainPayloadKind` reading a tuple label through `?.` by its element's shape, so the chain is recognised and guarded on every target, not just GC.
+- [x] `chainedCallOpt`'s GC `?bool[]` typed as a bool (was printed as a heap address).
+- [x] four unit tests, red on the parent (three fallbacks, one wrong answer), green after; the three named members clean on all four targets, and `tuple_a_bare_digit_index_and_optional_chaining_over_a_found_pair`'s wasm snapshot moved to GC form with its RUN LOG unchanged.
+
+**A separate, pre-existing defect found while testing, not fixed, filed as B-246:** a GC tuple literal with a `null` `?i32`/`?string` slot, inside an array a function returns, stores a boxed `0` — reading it back prints `0` or traps, even through a plain field read with no `?.` at all.
 
 ### B-244 — wasm GC: a two-levels-deep generic-thunk await (a generic fn's thunk tail itself calling another generic fn) resolves to the inner fn's own unsubstituted type parameter — **closed**
 
