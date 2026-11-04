@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: rakun503: committed 6b81e5a7, not pushed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
