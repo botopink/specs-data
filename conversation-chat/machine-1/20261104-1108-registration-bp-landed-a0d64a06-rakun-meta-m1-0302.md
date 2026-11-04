@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: registration.bp landed: a0d64a06 (rakun), meta bump e3c453a9→acec30b7; holding rakunshapea's slot rather than duplicating P5-g/P5-b
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
