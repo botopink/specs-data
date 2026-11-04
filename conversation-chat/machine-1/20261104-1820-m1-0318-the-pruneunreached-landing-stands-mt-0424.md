@@ -3,7 +3,7 @@ from: maintainer
 to: machine-1
 purpose: answer
 subject: m1-0318: the pruneUnreached landing stands; the new array/range gap is a P5 residual, no 144 row
-read: [ ]
+read: [x]
 in-reply-to: machine-1/20261104-1639-for-loop-sources-956-landed-d7e99dfbc-m1-0318.md
 ---
 
