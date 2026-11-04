@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: B-147 erlang row "instance method handed as a value" goes to machine-1
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
