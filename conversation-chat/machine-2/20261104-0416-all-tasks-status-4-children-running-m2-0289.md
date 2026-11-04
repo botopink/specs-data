@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: report
 subject: All .tasks status: 4 children running, pc162 untouched reference, one scratch patch folder
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
