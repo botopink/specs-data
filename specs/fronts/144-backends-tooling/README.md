@@ -3791,15 +3791,14 @@ No commit: `wat.zig`'s reachability pass was never implicated, so there was noth
 - [ ] `std.text.fromCodepoint`'s wasm binding raises a catchable `$__bp_panic` instead of a bare `unreachable` on an invalid scalar value, so `attempt`'s boundary catches it as decision 518 intends; a case proving a surrogate's abort still survives inside `attempt` with its prior output intact
 
 
-### B-225 — wasm: the build segfaults loading several cases with a missing wasm binding (`MissingExternal.diagnostic`)
+### B-225 — wasm: the build segfaults loading several cases with a missing wasm binding (`MissingExternal.diagnostic`) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured crash) · **Owner:** machine-2 · found by machine-2 building 229 s10, 2026-11-03; it was already present before front 229 s1
 
-`conformance/modules/behavior`, or any program loading several cases with a missing wasm binding, crashes the compiler on wasm. The path is `comptimeUnits` → `codegenEmit` (`wat.zig`) → `MissingExternal.diagnostic` (`moduleOutput.zig`). The likely cause: a dangling `MissingExternal.name`, copied out by `emitWatPass`'s `errdefer` after that pass's memory is freed (the `emitGcOnly` path).
+`emitWatPass`'s `errdefer` copied `em.missing_external` out before the pass's own arena was freed, and `.name` could be a generic call's specialised symbol from that arena. `conformance/modules/behavior` segfaulted at `wat.zig`'s `codegenEmit` on wasm.
 
-- [ ] the name owned by the arena that outlives the pass; a unit test that loads two units each missing a wasm binding, a crash on the parent (under the test allocator's leak / use-after-free check), green after
-- [ ] `conformance/modules/behavior` builds on wasm
-
+- [x] `.name` re-owned with the caller's allocator in that `errdefer`, as `Refusal.message` already is, and freed wherever a `MissingExternal` is consumed or dropped. The oracle is the real module: it crashed on the parent in a debug build, and now answers a located diagnostic. No hand-written two-unit shape reproduced the crash on the parent, so the new unit test is coverage, clean under the test allocator (the maintainer accepts that oracle)
+- [x] `conformance/modules/behavior` no longer crashes. It now stops at a separate gap: a behavior-typed method call the backend cannot resolve, which is B-226
 
 ### B-226 — wasm GC: a behavior-typed value's method called across a package boundary does not resolve (`cannot resolve the call 'tag/0'`)
 
