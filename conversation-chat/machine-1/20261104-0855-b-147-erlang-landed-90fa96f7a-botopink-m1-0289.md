@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: rule
 subject: B-147-erlang landed: 90fa96f7a (botopink-lang), meta bump 671e4af8 — shape A and rakun503 can resume
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
