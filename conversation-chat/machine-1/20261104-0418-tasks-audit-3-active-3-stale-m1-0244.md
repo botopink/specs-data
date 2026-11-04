@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: .tasks/ audit: 3 active, 3 stale removed, 7 scratch dirs untouched, 7 possibly-foreign worktrees found — needs your eyes
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
