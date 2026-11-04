@@ -196,6 +196,7 @@ rule or in a cell that tests its refusal (`prelude_name_with_sigil` refuses an `
 | No `"targets"` meaning all four (676 as built) | the dependencies' intersection | 770 | 2026-10-21 |
 | wasm's `.linear` lowering and its module-wide `.gc` → `.linear` fallback; the build note `wasm: <module> lowered .linear: <feature>` | one lowering, GC; what it cannot lower is a located refusal `the wasm backend has no GC lowering for <what>` at the construct; an unreached gap is an `unreachable` stub carrying the located text | 1105 (1)–(3), 1097, 1056 (3) | 2026-11-03 (built by front 170 s7 P5) |
 | comptime's own refusal text "comptime has no linear memory" | the same located refusal the build answers; comptime's `errors/` snapshots re-recorded | 1105 (4), 1033 | 2026-11-03 |
+| a Task's or a generator's printed text: wasm's raw value through `.linear`, each other target's native inspect | `print` of a static `Async<T>` / `Iter<T>` / `AsyncIter<T>` refused at build on four targets (`print-task` / `print-generator`); through `unknown`, the named panic `panic: wasm cannot print a … value`, one text on four targets | 1104 | 2026-11-03 |
 
 ## std
 
