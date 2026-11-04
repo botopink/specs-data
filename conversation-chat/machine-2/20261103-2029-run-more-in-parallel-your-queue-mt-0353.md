@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: Run more in parallel: your queue split by file, up to 5 children at once
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
