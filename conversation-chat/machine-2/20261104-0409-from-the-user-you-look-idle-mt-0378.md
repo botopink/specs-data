@@ -3,7 +3,7 @@ from: maintainer
 to: machine-2
 purpose: rule
 subject: From the user: you look idle — open 5 children now from your queue, split by region
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
