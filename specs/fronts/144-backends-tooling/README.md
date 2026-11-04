@@ -3914,6 +3914,16 @@ Suspects, unconfirmed:
 - [ ] decision 1106: a type-parameter `decl` has no members, `decl.make()` over a bare `T` refused, located (cell `decl_type_param_no_member`)
 - [ ] the three cells built (`added_member_handed_as_value`, `decl_in_type_position`, `decl_type_param_no_member`), each red on the parent
 
+
+### B-236 — beam: the compiler crashes (stack overflow, "recursive panic") building rakun-stylesheet's `alpha` / `bg-color` cells
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured crash) · **Owner:** machine-2 · found by machine-1 in `test-cli`'s `analysis_equivalence.sh`, 2026-11-04, on a clean origin/feat with OTP 28
+
+Building rakun-stylesheet's `alpha` and `bg-color` cells for beam segfaults inside the compiler: `zig_probe_stack` (`stack_probe.zig`), "aborting due to recursive panic". A crash in the compiler is a red of its own, whatever the program: the build must answer a result or a located refusal. Most likely an unbounded recursion in beam lowering over a deep expression.
+
+- [ ] the recursion found (a debug build's trace) and bounded, made iterative or depth-limited; a unit test with the cells' shape, a crash on the parent, green after
+- [ ] the two cells build on beam
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
