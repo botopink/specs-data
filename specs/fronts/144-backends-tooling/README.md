@@ -4199,6 +4199,54 @@ Original site: `test/context_test.bp:719:3`, "expected OrderRepository, got func
 
 - [ ] a cell reproducing the shape above (a prototype-scoped `#[managed]` type with a field resolved by `rkResolve`), red on the parent, root-caused and fixed
 
+### B-250 — a behavior name passed as a `type&lt;T&gt;` argument is refused "unbound variable"
+
+**Repository:** botopink-lang (`--lang`) · **Model:** sonnet (a measured, standalone repro) · **Owner:** unassigned · found landing rakun's 716 (1) decorator-sites fix, 2026-11-04
+
+Reproduces standalone, outside rakun. `botopink.json`:
+```
+{"name": "r1", "version": "0.1.0", "target": "erlang"}
+```
+`src/main.bp`:
+```
+import {io.terminal.print} from "std";
+
+pub behavior Repo {
+    fn find(self: Self) -> string;
+}
+
+type R() implement Repo {
+    fn find(self: Self) -> string { return "r"; }
+}
+
+pub type Plain() {}
+
+pub fn res<T>(t: type<T>, name: string) -> ?T {
+    return null;
+}
+
+pub type Holder(p: Plain) {}
+
+pub fn main() -> void {
+    val a: ?Repo = res(Repo, "Repo");
+    val h = Holder(p: res(Plain, "Plain")!);
+    print("ok");
+}
+```
+`botopink check`:
+```
+error: unbound variable 'Repo'
+  --> src/main.bp:20:24
+   |
+20 |     val a: ?Repo = res(Repo, "Repo");
+   |                        ^
+```
+Delete line 20 and the check is clean: a record type name (`Plain`) as the same `type<T>` argument is accepted — only a behavior name is refused.
+
+Original site: `test/testing/mocks_pairing_test.bp:48:3` (`#[service]`), "unbound variable 'UserRepo'", called from `src/decorators.bp:117:14` — the `make()` text's `rkResolve(UserRepo, "UserRepo")` for a field typed by `pub behavior UserRepo`.
+
+- [ ] the repro above turned into a cell, red on the parent, root-caused and fixed: a behavior name resolves the same way a record/enum type name does when passed as a `type<T>` argument
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
