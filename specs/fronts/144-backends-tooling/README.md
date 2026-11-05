@@ -4297,6 +4297,16 @@ Repro: `cd modules/rakun-data && botopink check` — `error: cannot read a field
 
 - [ ] apply 842 (1)'s rewrite at this site, same pattern as the 7 already-landed sites; verify `sql/transactional`'s own tests and the modules it was blocking
 
+### B-255 — rakun-security: `#[methodSecurity]`'s `decl.Sec.make()` read-back, same family, one level deeper
+
+**Repository:** rakun · **Model:** sonnet (the mechanism is already landed; one level deeper than B-254, matching rakun-service/convention.bp's nested chain) · **Owner:** unassigned · found alongside B-254, 2026-11-04
+
+`modules/rakun-security/src/method_security.bp:225`: `rkRegisterBean(secName, "", "singleton", false, false, declName, { -> decl.Sec.make() });` — `#[methodSecurity]` adds an associated type `Sec` (`compiler.addType`, ~line 212) and reads `decl.Sec.make()` back, same family as B-254. One level deeper than a flat member read (an associated-type member, not a direct member) — the already-landed rakun-service/convention.bp fix generalized 842 (1) to a nested chained `compiler.ast` tree (`Call(Member(Call(...),"handle"),...)`) for exactly this shape; the same technique should apply here.
+
+Repro: `cd modules/rakun-security && botopink check` — `error: cannot read a field of an 'unknown' value`.
+
+- [ ] apply 842 (1)'s nested-chain rewrite at this site, verify `method_security`'s own tests
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
