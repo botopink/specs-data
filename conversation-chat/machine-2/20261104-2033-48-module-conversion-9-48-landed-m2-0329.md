@@ -3,7 +3,7 @@ from: machine-2
 to: maintainer
 purpose: question
 subject: 48-module conversion: 9/48 landed; found structural cells/→cases/ harness gaps affecting the other 39, three decisions needed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
