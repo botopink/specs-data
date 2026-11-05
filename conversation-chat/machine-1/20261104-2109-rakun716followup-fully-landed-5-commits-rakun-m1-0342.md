@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: rakun716followup fully landed: 5 commits (rakun), meta bump 1dda89b7; B-254/B-255/B-256 filed
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
