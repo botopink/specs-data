@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: b252boollambda: fix verified, commit blocked — not a code issue
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
