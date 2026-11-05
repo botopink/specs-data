@@ -24,7 +24,7 @@ The open questions of the current milestone, 1.0.12-beta; one file above every m
 
 The Portuguese page (`decisoes-pendentes.md`) is this page's direct translation: this English text holds the meaning
 (meta `AGENTS.md` § Conventions). Answered ids leave this file; `decisions-taken-steps.md` holds the answers and the next free
-number, which is **1114**.
+number, which is **1115**.
 
 ## To review — the fable's decisions and the answers to its questions (2026-10-20, 2026-10-21)
 
@@ -172,6 +172,7 @@ The maintainer asked (2026-10-21) that every decision a `fable` took for him, an
 | [ ] | 953 | 26-a (jhonstart), 29-a, 30-b, 30-c, 30-d, 30-e, 30-f, 30-g, 31-a (05-jhonstart) | The nine choices of track 05 stand under `rakun-bpp`; 29-a reduced to `registerRouteStarters`; 30-b's `payload` answers `?#(string, Json)`; `compose` takes the page as a component value and `Suspense` is a tree node (504, 414); 31-a's signature is `nat-d6`'s / `lg2-l`'s. |
 | [ ] | 954 | 05emilia-a, 05emilia-b, 05emilia-c, 05emilia-d, 05emilia-f, 05emilia-g, 05emilia-i, 05emilia-j, 05emilia-k (06-emilia) | The nine choices of track 06 stand under `rakun-stylesheet`: each is Tailwind 4.3.2's output (350) and holds as the literal's text across 150 s52; the `--tw-*` names are CSS, outside 862. |
 | [ ] | 955 | 49-a, 49-c, 49-e, 50-a, 52-a, 53-a, 68-a, 68-d, 69-a (07-onze) | The nine choices of track 07 stand under `rakun-ssr`'s names; 49-a writes through `snap`; 50-a's `start` spawns the node with `forwardSignals()` and runs the release's `bin/rakun-ssr` when it exists; 68-d's probe (`stylesheet-hash-split` / `-unevaluated`) holds until the tag annotation's tokens are comptime. |
+| [ ] | 1114 | conf-f | Conformance is no longer machine 2's alone: every machine runs the conformance suites whole, its fronts' Conformance steps (459, 465, 477–480) and the reds it meets, and the gate tools hold no machine |
 
 ## Blocking now — maximum priority (machine 2, 2026-10-15)
 
