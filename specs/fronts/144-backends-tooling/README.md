@@ -4307,6 +4307,18 @@ Repro: `cd modules/rakun-security && botopink check` — `error: cannot read a f
 
 - [ ] apply 842 (1)'s nested-chain rewrite at this site, verify `method_security`'s own tests
 
+### B-256 — erlang: a `#[revisions]`/`audited` entity's generated code calls undefined `Revision/5` and `Row/2` functions
+
+**Repository:** botopink-lang (`--lang`) · **Model:** opus (a generic/template-specialization gap in the erlang backend, mechanism not yet found) · **Owner:** unassigned · found unmasked by landing rakun's 716 (1) decl.X() read-back family, 2026-11-04
+
+Not a decision-842 site; a separate, pre-existing erlang codegen gap that was unreachable until `orm/entity.bp`'s own read-back crash (716 (1)'s family) was fixed, letting `orm_test.bp` finally type-check far enough to compile and run.
+
+Repro: `cd modules/rakun-data && botopink test --json` (target erlang; also reproduces via a plain `botopink build --target erlang`). The entity is `Account` at `test/orm_test.bp:441-446` (`#[entity("accounts")] #[revisions] pub type Account(...)`). The `#[revisions]`/`audited` branch of `entity.bp` (its `revisionsOf`/`revisionAt`/`revisionNumbers` text members, ~lines 532-568) generates code referencing `Revision<Account>` and `Row`. The generated `rakun_data@orm_test@@Account.erl:128` calls `Bp__bp_tpl_orm_entity__Revision/5` and `Bp__bp_tpl_sql_rows__Row/2`, both undefined.
+
+Confirmed pre-existing via `git stash` comparison: `orm_test` simply never type-checked before (blocked on the now-fixed `orm/entity` read-back crash), so this codegen gap was never reached until today.
+
+- [ ] isolate the generic-type-specialization mechanism that should have generated `Revision/5` and `Row/2` (or their real mangled names) and didn't; a cell once the mechanism is known
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
