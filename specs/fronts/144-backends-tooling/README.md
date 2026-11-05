@@ -4287,6 +4287,16 @@ The maintainer's framing: "wasm's print builds the whole text before writing, as
 
 - [ ] `gcDeclPrinter` (and any sibling record/value printer that streams field text as it computes it) buffers the full rendered text and writes it in one call, matching the other three targets' atomicity; a cell: the `Holder` program above, red on wasm (asserting nothing reaches stdout before the panic), green after
 
+### B-254 — rakun-data: `#[transactional]`'s `decl.Tx.make()` read-back, same 716 (1) family, unfixed
+
+**Repository:** rakun · **Model:** sonnet (the mechanism is already landed at 7 sibling sites) · **Owner:** unassigned · found while fixing the decl.X() read-back family across rakun (716 (1), 842 (1)), 2026-11-04
+
+`modules/rakun-data/src/sql/transactional.bp:131`: `rkRegisterBean(txName, "", "singleton", false, false, declName, { -> decl.Tx.make() });` — `#[transactional]`'s decorator adds an associated type `Tx` via `compiler.addType`, then reads `decl.Tx.make()` back through `decl` (`syntax decl: unknown`). Same shape as every site already fixed in rakun-cli/plugins.bp, rakun-data/orm/entity.bp, rakun-messaging/markers.bp, rakun-scheduling/markers.bp+jobstore/markers.bp and rakun-service/convention.bp — 842 (1)'s held-`compiler.ast`-value rewrite applies directly.
+
+Repro: `cd modules/rakun-data && botopink check` — `error: cannot read a field of an 'unknown' value`. This blocks several rakun-data/rakun-messaging/rakun-scheduling test modules from compiling far enough to run their real assertions.
+
+- [ ] apply 842 (1)'s rewrite at this site, same pattern as the 7 already-landed sites; verify `sql/transactional`'s own tests and the modules it was blocking
+
 ### B-207 — wasm GC: a generic record's own `display()` could not be called with nothing bound (blocked `Dict.display()` and any type implementing Display generically) — **closed**
 
 **Repository:** botopink-lang (`--lang`) · **Model:** opus (a GC lowering gap; the cell decides) · **After:** nothing
