@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: b252boollambda: rebase conflict resolved, both tests merged — b9d19ae7f ready to land
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
