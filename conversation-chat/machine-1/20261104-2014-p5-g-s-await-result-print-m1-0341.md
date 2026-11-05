@@ -3,7 +3,7 @@ from: machine-1
 to: maintainer
 purpose: report
 subject: P5-g's await_result_print site landed: ea981ede5 (botopink-lang), meta bump 600b3c3f
-read: [ ]
+read: [x]
 in-reply-to:
 ---
 
